@@ -157,8 +157,25 @@ class LLM:
         if r.status_code == 400 and len(gen) > 2:
             body["generationConfig"] = {"responseMimeType": "application/json", "maxOutputTokens": gen["maxOutputTokens"]}
             r = requests.post(url, params={"key": os.environ["GEMINI_API_KEY"]}, json=body, timeout=300)
+        if r.status_code == 404 and len(p["models"]) > 1:
+            p["models"].pop(0)
+            e = RuntimeError(f"Gemini model {model} not found — trying {p['models'][0]}")
+            e.retry_after = 2
+            raise e
         if r.status_code == 404:
             raise ProviderDown(f"Gemini model '{model}' not available: {r.text[:250]} — set Variable LLM_MODEL")
+        if r.status_code in (429, 500, 503) and len(p["models"]) == 1 and not p.get("alts"):
+            p["alts"] = True
+            alts = _gemini_alternatives(model)
+            if alts:
+                p["models"] += alts
+                log.info("Gemini %s overloaded — alternates: %s", model, ", ".join(alts))
+        if r.status_code in (429, 500, 503) and len(p["models"]) > 1:
+            p["models"].append(p["models"].pop(0))  # rotate: next attempt uses another model
+            e = RuntimeError(f"Gemini {model} HTTP {r.status_code} (overloaded) — switching to {p['models'][0]}")
+            e.retry_after = 5
+            raise e
+
         if r.status_code >= 400:
             raise RuntimeError(f"Gemini HTTP {r.status_code}: {r.text[:240]}")
         parts = r.json()["candidates"][0]["content"]["parts"]
@@ -192,3 +209,19 @@ def _parse_json(text: str):
         start = min(starts)
         end = max(text.rfind("]"), text.rfind("}"))
         return json.loads(text[start: end + 1])
+
+def _gemini_alternatives(current: str) -> list:
+    """Other Gemini text models this key can use, flash models first, newest first."""
+    try:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models",
+                         params={"key": os.environ["GEMINI_API_KEY"], "pageSize": 200}, timeout=30)
+        names = [m["name"].split("/", 1)[-1] for m in r.json().get("models", [])
+                 if "generateContent" in m.get("supportedGenerationMethods", [])]
+    except Exception as e:  # noqa: BLE001
+        log.warning("could not list Gemini models: %s", e)
+        return []
+    skip = ("image", "tts", "audio", "live", "embedding", "vision", "learnlm", "gemma", "robotics", "computer")
+    names = [n for n in names if n.startswith("gemini-") and n != current and not any(k in n for k in skip)]
+    names.sort(reverse=True)
+    flash = [n for n in names if "flash" in n]
+    return (flash + [n for n in names if n not in flash])[:4]
