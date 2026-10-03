@@ -1,0 +1,69 @@
+# ---------------------------------------------------------------
+# منابع. هر فیدی که در یک اجرا جواب ندهد رد می‌شود و در لاگ Actions
+# با برچسب FEED FAILED دیده می‌شود؛ می‌توان آن را حذف یا اصلاح کرد.
+# hint: دستهٔ پیش‌فرض منبع (مدل می‌تواند آن را تغییر دهد)
+# ---------------------------------------------------------------
+
+feeds:
+  # --- مدیریت و استراتژی ---
+  - { name: "Harvard Business Review",  url: "http://feeds.hbr.org/harvardbusiness",            hint: management }
+  - { name: "MIT Sloan Mgmt Review",    url: "https://sloanreview.mit.edu/feed/",               hint: management }
+  - { name: "Knowledge at Wharton",     url: "https://knowledge.wharton.upenn.edu/feed/",       hint: management }
+  - { name: "McKinsey Insights",        url: "https://www.mckinsey.com/insights/rss",           hint: management }
+  - { name: "Stratechery",              url: "https://stratechery.com/feed/",                   hint: management }
+  - { name: "First Round Review",       url: "https://review.firstround.com/feed",              hint: management }
+
+  # --- مارکتینگ و پرفورمنس ---
+  - { name: "Search Engine Land",       url: "https://searchengineland.com/feed",               hint: performance }
+  - { name: "PPC Land",                 url: "https://ppc.land/rss/",                           hint: performance }
+  - { name: "Google Ads & Commerce",    url: "https://blog.google/products/ads-commerce/rss/",  hint: performance }
+  - { name: "CXL",                      url: "https://cxl.com/blog/feed/",                      hint: marketing }
+  - { name: "Marketing Week",           url: "https://www.marketingweek.com/feed/",             hint: marketing }
+  - { name: "Seth Godin",               url: "https://seths.blog/feed/",                        hint: marketing }
+
+  # --- رشد و کمپین ---
+  - { name: "Lenny's Newsletter",       url: "https://www.lennysnewsletter.com/feed",           hint: growth }
+  - { name: "Andrew Chen",              url: "https://andrewchen.substack.com/feed",            hint: growth }
+  - { name: "Elena Verna",              url: "https://www.elenaverna.com/feed",                 hint: growth }
+  - { name: "Growth Unhinged",          url: "https://www.growthunhinged.com/feed",             hint: growth }
+
+  # --- داده، آزمایش و تجربهٔ شرکت‌های بزرگ ---
+  - { name: "Netflix TechBlog",         url: "https://netflixtechblog.com/feed",                hint: data }
+  - { name: "Airbnb Tech",              url: "https://medium.com/feed/airbnb-engineering",      hint: data }
+  - { name: "Booking.com Data",         url: "https://booking.ai/feed",                         hint: data }
+  - { name: "Spotify Engineering",      url: "https://engineering.atspotify.com/feed/",         hint: data }
+  - { name: "Uber Engineering",         url: "https://www.uber.com/blog/engineering/rss/",      hint: data }
+  - { name: "Instacart Tech",           url: "https://tech.instacart.com/feed",                 hint: data }
+  - { name: "Zalando Engineering",      url: "https://engineering.zalando.com/atom.xml",        hint: data }
+  - { name: "Eugene Yan",               url: "https://eugeneyan.com/rss/",                      hint: data }
+
+  # --- هوش مصنوعی ---
+  - { name: "OpenAI News",              url: "https://openai.com/news/rss.xml",                 hint: ai }
+  - { name: "Google AI Blog",           url: "https://blog.google/technology/ai/rss/",          hint: ai }
+  - { name: "One Useful Thing",         url: "https://www.oneusefulthing.org/feed",             hint: ai }
+  - { name: "Simon Willison",           url: "https://simonwillison.net/atom/everything/",      hint: ai }
+  - { name: "Latent Space",             url: "https://www.latent.space/feed",                   hint: ai }
+
+  # --- ای‌کامرس و ریتیل ---
+  - { name: "Modern Retail",            url: "https://www.modernretail.co/feed/",               hint: commerce }
+  - { name: "Retail Dive",              url: "https://www.retaildive.com/feeds/news/",          hint: commerce }
+
+  # --- آموزش‌های عملی (type: tutorial) ---
+  - { name: "Ahrefs Blog",              url: "https://ahrefs.com/blog/feed/",                   hint: marketing,   type: tutorial }
+  - { name: "Search Engine Journal",    url: "https://www.searchenginejournal.com/feed/",       hint: performance, type: tutorial }
+  - { name: "Machine Learning Mastery", url: "https://machinelearningmastery.com/feed/",        hint: ai,          type: tutorial }
+  - { name: "Towards Data Science",     url: "https://towardsdatascience.com/feed",             hint: data,        type: tutorial }
+  - { name: "GrowthBook Blog",          url: "https://blog.growthbook.io/rss/",                 hint: data,        type: tutorial }
+  - { name: "Hugging Face Learn",       url: "https://huggingface.co/blog/feed.xml",            hint: ai,          type: tutorial }
+
+# مقالات علمی از arXiv (رایگان، جدیدترین‌ها اول)
+# سینتکس: all: / abs: / ti: / cat: با AND / OR / ANDNOT
+arxiv:
+  - { name: "arXiv · Advertising",      query: "abs:advertising AND (cat:cs.IR OR cat:cs.LG OR cat:econ.GN)", hint: performance }
+  - { name: "arXiv · Uplift & Causal",  query: "abs:uplift AND (abs:marketing OR abs:coupon OR abs:incentive)", hint: data }
+  - { name: "arXiv · E-commerce RecSys",query: "abs:e-commerce AND abs:recommendation AND cat:cs.IR",         hint: commerce }
+  - { name: "arXiv · Retention",        query: "abs:churn OR (abs:customer AND abs:retention)",                hint: ecrm }
+  - { name: "arXiv · LLM for Marketing",query: "(abs:LLM OR abs:agent) AND (abs:marketing OR abs:advertising OR abs:e-commerce)", hint: ai }
+  - { name: "arXiv · Platforms & Econ", query: "cat:econ.GN AND (abs:platform OR abs:marketplace OR abs:pricing)", hint: management }
+
+arxiv_max_results: 25

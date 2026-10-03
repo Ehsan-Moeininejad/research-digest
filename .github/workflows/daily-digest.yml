@@ -1,0 +1,55 @@
+name: daily-digest
+
+on:
+  # پشتیبان: شنبه و سه‌شنبه 06:15 UTC = 09:45 تهران. تریگر اصلی cron-job.org است (README)
+  schedule:
+    - cron: "15 6 * * 2,6"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "بازسازی دایجست امروز حتی اگر قبلاً ساخته شده"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-digest
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build digest
+        env:
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          PAGE_URL: ${{ vars.PAGE_URL }}
+          FORCE: ${{ inputs.force }}
+        run: python digest/main.py
+
+      - name: Commit & push
+        run: |
+          git config user.name  "digest-bot"
+          git config user.email "digest-bot@users.noreply.github.com"
+          git add docs data
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "digest: $(TZ=Asia/Tehran date +%F)"
+          git push

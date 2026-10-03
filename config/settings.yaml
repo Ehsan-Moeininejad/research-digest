@@ -1,0 +1,64 @@
+# ---------------------------------------------------------------
+# تنظیمات اصلی دایجست. بعد از هر تغییر، اجرای بعدی از همین فایل می‌خواند.
+# ---------------------------------------------------------------
+
+site_title: "دایجست تیم پرفورمنس"
+site_subtitle: "Research & Industry Digest | Sat & Tue"
+
+# مخاطب؛ مدل بر اساس این متن امتیاز می‌دهد و بخش «کاربرد برای ما» را می‌نویسد
+audience: >
+  تیم Performance Marketing یک پلتفرم ای‌کامرس بزرگ (مارکت‌پلیس با میلیون‌ها کاربر)
+  که چهار حوزهٔ Ads، Affiliate، eCRM و Engagement/Loyalty را مدیریت می‌کند
+  و روی تصمیم‌گیری داده‌محور، آزمایش، شخصی‌سازی و استفاده از AI و Agentها کار می‌کند.
+
+# محدودهٔ موضوعی؛ مطلبی که در این محدوده نباشد، هر قدر هم باکیفیت، رد می‌شود
+scope: >
+  Marketing in the broad sense: performance marketing and paid ads, affiliate marketing,
+  eCRM / lifecycle / retention, loyalty and engagement programs, growth and campaigns,
+  brand and consumer behaviour, pricing and promotions, marketing analytics, attribution,
+  incrementality and experimentation, e-commerce and marketplaces, marketing leadership and
+  management of commercial teams, and AI / agents applied to marketing, growth or commercial work.
+  Generic AI research, engineering infrastructure, finance, politics and HR topics are OUT of
+  scope unless the piece makes a concrete marketing or growth application central.
+
+selection:
+  min_articles: 10        # هدف تعداد مطالب تازهٔ هر نوبت
+  target_articles: 10     # سقف مطالب تازهٔ هر نوبت
+  latest_size: 10         # صفحهٔ اصلی همیشه 10 مطلب آخر را نشان می‌دهد
+  score_threshold: 6      # حداقل امتیاز کیفیت در مرحلهٔ غربال اول (از 10)
+  min_relevance: 6        # حداقل امتیاز ارتباط با مارکتینگ در غربال اول
+  shortlist_size: 22      # تعداد کاندیدایی که متن کاملشان بازبینی می‌شود
+  max_per_source: 2       # جلوگیری از غلبهٔ یک منبع
+  min_tutorials: 3        # حداقل تعداد آموزش عملی در هر نوبت
+  lookback_days: 5        # پنجرهٔ زمانی جست‌وجو؛ فاصلهٔ دو نوبت (شنبه و سه‌شنبه) حداکثر 4 روز است
+  max_candidates: 250     # سقف کاندیداهایی که امتیازدهی می‌شوند
+
+# بازبینی دوم: متن کامل هر کاندیدا را یک ویراستار سخت‌گیر می‌خواند
+review:
+  min_relevance: 8        # حداقل ارتباط با محدودهٔ مارکتینگ (از 10)
+  min_quality: 7          # حداقل کیفیت (از 10)
+  rounds: 2               # اگر مطالب قبول‌شده کم بود، یک دور دیگر از کاندیداها بازبینی می‌شود
+
+# لیدربورد همیشگی: 10 مطلب برتر هر دسته
+leaderboard:
+  size: 10
+  min_score: 8            # حداقل امتیاز نهایی برای ورود
+  max_age_days: 730       # مطالب قدیمی‌تر از این خارج می‌شوند (0 = هرگز)
+
+# نگهداری خودکار منابع
+sources_health:
+  disable_after_failures: 3   # بعد از چند اجرای ناموفق پیاپی (حدود 1.5 هفته)، منبع غیرفعال می‌شود (هفته‌ای یک بار دوباره امتحان می‌شود)
+  min_scored: 15              # حداقل تعداد مطلب امتیازخورده برای قضاوت دربارهٔ کیفیت منبع
+  low_quality_avg: 4          # منبع با میانگین کیفیت کمتر از این، 30 روز متوقف می‌شود
+  scout_every_days: 7         # هر چند روز یک بار منابع جدید جست‌وجو شوند
+  scout_max_new: 3            # حداکثر منبع جدید در هر جست‌وجو
+
+categories:
+  management:  { fa: "مدیریت و استراتژی", en: "Management & Strategy", color: "#C9A66B" }
+  marketing:   { fa: "مارکتینگ و برند",   en: "Marketing & Brand",     color: "#E58BA6" }
+  performance: { fa: "پرفورمنس و تبلیغات", en: "Performance & Ads",    color: "#5FB8A6" }
+  growth:      { fa: "کمپین و رشد",        en: "Campaigns & Growth",    color: "#E7A452" }
+  ecrm:        { fa: "eCRM و وفاداری",     en: "eCRM & Retention",      color: "#93A3FF" }
+  data:        { fa: "داده و آزمایش",       en: "Data & Experimentation", color: "#7CC6E6" }
+  ai:          { fa: "هوش مصنوعی",          en: "AI & Agents",           color: "#B892F5" }
+  commerce:    { fa: "ای‌کامرس و محصول",    en: "E-commerce & Product",  color: "#A2CC6E" }
