@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تولید مسیرهای کاربران با سیم‌تریس برای مدل‌سازی آنلاین و شبیه‌سازی | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#121829;--sheet:#182036;--sheet-2:#1E2741;--rule:#2B3554;--text:#ECE9E2;--soft:#BCC2D0;--mute:#8189A0;--focus:#F2D27A;--c:#7CC6E6;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border:1px solid var(--focus);border-radius:12px;padding:14px 20px;background:rgba(242,210,122,.06)}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#141a2b;background:var(--focus);padding:8px 18px;border-radius:9px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">داده و آزمایش <span class="ltr" style="color:var(--mute);font-weight:400">Data &amp; Experimentation</span></div>
+  <h1>تولید مسیرهای کاربران با سیم‌تریس برای مدل‌سازی آنلاین و شبیه‌سازی</h1>
+  <p class="orig ltr">SimTrace: Grounded Multimodal User Trajectories Generation for Online User Modeling</p>
+  <div class="meta">
+    <span><b>arXiv · LLM for Marketing</b></span>
+    <span>مقالهٔ علمی</span>
+    <span>سطح: پیشرفته</span>
+    <span>انتشار: 1405/07/07</span>
+    <span>متن اصلی: 5 دقیقه</span>
+    <span>امتیاز: 8.0/10</span>
+  </div>
+  <div class="tldr">چارچوب SimTrace برای تولید مسیرهای چندوجهی و دقیق کاربران معرفی شده است تا جایگزین داده‌های واقعی محدود شده با قوانین حریم خصوصی شود.</div>
+
+  <h2>درباره چیست</h2><p>این مقاله پژوهشی که روی arXiv منتشر شده، به حوزه کاربرد مدل‌های زبان بزرگ و هوش مصنوعی در بازاریابی و مدل‌سازی رفتار کاربران می‌پردازد. نویسندگان این مقاله رویکردی جدید برای حل مشکل کمبود داده‌های دقیق رفتاری کاربران در مقیاس بزرگ ارائه کرده‌اند.</p>
+  <h2>مسئله و اهمیت</h2><p>توسعه سیستم‌های توصیهan، ارزیابی رابط کاربری و انجام A/B test نیازمند شبیه‌سازهای دقیق کاربران است که به داده‌های رفتاری بزرگ‌مقیاس و تفکیک‌شده نیاز دارند. دسترسی به این لاگ‌های اختصاصی به دلیل قوانین حریم خصوصی دشوار است و کسب‌وکارهای کوچک ترافیک کافی ندارند، در حالی که دیتاست‌های عمومی فعلی یا جزئیات رفتاری را حذف کرده‌اند یا مقیاس کوچکی دارند.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>پژوهشگران برای رفع این شکاف، چارچوب SimTrace را پیشنهاد داده‌اند که داده‌های مصنوعی چندوجهی و وفادار به رفتار واقعی کاربران را تولید می‌کند تا به عنوان رویکردی مقرون‌به‌صرفه برای توسعه سیستم‌ها عمل کند.</p>
+  <h2>روش و اجزا</h2><ul><li>بررسی چالش‌های داده‌های رفتاری کاربران و محدودیت‌های حریم خصوصی</li><li>معرفی چارچوب SimTrace برای تولید مسیرهای مصنوعی کاربران</li><li>تولید مسیرهای چندوجهی، دقیق و از نظر معنایی معتبر برای مدل‌سازی آنلاین</li></ul>
+  
+  <h2>نتیجه‌گیری</h2><p>نویسندگان نتیجه می‌گیرند که استفاده از SimTrace می‌تواند رویکردی مقیاس‌پذیر و کم‌هزینه برای شبیه‌سازی کاربران ایجاد کند که به توسعه سیستم‌های توصیهan و تست‌های ارزیابی کمک شایانی می‌کند.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>بررسی امکان استفاده از داده‌های مصنوعی برای تست‌های ارزیابی و سناریوهای بازاریابی</li><li>تست روش‌های شبیه‌سازی کاربران برای شخصی‌سازی بهتر در بخش eCRM و Engagement</li><li>ارزیابی انطباق این روش‌ها با چالش‌های حریم خصوصی داده‌ها در مارکت‌پلیس</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>متن در دسترس تنها شامل چکیده مقاله است و جزئیات روش‌شناسی کامل را ندارد.</li><li>هیچ عدد، کمیت یا نتیجه تجربی مشخصی در متن ارائه نشده است.</li></ul>
+  <div class="tags"><span class="ltr">Data</span><span class="ltr">Engagement</span><span class="ltr">Product</span><span class="ltr">User Modeling</span><span class="ltr">Synthetic Data</span><span class="ltr">Multimodal</span><span class="ltr">A/B Testing</span></div>
+
+  <div class="source">
+    <a class="go" href="https://arxiv.org/abs/2609.38397v1" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://arxiv.org/abs/2609.38397v1" target="_blank" rel="noopener">https://arxiv.org/abs/2609.38397v1</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>
