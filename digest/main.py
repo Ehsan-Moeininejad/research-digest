@@ -118,10 +118,16 @@ def triage(llm, items, settings):
                     "title": it["title"], "snippet": it["snippet"][:350]} for it in chunk]
         user = ('Return a JSON array: [{"id": "...", "relevance": 0-10, "quality": 0-10, '
                 '"category": "<key>", "type": "tutorial|paper|insight"}]\n\n' + json.dumps(payload, ensure_ascii=False))
-        for r in llm.json(system, user, max_tokens=4000):
+        try:
+            res = llm.json(system, user, max_tokens=4000)
+        except Exception as e:  # noqa: BLE001
+            log.warning("triage batch skipped (%s) — these items are retried next run", str(e)[:120])
+            continue
+        for r in res if isinstance(res, list) else []:
             if isinstance(r, dict) and r.get("id"):
                 out[r["id"]] = r
         log.info("triaged %d/%d", min(i + step, len(items)), len(items))
+    items = [it for it in items if it["id"] in out]
     for it in items:
         r = out.get(it["id"], {})
         it["relevance"] = float(r.get("relevance", 0) or 0)
@@ -211,8 +217,16 @@ def review(llm, items, settings):
                    for it in chunk]
         user = ('Return a JSON array: [{"id": "...", "relevance": 0-10, "quality": 0-10, '
                 '"verdict": "accept|reject", "reason": "max 15 words"}]\n\n' + json.dumps(payload, ensure_ascii=False))
-        res = {r.get("id"): r for r in llm.json(system, user, max_tokens=4000) if isinstance(r, dict)}
+        try:
+            raw = llm.json(system, user, max_tokens=4000)
+        except Exception as e:  # noqa: BLE001
+            log.warning("review batch skipped (%s) — retried next run", str(e)[:120])
+            continue
+        res = {r.get("id"): r for r in (raw if isinstance(raw, list) else [raw]) if isinstance(r, dict)}
         for it in chunk:
+            if it["id"] not in res:
+                continue
+            it["_reviewed"] = True
             r = res.get(it["id"], {})
             R, Q = float(r.get("relevance", 0) or 0), float(r.get("quality", 0) or 0)
             it["score"] = round(0.35 * R + 0.65 * Q, 1)
@@ -395,7 +409,7 @@ def review_cached(llm, items, settings, judged, today):
         with ThreadPoolExecutor(max_workers=6) as ex:
             todo = list(ex.map(fetch_fulltext, todo))
         ok = review(llm, todo, settings)
-        judged.store_reviews(todo, {it["id"] for it in ok}, today)
+        judged.store_reviews([it for it in todo if it.get("_reviewed")], {it["id"] for it in ok}, today)
     return [it for it in items if it.get("ok")]
 
 
@@ -490,7 +504,11 @@ def main():
     if board_only:
         log.info("Digest for %s already exists — leaderboard seeding only.", today)
         month = [it for it in items if it["published"] < week_cut]
-        entered = fill_board(llm, board, settings, month, judged, today)
+        try:
+            entered = fill_board(llm, board, settings, month, judged, today)
+        except Exception as e:  # noqa: BLE001
+            log.warning("leaderboard seeding stopped: %s", e)
+            entered = set()
         judged.save()
         reg.save()
         if entered:
@@ -520,6 +538,11 @@ def main():
     articles = summarize(llm, ensure_body(final), settings)
     if len(articles) < sel["min_articles"]:
         log.warning("only %d articles passed the bar this week — quality is not lowered to fill the quota", len(articles))
+    if not articles:
+        judged.save()
+        reg.save()
+        log.error("No article could be briefed (LLM providers unavailable?) — progress saved, digest not published.")
+        return
     note = editor_note(llm, articles)
 
     # ---- leaderboard: new pieces compete; categories not yet full are seeded from the last month

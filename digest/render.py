@@ -131,6 +131,14 @@ def render_site(root: Path, settings: dict, board: dict | None = None, source_ro
         (adir / f"{aid}.html").write_text(btpl.render(
             a=a, c=settings["categories"][a["category"]], settings=settings, fonts=font_css(root, "../"),
             published=jalali(a["published"])["short"] if a.get("published") else ""), encoding="utf-8")
+    # one plain long page per run with every brief in full (easy to read, print, or add to NotebookLM)
+    fdir = docs / "full"
+    fdir.mkdir(parents=True, exist_ok=True)
+    ftpl = Environment(autoescape=True).from_string(FULL)
+    page_html = ftpl.render(settings=settings, d=jalali(today["date"]), digest=today, cats=settings["categories"],
+                            arts=[normalize(x) for x in today["articles"]], board=flat, fonts=font_css(root, "../"))
+    (fdir / f"{today['date']}.html").write_text(page_html, encoding="utf-8")
+    (fdir / "latest.html").write_text(page_html, encoding="utf-8")
     for old in ("leaderboard.html", "sources.html"):
         (docs / old).unlink(missing_ok=True)
     (docs / ".nojekyll").write_text("")
@@ -469,4 +477,41 @@ footer{color:var(--mute);font-size:13.5px;margin-top:30px}
 </main>
 </body>
 </html>
+"""
+
+
+FULL = r"""<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>متن کامل دایجست {{ d.short }}</title>
+<style>
+{{ fonts | safe }}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:#121829;color:#ECE9E2;font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16.5px;line-height:2}
+.wrap{max-width:760px;margin:0 auto;padding:30px 22px 70px}
+h1{font-size:28px;margin:0 0 6px}h2{font-size:22px;margin:46px 0 4px;line-height:1.6}
+h3{font-size:15.5px;color:#F2D27A;margin:22px 0 4px}
+.meta{color:#8189A0;font-size:14px}.orig{color:#8189A0;font-size:14px;direction:ltr;text-align:left}
+.tldr{font-weight:700;margin:14px 0}hr{border:0;border-top:1px solid #2B3554;margin:40px 0}
+a{color:#F2D27A}ul{padding-inline-start:22px}li{margin:4px 0}
+</style></head><body><main class="wrap">
+<h1>{{ settings.site_title }} | {{ d.long }}</h1>
+{% if digest.note %}<p>{{ digest.note }}</p>{% endif %}
+{% for a in arts %}
+<hr>
+<h2>{{ loop.index }}. {{ a.title_fa }}</h2>
+<p class="orig">{{ a.title }}</p>
+<p class="meta">{{ cats[a.category].fa }} · {{ a.source }} · منبع: <a href="{{ a.url }}">{{ a.url }}</a></p>
+{% if a.tldr %}<p class="tldr">{{ a.tldr }}</p>{% endif %}
+{% if a.about %}<h3>درباره چیست</h3><p>{{ a.about }}</p>{% endif %}
+{% if a.problem %}<h3>مسئله و اهمیت</h3><p>{{ a.problem }}</p>{% endif %}
+{% if a.approach %}<h3>روی چه چیزی کار کرده‌اند</h3><p>{{ a.approach }}</p>{% endif %}
+{% if a.steps %}<h3>روش و اجزا</h3><ul>{% for x in a.steps %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if a.findings %}<h3>یافته‌ها و اعداد</h3><ul>{% for x in a.findings %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if a.conclusion %}<h3>نتیجه‌گیری</h3><p>{{ a.conclusion }}</p>{% endif %}
+{% if a.for_us %}<h3>کاربرد برای تیم</h3><ul>{% for x in a.for_us %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if a.caveats %}<h3>محدودیت‌ها</h3><ul>{% for x in a.caveats %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% endfor %}
+</main></body></html>
 """

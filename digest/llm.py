@@ -42,6 +42,7 @@ class LLM:
             raise RuntimeError("No usable LLM provider: set GITHUB_TOKEN (automatic in Actions) or GEMINI_API_KEY")
         self.calls = 0
         self._last = 0.0
+        self.total_failures = 0   # calls on which every provider failed; after 2 the run stops calling (fail fast)
         # GitHub Models free tier has small per-request limits; callers size their batches with this
         self.small = self.providers[0]["name"] == "github"
         log.info("LLM chain: %s", " → ".join(f"{p['name']}:{p['models'][0]}" for p in self.providers))
@@ -51,9 +52,11 @@ class LLM:
         return f"{self.providers[0]['name']}:{self.providers[0]['models'][0]}" if self.providers else "none"
 
     # ---------------------------------------------------------------
-    def json(self, system: str, user: str, max_tokens: int = 4000, retries: int = 6):
+    def json(self, system: str, user: str, max_tokens: int = 4000, retries: int = 4):
         """Try providers in order. A provider that is down/out of quota is dropped for the rest of the run;
         one that only returned unparseable text twice is skipped for this call but kept for the next."""
+        if self.total_failures >= 2:
+            raise RuntimeError("LLM unavailable for this run (fail-fast after repeated total failures)")
         for p in list(self.providers):
             last, bad_json, dead = None, 0, False
             for attempt in range(1, retries + 1):
@@ -65,7 +68,9 @@ class LLM:
                 raw = ""
                 try:
                     raw = self._call(p, system, user, max_tokens)
-                    return _parse_json(raw)
+                    out = _parse_json(raw)
+                    self.total_failures = 0
+                    return out
                 except ProviderDown as e:
                     last, dead = e, True
                     break
@@ -94,6 +99,7 @@ class LLM:
                 log.error("provider %s dropped for this run (%s)", p["name"], str(last)[:200])
             else:
                 log.warning("provider %s skipped for this call (%s)", p["name"], str(last)[:200])
+        self.total_failures += 1
         raise RuntimeError("All LLM providers failed for this call")
 
     # ---------------------------------------------------------------

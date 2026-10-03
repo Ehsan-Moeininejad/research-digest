@@ -20,7 +20,11 @@ def t(x) -> str:
 def send_email(digest: dict, settings: dict):
     user, pwd = os.environ["SMTP_USER"], os.environ["SMTP_PASS"]
     to = [x.strip() for x in os.environ["MAIL_TO"].split(",") if x.strip()]
-    page = os.getenv("PAGE_URL", "").rstrip("/") + "/"
+    page = os.getenv("PAGE_URL", "").strip()
+    if not page and os.getenv("GITHUB_REPOSITORY"):
+        owner, repo = os.environ["GITHUB_REPOSITORY"].split("/", 1)
+        page = f"https://{owner.lower()}.github.io/{repo}/"
+    page = page.rstrip("/") + "/"
     d = jalali(digest["date"])
     cats = settings["categories"]
     arts = sorted(digest["articles"], key=lambda x: -x["score"])
@@ -95,6 +99,7 @@ def send_email(digest: dict, settings: dict):
 <tr><td style="padding:0 26px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">{''.join(items)}{ev}</table></td></tr>
 <tr><td align="center" style="padding:22px 26px 28px;font-family:{FONT}">
   <a href="{t(page)}" style="display:inline-block;border:1px solid #F2D27A;color:#F2D27A;font-weight:bold;padding:10px 24px;border-radius:10px;text-decoration:none">مشاهدهٔ دایجست و لیدربورد</a>
+  <div style="margin-top:12px;font-size:13px"><a href="{t(page)}full/{digest['date']}.html" style="color:#8189A0">متن کامل همهٔ بریف‌ها در یک صفحه (مناسب NotebookLM)</a></div>
 </td></tr></table></td></tr></table></body></html>"""
 
     msg = MIMEMultipart("alternative")
