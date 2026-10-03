@@ -30,14 +30,17 @@ def send_email(digest: dict, settings: dict):
     rows = []
     for a in sorted(digest["articles"], key=lambda x: -x["score"])[:5]:
         c = cats[a["category"]]
+        action = (f'<div style="color:#F2D27A;font-size:13.5px;margin-top:4px">اقدام: {html.escape(a["actions"][0])}</div>'
+                  if a.get("actions") else "")
         rows.append(
             f'<tr><td style="padding:12px 0;border-bottom:1px solid #2B3554">'
-            f'<div style="font-size:12px;color:{c["color"]};font-weight:bold">{html.escape(c["fa"])}{" | لیدربورد" if a.get("board") else ""}'
+            f'<div style="font-size:12px;color:{c["color"]};font-weight:bold">{html.escape(c["fa"])}'
+            f'{" | لیدربورد" if a.get("board") else ""}'
             f' <span style="color:#8189A0;font-weight:normal">| {html.escape(a["source"])}</span></div>'
             f'<a href="{html.escape(a["url"])}" style="color:#ECE9E2;font-size:16px;font-weight:bold;text-decoration:none">'
             f'{html.escape(a["title_fa"])}</a>'
-            f'<div style="color:#B7BDCC;font-size:14px;margin-top:4px">{html.escape(a["why_it_matters"])}</div>'
-            f"</td></tr>"
+            f'<div style="color:#B7BDCC;font-size:14px;margin-top:4px">{html.escape(a.get("tldr") or a.get("summary", ""))}</div>'
+            f"{action}</td></tr>"
         )
 
     body = f"""<div dir="rtl" style="background:#121829;padding:28px 0;font-family:Vazirmatn,Tahoma,Arial,sans-serif">

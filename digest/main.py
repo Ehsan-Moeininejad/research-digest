@@ -111,16 +111,17 @@ def triage(llm, items, settings):
         'or "insight" (analysis, case study, essay).'
     )
     out = {}
-    for i in range(0, len(items), 60):
-        chunk = items[i: i + 60]
+    step = 25 if llm.small else 60
+    for i in range(0, len(items), step):
+        chunk = items[i: i + step]
         payload = [{"id": it["id"], "source": it["source"], "hint": it["hint"],
                     "title": it["title"], "snippet": it["snippet"][:350]} for it in chunk]
         user = ('Return a JSON array: [{"id": "...", "relevance": 0-10, "quality": 0-10, '
                 '"category": "<key>", "type": "tutorial|paper|insight"}]\n\n' + json.dumps(payload, ensure_ascii=False))
-        for r in llm.json(system, user, max_tokens=9000):
+        for r in llm.json(system, user, max_tokens=4000):
             if isinstance(r, dict) and r.get("id"):
                 out[r["id"]] = r
-        log.info("triaged %d/%d", min(i + 60, len(items)), len(items))
+        log.info("triaged %d/%d", min(i + step, len(items)), len(items))
     for it in items:
         r = out.get(it["id"], {})
         it["relevance"] = float(r.get("relevance", 0) or 0)
@@ -202,10 +203,11 @@ def review(llm, items, settings):
         "and pieces whose text is too thin to judge (unless it is a research abstract with clear findings)."
     )
     accepted = []
-    for i in range(0, len(items), 5):
-        chunk = items[i: i + 5]
+    step, chars = (2, 3500) if llm.small else (5, 5000)
+    for i in range(0, len(items), step):
+        chunk = items[i: i + step]
         payload = [{"id": it["id"], "source": it["source"], "type": it["kind"], "title": it["title"],
-                    "full_text_available": it.get("fulltext", it["kind"] == "paper"), "text": it["body"][:5000]}
+                    "full_text_available": it.get("fulltext", it["kind"] == "paper"), "text": it["body"][:chars]}
                    for it in chunk]
         user = ('Return a JSON array: [{"id": "...", "relevance": 0-10, "quality": 0-10, '
                 '"verdict": "accept|reject", "reason": "max 15 words"}]\n\n' + json.dumps(payload, ensure_ascii=False))
@@ -223,37 +225,62 @@ def review(llm, items, settings):
 
 
 # ------------------------------------------------------------------ stage 3: write-up
+TEAMS = ["Ads", "Affiliate", "eCRM", "Engagement", "Data", "Product", "Leadership"]
+
+
 def summarize(llm, picked, settings):
+    """Practical briefing per article: what's new, how it works, evidence, what to do with it."""
     system = (
-        "You write a daily research digest in Persian (Farsi) for this audience:\n"
+        "You write a practical Persian (Farsi) briefing so a marketing team can stay current without "
+        "reading every article. Audience:\n"
         f"{settings['audience']}\n\n"
+        "Goal: after reading your briefing, a practitioner should know exactly what the piece found or "
+        "teaches, how it works, what evidence backs it, and what to try or check at work. "
+        "A generic paraphrase of the abstract is a failure.\n\n"
         "Rules:\n"
-        "- Fluent, natural Persian; report-style analytical tone; do not address the reader directly.\n"
-        "- Use Latin/English digits (0-9) for all numbers, never Persian digits.\n"
-        "- Keep established English terms in English (A/B test, ROAS, LTV, uplift, CRM, LLM, agent).\n"
-        "- Be concrete: keep numbers, results, method names and company names from the text. No hype, no filler.\n"
-        "- If the text is only an abstract or snippet, summarise only what it says; never invent results.\n"
-        "- For hands-on tutorials (kind=tutorial), key_points list the main steps or techniques, "
-        "and why_it_matters names where the team could apply it."
+        "- Fluent, natural Persian; concise report style; no direct address to the reader; no hype, no filler.\n"
+        "- Latin/English digits (0-9) only, never Persian digits.\n"
+        "- Keep established English terms in English (A/B test, ROAS, LTV, uplift, holdout, LLM, agent).\n"
+        "- Extract specifics: numbers, effect sizes, sample sizes, company names, method and tool names, "
+        "framework names, step order. Prefer one concrete detail over three vague ones.\n"
+        "- Only use what the text supports. If the text is an abstract or snippet, say less; never invent results.\n"
+        "- Each bullet is one short line (max ~20 words).\n"
+        "- actions must be concrete and start with a verb, e.g. a test to run, a metric to check, a template to reuse.\n"
+        "- For tutorials, how lists the actual steps in order."
+    )
+    schema = (
+        "Return a JSON array; one object per item:\n"
+        '{"id": "...",\n'
+        ' "title_fa": "Persian title, max 14 words",\n'
+        ' "tldr": "ONE Persian sentence: the single most useful takeaway",\n'
+        ' "whats_new": "1-2 Persian sentences: what is new or different from common practice",\n'
+        ' "how": ["2-5 Persian bullets: method, framework or steps"],\n'
+        ' "evidence": ["0-4 Persian bullets: numbers, results, who did it; empty if none in text"],\n'
+        ' "actions": ["1-3 Persian bullets: what the team could try or check, starting with a verb"],\n'
+        ' "caveats": ["0-2 Persian bullets: limits, conditions, when it does not apply"],\n'
+        f' "teams": subset of {TEAMS} this is most useful for,\n'
+        ' "level": "intro" | "practitioner" | "advanced",\n'
+        ' "tags": ["2-4 short English tags"], "read_minutes": integer}\n\n'
     )
     results = {}
-    for i in range(0, len(picked), 4):
-        chunk = picked[i: i + 4]
+    step, chars = (1, 6000) if llm.small else (3, 7000)
+    for i in range(0, len(picked), step):
+        chunk = picked[i: i + step]
         payload = [{"id": it["id"], "kind": it["kind"], "source": it["source"], "title": it["title"],
-                    "text": it["body"]} for it in chunk]
-        user = (
-            "For each item return a JSON array of objects:\n"
-            '{"id": "...", "title_fa": "Persian title, max 14 words",\n'
-            ' "summary": "3-4 sentence Persian summary of the core argument and evidence",\n'
-            ' "key_points": ["3 short Persian takeaways"],\n'
-            ' "why_it_matters": "1-2 sentences: concrete application for this team",\n'
-            ' "tags": ["2-4 short English tags"], "read_minutes": integer}\n\n'
-            + json.dumps(payload, ensure_ascii=False)
-        )
-        for r in llm.json(system, user, max_tokens=10000):
+                    "text": it["body"][:chars]} for it in chunk]
+        try:
+            res = llm.json(system, schema + json.dumps(payload, ensure_ascii=False), max_tokens=4000 if llm.small else 12000)
+        except Exception as e:  # noqa: BLE001
+            log.warning("summary failed for %s: %s", [c["id"] for c in chunk], e)
+            continue
+        for r in (res if isinstance(res, list) else [res]):
             if isinstance(r, dict):
                 results[r.get("id")] = r
-        log.info("summarised %d/%d", min(i + 4, len(picked)), len(picked))
+        log.info("summarised %d/%d", min(i + step, len(picked)), len(picked))
+
+    def lst(v, n):
+        return [str(x).strip() for x in (v or []) if str(x).strip()][:n]
+
     final = []
     for it in picked:
         s = results.get(it["id"])
@@ -263,9 +290,13 @@ def summarize(llm, picked, settings):
             "id": it["id"], "url": it["url"], "source": it["source"], "src_key": it.get("src_key"),
             "kind": it["kind"], "title": it["title"], "published": it["published"],
             "category": it["category"], "score": it["score"],
-            "title_fa": s.get("title_fa") or it["title"], "summary": s.get("summary", ""),
-            "key_points": s.get("key_points", [])[:4], "why_it_matters": s.get("why_it_matters", ""),
-            "tags": s.get("tags", [])[:4], "read_minutes": int(s.get("read_minutes") or 5),
+            "title_fa": s.get("title_fa") or it["title"],
+            "tldr": s.get("tldr", ""), "whats_new": s.get("whats_new", ""),
+            "how": lst(s.get("how"), 5), "evidence": lst(s.get("evidence"), 4),
+            "actions": lst(s.get("actions"), 3), "caveats": lst(s.get("caveats"), 2),
+            "teams": [t for t in (s.get("teams") or []) if t in TEAMS][:4],
+            "level": s.get("level") if s.get("level") in ("intro", "practitioner", "advanced") else "practitioner",
+            "tags": lst(s.get("tags"), 4), "read_minutes": int(s.get("read_minutes") or 5),
         })
     order = list(settings["categories"])
     return sorted(final, key=lambda a: (order.index(a["category"]), -a["score"]))
@@ -274,11 +305,12 @@ def summarize(llm, picked, settings):
 def editor_note(llm, articles):
     if not articles:
         return ""
-    brief = [{"title": a["title_fa"], "summary": a["summary"]} for a in articles]
+    brief = [{"title": a["title_fa"], "takeaway": a.get("tldr", ""), "new": a.get("whats_new", "")} for a in articles]
     system = ("You are the editor of a Persian research digest. Write in Persian, Latin digits, "
               "report-style, no direct address to the reader, no hype.")
     user = ('Write a JSON object {"note": "..."}: a 2-3 sentence Persian editorial naming the most '
-            "important theme or pattern across today's items.\n\n" + json.dumps(brief, ensure_ascii=False))
+            "important theme or pattern across today's items and what it means in practice for the team.\n\n"
+            + json.dumps(brief, ensure_ascii=False))
     try:
         return llm.json(system, user, max_tokens=1500).get("note", "")
     except Exception as e:  # noqa: BLE001

@@ -1,4 +1,12 @@
-"""LLM client: Gemini (free tier, default) or Anthropic Claude. Returns parsed JSON."""
+"""
+LLM client with automatic fallback, returns parsed JSON.
+
+Default chain (LLM_PROVIDER, comma-separated): github,gemini
+- github    → GitHub Models (free, uses the workflow's own GITHUB_TOKEN; no key to manage)
+- gemini    → Google Gemini free tier (GEMINI_API_KEY)
+- anthropic → Claude (ANTHROPIC_API_KEY, paid)
+If a provider keeps failing (overload, quota, unknown model) the run switches to the next one.
+"""
 import json
 import logging
 import os
@@ -9,95 +17,144 @@ import requests
 
 log = logging.getLogger("digest")
 
+GITHUB_MODELS = ["openai/gpt-4.1-mini", "openai/gpt-4o-mini", "openai/gpt-4.1"]
+GEMINI_MODELS = ["gemini-3.8-flash"]
+
+
+class ProviderDown(Exception):
+    """Provider unusable for the rest of this run."""
+
 
 class LLM:
     def __init__(self):
-        self.provider = os.getenv("LLM_PROVIDER", "gemini").strip().lower() or "gemini"
-        if self.provider == "gemini":
-            self.key = os.environ["GEMINI_API_KEY"]
-            self.model = os.getenv("LLM_MODEL") or "gemini-3.8-flash"
-        elif self.provider == "anthropic":
-            self.key = os.environ["ANTHROPIC_API_KEY"]
-            self.model = os.getenv("LLM_MODEL") or "claude-haiku-4-5-20251001"
-        else:
-            raise ValueError(f"Unknown LLM_PROVIDER: {self.provider}")
-        # free-tier rate limits: keep a gap between calls (Gemini Flash free tier ~10 requests/min)
-        default_gap = "7" if self.provider == "gemini" else "0"
-        self.min_gap = float(os.getenv("LLM_MIN_INTERVAL", default_gap))
-        self._last = 0.0
+        chain = os.getenv("LLM_PROVIDER", "").strip().lower() or "github,gemini"
+        self.providers = []
+        for name in [p.strip() for p in chain.split(",") if p.strip()]:
+            if name == "github" and os.getenv("GITHUB_TOKEN"):
+                models = [os.getenv("GITHUB_MODEL")] if os.getenv("GITHUB_MODEL") else GITHUB_MODELS
+                self.providers.append({"name": "github", "models": list(models), "gap": 5.0})
+            elif name == "gemini" and os.getenv("GEMINI_API_KEY"):
+                models = [os.getenv("LLM_MODEL")] if os.getenv("LLM_MODEL") else GEMINI_MODELS
+                self.providers.append({"name": "gemini", "models": list(models), "gap": 7.0})
+            elif name == "anthropic" and os.getenv("ANTHROPIC_API_KEY"):
+                self.providers.append({"name": "anthropic", "models": [os.getenv("ANTHROPIC_MODEL") or "claude-haiku-4-5-20251001"], "gap": 0.0})
+        if not self.providers:
+            raise RuntimeError("No usable LLM provider: set GITHUB_TOKEN (automatic in Actions) or GEMINI_API_KEY")
         self.calls = 0
-        log.info("LLM provider=%s model=%s", self.provider, self.model)
+        self._last = 0.0
+        # GitHub Models free tier has small per-request limits; callers size their batches with this
+        self.small = self.providers[0]["name"] == "github"
+        log.info("LLM chain: %s", " → ".join(f"{p['name']}:{p['models'][0]}" for p in self.providers))
+
+    @property
+    def model(self):
+        return f"{self.providers[0]['name']}:{self.providers[0]['models'][0]}" if self.providers else "none"
 
     # ---------------------------------------------------------------
-    def json(self, system: str, user: str, max_tokens: int = 12000, retries: int = 5):
-        last = None
-        for attempt in range(1, retries + 1):
-            try:
+    def json(self, system: str, user: str, max_tokens: int = 4000, retries: int = 6):
+        while self.providers:
+            p = self.providers[0]
+            last = None
+            for attempt in range(1, retries + 1):
                 gap = time.time() - self._last
-                if gap < self.min_gap:
-                    time.sleep(self.min_gap - gap)
+                if gap < p["gap"]:
+                    time.sleep(p["gap"] - gap)
                 self._last = time.time()
                 self.calls += 1
-                text = self._call(system, user, max_tokens)
-                return _parse_json(text)
-            except Exception as e:  # noqa: BLE001
-                last = e
-                wait = min(90, 15 * attempt)
-                log.warning("LLM call failed (attempt %d/%d): %s — retry in %ds", attempt, retries, e, wait)
-                time.sleep(wait)
-        raise RuntimeError(f"LLM failed after {retries} attempts: {last}")
+                try:
+                    return _parse_json(self._call(p, system, user, max_tokens))
+                except ProviderDown as e:
+                    last = e
+                    break
+                except Exception as e:  # noqa: BLE001
+                    last = e
+                    wait = getattr(e, "retry_after", None) or min(120, 20 * attempt)
+                    if wait > 300:
+                        log.warning("%s asks to wait %ss — switching provider", p["name"], wait)
+                        break
+                    log.warning("LLM %s failed (attempt %d/%d): %s — retry in %ds",
+                                p["name"], attempt, retries, str(e)[:240], wait)
+                    time.sleep(wait)
+            log.error("provider %s unavailable (%s) — falling back", p["name"], str(last)[:200])
+            self.providers.pop(0)
+            if self.providers:
+                log.info("now using %s", self.model)
+        raise RuntimeError("All LLM providers failed")
 
     # ---------------------------------------------------------------
-    def _call(self, system: str, user: str, max_tokens: int) -> str:
-        if self.provider == "gemini":
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
-            gen = {"responseMimeType": "application/json", "maxOutputTokens": max_tokens}
-            if self.model.startswith("gemini-2"):
-                # 2.x models: switch thinking off to save quota; newer models manage it themselves
-                gen.update(temperature=0.3, thinkingConfig={"thinkingBudget": 0})
-            body = {
-                "systemInstruction": {"parts": [{"text": system}]},
-                "contents": [{"role": "user", "parts": [{"text": user}]}],
-                "generationConfig": gen,
-            }
-            r = requests.post(url, params={"key": self.key}, json=body, timeout=300)
-            if r.status_code == 400 and len(gen) > 2:
-                # an option this model does not accept → retry once with the minimal config
-                body["generationConfig"] = {"responseMimeType": "application/json", "maxOutputTokens": max_tokens}
-                r = requests.post(url, params={"key": self.key}, json=body, timeout=300)
-            if r.status_code == 404:
-                raise RuntimeError(f"Gemini model '{self.model}' not available (404). "
-                                   f"Set the repository Variable LLM_MODEL to the model named here: {r.text[:300]}")
-            if r.status_code >= 400:
-                raise RuntimeError(f"Gemini HTTP {r.status_code}: {r.text[:300]}")
-            data = r.json()
-            parts = data["candidates"][0]["content"]["parts"]
-            # skip thought parts some models return alongside the answer
-            return "".join(p.get("text", "") for p in parts if not p.get("thought"))
+    def _call(self, p, system, user, max_tokens):
+        if p["name"] == "github":
+            return self._github(p, system, user, min(max_tokens, 4000))
+        if p["name"] == "gemini":
+            return self._gemini(p, system, user, max_tokens)
+        return self._anthropic(p, system, user, max_tokens)
 
+    def _github(self, p, system, user, max_tokens):
         r = requests.post(
-            "https://api.anthropic.com/v1/messages",
-            headers={
-                "x-api-key": self.key,
-                "anthropic-version": "2023-06-01",
-                "content-type": "application/json",
-            },
-            json={
-                "model": self.model,
-                "max_tokens": max_tokens,
-                "temperature": 0.3,
-                "system": system + "\n\nRespond with valid JSON only. No markdown fences, no preamble.",
-                "messages": [{"role": "user", "content": user}],
-            },
+            "https://models.github.ai/inference/chat/completions",
+            headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}", "Content-Type": "application/json",
+                     "Accept": "application/vnd.github+json"},
+            json={"model": p["models"][0], "max_tokens": max_tokens, "temperature": 0.3,
+                  "messages": [{"role": "system", "content": system + "\n\nRespond with valid JSON only. No markdown fences."},
+                               {"role": "user", "content": user}]},
             timeout=300,
         )
+        if r.status_code in (400, 404) and ("model" in r.text.lower() and ("unknown" in r.text.lower() or "not found" in r.text.lower() or "unavailable" in r.text.lower())):
+            bad = p["models"].pop(0)
+            log.warning("GitHub model %s not available — trying next", bad)
+            if not p["models"]:
+                raise ProviderDown("no GitHub model available")
+            raise RuntimeError(f"model {bad} unavailable")
+        if r.status_code in (401, 403):
+            raise ProviderDown(f"GitHub Models auth {r.status_code}: {r.text[:200]} (workflow needs permissions: models: read)")
+        if r.status_code == 429:
+            e = RuntimeError(f"GitHub Models 429: {r.text[:200]}")
+            e.retry_after = int(r.headers.get("retry-after", "60") or 60)
+            raise e
+        if r.status_code == 413 or "tokens_limit_reached" in r.text:
+            raise RuntimeError(f"GitHub Models request too large: {r.text[:200]}")
+        if r.status_code >= 400:
+            raise RuntimeError(f"GitHub Models HTTP {r.status_code}: {r.text[:300]}")
+        return r.json()["choices"][0]["message"]["content"] or ""
+
+    def _gemini(self, p, system, user, max_tokens):
+        model = p["models"][0]
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        gen = {"responseMimeType": "application/json", "maxOutputTokens": max(max_tokens, 8000)}
+        if model.startswith("gemini-2"):
+            gen.update(temperature=0.3, thinkingConfig={"thinkingBudget": 0})
+        body = {"systemInstruction": {"parts": [{"text": system}]},
+                "contents": [{"role": "user", "parts": [{"text": user}]}], "generationConfig": gen}
+        r = requests.post(url, params={"key": os.environ["GEMINI_API_KEY"]}, json=body, timeout=300)
+        if r.status_code == 400 and len(gen) > 2:
+            body["generationConfig"] = {"responseMimeType": "application/json", "maxOutputTokens": gen["maxOutputTokens"]}
+            r = requests.post(url, params={"key": os.environ["GEMINI_API_KEY"]}, json=body, timeout=300)
+        if r.status_code == 404:
+            raise ProviderDown(f"Gemini model '{model}' not available: {r.text[:250]} — set Variable LLM_MODEL")
+        if r.status_code >= 400:
+            raise RuntimeError(f"Gemini HTTP {r.status_code}: {r.text[:240]}")
+        parts = r.json()["candidates"][0]["content"]["parts"]
+        return "".join(x.get("text", "") for x in parts if not x.get("thought"))
+
+    def _anthropic(self, p, system, user, max_tokens):
+        r = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01",
+                     "content-type": "application/json"},
+            json={"model": p["models"][0], "max_tokens": max_tokens, "temperature": 0.3,
+                  "system": system + "\n\nRespond with valid JSON only. No markdown fences, no preamble.",
+                  "messages": [{"role": "user", "content": user}]},
+            timeout=300,
+        )
+        if r.status_code in (401, 403, 404):
+            raise ProviderDown(f"Anthropic HTTP {r.status_code}: {r.text[:200]}")
         if r.status_code >= 400:
             raise RuntimeError(f"Anthropic HTTP {r.status_code}: {r.text[:300]}")
         return "".join(b.get("text", "") for b in r.json()["content"] if b.get("type") == "text")
 
 
 def _parse_json(text: str):
-    text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.M).strip()
+    text = re.sub(r"^```(?:json)?|```$", "", (text or "").strip(), flags=re.M).strip()
     try:
         return json.loads(text)
     except json.JSONDecodeError:
@@ -106,4 +163,4 @@ def _parse_json(text: str):
             raise
         start = min(starts)
         end = max(text.rfind("]"), text.rfind("}"))
-        return json.loads(text[start : end + 1])
+        return json.loads(text[start: end + 1])

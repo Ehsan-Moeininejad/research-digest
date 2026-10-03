@@ -10,8 +10,8 @@ log = logging.getLogger("digest")
 TEHRAN = dt.timezone(dt.timedelta(hours=3, minutes=30))
 UA = "Mozilla/5.0 (compatible; ResearchDigestBot/1.0)"
 
-KEEP = ("id", "url", "source", "kind", "title", "title_fa", "summary", "key_points",
-        "why_it_matters", "tags", "read_minutes", "category", "score", "published")
+KEEP = ("id", "url", "source", "kind", "title", "title_fa", "tldr", "whats_new", "how", "evidence",
+        "actions", "caveats", "teams", "level", "tags", "read_minutes", "category", "score", "published")
 
 
 class Leaderboard:
@@ -53,7 +53,7 @@ class Leaderboard:
     def _compare(self, llm, meta, pool, size):
         """Head-to-head judgement: is the newcomer really better than what is already on the list?"""
         brief = [{"id": e["id"], "source": e["source"], "type": e.get("kind"), "title": e["title"],
-                  "summary": e.get("summary", "")[:500], "score": e["score"]} for e in pool]
+                  "takeaway": (e.get("tldr") or e.get("summary", ""))[:300], "new": e.get("whats_new", "")[:300], "score": e["score"]} for e in pool]
         system = ("You curate an all-time top-%d reference list for a marketing team, category: %s. "
                   "Judge lasting reference value: depth, evidence, originality, practical applicability. "
                   "Recency is NOT a criterion; a newer item enters only if it is genuinely better." % (size, meta["en"]))

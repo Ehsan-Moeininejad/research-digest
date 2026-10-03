@@ -1,9 +1,9 @@
 name: daily-digest
 
 on:
-  # پشتیبان: شنبه و سه‌شنبه 06:15 UTC = 09:45 تهران. تریگر اصلی cron-job.org است (README)
+  # پشتیبان: هر روز 06:15 UTC = 09:45 تهران. تریگر اصلی cron-job.org است (README)
   schedule:
-    - cron: "15 6 * * 2,6"
+    - cron: "15 6 * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  models: read        # GitHub Models: free LLM using the workflow's own token
 
 concurrency:
   group: daily-digest
@@ -21,7 +22,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -34,7 +35,9 @@ jobs:
 
       - name: Build digest
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LLM_PROVIDER: ${{ vars.LLM_PROVIDER }}
+          GITHUB_MODEL: ${{ vars.GITHUB_MODEL }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
