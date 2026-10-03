@@ -105,15 +105,20 @@ class LLM:
         return self._anthropic(p, system, user, max_tokens)
 
     def _github(self, p, system, user, max_tokens):
-        r = requests.post(
-            "https://models.github.ai/inference/chat/completions",
-            headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}", "Content-Type": "application/json",
-                     "Accept": "application/json"},
-            json={"model": p["models"][0], "max_tokens": max_tokens, "temperature": 0.3,
-                  "messages": [{"role": "system", "content": system + "\n\nRespond with valid JSON only. No markdown fences."},
-                               {"role": "user", "content": user}]},
-            timeout=300,
-        )
+        url = "https://models.github.ai/inference/chat/completions"
+        headers = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}", "Content-Type": "application/json",
+                   "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
+        payload = {"model": p["models"][0], "max_tokens": max_tokens, "temperature": 0.3,
+                   "messages": [{"role": "system", "content": system + "\n\nRespond with valid JSON only. No markdown fences."},
+                                {"role": "user", "content": user}]}
+        # follow redirects manually so the request stays a POST (requests turns 301/302 into GET)
+        for _ in range(4):
+            r = requests.post(url, headers=headers, json=payload, timeout=300, allow_redirects=False)
+            if r.status_code in (301, 302, 303, 307, 308) and r.headers.get("location"):
+                url = requests.compat.urljoin(url, r.headers["location"])
+                log.info("GitHub Models redirected to %s", url)
+                continue
+            break
         if r.status_code in (400, 404) and ("model" in r.text.lower() and ("unknown" in r.text.lower() or "not found" in r.text.lower() or "unavailable" in r.text.lower())):
             bad = p["models"].pop(0)
             log.warning("GitHub model %s not available — trying next", bad)
@@ -133,7 +138,7 @@ class LLM:
         try:
             data = r.json()
         except ValueError:
-            raise RuntimeError(f"GitHub Models non-JSON reply (HTTP {r.status_code}): {r.text[:300]!r}")
+            raise ProviderDown(f"GitHub Models non-JSON reply (HTTP {r.status_code}, url {r.url}): {r.text[:300]!r}")
         choice = (data.get("choices") or [{}])[0]
         content = (choice.get("message") or {}).get("content") or ""
         if not content.strip():
