@@ -56,6 +56,20 @@ feeds:
   - { name: "GrowthBook Blog",          url: "https://blog.growthbook.io/rss/",                 hint: data,        type: tutorial }
   - { name: "Hugging Face Learn",       url: "https://huggingface.co/blog/feed.xml",            hint: ai,          type: tutorial }
 
+  # --- منابع تکمیلی مارکتینگ، کمپین و eCRM ---
+  - { name: "Marketing Dive",           url: "https://www.marketingdive.com/feeds/news/",       hint: marketing }
+  - { name: "Digiday",                  url: "https://digiday.com/feed/",                       hint: marketing }
+  - { name: "AdExchanger",              url: "https://www.adexchanger.com/feed/",               hint: performance }
+  - { name: "Social Media Examiner",    url: "https://www.socialmediaexaminer.com/feed/",       hint: marketing,   type: tutorial }
+  - { name: "HubSpot Marketing",        url: "https://blog.hubspot.com/marketing/rss.xml",      hint: marketing,   type: tutorial }
+  - { name: "Practical Ecommerce",      url: "https://www.practicalecommerce.com/feed",         hint: commerce,    type: tutorial }
+  - { name: "Retail TouchPoints",       url: "https://www.retailtouchpoints.com/feed",          hint: campaign }
+  - { name: "Growth Memo",              url: "https://www.growth-memo.com/feed",                hint: growth }
+  - { name: "Mixpanel Blog",            url: "https://mixpanel.com/blog/feed/",                 hint: data }
+  - { name: "Optimizely Insights",      url: "https://www.optimizely.com/insights/blog/feed/",  hint: data }
+  - { name: "Klaviyo Blog",             url: "https://www.klaviyo.com/blog/feed",               hint: ecrm,        type: tutorial }
+  - { name: "Customer.io Blog",         url: "https://customer.io/blog/feed/",                  hint: ecrm,        type: tutorial }
+
 # مقالات علمی از arXiv (رایگان، جدیدترین‌ها اول)
 # سینتکس: all: / abs: / ti: / cat: با AND / OR / ANDNOT
 arxiv:
@@ -63,7 +77,8 @@ arxiv:
   - { name: "arXiv · Uplift & Causal",  query: "abs:uplift AND (abs:marketing OR abs:coupon OR abs:incentive)", hint: data }
   - { name: "arXiv · E-commerce RecSys",query: "abs:e-commerce AND abs:recommendation AND cat:cs.IR",         hint: commerce }
   - { name: "arXiv · Retention",        query: "abs:churn OR (abs:customer AND abs:retention)",                hint: ecrm }
+  - { name: "arXiv · Promotions",       query: "(abs:promotion OR abs:coupon OR abs:discount) AND (abs:e-commerce OR abs:retail OR abs:marketing)", hint: campaign }
   - { name: "arXiv · LLM for Marketing",query: "(abs:LLM OR abs:agent) AND (abs:marketing OR abs:advertising OR abs:e-commerce)", hint: ai }
   - { name: "arXiv · Platforms & Econ", query: "cat:econ.GN AND (abs:platform OR abs:marketplace OR abs:pricing)", hint: management }
 
-arxiv_max_results: 25
+arxiv_max_results: 40

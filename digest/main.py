@@ -337,79 +337,111 @@ def editor_note(llm, articles):
         return ""
 
 
-# ------------------------------------------------------------------ leaderboard backfill
-def backfill_board(llm, board, settings, leftovers=()):
-    """Fill categories that have fewer than `size` entries with the best available pieces:
-    today's reviewed-but-unpicked items first, then all-time reference pieces proposed by the model,
-    each verified live, reviewed with the same quality gate and briefed before it can enter."""
-    cfg = settings["leaderboard"]
+# ------------------------------------------------------------------ verdict cache
+class Judged:
+    """Remembers triage and review verdicts per article, so rolling windows (7 days for the daily digest,
+    30 days for the leaderboard) never pay twice to judge the same piece."""
+
+    def __init__(self, keep_days=40):
+        self.path = ROOT / "data" / "judged.json"
+        d = json.loads(self.path.read_text(encoding="utf-8")) if self.path.exists() else {}
+        cut = (dt.date.today() - dt.timedelta(days=keep_days)).isoformat()
+        self.d = {k: v for k, v in d.items() if v.get("d", "") >= cut}
+
+    def split_triaged(self, items):
+        known, new = [], []
+        for it in items:
+            t = self.d.get(it["id"], {}).get("t")
+            if t:
+                it.update(relevance=t[0], quality=t[1], category=t[2], kind=t[3])
+                it["pre_score"] = round(0.4 * t[0] + 0.6 * t[1], 2)
+                known.append(it)
+            else:
+                new.append(it)
+        return known, new
+
+    def store_triage(self, items, today):
+        for it in items:
+            e = self.d.setdefault(it["id"], {"d": today})
+            e["t"] = [it["relevance"], it["quality"], it["category"], it["kind"]]
+
+    def load_reviews(self, items):
+        for it in items:
+            e = self.d.get(it["id"], {})
+            if "r" in e:
+                it["score"], it["ok"] = e["r"]
+                if e.get("body"):
+                    it["body"], it["fulltext"] = e["body"], e.get("ft", True)
+
+    def store_reviews(self, items, ok_ids, today):
+        for it in items:
+            e = self.d.setdefault(it["id"], {"d": today})
+            ok = it["id"] in ok_ids
+            it["ok"] = ok
+            e["r"] = [it.get("score", 0), ok]
+            if ok:
+                e["body"], e["ft"] = (it.get("body") or "")[:7000], bool(it.get("fulltext"))
+
+    def save(self):
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text(json.dumps(self.d, ensure_ascii=False), encoding="utf-8")
+
+
+def review_cached(llm, items, settings, judged, today):
+    """Review only what has not been reviewed before; returns all accepted items (cached + new)."""
+    judged.load_reviews(items)
+    todo = [it for it in items if "ok" not in it]
+    if todo:
+        with ThreadPoolExecutor(max_workers=6) as ex:
+            todo = list(ex.map(fetch_fulltext, todo))
+        ok = review(llm, todo, settings)
+        judged.store_reviews(todo, {it["id"] for it in ok}, today)
+    return [it for it in items if it.get("ok")]
+
+
+def ensure_body(items):
+    missing = [it for it in items if not it.get("body")]
+    if missing:
+        with ThreadPoolExecutor(max_workers=6) as ex:
+            list(ex.map(fetch_fulltext, missing))
+    return items
+
+
+# ------------------------------------------------------------------ leaderboard
+def fill_board(llm, board, settings, month_items, judged, today, exclude=()):
+    """Seed categories that are not full yet with the best pieces of the last month (outside the daily week).
+    Every candidate passes the same full-text review and gets a one-page brief before it can enter."""
+    cfg, sel = settings["leaderboard"], settings["selection"]
     size, min_score = cfg["size"], cfg["min_score"]
     budget = cfg.get("backfill_per_run", 15)
-    cats = settings["categories"]
-    need = {c: size - len(board.board.get(c, [])) for c in cats if len(board.board.get(c, [])) < size}
+    need = {c: size - len(board.board.get(c, [])) for c in settings["categories"]
+            if len(board.board.get(c, [])) < size}
     if not need or budget <= 0:
         return set()
-    log.info("leaderboard backfill needed: %s", need)
-    tried_path = ROOT / "data" / "backfill_tried.json"
-    tried = set(json.loads(tried_path.read_text())) if tried_path.exists() else set()
     on_board = {e["id"] for v in board.board.values() for e in v}
-
-    by_cat = {}
-    for it in leftovers:
-        if it["id"] not in on_board and it.get("score", 0) >= min_score and it["category"] in need:
-            by_cat.setdefault(it["category"], []).append(it)
-
-    canon = []
-    for cat in sorted(need, key=need.get, reverse=True)[: cfg.get("canon_categories_per_run", 4)]:
-        system = ("You are a senior marketing research librarian. Only list pieces you are highly confident "
-                  "exist at the exact URL you give.")
-        user = (
-            f"Audience:\n{settings['audience']}\n\nCategory: {cats[cat]['en']}\n\n"
-            "List up to 8 of the most valuable, widely cited, freely readable pieces ever published for this "
-            "category: research papers (arXiv, SSRN, journal open access), company engineering/data blog posts "
-            "with real experiments or case studies, and definitive practitioner guides. Prefer timeless, "
-            "evidence-rich work from credible sources. No paywalled pages, no vendor landing pages.\n"
-            'Return a JSON array: [{"title": "...", "url": "https://...", "source": "...", '
-            '"type": "paper|tutorial|insight"}]'
-        )
-        try:
-            props = llm.json(system, user, max_tokens=2500)
-        except Exception as e:  # noqa: BLE001
-            log.warning("canon proposal failed for %s: %s", cat, e)
-            continue
-        for pr in props if isinstance(props, list) else []:
-            url = str(pr.get("url", "")).strip()
-            if not url.startswith("http") or url in tried or uid(url) in on_board:
-                continue
-            tried.add(url)
-            kind = {"paper": "paper", "tutorial": "tutorial"}.get(pr.get("type"), "article")
-            canon.append({"id": uid(url), "url": url, "title": clean_text(pr.get("title", ""), 300),
-                          "source": clean_text(pr.get("source", "") or url.split("/")[2], 60), "kind": "article",
-                          "real_kind": kind, "category": cat, "snippet": "", "published": "", "src_key": None})
-    if canon:
-        with ThreadPoolExecutor(max_workers=6) as ex:
-            canon = list(ex.map(fetch_fulltext, canon))
-        canon = [c for c in canon if c.get("fulltext")]          # page must exist and have real text
-        for c in canon:
-            c["kind"] = c.pop("real_kind")
-        log.info("canon candidates live with full text: %d", len(canon))
-        for c in review(llm, canon, settings):
-            if c["score"] >= min_score:
-                by_cat.setdefault(c["category"], []).append(c)
-    tried_path.write_text(json.dumps(sorted(tried)), encoding="utf-8")
-
+    pool = [it for it in month_items if it["id"] not in on_board and it["id"] not in exclude
+            and it["category"] in need and it["relevance"] >= sel["min_relevance"]
+            and it["quality"] >= sel["score_threshold"]]
+    log.info("leaderboard needs %s | month pool: %d", need, len(pool))
+    judged.load_reviews(pool)
+    to_review = []
+    for cat, n in need.items():
+        cands = sorted([it for it in pool if it["category"] == cat and "ok" not in it], key=lambda x: -x["pre_score"])
+        to_review += cands[: n * 2]
+    to_review = to_review[: cfg.get("review_per_run", 30)]
+    review_cached(llm, to_review, settings, judged, today)
     picks = []
     for cat in sorted(need, key=need.get, reverse=True):
-        for it in sorted(by_cat.get(cat, []), key=lambda x: -x["score"])[: need[cat]]:
+        best = sorted([it for it in pool if it["category"] == cat and it.get("ok") and it.get("score", 0) >= min_score],
+                      key=lambda x: -x["score"])[: need[cat]]
+        for it in best:
             if len(picks) < budget:
                 picks.append(it)
     if not picks:
         return set()
-    briefs = summarize(llm, picks, settings)
+    briefs = summarize(llm, ensure_body(picks), settings)
     entered = board.update(llm, briefs)
-    log.info("leaderboard backfill: %d entered", len(entered))
-    if entered:
-        board.save()
+    log.info("leaderboard seeding: %d entered", len(entered))
     return entered
 
 
@@ -421,94 +453,108 @@ def main():
     today = dt.datetime.now(TEHRAN).date().isoformat()
     data_file = ROOT / "docs" / "data" / f"{today}.json"
     force = os.getenv("FORCE", "").lower() in ("1", "true", "yes")
-    if data_file.exists() and not force:
-        # digest already built today: use the run to keep filling the leaderboard instead
-        log.info("Digest for %s already exists — running leaderboard backfill only.", today)
-        board = Leaderboard(ROOT, settings)
-        reg = SourceRegistry(ROOT, sources_cfg, settings)
-        entered = backfill_board(LLM(), board, settings)
-        if entered:
-            render_site(ROOT, settings, board.board, reg.rows(arxiv_sources(sources_cfg)))
-        return
+    board_only = data_file.exists() and not force
 
-    seen_path = ROOT / "data" / "seen.json"
-    seen = json.loads(seen_path.read_text()) if seen_path.exists() else {}
+    featured_path = ROOT / "data" / "seen.json"         # ids already shown in a daily digest
+    featured = json.loads(featured_path.read_text()) if featured_path.exists() else {}
     if force:
-        seen = {k: v for k, v in seen.items() if v != today}
+        featured = {k: v for k, v in featured.items() if v != today}
     reg = SourceRegistry(ROOT, sources_cfg, settings)
     board = Leaderboard(ROOT, settings)
+    judged = Judged()
     arxiv = arxiv_sources(sources_cfg)
     llm = LLM()
 
-    # weekly upkeep: discover new sources, drop dead leaderboard links
-    reg.scout(llm, settings)
-    if days_since(reg.meta.get("last_linkcheck")) >= 7:
-        reg.meta["last_linkcheck"] = today
-        for e in board.check_links():
-            reg.events.append(f"لینک «{e['title_fa'][:40]}» از دسترس خارج شده بود و از لیدربورد حذف شد")
+    if not board_only:
+        reg.scout(llm, settings)
+        if days_since(reg.meta.get("last_linkcheck")) >= 7:
+            reg.meta["last_linkcheck"] = today
+            for e in board.check_links():
+                reg.events.append(f"لینک «{e['title_fa'][:40]}» از دسترس خارج شده بود و از لیدربورد حذف شد")
 
-    since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=sel["lookback_days"])
-    items = [it for it in collect(reg, arxiv, since) if it["id"] not in seen]
+    # one collection covers both windows: 7 days for the digest, 30 days for the leaderboard
+    now = dt.datetime.now(dt.timezone.utc)
+    week_cut = (now - dt.timedelta(days=sel["lookback_days"])).isoformat()
+    month_days = settings["leaderboard"].get("window_days", 30)
+    items = collect(reg, arxiv, now - dt.timedelta(days=max(month_days, sel["lookback_days"])))
     items = sorted(items, key=lambda x: x["published"], reverse=True)[: sel["max_candidates"]]
-    log.info("fresh candidates: %d", len(items))
-    if not items:
+    known, new = judged.split_triaged(items)
+    log.info("collected %d (last %d days): %d already judged, %d new", len(items), month_days, len(known), len(new))
+    if new:
+        new = triage(llm, new, settings)
+        judged.store_triage(new, today)
+        reg.record_scores(new)
+    items = known + new
+    on_board = {e["id"] for v in board.board.values() for e in v}
+
+    if board_only:
+        log.info("Digest for %s already exists — leaderboard seeding only.", today)
+        month = [it for it in items if it["published"] < week_cut]
+        entered = fill_board(llm, board, settings, month, judged, today)
+        judged.save()
         reg.save()
-        log.error("No fresh items found — check feeds.")
-        sys.exit(1)
+        if entered:
+            board.save()
+            render_site(ROOT, settings, board.board, reg.rows(arxiv))
+        return
 
-    items = triage(llm, items, settings)
-    reg.record_scores(items)
-    pool = [it for it in items if it["relevance"] >= sel["min_relevance"] and it["quality"] >= sel["score_threshold"]]
-    log.info("passed triage: %d", len(pool))
-
-    accepted, reviewed = [], set()
+    # ---- daily digest: best of the last 7 days that has not been featured yet
+    week = [it for it in items if it["published"] >= week_cut and it["id"] not in featured and it["id"] not in on_board]
+    pool = [it for it in week if it["relevance"] >= sel["min_relevance"] and it["quality"] >= sel["score_threshold"]]
+    log.info("week window: %d unfeatured items, %d passed triage", len(week), len(pool))
+    judged.load_reviews(pool)
+    accepted = [it for it in pool if it.get("ok")]
+    reviewed_now = 0
     for rnd in range(settings["review"]["rounds"]):
-        rest = [it for it in pool if it["id"] not in reviewed]
+        if len(accepted) >= sel["min_articles"] + 4:
+            break
+        rest = [it for it in pool if "ok" not in it]
         shortlist = select(rest, sel["shortlist_size"], sel, settings["categories"], "pre_score")
         if not shortlist:
             break
-        with ThreadPoolExecutor(max_workers=6) as ex:
-            shortlist = list(ex.map(fetch_fulltext, shortlist))
-        reviewed |= {it["id"] for it in shortlist}
-        accepted += review(llm, shortlist, settings)
-        log.info("review round %d: %d accepted so far", rnd + 1, len(accepted))
-        if len(accepted) >= sel["min_articles"] + 2:
-            break
+        accepted += review_cached(llm, shortlist, settings, judged, today)
+        reviewed_now += len(shortlist)
+        log.info("review round %d: %d accepted in the week window", rnd + 1, len(accepted))
 
     final = select(accepted, sel["target_articles"], sel, settings["categories"], "score", sel.get("min_tutorials", 0))
-    articles = summarize(llm, final, settings)
+    articles = summarize(llm, ensure_body(final), settings)
     if len(articles) < sel["min_articles"]:
-        log.warning("only %d articles passed the bar today — quality is not lowered to fill the quota", len(articles))
+        log.warning("only %d articles passed the bar this week — quality is not lowered to fill the quota", len(articles))
     note = editor_note(llm, articles)
 
+    # ---- leaderboard: new pieces compete; categories not yet full are seeded from the last month
     entered = board.update(llm, articles)
-    picked_ids = {a["id"] for a in articles}
     try:
-        backfill_board(llm, board, settings, [it for it in accepted if it["id"] not in picked_ids])
+        month = [it for it in items if it["published"] < week_cut]
+        entered |= fill_board(llm, board, settings, month, judged, today, exclude={a["id"] for a in articles}) or set()
     except Exception as e:  # noqa: BLE001
-        log.warning("leaderboard backfill skipped: %s", e)
+        log.warning("leaderboard seeding skipped: %s", e)
     for a in articles:
         a["board"] = a["id"] in entered
+    board_index = {e["id"]: (cat, e) for cat, v in board.board.items() for e in v}
+    board_new = [{"id": e["id"], "category": cat, "title_fa": e.get("title_fa", ""), "tldr": e.get("tldr", ""),
+                  "source": e.get("source", ""), "url": e.get("url", ""), "score": e.get("score", 0),
+                  "rank": board.board[cat].index(e) + 1}
+                 for i in entered if i in board_index for cat, e in [board_index[i]]]
     reg.record_picks(articles)
     reg.evaluate_quality()
 
     digest = {
         "date": today,
         "generated_at": dt.datetime.now(TEHRAN).isoformat(timespec="minutes"),
-        "candidates": len(items), "reviewed": len(reviewed),
-        "note": note, "articles": articles, "events": reg.events,
+        "candidates": len(week), "reviewed": len([it for it in pool if "ok" in it]),
+        "note": note, "articles": articles, "board_new": board_new, "events": reg.events,
     }
     data_file.parent.mkdir(parents=True, exist_ok=True)
     data_file.write_text(json.dumps(digest, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    cutoff = (dt.date.today() - dt.timedelta(days=120)).isoformat()
-    seen = {k: v for k, v in seen.items() if v >= cutoff}
-    pool_ids = {it["id"] for it in pool}
-    for it in items:
-        if it["id"] in reviewed or it["id"] not in pool_ids:
-            seen[it["id"]] = today   # judged once is enough; unreviewed good leftovers may compete tomorrow
-    seen_path.parent.mkdir(parents=True, exist_ok=True)
-    seen_path.write_text(json.dumps(seen), encoding="utf-8")
+    keep = (dt.date.today() - dt.timedelta(days=120)).isoformat()
+    featured = {k: v for k, v in featured.items() if v >= keep}
+    for a in articles:
+        featured[a["id"]] = today
+    featured_path.parent.mkdir(parents=True, exist_ok=True)
+    featured_path.write_text(json.dumps(featured), encoding="utf-8")
+    judged.save()
     board.save()
     reg.save()
 
