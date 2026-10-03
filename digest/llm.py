@@ -15,7 +15,7 @@ class LLM:
         self.provider = os.getenv("LLM_PROVIDER", "gemini").strip().lower() or "gemini"
         if self.provider == "gemini":
             self.key = os.environ["GEMINI_API_KEY"]
-            self.model = os.getenv("LLM_MODEL") or "gemini-2.5-flash"
+            self.model = os.getenv("LLM_MODEL") or "gemini-3.8-flash"
         elif self.provider == "anthropic":
             self.key = os.environ["ANTHROPIC_API_KEY"]
             self.model = os.getenv("LLM_MODEL") or "claude-haiku-4-5-20251001"
@@ -51,22 +51,29 @@ class LLM:
     def _call(self, system: str, user: str, max_tokens: int) -> str:
         if self.provider == "gemini":
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
+            gen = {"responseMimeType": "application/json", "maxOutputTokens": max_tokens}
+            if self.model.startswith("gemini-2"):
+                # 2.x models: switch thinking off to save quota; newer models manage it themselves
+                gen.update(temperature=0.3, thinkingConfig={"thinkingBudget": 0})
             body = {
                 "systemInstruction": {"parts": [{"text": system}]},
                 "contents": [{"role": "user", "parts": [{"text": user}]}],
-                "generationConfig": {
-                    "responseMimeType": "application/json",
-                    "temperature": 0.3,
-                    "maxOutputTokens": max_tokens,
-                    "thinkingConfig": {"thinkingBudget": 0},
-                },
+                "generationConfig": gen,
             }
-            r = requests.post(url, params={"key": self.key}, json=body, timeout=240)
+            r = requests.post(url, params={"key": self.key}, json=body, timeout=300)
+            if r.status_code == 400 and len(gen) > 2:
+                # an option this model does not accept → retry once with the minimal config
+                body["generationConfig"] = {"responseMimeType": "application/json", "maxOutputTokens": max_tokens}
+                r = requests.post(url, params={"key": self.key}, json=body, timeout=300)
+            if r.status_code == 404:
+                raise RuntimeError(f"Gemini model '{self.model}' not available (404). "
+                                   f"Set the repository Variable LLM_MODEL to the model named here: {r.text[:300]}")
             if r.status_code >= 400:
                 raise RuntimeError(f"Gemini HTTP {r.status_code}: {r.text[:300]}")
             data = r.json()
             parts = data["candidates"][0]["content"]["parts"]
-            return "".join(p.get("text", "") for p in parts)
+            # skip thought parts some models return alongside the answer
+            return "".join(p.get("text", "") for p in parts if not p.get("thought"))
 
         r = requests.post(
             "https://api.anthropic.com/v1/messages",
