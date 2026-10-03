@@ -228,55 +228,73 @@ def review(llm, items, settings):
 TEAMS = ["Ads", "Affiliate", "eCRM", "Engagement", "Data", "Product", "Leadership"]
 
 
+FA_DIGITS = str.maketrans("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩", "01234567890123456789")
+
+
+def latin_digits(v):
+    if isinstance(v, str):
+        return v.translate(FA_DIGITS)
+    if isinstance(v, list):
+        return [latin_digits(x) for x in v]
+    if isinstance(v, dict):
+        return {k: latin_digits(x) for k, x in v.items()}
+    return v
+
+
 def summarize(llm, picked, settings):
-    """Practical briefing per article: what's new, how it works, evidence, what to do with it."""
+    """One-page Persian brief per article: what it is about, what was done, what was found, the conclusion."""
     system = (
-        "You write a practical Persian (Farsi) briefing so a marketing team can stay current without "
-        "reading every article. Audience:\n"
+        "You write one-page Persian (Farsi) research briefs so a marketing team can understand an article "
+        "fully without reading the original. Audience:\n"
         f"{settings['audience']}\n\n"
-        "Goal: after reading your briefing, a practitioner should know exactly what the piece found or "
-        "teaches, how it works, what evidence backs it, and what to try or check at work. "
-        "A generic paraphrase of the abstract is a failure.\n\n"
+        "Each brief must answer clearly: what the piece is about, what problem or question it tackles, "
+        "what exactly the authors did or worked on (data, method, experiment, framework, steps), what they "
+        "found (with the concrete numbers), and what they conclude. Then what it means for this team.\n\n"
         "Rules:\n"
-        "- Fluent, natural Persian; concise report style; no direct address to the reader; no hype, no filler.\n"
-        "- Latin/English digits (0-9) only, never Persian digits.\n"
-        "- Keep established English terms in English (A/B test, ROAS, LTV, uplift, holdout, LLM, agent).\n"
-        "- Extract specifics: numbers, effect sizes, sample sizes, company names, method and tool names, "
-        "framework names, step order. Prefer one concrete detail over three vague ones.\n"
-        "- Only use what the text supports. If the text is an abstract or snippet, say less; never invent results.\n"
-        "- Each bullet is one short line (max ~20 words).\n"
-        "- actions must be concrete and start with a verb, e.g. a test to run, a metric to check, a template to reuse.\n"
-        "- For tutorials, how lists the actual steps in order."
+        "- Fluent, natural Persian prose; analytical report style; no direct address to the reader; no hype, no filler.\n"
+        "- Use ONLY Latin digits 0-9 for every number. Never use Persian or Arabic digits.\n"
+        "- Keep established English terms in English (A/B test, ROAS, LTV, uplift, holdout, LLM, agent, SEO).\n"
+        "- Keep specifics: numbers, effect sizes, sample sizes, company, product, tool and method names, step order.\n"
+        "- Only state what the text supports. If the text is only an abstract or snippet, write a shorter brief and say so in caveats.\n"
+        "- Paragraph fields are real paragraphs (3-6 sentences). Bullets are one line each.\n"
+        "- Total length of one brief: roughly 350-550 Persian words."
     )
     schema = (
         "Return a JSON array; one object per item:\n"
         '{"id": "...",\n'
         ' "title_fa": "Persian title, max 14 words",\n'
-        ' "tldr": "ONE Persian sentence: the single most useful takeaway",\n'
-        ' "whats_new": "1-2 Persian sentences: what is new or different from common practice",\n'
-        ' "how": ["2-5 Persian bullets: method, framework or steps"],\n'
-        ' "evidence": ["0-4 Persian bullets: numbers, results, who did it; empty if none in text"],\n'
-        ' "actions": ["1-3 Persian bullets: what the team could try or check, starting with a verb"],\n'
-        ' "caveats": ["0-2 Persian bullets: limits, conditions, when it does not apply"],\n'
-        f' "teams": subset of {TEAMS} this is most useful for,\n'
+        ' "tldr": "ONE Persian sentence with the single most important takeaway",\n'
+        ' "about": "paragraph: what the piece is about, who wrote it, what kind of piece it is",\n'
+        ' "problem": "paragraph: the problem or question it addresses and why it matters",\n'
+        ' "approach": "paragraph: what they actually did or worked on: data, method, experiment, framework",\n'
+        ' "steps": ["2-6 bullets: method steps, framework parts or tutorial steps, in order"],\n'
+        ' "findings": ["2-6 bullets: results and numbers; empty list if the text has none"],\n'
+        ' "conclusion": "paragraph: the authors\' conclusion and argument in their own logic",\n'
+        ' "for_us": ["2-4 bullets: what this means for the team and what to try or check; start with a verb"],\n'
+        ' "caveats": ["0-3 bullets: limits, conditions, missing evidence"],\n'
+        f' "teams": subset of {TEAMS},\n'
         ' "level": "intro" | "practitioner" | "advanced",\n'
-        ' "tags": ["2-4 short English tags"], "read_minutes": integer}\n\n'
+        ' "tags": ["2-4 short English tags"], "read_minutes": integer (original article)}\n\n'
     )
     results = {}
-    step, chars = (1, 6000) if llm.small else (3, 7000)
+    step, chars, out_tokens = (1, 12000, 4000) if llm.small else (2, 12000, 16000)
     for i in range(0, len(picked), step):
         chunk = picked[i: i + step]
         payload = [{"id": it["id"], "kind": it["kind"], "source": it["source"], "title": it["title"],
                     "text": it["body"][:chars]} for it in chunk]
         try:
-            res = llm.json(system, schema + json.dumps(payload, ensure_ascii=False), max_tokens=4000 if llm.small else 12000)
+            res = llm.json(system, schema + json.dumps(payload, ensure_ascii=False), max_tokens=out_tokens)
         except Exception as e:  # noqa: BLE001
-            log.warning("summary failed for %s: %s", [c["id"] for c in chunk], e)
+            log.warning("brief failed for %s: %s", [c["id"] for c in chunk], e)
             continue
+        if isinstance(res, dict) and len(chunk) == 1 and not res.get("id"):
+            res = dict(res, id=chunk[0]["id"])
         for r in (res if isinstance(res, list) else [res]):
             if isinstance(r, dict):
-                results[r.get("id")] = r
-        log.info("summarised %d/%d", min(i + step, len(picked)), len(picked))
+                if len(chunk) == 1 and not r.get("id"):
+                    r["id"] = chunk[0]["id"]
+                results[r.get("id")] = latin_digits(r)
+        log.info("briefed %d/%d", min(i + step, len(picked)), len(picked))
 
     def lst(v, n):
         return [str(x).strip() for x in (v or []) if str(x).strip()][:n]
@@ -290,10 +308,11 @@ def summarize(llm, picked, settings):
             "id": it["id"], "url": it["url"], "source": it["source"], "src_key": it.get("src_key"),
             "kind": it["kind"], "title": it["title"], "published": it["published"],
             "category": it["category"], "score": it["score"],
-            "title_fa": s.get("title_fa") or it["title"],
-            "tldr": s.get("tldr", ""), "whats_new": s.get("whats_new", ""),
-            "how": lst(s.get("how"), 5), "evidence": lst(s.get("evidence"), 4),
-            "actions": lst(s.get("actions"), 3), "caveats": lst(s.get("caveats"), 2),
+            "title_fa": s.get("title_fa") or it["title"], "tldr": s.get("tldr", ""),
+            "about": s.get("about", ""), "problem": s.get("problem", ""), "approach": s.get("approach", ""),
+            "steps": lst(s.get("steps"), 6), "findings": lst(s.get("findings"), 6),
+            "conclusion": s.get("conclusion", ""), "for_us": lst(s.get("for_us"), 4),
+            "caveats": lst(s.get("caveats"), 3),
             "teams": [t for t in (s.get("teams") or []) if t in TEAMS][:4],
             "level": s.get("level") if s.get("level") in ("intro", "practitioner", "advanced") else "practitioner",
             "tags": lst(s.get("tags"), 4), "read_minutes": int(s.get("read_minutes") or 5),
@@ -305,17 +324,93 @@ def summarize(llm, picked, settings):
 def editor_note(llm, articles):
     if not articles:
         return ""
-    brief = [{"title": a["title_fa"], "takeaway": a.get("tldr", ""), "new": a.get("whats_new", "")} for a in articles]
-    system = ("You are the editor of a Persian research digest. Write in Persian, Latin digits, "
+    brief = [{"title": a["title_fa"], "takeaway": a.get("tldr", ""), "conclusion": a.get("conclusion", "")[:400]} for a in articles]
+    system = ("You are the editor of a Persian research digest. Write in Persian using ONLY Latin digits 0-9, "
               "report-style, no direct address to the reader, no hype.")
     user = ('Write a JSON object {"note": "..."}: a 2-3 sentence Persian editorial naming the most '
             "important theme or pattern across today's items and what it means in practice for the team.\n\n"
             + json.dumps(brief, ensure_ascii=False))
     try:
-        return llm.json(system, user, max_tokens=1500).get("note", "")
+        return latin_digits(llm.json(system, user, max_tokens=1500).get("note", ""))
     except Exception as e:  # noqa: BLE001
         log.warning("editor note failed: %s", e)
         return ""
+
+
+# ------------------------------------------------------------------ leaderboard backfill
+def backfill_board(llm, board, settings, leftovers=()):
+    """Fill categories that have fewer than `size` entries with the best available pieces:
+    today's reviewed-but-unpicked items first, then all-time reference pieces proposed by the model,
+    each verified live, reviewed with the same quality gate and briefed before it can enter."""
+    cfg = settings["leaderboard"]
+    size, min_score = cfg["size"], cfg["min_score"]
+    budget = cfg.get("backfill_per_run", 15)
+    cats = settings["categories"]
+    need = {c: size - len(board.board.get(c, [])) for c in cats if len(board.board.get(c, [])) < size}
+    if not need or budget <= 0:
+        return set()
+    log.info("leaderboard backfill needed: %s", need)
+    tried_path = ROOT / "data" / "backfill_tried.json"
+    tried = set(json.loads(tried_path.read_text())) if tried_path.exists() else set()
+    on_board = {e["id"] for v in board.board.values() for e in v}
+
+    by_cat = {}
+    for it in leftovers:
+        if it["id"] not in on_board and it.get("score", 0) >= min_score and it["category"] in need:
+            by_cat.setdefault(it["category"], []).append(it)
+
+    canon = []
+    for cat in sorted(need, key=need.get, reverse=True)[: cfg.get("canon_categories_per_run", 4)]:
+        system = ("You are a senior marketing research librarian. Only list pieces you are highly confident "
+                  "exist at the exact URL you give.")
+        user = (
+            f"Audience:\n{settings['audience']}\n\nCategory: {cats[cat]['en']}\n\n"
+            "List up to 8 of the most valuable, widely cited, freely readable pieces ever published for this "
+            "category: research papers (arXiv, SSRN, journal open access), company engineering/data blog posts "
+            "with real experiments or case studies, and definitive practitioner guides. Prefer timeless, "
+            "evidence-rich work from credible sources. No paywalled pages, no vendor landing pages.\n"
+            'Return a JSON array: [{"title": "...", "url": "https://...", "source": "...", '
+            '"type": "paper|tutorial|insight"}]'
+        )
+        try:
+            props = llm.json(system, user, max_tokens=2500)
+        except Exception as e:  # noqa: BLE001
+            log.warning("canon proposal failed for %s: %s", cat, e)
+            continue
+        for pr in props if isinstance(props, list) else []:
+            url = str(pr.get("url", "")).strip()
+            if not url.startswith("http") or url in tried or uid(url) in on_board:
+                continue
+            tried.add(url)
+            kind = {"paper": "paper", "tutorial": "tutorial"}.get(pr.get("type"), "article")
+            canon.append({"id": uid(url), "url": url, "title": clean_text(pr.get("title", ""), 300),
+                          "source": clean_text(pr.get("source", "") or url.split("/")[2], 60), "kind": "article",
+                          "real_kind": kind, "category": cat, "snippet": "", "published": "", "src_key": None})
+    if canon:
+        with ThreadPoolExecutor(max_workers=6) as ex:
+            canon = list(ex.map(fetch_fulltext, canon))
+        canon = [c for c in canon if c.get("fulltext")]          # page must exist and have real text
+        for c in canon:
+            c["kind"] = c.pop("real_kind")
+        log.info("canon candidates live with full text: %d", len(canon))
+        for c in review(llm, canon, settings):
+            if c["score"] >= min_score:
+                by_cat.setdefault(c["category"], []).append(c)
+    tried_path.write_text(json.dumps(sorted(tried)), encoding="utf-8")
+
+    picks = []
+    for cat in sorted(need, key=need.get, reverse=True):
+        for it in sorted(by_cat.get(cat, []), key=lambda x: -x["score"])[: need[cat]]:
+            if len(picks) < budget:
+                picks.append(it)
+    if not picks:
+        return set()
+    briefs = summarize(llm, picks, settings)
+    entered = board.update(llm, briefs)
+    log.info("leaderboard backfill: %d entered", len(entered))
+    if entered:
+        board.save()
+    return entered
 
 
 # ------------------------------------------------------------------ main
@@ -327,11 +422,19 @@ def main():
     data_file = ROOT / "docs" / "data" / f"{today}.json"
     force = os.getenv("FORCE", "").lower() in ("1", "true", "yes")
     if data_file.exists() and not force:
-        log.info("Digest for %s already exists — skipping (set FORCE=1 to rebuild).", today)
+        # digest already built today: use the run to keep filling the leaderboard instead
+        log.info("Digest for %s already exists — running leaderboard backfill only.", today)
+        board = Leaderboard(ROOT, settings)
+        reg = SourceRegistry(ROOT, sources_cfg, settings)
+        entered = backfill_board(LLM(), board, settings)
+        if entered:
+            render_site(ROOT, settings, board.board, reg.rows(arxiv_sources(sources_cfg)))
         return
 
     seen_path = ROOT / "data" / "seen.json"
     seen = json.loads(seen_path.read_text()) if seen_path.exists() else {}
+    if force:
+        seen = {k: v for k, v in seen.items() if v != today}
     reg = SourceRegistry(ROOT, sources_cfg, settings)
     board = Leaderboard(ROOT, settings)
     arxiv = arxiv_sources(sources_cfg)
@@ -379,6 +482,11 @@ def main():
     note = editor_note(llm, articles)
 
     entered = board.update(llm, articles)
+    picked_ids = {a["id"] for a in articles}
+    try:
+        backfill_board(llm, board, settings, [it for it in accepted if it["id"] not in picked_ids])
+    except Exception as e:  # noqa: BLE001
+        log.warning("leaderboard backfill skipped: %s", e)
     for a in articles:
         a["board"] = a["id"] in entered
     reg.record_picks(articles)

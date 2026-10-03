@@ -14,7 +14,8 @@ audience: >
 # محدودهٔ موضوعی؛ مطلبی که در این محدوده نباشد، هر قدر هم باکیفیت، رد می‌شود
 scope: >
   Marketing in the broad sense: performance marketing and paid ads, affiliate marketing,
-  eCRM / lifecycle / retention, loyalty and engagement programs, growth and campaigns,
+  eCRM / lifecycle / retention, loyalty and engagement programs, growth, campaign planning and
+  promotions (seasonal and mega-sale campaigns such as Black Friday, discounts, coupons, flash sales),
   brand and consumer behaviour, pricing and promotions, marketing analytics, attribution,
   incrementality and experimentation, e-commerce and marketplaces, marketing leadership and
   management of commercial teams, and AI / agents applied to marketing, growth or commercial work.
@@ -44,6 +45,8 @@ leaderboard:
   size: 10
   min_score: 8            # حداقل امتیاز نهایی برای ورود
   max_age_days: 730       # مطالب قدیمی‌تر از این خارج می‌شوند (0 = هرگز)
+  backfill_per_run: 15    # حداکثر مطلب مرجعی که در هر اجرا برای پر کردن دسته‌های ناقص بریف می‌شود
+  canon_categories_per_run: 4   # در هر اجرا برای چند دستهٔ ناقص، مطالب مرجع همیشگی جست‌وجو شود
 
 # نگهداری خودکار منابع
 sources_health:
@@ -57,7 +60,8 @@ categories:
   management:  { fa: "مدیریت و استراتژی", en: "Management & Strategy", color: "#C9A66B" }
   marketing:   { fa: "مارکتینگ و برند",   en: "Marketing & Brand",     color: "#E58BA6" }
   performance: { fa: "پرفورمنس و تبلیغات", en: "Performance & Ads",    color: "#5FB8A6" }
-  growth:      { fa: "کمپین و رشد",        en: "Campaigns & Growth",    color: "#E7A452" }
+  campaign:    { fa: "کمپین و پروموشن",    en: "Campaigns & Promotions", color: "#F08A6C" }
+  growth:      { fa: "رشد",                 en: "Growth",                color: "#E7A452" }
   ecrm:        { fa: "eCRM و وفاداری",     en: "eCRM & Retention",      color: "#93A3FF" }
   data:        { fa: "داده و آزمایش",       en: "Data & Experimentation", color: "#7CC6E6" }
   ai:          { fa: "هوش مصنوعی",          en: "AI & Agents",           color: "#B892F5" }

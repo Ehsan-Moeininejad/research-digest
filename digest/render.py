@@ -39,18 +39,21 @@ def font_css(root: Path, prefix: str) -> str:
 
 
 def normalize(a: dict) -> dict:
-    """Older entries used summary/key_points/why_it_matters; map them onto the new briefing fields."""
+    """Map older schemas (summary/key_points/why_it_matters, whats_new/how/evidence/actions) onto the brief fields."""
     a = dict(a)
     a.setdefault("tldr", a.get("summary", ""))
-    a.setdefault("whats_new", "")
-    a.setdefault("how", a.get("key_points", []))
-    a.setdefault("evidence", [])
-    a.setdefault("actions", [a["why_it_matters"]] if a.get("why_it_matters") else [])
+    a.setdefault("about", a.get("whats_new", ""))
+    a.setdefault("problem", "")
+    a.setdefault("approach", "")
+    a.setdefault("steps", a.get("how") or a.get("key_points") or [])
+    a.setdefault("findings", a.get("evidence") or [])
+    a.setdefault("conclusion", "")
+    a.setdefault("for_us", a.get("actions") or ([a["why_it_matters"]] if a.get("why_it_matters") else []))
     a.setdefault("caveats", [])
     a.setdefault("teams", [])
     a["level_fa"] = LEVELS.get(a.get("level", ""), "")
-    a["search"] = " ".join([a.get("title_fa", ""), a.get("title", ""), a.get("tldr", ""), a.get("whats_new", ""),
-                            " ".join(a["how"]), " ".join(a["actions"]), " ".join(a.get("tags") or []),
+    a["search"] = " ".join([a.get("title_fa", ""), a.get("title", ""), a.get("tldr", ""), a.get("about", ""),
+                            a.get("conclusion", ""), " ".join(a["for_us"]), " ".join(a.get("tags") or []),
                             " ".join(a["teams"]), a.get("source", "")]).lower()
     return a
 
@@ -115,6 +118,19 @@ def render_site(root: Path, settings: dict, board: dict | None = None, source_ro
         **base, archive_view=False, prefix="", fonts=font_css(root, ""), digest=today, d=jalali(today["date"]),
         current=today["date"], latest=latest, latest_cats=cats_present(settings, latest),
         board=board, board_n=len(flat), board_cats=cats_present(settings, flat), rows=rows), encoding="utf-8")
+    # one page per article: the full brief
+    adir = docs / "a"
+    adir.mkdir(parents=True, exist_ok=True)
+    btpl = Environment(autoescape=True).from_string(BRIEF)
+    pool = {a["id"]: a for a in latest}
+    for e in flat:
+        pool.setdefault(e["id"], e)
+    for a in [normalize(x) for x in today["articles"]]:
+        pool.setdefault(a["id"], a)
+    for aid, a in pool.items():
+        (adir / f"{aid}.html").write_text(btpl.render(
+            a=a, c=settings["categories"][a["category"]], settings=settings, fonts=font_css(root, "../"),
+            published=jalali(a["published"])["short"] if a.get("published") else ""), encoding="utf-8")
     for old in ("leaderboard.html", "sources.html"):
         (docs / old).unlink(missing_ok=True)
     (docs / ".nojekyll").write_text("")
@@ -201,6 +217,8 @@ article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
 .tags span{color:var(--mute)}
 .go{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14.5px;color:#141a2b;background:var(--focus);padding:6px 16px;border-radius:9px}
 .go:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.go.ghost{background:transparent;color:var(--soft);border:1px solid var(--rule)}
 .url{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
 .url:hover{color:var(--soft)}
 details.more{margin-top:10px}
@@ -237,21 +255,11 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   <h3>{{ a.title_fa }}</h3>
   <p class="orig ltr">{{ a.title }}</p>
   {% if a.tldr %}<p class="tldr">{{ a.tldr }}</p>{% endif %}
-  {% if a.whats_new %}<p class="new">{{ a.whats_new }}</p>{% endif %}
-  {% set body %}
-    {% if a.how or a.evidence %}
-    <div class="cols">
-      {% if a.how %}<div class="box"><h4>{% if a.kind == 'tutorial' %}مراحل{% else %}چطور کار می‌کند{% endif %}</h4><ul>{% for x in a.how %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-      {% if a.evidence %}<div class="box"><h4>اعداد و شواهد</h4><ul>{% for x in a.evidence %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-    </div>
-    {% endif %}
-    {% if a.actions %}<div class="act"><h4>اقدام پیشنهادی برای تیم</h4><ul>{% for x in a.actions %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-    {% if a.caveats %}<p class="cav"><b>محدودیت:</b> {{ a.caveats|join(' ') }}</p>{% endif %}
-  {% endset %}
-  {% if rank %}<details class="more"><summary>جزئیات کاربردی</summary>{{ body }}</details>{% else %}{{ body }}{% endif %}
+  {% if a.about %}<p class="new">{{ a.about }}</p>{% endif %}
+  {% if a.for_us %}<div class="act"><h4>کاربرد برای تیم</h4><ul>{% for x in a.for_us[:2] %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
   <div class="foot">
     <div class="teams">{% for t in a.teams %}<span class="ltr">{{ t }}</span>{% endfor %}</div>
-    <a class="go" href="{{ a.url }}" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <span class="btns"><a class="go" href="{{ prefix }}a/{{ a.id }}.html">خواندن بریف کامل</a><a class="go ghost" href="{{ a.url }}" target="_blank" rel="noopener">منبع اصلی</a></span>
   </div>
   <a class="url ltr" href="{{ a.url }}" target="_blank" rel="noopener">{{ a.url }}</a>
 </article>
@@ -382,6 +390,83 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   show((location.hash||'').replace('#','')||'latest',false);
 })();
 </script>
+</body>
+</html>
+"""
+
+
+BRIEF = r"""<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ a.title_fa }} | {{ settings.site_title }}</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+{{ fonts | safe }}
+:root{--ink:#121829;--sheet:#182036;--sheet-2:#1E2741;--rule:#2B3554;--text:#ECE9E2;--soft:#BCC2D0;--mute:#8189A0;--focus:#F2D27A;--c:{{ c.color }};
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border:1px solid var(--focus);border-radius:12px;padding:14px 20px;background:rgba(242,210,122,.06)}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#141a2b;background:var(--focus);padding:8px 18px;border-radius:9px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">{{ c.fa }} <span class="ltr" style="color:var(--mute);font-weight:400">{{ c.en }}</span></div>
+  <h1>{{ a.title_fa }}</h1>
+  <p class="orig ltr">{{ a.title }}</p>
+  <div class="meta">
+    <span><b>{{ a.source }}</b></span>
+    <span>{% if a.kind == 'paper' %}مقالهٔ علمی{% elif a.kind == 'tutorial' %}آموزش{% else %}تحلیل{% endif %}</span>
+    {% if a.level_fa %}<span>سطح: {{ a.level_fa }}</span>{% endif %}
+    {% if published %}<span>انتشار: {{ published }}</span>{% endif %}
+    <span>متن اصلی: {{ a.read_minutes }} دقیقه</span>
+    <span>امتیاز: {{ a.score }}/10</span>
+  </div>
+  {% if a.tldr %}<div class="tldr">{{ a.tldr }}</div>{% endif %}
+
+  {% if a.about %}<h2>درباره چیست</h2><p>{{ a.about }}</p>{% endif %}
+  {% if a.problem %}<h2>مسئله و اهمیت</h2><p>{{ a.problem }}</p>{% endif %}
+  {% if a.approach %}<h2>روی چه چیزی کار کرده‌اند</h2><p>{{ a.approach }}</p>{% endif %}
+  {% if a.steps %}<h2>{% if a.kind == 'tutorial' %}مراحل{% else %}روش و اجزا{% endif %}</h2><ul>{% for x in a.steps %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+  {% if a.findings %}<h2>یافته‌ها و اعداد</h2><ul>{% for x in a.findings %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+  {% if a.conclusion %}<h2>نتیجه‌گیری</h2><p>{{ a.conclusion }}</p>{% endif %}
+  {% if a.for_us %}<div class="us"><h2>کاربرد برای تیم</h2><ul>{% for x in a.for_us %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+  {% if a.caveats %}<h2>محدودیت‌ها</h2><ul class="cav">{% for x in a.caveats %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+  {% if a.teams or a.tags %}<div class="tags">{% for t in a.teams %}<span class="ltr">{{ t }}</span>{% endfor %}{% for t in a.tags %}<span class="ltr">{{ t }}</span>{% endfor %}</div>{% endif %}
+
+  <div class="source">
+    <a class="go" href="{{ a.url }}" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="{{ a.url }}" target="_blank" rel="noopener">{{ a.url }}</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
 </body>
 </html>
 """
