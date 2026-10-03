@@ -23,6 +23,8 @@
    5.0,
    6.0,
    4.0,
+   7.0,
+   6.0,
    7.0
   ],
   "picks": 0,
@@ -30,8 +32,8 @@
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://sloanreview.mit.edu/feed/": {
@@ -46,8 +48,8 @@
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-30"
  },
  "https://knowledge.wharton.upenn.edu/feed/": {
@@ -66,8 +68,8 @@
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://www.mckinsey.com/insights/rss": {
@@ -92,15 +94,16 @@
    4.0,
    6.0,
    5.0,
-   5.0
+   5.0,
+   7.0
   ],
   "picks": 0,
   "name": "McKinsey Insights",
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://stratechery.com/feed/": {
@@ -117,8 +120,8 @@
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://review.firstround.com/feed": {
@@ -130,21 +133,21 @@
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
+  "last_try": "2026-10-04",
   "resolved_url": "https://review.firstround.com/glossary/rss/",
-  "last_ok": "2026-10-03",
+  "last_ok": "2026-10-04",
   "last_item": "2025-10-27"
  },
  "https://searchengineland.com/feed": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Search Engine Land",
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://ppc.land/rss/": {
   "status": "active",
@@ -189,15 +192,21 @@
    4.0,
    3.0,
    3.0,
-   2.0
+   2.0,
+   5.0,
+   4.0,
+   5.0,
+   5.0,
+   6.0,
+   6.0
   ],
   "picks": 0,
   "name": "PPC Land",
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03"
  },
  "https://blog.google/products/ads-commerce/rss/": {
@@ -211,31 +220,31 @@
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-01"
  },
  "https://cxl.com/blog/feed/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "CXL",
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://www.marketingweek.com/feed/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Marketing Week",
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://seths.blog/feed/": {
   "status": "active",
@@ -245,15 +254,16 @@
    5.0,
    6.0,
    8.0,
-   5.0
+   5.0,
+   6.0
   ],
   "picks": 0,
   "name": "Seth Godin",
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03"
  },
  "https://www.lennysnewsletter.com/feed": {
@@ -270,20 +280,20 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03"
  },
  "https://andrewchen.substack.com/feed": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Andrew Chen",
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://www.elenaverna.com/feed": {
   "status": "active",
@@ -294,20 +304,20 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-24"
  },
  "https://www.growthunhinged.com/feed": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Growth Unhinged",
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://netflixtechblog.com/feed": {
   "status": "active",
@@ -318,8 +328,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-25"
  },
  "https://medium.com/feed/airbnb-engineering": {
@@ -333,8 +343,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-29",
   "last_pick": "2026-10-03"
  },
@@ -350,8 +360,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://engineering.atspotify.com/feed/": {
@@ -363,20 +373,20 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-16"
  },
  "https://www.uber.com/blog/engineering/rss/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Uber Engineering",
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://tech.instacart.com/feed": {
   "status": "active",
@@ -387,8 +397,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-03"
  },
  "https://engineering.zalando.com/atom.xml": {
@@ -400,8 +410,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-24"
  },
  "https://eugeneyan.com/rss/": {
@@ -413,8 +423,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-06-21"
  },
  "https://openai.com/news/rss.xml": {
@@ -430,15 +440,16 @@
    5.0,
    5.0,
    5.0,
-   3.0
+   3.0,
+   5.0
   ],
   "picks": 0,
   "name": "OpenAI News",
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://blog.google/technology/ai/rss/": {
@@ -452,8 +463,8 @@
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://www.oneusefulthing.org/feed": {
@@ -467,8 +478,8 @@
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-01"
  },
  "https://simonwillison.net/atom/everything/": {
@@ -489,8 +500,8 @@
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://www.latent.space/feed": {
@@ -513,8 +524,8 @@
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03"
  },
  "https://www.modernretail.co/feed/": {
@@ -530,17 +541,18 @@
    7.0,
    5.0,
    8.0,
-   5.0
+   5.0,
+   6.0
   ],
-  "picks": 2,
+  "picks": 3,
   "name": "Modern Retail",
   "hint": "commerce",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03",
-  "last_pick": "2026-10-03"
+  "last_pick": "2026-10-04"
  },
  "https://www.retaildive.com/feeds/news/": {
   "status": "active",
@@ -562,8 +574,8 @@
   "hint": "commerce",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02",
   "last_pick": "2026-10-03"
  },
@@ -582,8 +594,8 @@
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02",
   "last_pick": "2026-10-03"
  },
@@ -610,6 +622,10 @@
    5.0,
    6.0,
    5.0,
+   5.0,
+   4.0,
+   5.0,
+   5.0,
    5.0
   ],
   "picks": 1,
@@ -617,8 +633,8 @@
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03",
   "last_pick": "2026-10-03"
  },
@@ -635,8 +651,8 @@
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-01"
  },
  "https://towardsdatascience.com/feed": {
@@ -666,31 +682,39 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-03"
  },
  "https://blog.growthbook.io/rss/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "GrowthBook Blog",
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04"
  },
  "https://huggingface.co/blog/feed.xml": {
   "status": "active",
-  "fails": 1,
-  "scores": [],
+  "fails": 0,
+  "scores": [
+   3.0,
+   3.0,
+   3.0,
+   4.0,
+   4.0
+  ],
   "picks": 0,
   "name": "Hugging Face Learn",
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-03"
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
+  "last_item": "2026-10-02"
  },
  "https://www.omnisend.com/blog/feed": {
   "status": "active",
@@ -707,8 +731,8 @@
   "hint": "ecrm",
   "origin": "scout",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-30",
   "last_pick": "2026-10-03"
  },
@@ -726,8 +750,8 @@
   "hint": "commerce",
   "origin": "scout",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02"
  },
  "https://www.digitalcommerce360.com/feed": {
@@ -743,15 +767,16 @@
    5.0,
    3.0,
    3.0,
-   5.0
+   5.0,
+   6.0
   ],
   "picks": 1,
   "name": "Digital Commerce 360",
   "hint": "commerce",
   "origin": "scout",
   "kind": "article",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-02",
   "last_pick": "2026-10-03"
  },
@@ -763,15 +788,16 @@
    8.0,
    7.0,
    8.0,
-   8.0
+   8.0,
+   6.0
   ],
   "picks": 1,
   "name": "arXiv · Advertising",
   "hint": "performance",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-29",
   "last_pick": "2026-10-03"
  },
@@ -784,8 +810,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-24"
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Ae-commerce%20AND%20abs%3Arecommendation%20AND%20cat%3Acs.IR&sortBy=submittedDate&sortOrder=descending&max_results=25": {
@@ -800,8 +826,8 @@
   "hint": "commerce",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-30"
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Achurn%20OR%20%28abs%3Acustomer%20AND%20abs%3Aretention%29&sortBy=submittedDate&sortOrder=descending&max_results=25": {
@@ -813,8 +839,8 @@
   "hint": "ecrm",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-09-28"
  },
  "http://export.arxiv.org/api/query?search_query=%28abs%3ALLM%20OR%20abs%3Aagent%29%20AND%20%28abs%3Amarketing%20OR%20abs%3Aadvertising%20OR%20abs%3Ae-commerce%29&sortBy=submittedDate&sortOrder=descending&max_results=25": {
@@ -835,15 +861,18 @@
    8.0,
    7.0,
    6.0,
-   8.0
+   8.0,
+   8.0,
+   7.0,
+   7.0
   ],
   "picks": 1,
   "name": "arXiv · LLM for Marketing",
   "hint": "ai",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-01",
   "last_pick": "2026-10-03"
  },
@@ -858,8 +887,8 @@
   "hint": "management",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-03",
-  "last_ok": "2026-10-03",
+  "last_try": "2026-10-04",
+  "last_ok": "2026-10-04",
   "last_item": "2026-10-01"
  }
 }
