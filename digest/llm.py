@@ -52,34 +52,49 @@ class LLM:
 
     # ---------------------------------------------------------------
     def json(self, system: str, user: str, max_tokens: int = 4000, retries: int = 6):
-        while self.providers:
-            p = self.providers[0]
-            last = None
+        """Try providers in order. A provider that is down/out of quota is dropped for the rest of the run;
+        one that only returned unparseable text twice is skipped for this call but kept for the next."""
+        for p in list(self.providers):
+            last, bad_json, dead = None, 0, False
             for attempt in range(1, retries + 1):
                 gap = time.time() - self._last
                 if gap < p["gap"]:
                     time.sleep(p["gap"] - gap)
                 self._last = time.time()
                 self.calls += 1
+                raw = ""
                 try:
-                    return _parse_json(self._call(p, system, user, max_tokens))
+                    raw = self._call(p, system, user, max_tokens)
+                    return _parse_json(raw)
                 except ProviderDown as e:
-                    last = e
+                    last, dead = e, True
                     break
+                except json.JSONDecodeError as e:
+                    last = e
+                    bad_json += 1
+                    log.warning("LLM %s returned unparseable output (%d): %s | raw: %r",
+                                p["name"], bad_json, e, (raw or "")[:300])
+                    if bad_json >= 2:
+                        break
+                    time.sleep(5)
                 except Exception as e:  # noqa: BLE001
                     last = e
                     wait = getattr(e, "retry_after", None) or min(120, 20 * attempt)
                     if wait > 300:
                         log.warning("%s asks to wait %ss — switching provider", p["name"], wait)
+                        dead = True
                         break
                     log.warning("LLM %s failed (attempt %d/%d): %s — retry in %ds",
-                                p["name"], attempt, retries, str(e)[:240], wait)
+                                p["name"], attempt, retries, str(e)[:300], wait)
                     time.sleep(wait)
-            log.error("provider %s unavailable (%s) — falling back", p["name"], str(last)[:200])
-            self.providers.pop(0)
-            if self.providers:
-                log.info("now using %s", self.model)
-        raise RuntimeError("All LLM providers failed")
+            else:
+                dead = True  # retries exhausted
+            if dead and p in self.providers:
+                self.providers.remove(p)
+                log.error("provider %s dropped for this run (%s)", p["name"], str(last)[:200])
+            else:
+                log.warning("provider %s skipped for this call (%s)", p["name"], str(last)[:200])
+        raise RuntimeError("All LLM providers failed for this call")
 
     # ---------------------------------------------------------------
     def _call(self, p, system, user, max_tokens):
@@ -93,7 +108,7 @@ class LLM:
         r = requests.post(
             "https://models.github.ai/inference/chat/completions",
             headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}", "Content-Type": "application/json",
-                     "Accept": "application/vnd.github+json"},
+                     "Accept": "application/json"},
             json={"model": p["models"][0], "max_tokens": max_tokens, "temperature": 0.3,
                   "messages": [{"role": "system", "content": system + "\n\nRespond with valid JSON only. No markdown fences."},
                                {"role": "user", "content": user}]},
@@ -115,7 +130,15 @@ class LLM:
             raise RuntimeError(f"GitHub Models request too large: {r.text[:200]}")
         if r.status_code >= 400:
             raise RuntimeError(f"GitHub Models HTTP {r.status_code}: {r.text[:300]}")
-        return r.json()["choices"][0]["message"]["content"] or ""
+        try:
+            data = r.json()
+        except ValueError:
+            raise RuntimeError(f"GitHub Models non-JSON reply (HTTP {r.status_code}): {r.text[:300]!r}")
+        choice = (data.get("choices") or [{}])[0]
+        content = (choice.get("message") or {}).get("content") or ""
+        if not content.strip():
+            raise RuntimeError(f"GitHub Models empty answer (finish_reason={choice.get('finish_reason')}): {r.text[:300]!r}")
+        return content
 
     def _gemini(self, p, system, user, max_tokens):
         model = p["models"][0]
