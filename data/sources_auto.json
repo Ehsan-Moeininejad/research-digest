@@ -1,0 +1,21 @@
+[
+ {
+  "name": "Omnisend Blog",
+  "url": "https://www.omnisend.com/blog/feed",
+  "hint": "ecrm",
+  "added": "2026-10-03",
+  "type": "tutorial"
+ },
+ {
+  "name": "Practical Ecommerce",
+  "url": "https://www.practicalecommerce.com/feed",
+  "hint": "commerce",
+  "added": "2026-10-03"
+ },
+ {
+  "name": "Digital Commerce 360",
+  "url": "https://www.digitalcommerce360.com/feed",
+  "hint": "commerce",
+  "added": "2026-10-03"
+ }
+]
