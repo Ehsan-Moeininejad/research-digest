@@ -58,12 +58,12 @@ sources_health:
   scout_max_new: 3            # حداکثر منبع جدید در هر جست‌وجو
 
 categories:
-  management:  { fa: "مدیریت و استراتژی", en: "Management & Strategy", color: "#C9A66B" }
-  marketing:   { fa: "مارکتینگ و برند",   en: "Marketing & Brand",     color: "#E58BA6" }
-  performance: { fa: "پرفورمنس و تبلیغات", en: "Performance & Ads",    color: "#5FB8A6" }
-  campaign:    { fa: "کمپین و پروموشن",    en: "Campaigns & Promotions", color: "#F08A6C" }
-  growth:      { fa: "رشد",                 en: "Growth",                color: "#E7A452" }
-  ecrm:        { fa: "eCRM و وفاداری",     en: "eCRM & Retention",      color: "#93A3FF" }
-  data:        { fa: "داده و آزمایش",       en: "Data & Experimentation", color: "#7CC6E6" }
-  ai:          { fa: "هوش مصنوعی",          en: "AI & Agents",           color: "#B892F5" }
-  commerce:    { fa: "ای‌کامرس و محصول",    en: "E-commerce & Product",  color: "#A2CC6E" }
+  management:  { fa: "مدیریت و استراتژی", en: "Management & Strategy", color: "#3F51B5" }
+  marketing:   { fa: "مارکتینگ و برند",   en: "Marketing & Brand",     color: "#E6123D" }
+  performance: { fa: "پرفورمنس و تبلیغات", en: "Performance & Ads",    color: "#0097A7" }
+  campaign:    { fa: "کمپین و پروموشن",    en: "Campaigns & Promotions", color: "#F57C00" }
+  growth:      { fa: "رشد",                 en: "Growth",                color: "#2E9E4F" }
+  ecrm:        { fa: "eCRM و وفاداری",     en: "eCRM & Retention",      color: "#8E44AD" }
+  data:        { fa: "داده و آزمایش",       en: "Data & Experimentation", color: "#1E88E5" }
+  ai:          { fa: "هوش مصنوعی",          en: "AI & Agents",           color: "#6A4BC4" }
+  commerce:    { fa: "ای‌کامرس و محصول",    en: "E-commerce & Product",  color: "#C2185B" }

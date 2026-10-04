@@ -15,7 +15,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
 
 import yaml
 
@@ -56,6 +56,7 @@ def to_items(parsed, src, since):
         link, published = e.get("link"), entry_date(e)
         if not link or not e.get("title"):
             continue
+        link = urljoin(src.get("url", ""), link)   # some feeds give relative links
         if published and published < since:
             continue
         summary = e.get("summary") or ""
