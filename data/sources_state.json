@@ -263,10 +263,6 @@
   "status": "active",
   "fails": 0,
   "scores": [
-   3.0,
-   5.0,
-   5.0,
-   4.0,
    7.0,
    5.0,
    3.0,
@@ -322,7 +318,11 @@
    4.0,
    3.0,
    3.0,
-   4.0
+   4.0,
+   3.0,
+   3.0,
+   2.0,
+   3.0
   ],
   "picks": 0,
   "name": "PPC Land",
@@ -331,7 +331,7 @@
   "kind": "article",
   "last_try": "2026-10-04",
   "last_ok": "2026-10-04",
-  "last_item": "2026-10-03"
+  "last_item": "2026-10-04"
  },
  "https://blog.google/products/ads-commerce/rss/": {
   "status": "active",
@@ -1460,7 +1460,7 @@
  },
  "https://www.retailtouchpoints.com/feed": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Retail TouchPoints",
@@ -1493,7 +1493,7 @@
  },
  "https://mixpanel.com/blog/feed/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Mixpanel Blog",
@@ -1504,7 +1504,7 @@
  },
  "https://www.optimizely.com/insights/blog/feed/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Optimizely Insights",
@@ -1515,7 +1515,7 @@
  },
  "https://www.klaviyo.com/blog/feed": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Klaviyo Blog",
@@ -1526,7 +1526,7 @@
  },
  "https://customer.io/blog/feed/": {
   "status": "active",
-  "fails": 1,
+  "fails": 2,
   "scores": [],
   "picks": 0,
   "name": "Customer.io Blog",
