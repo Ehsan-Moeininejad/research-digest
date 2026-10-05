@@ -76,6 +76,7 @@ def send_email(digest: dict, settings: dict):
 <tr><td {td}padding:18px 20px">
   <div>{pill(c)} <span style="color:{MUTE};font-size:12.5px">&nbsp;{t(a['source'])}</span></div>
   <div style="margin:10px 0 6px;font-size:17px;line-height:1.75;font-weight:bold;color:{INK}">{i}. {t(a['title_fa'])}</div>
+  {f'<div style="font-size:12.5px;color:{MUTE};margin-bottom:4px">بریف از منبع اصلی · پوشش از طریق {t(a["via"]["source"])}</div>' if a.get("via") else ''}
   <div style="font-size:14.5px;line-height:1.95;color:{INK}">{t(a.get('tldr'))}</div>
   {f'<div style="margin-top:10px;font-size:13.5px;line-height:1.95;color:{SOFT}"><b style="color:{INK}">درباره</b> · {t(about)}</div>' if about else ''}
   {f'<div style="margin-top:6px;font-size:13.5px;line-height:1.95;color:{SOFT}"><b style="color:{INK}">نتیجه‌گیری</b> · {t(concl)}</div>' if concl else ''}
@@ -102,6 +103,27 @@ def send_email(digest: dict, settings: dict):
   <div style="font-size:13.5px;line-height:1.9;color:{SOFT}">{t(e.get('tldr'))}</div>
 </td></tr></table>
 </td></tr>""")
+
+    rep = digest.get("source_report")
+    if rep:
+        st_fa = {"active": "فعال", "probation": "آزمایشی", "paused": "متوقف", "disabled": "غیرفعال", "rejected": "ردشده", "new": "جدید"}
+        tier_fa = {1: "اصلی", 2: "تحلیلی", 3: "خبری"}
+        rows.append(section("گزارش ماهانهٔ منابع", "برای مرور تیم: رده، وضعیت، کیفیت و نرخ قبولی هر منبع"))
+        if rep.get("changes"):
+            lis = "".join(f'<li style="margin:2px 0">{t(c)}</li>' for c in rep["changes"][:15])
+            rows.append(f'<tr><td {td}padding:4px 0 10px;font-size:13px;line-height:1.9;color:{SOFT}">'
+                        f'<b style="color:{INK}">تغییرات این دوره</b><ul style="margin:4px 0;padding-right:18px">{lis}</ul></td></tr>')
+        head = "".join(f'<th style="padding:6px 8px;font-size:12px;color:{MUTE};text-align:right;border-bottom:1px solid {LINE}">{h}</th>'
+                       for h in ("منبع", "رده", "وضعیت", "کیفیت", "قبولی", "انتخاب"))
+        body_rows = ""
+        for r in rep["rows"]:
+            if r.get("kind") == "paper":
+                continue
+            cells = (t(r["name"]), tier_fa.get(r.get("tier", 2), ""), st_fa.get(r["status"], r["status"]),
+                     r["avg"] if r["avg"] is not None else "", f'{r["acc_rate"]}%' if r.get("acc_rate") is not None else "", r["picks"])
+            body_rows += "<tr>" + "".join(f'<td style="padding:5px 8px;font-size:12.5px;color:{INK};border-bottom:1px solid {LINE};font-family:{FONT}">{c}</td>' for c in cells) + "</tr>"
+        rows.append(f'<tr><td style="background:#fff;border:1px solid {LINE};border-radius:12px;padding:8px">'
+                    f'<table role="presentation" dir="rtl" width="100%" cellpadding="0" cellspacing="0">{head}{body_rows}</table></td></tr>')
 
     events = digest.get("events") or []
     if events:

@@ -12,7 +12,7 @@ UA = "Mozilla/5.0 (compatible; ResearchDigestBot/1.0)"
 
 KEEP = ("id", "url", "source", "kind", "title", "title_fa", "tldr", "about", "problem", "approach", "steps",
         "findings", "conclusion", "for_us", "caveats", "teams", "level", "tags", "read_minutes", "category",
-        "score", "published", "whats_new", "how", "evidence", "actions")
+        "score", "published", "whats_new", "how", "evidence", "actions", "tier", "via")
 
 
 class Leaderboard:

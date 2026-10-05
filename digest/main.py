@@ -15,7 +15,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from urllib.parse import quote, urljoin
+from urllib.parse import quote, urljoin, urlparse
 
 import yaml
 
@@ -73,7 +73,7 @@ def to_items(parsed, src, since):
 
 def arxiv_sources(cfg):
     n = cfg.get("arxiv_max_results", 25)
-    return [{"name": q["name"], "hint": q.get("hint", ""), "kind": "paper", "origin": "config",
+    return [{"name": q["name"], "hint": q.get("hint", ""), "kind": "paper", "origin": "config", "tier": 1,
              "url": "http://export.arxiv.org/api/query?search_query=" + quote(q["query"]) +
                     f"&sortBy=submittedDate&sortOrder=descending&max_results={n}"}
             for q in cfg.get("arxiv", [])]
@@ -150,13 +150,20 @@ def select(items, n, sel, categories, key, min_tutorials=0):
     pool = sorted(items, key=lambda x: x[key], reverse=True)
     picked, ids, per_source = [], set(), {}
 
+    max_t3 = sel.get("max_tier3", n)
+    t3 = [0]
+
     def ok(it):
+        if it.get("tier", 2) == 3 and t3[0] >= max_t3:
+            return False
         return it["id"] not in ids and per_source.get(it["source"], 0) < sel["max_per_source"]
 
     def take(it):
         picked.append(it)
         ids.add(it["id"])
         per_source[it["source"]] = per_source.get(it["source"], 0) + 1
+        if it.get("tier", 2) == 3:
+            t3[0] += 1
 
     for cat in categories:
         if len(picked) >= n:
@@ -187,10 +194,16 @@ def fetch_fulltext(it):
     try:
         import trafilatura
         downloaded = trafilatura.fetch_url(it["url"])
-        text = trafilatura.extract(downloaded, include_comments=False, include_tables=False) if downloaded else None
+        text = None
+        if downloaded:
+            try:
+                text = trafilatura.extract(downloaded, include_comments=False, include_tables=False,
+                                           include_links=True, output_format="markdown")
+            except Exception:  # noqa: BLE001
+                text = trafilatura.extract(downloaded, include_comments=False, include_tables=False)
     except Exception:  # noqa: BLE001
         text = None
-    it["body"] = (text or it["snippet"])[:7000]
+    it["body"] = (text or it["snippet"])[:9000]
     it["fulltext"] = bool(text and len(text) > 800)
     return it
 
@@ -207,7 +220,10 @@ def review(llm, items, settings):
         "practical playbook a team could apply. When in doubt, REJECT.\n"
         "Always REJECT: vendor marketing or thinly disguised product pitches, generic advice, "
         "rehashed basics, news without analysis, opinion without substance, clickbait, AI hype, "
-        "and pieces whose text is too thin to judge (unless it is a research abstract with clear findings)."
+        "and pieces whose text is too thin to judge (unless it is a research abstract with clear findings).\n\n"
+        "Primary source: if the piece mainly reports on, summarises or comments on someone else's study, "
+        "experiment, dataset, survey or report, give that ORIGINAL's URL as primary_url, taken from the links in "
+        "the text (markdown links). Leave it empty if the piece is itself the original or no link is given."
     )
     accepted = []
     step, chars = (2, 3500) if llm.small else (5, 5000)
@@ -217,7 +233,8 @@ def review(llm, items, settings):
                     "full_text_available": it.get("fulltext", it["kind"] == "paper"), "text": it["body"][:chars]}
                    for it in chunk]
         user = ('Return a JSON array: [{"id": "...", "relevance": 0-10, "quality": 0-10, '
-                '"verdict": "accept|reject", "reason": "max 15 words"}]\n\n' + json.dumps(payload, ensure_ascii=False))
+                '"verdict": "accept|reject", "reason": "max 15 words", "primary_url": "https://... or empty"}]\n\n'
+                + json.dumps(payload, ensure_ascii=False))
         try:
             raw = llm.json(system, user, max_tokens=4000)
         except Exception as e:  # noqa: BLE001
@@ -230,7 +247,11 @@ def review(llm, items, settings):
             it["_reviewed"] = True
             r = res.get(it["id"], {})
             R, Q = float(r.get("relevance", 0) or 0), float(r.get("quality", 0) or 0)
-            it["score"] = round(0.35 * R + 0.65 * Q, 1)
+            bonus = settings.get("tiers", {}).get("score_bonus", {}).get(it.get("tier", 2), 0)
+            it["score"] = round(min(10, max(0, 0.35 * R + 0.65 * Q + bonus)), 1)
+            pu = str(r.get("primary_url") or "").strip()
+            if pu.startswith("http") and urlparse(pu).netloc and urlparse(pu).netloc != urlparse(it["url"]).netloc:
+                it["primary_url"] = pu
             ok = r.get("verdict") == "accept" and R >= rv["min_relevance"] and Q >= rv["min_quality"]
             log.info("%s  R%.0f Q%.0f  %-24s %s | %s", "ACCEPT" if ok else "reject", R, Q,
                      it["source"][:24], it["title"][:60], r.get("reason", ""))
@@ -331,6 +352,7 @@ def summarize(llm, picked, settings):
             "teams": [t for t in (s.get("teams") or []) if t in TEAMS][:4],
             "level": s.get("level") if s.get("level") in ("intro", "practitioner", "advanced") else "practitioner",
             "tags": lst(s.get("tags"), 4), "read_minutes": int(s.get("read_minutes") or 5),
+            "tier": it.get("tier", 2), "via": it.get("via"),
         })
     order = list(settings["categories"])
     return sorted(final, key=lambda a: (order.index(a["category"]), -a["score"]))
@@ -387,6 +409,9 @@ class Judged:
                 it["score"], it["ok"] = e["r"]
                 if e.get("body"):
                     it["body"], it["fulltext"] = e["body"], e.get("ft", True)
+            if e.get("swap"):            # this item was coverage; the original study replaced it
+                it.update(e["swap"])
+                it["ok"] = True
 
     def store_reviews(self, items, ok_ids, today):
         for it in items:
@@ -402,16 +427,59 @@ class Judged:
         self.path.write_text(json.dumps(self.d, ensure_ascii=False), encoding="utf-8")
 
 
-def review_cached(llm, items, settings, judged, today):
-    """Review only what has not been reviewed before; returns all accepted items (cached + new)."""
+def review_cached(llm, items, settings, judged, today, reg=None):
+    """Review only what has not been reviewed before; returns all accepted items (cached + new).
+    When an accepted piece is coverage of someone else's work, the original is fetched, reviewed and,
+    if it holds up, takes the slot (the coverage is kept as 'via')."""
     judged.load_reviews(items)
     todo = [it for it in items if "ok" not in it]
     if todo:
         with ThreadPoolExecutor(max_workers=6) as ex:
             todo = list(ex.map(fetch_fulltext, todo))
         ok = review(llm, todo, settings)
-        judged.store_reviews([it for it in todo if it.get("_reviewed")], {it["id"] for it in ok}, today)
+        done = [it for it in todo if it.get("_reviewed")]
+        ok_ids = {it["id"] for it in ok}
+        judged.store_reviews(done, ok_ids, today)
+        if reg:
+            reg.record_reviews(done, ok_ids)
+        if settings.get("tiers", {}).get("chase_primary", True):
+            chase_primary(llm, [it for it in ok if it.get("primary_url")], settings, judged, today, reg)
     return [it for it in items if it.get("ok")]
+
+
+def chase_primary(llm, items, settings, judged, today, reg=None):
+    """Swap secondary coverage for the original study/report when the original is reachable and strong."""
+    if not items:
+        return
+    originals = []
+    for it in items:
+        pu = it["primary_url"]
+        if reg:
+            reg.note_primary(pu, it["category"])
+        originals.append({
+            "id": uid(pu), "url": pu, "title": it["title"], "source": urlparse(pu).netloc.replace("www.", ""),
+            "kind": "paper" if ("arxiv.org" in pu or pu.lower().endswith(".pdf")) else "article",
+            "category": it["category"], "published": it["published"], "snippet": it.get("snippet", ""),
+            "tier": 1, "src_key": None, "via": {"source": it["source"], "url": it["url"], "id": it["id"]},
+            "_of": it,
+        })
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        originals = list(ex.map(fetch_fulltext, originals))
+    originals = [o for o in originals if o.get("fulltext") or o["kind"] == "paper"]
+    if not originals:
+        return
+    good = {o["id"] for o in review(llm, originals, settings)}
+    for o in originals:
+        sec = o.pop("_of")
+        if o["id"] in good and o.get("score", 0) >= sec.get("score", 0) - 0.5:
+            log.info("PRIMARY  %s  replaces coverage from %s", o["url"][:90], sec["source"])
+            for k in ("id", "url", "title", "source", "kind", "body", "fulltext", "score", "tier", "via", "src_key"):
+                sec[k] = o.get(k)
+            sec.pop("primary_url", None)
+            # remember the swap on the coverage's own cache entry, so later runs keep using the original
+            cov = judged.d.setdefault(sec["via"]["id"], {"d": today})
+            cov["swap"] = {k: sec.get(k) for k in ("id", "url", "title", "source", "kind", "fulltext", "score", "tier", "via")}
+            cov["swap"]["body"] = (sec.get("body") or "")[:7000]
 
 
 def ensure_body(items):
@@ -423,7 +491,7 @@ def ensure_body(items):
 
 
 # ------------------------------------------------------------------ leaderboard
-def fill_board(llm, board, settings, month_items, judged, today, exclude=()):
+def fill_board(llm, board, settings, month_items, judged, today, exclude=(), reg=None):
     """Seed categories that are not full yet with the best pieces of the last month (outside the daily week).
     Every candidate passes the same full-text review and gets a one-page brief before it can enter."""
     cfg, sel = settings["leaderboard"], settings["selection"]
@@ -434,9 +502,11 @@ def fill_board(llm, board, settings, month_items, judged, today, exclude=()):
     if not need or budget <= 0:
         return set()
     on_board = {e["id"] for v in board.board.values() for e in v}
+    allowed = set(cfg.get("allowed_tiers", [1, 2]))
     pool = [it for it in month_items if it["id"] not in on_board and it["id"] not in exclude
             and it["category"] in need and it["relevance"] >= sel["min_relevance"]
-            and it["quality"] >= sel["score_threshold"]]
+            and it["quality"] >= sel["score_threshold"] and it.get("tier", 2) in allowed
+            and (reg is None or reg.publishable(it.get("src_key")))]
     log.info("leaderboard needs %s | month pool: %d", need, len(pool))
     judged.load_reviews(pool)
     to_review = []
@@ -444,7 +514,7 @@ def fill_board(llm, board, settings, month_items, judged, today, exclude=()):
         cands = sorted([it for it in pool if it["category"] == cat and "ok" not in it], key=lambda x: -x["pre_score"])
         to_review += cands[: n * 2]
     to_review = to_review[: cfg.get("review_per_run", 30)]
-    review_cached(llm, to_review, settings, judged, today)
+    review_cached(llm, to_review, settings, judged, today, reg)
     picks = []
     for cat in sorted(need, key=need.get, reverse=True):
         best = sorted([it for it in pool if it["category"] == cat and it.get("ok") and it.get("score", 0) >= min_score],
@@ -506,7 +576,7 @@ def main():
         log.info("Digest for %s already exists — leaderboard seeding only.", today)
         month = [it for it in items if it["published"] < week_cut]
         try:
-            entered = fill_board(llm, board, settings, month, judged, today)
+            entered = fill_board(llm, board, settings, month, judged, today, reg=reg)
         except Exception as e:  # noqa: BLE001
             log.warning("leaderboard seeding stopped: %s", e)
             entered = set()
@@ -518,7 +588,8 @@ def main():
         return
 
     # ---- daily digest: best of the last 7 days that has not been featured yet
-    week = [it for it in items if it["published"] >= week_cut and it["id"] not in featured and it["id"] not in on_board]
+    week = [it for it in items if it["published"] >= week_cut and it["id"] not in featured and it["id"] not in on_board
+            and reg.publishable(it.get("src_key"))]
     pool = [it for it in week if it["relevance"] >= sel["min_relevance"] and it["quality"] >= sel["score_threshold"]]
     log.info("week window: %d unfeatured items, %d passed triage", len(week), len(pool))
     judged.load_reviews(pool)
@@ -531,7 +602,7 @@ def main():
         shortlist = select(rest, sel["shortlist_size"], sel, settings["categories"], "pre_score")
         if not shortlist:
             break
-        accepted += review_cached(llm, shortlist, settings, judged, today)
+        accepted += review_cached(llm, shortlist, settings, judged, today, reg)
         reviewed_now += len(shortlist)
         log.info("review round %d: %d accepted in the week window", rnd + 1, len(accepted))
 
@@ -547,10 +618,11 @@ def main():
     note = editor_note(llm, articles)
 
     # ---- leaderboard: new pieces compete; categories not yet full are seeded from the last month
-    entered = board.update(llm, articles)
+    allowed = set(settings["leaderboard"].get("allowed_tiers", [1, 2]))
+    entered = board.update(llm, [a for a in articles if a.get("tier", 2) in allowed])
     try:
         month = [it for it in items if it["published"] < week_cut]
-        entered |= fill_board(llm, board, settings, month, judged, today, exclude={a["id"] for a in articles}) or set()
+        entered |= fill_board(llm, board, settings, month, judged, today, exclude={a["id"] for a in articles}, reg=reg) or set()
     except Exception as e:  # noqa: BLE001
         log.warning("leaderboard seeding skipped: %s", e)
     for a in articles:
@@ -568,6 +640,7 @@ def main():
         "generated_at": dt.datetime.now(TEHRAN).isoformat(timespec="minutes"),
         "candidates": len(week), "reviewed": len([it for it in pool if "ok" in it]),
         "note": note, "articles": articles, "board_new": board_new, "events": reg.events,
+        "source_report": reg.monthly_report(arxiv),
     }
     data_file.parent.mkdir(parents=True, exist_ok=True)
     data_file.write_text(json.dumps(digest, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -576,6 +649,8 @@ def main():
     featured = {k: v for k, v in featured.items() if v >= keep}
     for a in articles:
         featured[a["id"]] = today
+        if a.get("via", {}) and a["via"].get("id"):
+            featured[a["via"]["id"]] = today
     featured_path.parent.mkdir(parents=True, exist_ok=True)
     featured_path.write_text(json.dumps(featured), encoding="utf-8")
     judged.save()

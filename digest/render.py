@@ -12,7 +12,9 @@ J_MONTHS = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مر�
 J_DAYS = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه", "یکشنبه"]
 TEHRAN = dt.timezone(dt.timedelta(hours=3, minutes=30))
 LEVELS = {"intro": "مقدماتی", "practitioner": "کاربردی", "advanced": "پیشرفته"}
-STATUS = {"active": "فعال", "new": "در انتظار اولین اجرا", "paused": "متوقف (کیفیت)", "disabled": "غیرفعال (خطا)"}
+STATUS = {"active": "فعال", "new": "در انتظار اولین اجرا", "paused": "متوقف (کیفیت)", "disabled": "غیرفعال (خطا)",
+          "probation": "دورهٔ آزمایشی", "rejected": "ردشده"}
+TIERS = {1: "منبع اصلی", 2: "تحلیل معتبر", 3: "خبری / vendor"}
 
 
 def jalali(iso_date: str) -> dict:
@@ -52,6 +54,7 @@ def normalize(a: dict) -> dict:
     a.setdefault("caveats", [])
     a.setdefault("teams", [])
     a["level_fa"] = LEVELS.get(a.get("level", ""), "")
+    a["tier_fa"] = TIERS.get(int(a.get("tier") or 2), "")
     a["search"] = " ".join([a.get("title_fa", ""), a.get("title", ""), a.get("tldr", ""), a.get("about", ""),
                             a.get("conclusion", ""), " ".join(a["for_us"]), " ".join(a.get("tags") or []),
                             " ".join(a["teams"]), a.get("source", "")]).lower()
@@ -114,6 +117,7 @@ def render_site(root: Path, settings: dict, board: dict | None = None, source_ro
     for r in rows:
         r["last_item_short"] = jalali(r["last_item"])["short"] if r.get("last_item") else ""
         r["status_fa"] = STATUS.get(r["status"], r["status"])
+        r["tier_fa"] = TIERS.get(r.get("tier", 2), "")
     (docs / "index.html").write_text(tpl.render(
         **base, archive_view=False, prefix="", fonts=font_css(root, ""), digest=today, d=jalali(today["date"]),
         current=today["date"], latest=latest, latest_cats=cats_present(settings, latest),
@@ -213,6 +217,7 @@ article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
 .orig{color:var(--mute);font-size:13.5px;line-height:1.6;margin:2px 0 0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
 .tldr{margin:14px 0 0;font-size:17.5px;line-height:1.95;font-weight:700;color:var(--text)}
 .new{margin:8px 0 0;color:var(--soft)}
+.via{margin:6px 0 0;font-size:13px;color:var(--mute)}.via a{color:var(--focus)}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
 @media (max-width:640px){.cols{grid-template-columns:1fr}}
 .box{background:var(--sheet-2);border-radius:10px;padding:10px 14px}
@@ -246,7 +251,7 @@ table.src{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
 table.src th{white-space:nowrap;text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
 table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
 .st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
-.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}
+.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
 footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
 @media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
 </style>
@@ -258,6 +263,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   <div class="meta">
     <span class="src">{{ a.source }}</span>
     {% if a.kind == 'paper' %}<span class="badge">مقالهٔ علمی</span>{% elif a.kind == 'tutorial' %}<span class="badge">آموزش</span>{% else %}<span class="badge">تحلیل</span>{% endif %}
+    {% if a.tier_fa %}<span class="badge{% if a.tier == 1 %} hot{% endif %}">{{ a.tier_fa }}</span>{% endif %}
     {% if a.level_fa %}<span>{{ a.level_fa }}</span>{% endif %}
     <span>{{ a.read_minutes }} دقیقه</span>
     {% if a.board and not rank %}<span class="badge hot">ورود به لیدربورد</span>{% endif %}
@@ -266,6 +272,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </div>
   <h3>{{ a.title_fa }}</h3>
   <p class="orig ltr">{{ a.title }}</p>
+  {% if a.via %}<p class="via">پوشش از طریق <a href="{{ a.via.url }}" target="_blank" rel="noopener">{{ a.via.source }}</a>؛ این بریف از منبع اصلی تهیه شده است.</p>{% endif %}
   {% if a.tldr %}<p class="tldr">{{ a.tldr }}</p>{% endif %}
   {% if a.about %}<p class="new">{{ a.about }}</p>{% endif %}
   {% if a.for_us %}<div class="act"><h4>کاربرد برای تیم</h4><ul>{% for x in a.for_us[:2] %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
@@ -342,14 +349,16 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   <section class="panel" data-panel="sources" hidden>
     <p class="lead">منابعی که در هر نوبت خوانده می‌شوند. فید خراب خودکار ترمیم یا غیرفعال می‌شود، منبع کم‌کیفیت 30 روز متوقف می‌شود و هر هفته منابع جدید پس از تأیید اضافه می‌شوند.</p>
     <div class="tw"><table class="src">
-      <thead><tr><th>منبع</th><th>دسته</th><th>وضعیت</th><th>آخرین مطلب</th><th>میانگین کیفیت</th><th>دفعات انتخاب</th></tr></thead>
+      <thead><tr><th>منبع</th><th>رده</th><th>دسته</th><th>وضعیت</th><th>آخرین مطلب</th><th>میانگین کیفیت</th><th>نرخ قبولی</th><th>دفعات انتخاب</th></tr></thead>
       <tbody>
       {% for r in rows %}
       <tr><td class="ltr" style="text-align:right">{{ r.name }}{% if r.origin == 'scout' %} · new{% endif %}{% if r.repaired %} · repaired{% endif %}</td>
+        <td>{{ r.tier_fa }}</td>
         <td>{{ cats[r.hint].fa if r.hint in cats else '' }}</td>
         <td><span class="st st-{{ r.status }}">{{ r.status_fa }}</span></td>
         <td class="ltr" style="text-align:right">{{ r.last_item_short }}</td>
         <td class="ltr" style="text-align:right">{{ r.avg if r.avg is not none else '' }}</td>
+        <td class="ltr" style="text-align:right">{{ (r.acc_rate|string + '%') if r.acc_rate is not none else '' }}</td>
         <td class="ltr" style="text-align:right">{{ r.picks }}</td></tr>
       {% endfor %}
       </tbody>
@@ -455,12 +464,14 @@ footer{color:var(--mute);font-size:13.5px;margin-top:30px}
   <p class="orig ltr">{{ a.title }}</p>
   <div class="meta">
     <span><b>{{ a.source }}</b></span>
+    {% if a.tier_fa %}<span>{{ a.tier_fa }}</span>{% endif %}
     <span>{% if a.kind == 'paper' %}مقالهٔ علمی{% elif a.kind == 'tutorial' %}آموزش{% else %}تحلیل{% endif %}</span>
     {% if a.level_fa %}<span>سطح: {{ a.level_fa }}</span>{% endif %}
     {% if published %}<span>انتشار: {{ published }}</span>{% endif %}
     <span>متن اصلی: {{ a.read_minutes }} دقیقه</span>
     <span>امتیاز: {{ a.score }}/10</span>
   </div>
+  {% if a.via %}<p style="color:var(--mute);font-size:14px;margin-top:8px">پوشش از طریق <a href="{{ a.via.url }}" target="_blank" rel="noopener" style="color:var(--focus)">{{ a.via.source }}</a>؛ این بریف از منبع اصلی تهیه شده است.</p>{% endif %}
   {% if a.tldr %}<div class="tldr">{{ a.tldr }}</div>{% endif %}
 
   {% if a.about %}<h2>درباره چیست</h2><p>{{ a.about }}</p>{% endif %}

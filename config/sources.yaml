@@ -2,73 +2,77 @@
 # منابع. هر فیدی که در یک اجرا جواب ندهد رد می‌شود و در لاگ Actions
 # با برچسب FEED FAILED دیده می‌شود؛ می‌توان آن را حذف یا اصلاح کرد.
 # hint: دستهٔ پیش‌فرض منبع (مدل می‌تواند آن را تغییر دهد)
+# tier: ردهٔ اعتبار منبع
+#   1 = منبع اصلی: پژوهش، بلاگ داده و مهندسی شرکت‌ها، اعلان رسمی پلتفرم‌ها
+#   2 = تحلیل معتبر: دانشکده‌های کسب‌وکار، مشاوران، نویسندگان شناخته‌شده
+#   3 = خبری یا vendor: پوشش خبری و محتوای شرکت‌هایی که محصول می‌فروشند
 # ---------------------------------------------------------------
 
 feeds:
   # --- مدیریت و استراتژی ---
-  - { name: "Harvard Business Review",  url: "http://feeds.hbr.org/harvardbusiness",            hint: management }
-  - { name: "MIT Sloan Mgmt Review",    url: "https://sloanreview.mit.edu/feed/",               hint: management }
-  - { name: "Knowledge at Wharton",     url: "https://knowledge.wharton.upenn.edu/feed/",       hint: management }
-  - { name: "McKinsey Insights",        url: "https://www.mckinsey.com/insights/rss",           hint: management }
-  - { name: "Stratechery",              url: "https://stratechery.com/feed/",                   hint: management }
-  - { name: "First Round Review",       url: "https://review.firstround.com/feed",              hint: management }
+  - { name: "Harvard Business Review",  url: "http://feeds.hbr.org/harvardbusiness",            hint: management, tier: 2 }
+  - { name: "MIT Sloan Mgmt Review",    url: "https://sloanreview.mit.edu/feed/",               hint: management, tier: 2 }
+  - { name: "Knowledge at Wharton",     url: "https://knowledge.wharton.upenn.edu/feed/",       hint: management, tier: 2 }
+  - { name: "McKinsey Insights",        url: "https://www.mckinsey.com/insights/rss",           hint: management, tier: 2 }
+  - { name: "Stratechery",              url: "https://stratechery.com/feed/",                   hint: management, tier: 2 }
+  - { name: "First Round Review",       url: "https://review.firstround.com/feed",              hint: management, tier: 2 }
 
   # --- مارکتینگ و پرفورمنس ---
-  - { name: "Search Engine Land",       url: "https://searchengineland.com/feed",               hint: performance }
-  - { name: "PPC Land",                 url: "https://ppc.land/rss/",                           hint: performance }
-  - { name: "Google Ads & Commerce",    url: "https://blog.google/products/ads-commerce/rss/",  hint: performance }
-  - { name: "CXL",                      url: "https://cxl.com/blog/feed/",                      hint: marketing }
-  - { name: "Marketing Week",           url: "https://www.marketingweek.com/feed/",             hint: marketing }
-  - { name: "Seth Godin",               url: "https://seths.blog/feed/",                        hint: marketing }
+  - { name: "Search Engine Land",       url: "https://searchengineland.com/feed",               hint: performance, tier: 3 }
+  - { name: "PPC Land",                 url: "https://ppc.land/rss/",                           hint: performance, tier: 3 }
+  - { name: "Google Ads & Commerce",    url: "https://blog.google/products/ads-commerce/rss/",  hint: performance, tier: 1 }
+  - { name: "CXL",                      url: "https://cxl.com/blog/feed/",                      hint: marketing, tier: 2 }
+  - { name: "Marketing Week",           url: "https://www.marketingweek.com/feed/",             hint: marketing, tier: 3 }
+  - { name: "Seth Godin",               url: "https://seths.blog/feed/",                        hint: marketing, tier: 2 }
 
   # --- رشد و کمپین ---
-  - { name: "Lenny's Newsletter",       url: "https://www.lennysnewsletter.com/feed",           hint: growth }
-  - { name: "Andrew Chen",              url: "https://andrewchen.substack.com/feed",            hint: growth }
-  - { name: "Elena Verna",              url: "https://www.elenaverna.com/feed",                 hint: growth }
-  - { name: "Growth Unhinged",          url: "https://www.growthunhinged.com/feed",             hint: growth }
+  - { name: "Lenny's Newsletter",       url: "https://www.lennysnewsletter.com/feed",           hint: growth, tier: 2 }
+  - { name: "Andrew Chen",              url: "https://andrewchen.substack.com/feed",            hint: growth, tier: 2 }
+  - { name: "Elena Verna",              url: "https://www.elenaverna.com/feed",                 hint: growth, tier: 2 }
+  - { name: "Growth Unhinged",          url: "https://www.growthunhinged.com/feed",             hint: growth, tier: 2 }
 
   # --- داده، آزمایش و تجربهٔ شرکت‌های بزرگ ---
-  - { name: "Netflix TechBlog",         url: "https://netflixtechblog.com/feed",                hint: data }
-  - { name: "Airbnb Tech",              url: "https://medium.com/feed/airbnb-engineering",      hint: data }
-  - { name: "Booking.com Data",         url: "https://booking.ai/feed",                         hint: data }
-  - { name: "Spotify Engineering",      url: "https://engineering.atspotify.com/feed/",         hint: data }
-  - { name: "Uber Engineering",         url: "https://www.uber.com/blog/engineering/rss/",      hint: data }
-  - { name: "Instacart Tech",           url: "https://tech.instacart.com/feed",                 hint: data }
-  - { name: "Zalando Engineering",      url: "https://engineering.zalando.com/atom.xml",        hint: data }
-  - { name: "Eugene Yan",               url: "https://eugeneyan.com/rss/",                      hint: data }
+  - { name: "Netflix TechBlog",         url: "https://netflixtechblog.com/feed",                hint: data, tier: 1 }
+  - { name: "Airbnb Tech",              url: "https://medium.com/feed/airbnb-engineering",      hint: data, tier: 1 }
+  - { name: "Booking.com Data",         url: "https://booking.ai/feed",                         hint: data, tier: 1 }
+  - { name: "Spotify Engineering",      url: "https://engineering.atspotify.com/feed/",         hint: data, tier: 1 }
+  - { name: "Uber Engineering",         url: "https://www.uber.com/blog/engineering/rss/",      hint: data, tier: 1 }
+  - { name: "Instacart Tech",           url: "https://tech.instacart.com/feed",                 hint: data, tier: 1 }
+  - { name: "Zalando Engineering",      url: "https://engineering.zalando.com/atom.xml",        hint: data, tier: 1 }
+  - { name: "Eugene Yan",               url: "https://eugeneyan.com/rss/",                      hint: data, tier: 2 }
 
   # --- هوش مصنوعی ---
-  - { name: "OpenAI News",              url: "https://openai.com/news/rss.xml",                 hint: ai }
-  - { name: "Google AI Blog",           url: "https://blog.google/technology/ai/rss/",          hint: ai }
-  - { name: "One Useful Thing",         url: "https://www.oneusefulthing.org/feed",             hint: ai }
-  - { name: "Simon Willison",           url: "https://simonwillison.net/atom/everything/",      hint: ai }
-  - { name: "Latent Space",             url: "https://www.latent.space/feed",                   hint: ai }
+  - { name: "OpenAI News",              url: "https://openai.com/news/rss.xml",                 hint: ai, tier: 1 }
+  - { name: "Google AI Blog",           url: "https://blog.google/technology/ai/rss/",          hint: ai, tier: 1 }
+  - { name: "One Useful Thing",         url: "https://www.oneusefulthing.org/feed",             hint: ai, tier: 2 }
+  - { name: "Simon Willison",           url: "https://simonwillison.net/atom/everything/",      hint: ai, tier: 2 }
+  - { name: "Latent Space",             url: "https://www.latent.space/feed",                   hint: ai, tier: 2 }
 
   # --- ای‌کامرس و ریتیل ---
-  - { name: "Modern Retail",            url: "https://www.modernretail.co/feed/",               hint: commerce }
-  - { name: "Retail Dive",              url: "https://www.retaildive.com/feeds/news/",          hint: commerce }
+  - { name: "Modern Retail",            url: "https://www.modernretail.co/feed/",               hint: commerce, tier: 3 }
+  - { name: "Retail Dive",              url: "https://www.retaildive.com/feeds/news/",          hint: commerce, tier: 3 }
 
   # --- آموزش‌های عملی (type: tutorial) ---
-  - { name: "Ahrefs Blog",              url: "https://ahrefs.com/blog/feed/",                   hint: marketing,   type: tutorial }
-  - { name: "Search Engine Journal",    url: "https://www.searchenginejournal.com/feed/",       hint: performance, type: tutorial }
-  - { name: "Machine Learning Mastery", url: "https://machinelearningmastery.com/feed/",        hint: ai,          type: tutorial }
-  - { name: "Towards Data Science",     url: "https://towardsdatascience.com/feed",             hint: data,        type: tutorial }
-  - { name: "GrowthBook Blog",          url: "https://blog.growthbook.io/rss/",                 hint: data,        type: tutorial }
-  - { name: "Hugging Face Learn",       url: "https://huggingface.co/blog/feed.xml",            hint: ai,          type: tutorial }
+  - { name: "Ahrefs Blog",              url: "https://ahrefs.com/blog/feed/",                   hint: marketing,   type: tutorial, tier: 2 }
+  - { name: "Search Engine Journal",    url: "https://www.searchenginejournal.com/feed/",       hint: performance, type: tutorial, tier: 3 }
+  - { name: "Machine Learning Mastery", url: "https://machinelearningmastery.com/feed/",        hint: ai,          type: tutorial, tier: 2 }
+  - { name: "Towards Data Science",     url: "https://towardsdatascience.com/feed",             hint: data,        type: tutorial, tier: 2 }
+  - { name: "GrowthBook Blog",          url: "https://blog.growthbook.io/rss/",                 hint: data,        type: tutorial, tier: 3 }
+  - { name: "Hugging Face Learn",       url: "https://huggingface.co/blog/feed.xml",            hint: ai,          type: tutorial, tier: 1 }
 
   # --- منابع تکمیلی مارکتینگ، کمپین و eCRM ---
-  - { name: "Marketing Dive",           url: "https://www.marketingdive.com/feeds/news/",       hint: marketing }
-  - { name: "Digiday",                  url: "https://digiday.com/feed/",                       hint: marketing }
-  - { name: "AdExchanger",              url: "https://www.adexchanger.com/feed/",               hint: performance }
-  - { name: "Social Media Examiner",    url: "https://www.socialmediaexaminer.com/feed/",       hint: marketing,   type: tutorial }
-  - { name: "HubSpot Marketing",        url: "https://blog.hubspot.com/marketing/rss.xml",      hint: marketing,   type: tutorial }
-  - { name: "Practical Ecommerce",      url: "https://www.practicalecommerce.com/feed",         hint: commerce,    type: tutorial }
-  - { name: "Retail TouchPoints",       url: "https://www.retailtouchpoints.com/feed",          hint: campaign }
-  - { name: "Growth Memo",              url: "https://www.growth-memo.com/feed",                hint: growth }
-  - { name: "Mixpanel Blog",            url: "https://mixpanel.com/blog/feed/",                 hint: data }
-  - { name: "Optimizely Insights",      url: "https://www.optimizely.com/insights/blog/feed/",  hint: data }
-  - { name: "Klaviyo Blog",             url: "https://www.klaviyo.com/blog/feed",               hint: ecrm,        type: tutorial }
-  - { name: "Customer.io Blog",         url: "https://customer.io/blog/feed/",                  hint: ecrm,        type: tutorial }
+  - { name: "Marketing Dive",           url: "https://www.marketingdive.com/feeds/news/",       hint: marketing, tier: 3 }
+  - { name: "Digiday",                  url: "https://digiday.com/feed/",                       hint: marketing, tier: 3 }
+  - { name: "AdExchanger",              url: "https://www.adexchanger.com/feed/",               hint: performance, tier: 3 }
+  - { name: "Social Media Examiner",    url: "https://www.socialmediaexaminer.com/feed/",       hint: marketing,   type: tutorial, tier: 3 }
+  - { name: "HubSpot Marketing",        url: "https://blog.hubspot.com/marketing/rss.xml",      hint: marketing,   type: tutorial, tier: 3 }
+  - { name: "Practical Ecommerce",      url: "https://www.practicalecommerce.com/feed",         hint: commerce,    type: tutorial, tier: 3 }
+  - { name: "Retail TouchPoints",       url: "https://www.retailtouchpoints.com/feed",          hint: campaign, tier: 3 }
+  - { name: "Growth Memo",              url: "https://www.growth-memo.com/feed",                hint: growth, tier: 2 }
+  - { name: "Mixpanel Blog",            url: "https://mixpanel.com/blog/feed/",                 hint: data, tier: 3 }
+  - { name: "Optimizely Insights",      url: "https://www.optimizely.com/insights/blog/feed/",  hint: data, tier: 3 }
+  - { name: "Klaviyo Blog",             url: "https://www.klaviyo.com/blog/feed",               hint: ecrm,        type: tutorial, tier: 3 }
+  - { name: "Customer.io Blog",         url: "https://customer.io/blog/feed/",                  hint: ecrm,        type: tutorial, tier: 3 }
 
 # مقالات علمی از arXiv (رایگان، جدیدترین‌ها اول)
 # سینتکس: all: / abs: / ti: / cat: با AND / OR / ANDNOT
