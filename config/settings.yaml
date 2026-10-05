@@ -62,7 +62,8 @@ sources_health:
   probation_reject_avg: 5     # زیر این میانگین، منبع جدید رد می‌شود
   primary_discover_min: 2     # منبع اصلی‌ای که در 30 روز حداقل این تعداد بار مرجع مطالب دیگر بوده، نامزد افزودن می‌شود
   primary_discover_per_run: 2
-  report_every_days: 30       # گزارش منابع برای مرور تیم در ایمیل
+  report_every_days: 7        # گزارش هفتگی منابع برای مرور تیم در ایمیل
+  suggest_min_reviewed: 15    # حداقل مطالب بازبینی‌شده برای پیشنهاد تغییر رده
   scout_every_days: 7         # هر چند روز یک بار منابع جدید جست‌وجو شوند
   scout_max_new: 3            # حداکثر منبع جدید در هر جست‌وجو
 

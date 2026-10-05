@@ -1,9 +1,9 @@
 name: daily-digest
 
 on:
-  # هر روز 05:00 UTC = 08:30 تهران؛ با تأخیر GitHub و زمان اجرا، خروجی قبل از ساعت 10 آماده است
+  # پشتیبان: روزهای زوج ماه میلادی 08:33 UTC = 12:03 تهران (تریگر اصلی cron-job.org است)
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "33 8 2-30/2 * *"
   workflow_dispatch:
     inputs:
       force:

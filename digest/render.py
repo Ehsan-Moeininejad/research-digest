@@ -349,7 +349,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   <section class="panel" data-panel="sources" hidden>
     <p class="lead">منابعی که در هر نوبت خوانده می‌شوند. فید خراب خودکار ترمیم یا غیرفعال می‌شود، منبع کم‌کیفیت 30 روز متوقف می‌شود و هر هفته منابع جدید پس از تأیید اضافه می‌شوند.</p>
     <div class="tw"><table class="src">
-      <thead><tr><th>منبع</th><th>رده</th><th>دسته</th><th>وضعیت</th><th>آخرین مطلب</th><th>میانگین کیفیت</th><th>نرخ قبولی</th><th>دفعات انتخاب</th></tr></thead>
+      <thead><tr><th>منبع</th><th>رده</th><th>دسته</th><th>وضعیت</th><th>آخرین مطلب</th><th>میانگین کیفیت</th><th>نرخ قبولی</th><th>دفعات انتخاب</th><th>پیشنهاد</th></tr></thead>
       <tbody>
       {% for r in rows %}
       <tr><td class="ltr" style="text-align:right">{{ r.name }}{% if r.origin == 'scout' %} · new{% endif %}{% if r.repaired %} · repaired{% endif %}</td>
@@ -359,7 +359,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td class="ltr" style="text-align:right">{{ r.last_item_short }}</td>
         <td class="ltr" style="text-align:right">{{ r.avg if r.avg is not none else '' }}</td>
         <td class="ltr" style="text-align:right">{{ (r.acc_rate|string + '%') if r.acc_rate is not none else '' }}</td>
-        <td class="ltr" style="text-align:right">{{ r.picks }}</td></tr>
+        <td class="ltr" style="text-align:right">{{ r.picks }}</td>
+        <td>{{ r.suggest or '' }}</td></tr>
       {% endfor %}
       </tbody>
     </table></div>

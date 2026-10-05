@@ -336,13 +336,25 @@ class SourceRegistry:
                 "tier": int(f.get("tier", 2)), "status": s.get("status", "new"), "last_item": s.get("last_item", ""),
                 "avg": round(sum(sc) / len(sc), 1) if sc else None, "picks": s.get("picks", 0),
                 "acc_rate": round(100 * acc / rev) if rev else None, "reviewed": rev,
+                "suggest": self._suggest(int(f.get("tier", 2)), sc, rev, acc),
                 "repaired": bool(s.get("resolved_url")), "kind": f.get("kind", "article"),
             })
         order = {"active": 0, "probation": 1, "new": 2, "paused": 3, "disabled": 4, "rejected": 5}
         return sorted(rows, key=lambda r: (order.get(r["status"], 9), r["tier"], -(r["picks"] or 0), r["name"]))
 
+    def _suggest(self, tier, scores, rev, acc):
+        """A tier-change hint for the team (never applied automatically: tier describes what a source IS)."""
+        if rev < self.h.get("suggest_min_reviewed", 15) or not scores:
+            return ""
+        avg, rate = sum(scores) / len(scores), acc / rev
+        if tier < 3 and rate < 0.10 and avg < 6:
+            return "بررسی کاهش رده"
+        if tier == 3 and rate >= 0.40 and avg >= 7.5:
+            return "بررسی افزایش رده"
+        return ""
+
     def monthly_report(self, arxiv_sources):
-        """Every N days: the source table plus everything that changed, for the team to review in the email."""
+        """Every N days (weekly by default): the source table, tier hints and everything that changed, for the team to review."""
         if days_since(self.meta.get("last_report")) < self.h.get("report_every_days", 30):
             return None
         since = self.meta.get("last_report") or "0000"

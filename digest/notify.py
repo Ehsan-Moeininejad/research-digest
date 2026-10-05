@@ -108,19 +108,19 @@ def send_email(digest: dict, settings: dict):
     if rep:
         st_fa = {"active": "فعال", "probation": "آزمایشی", "paused": "متوقف", "disabled": "غیرفعال", "rejected": "ردشده", "new": "جدید"}
         tier_fa = {1: "اصلی", 2: "تحلیلی", 3: "خبری"}
-        rows.append(section("گزارش ماهانهٔ منابع", "برای مرور تیم: رده، وضعیت، کیفیت و نرخ قبولی هر منبع"))
+        rows.append(section("گزارش هفتگی منابع", "برای مرور تیم: رده، وضعیت، کیفیت، نرخ قبولی و پیشنهاد تغییر رده"))
         if rep.get("changes"):
             lis = "".join(f'<li style="margin:2px 0">{t(c)}</li>' for c in rep["changes"][:15])
             rows.append(f'<tr><td {td}padding:4px 0 10px;font-size:13px;line-height:1.9;color:{SOFT}">'
-                        f'<b style="color:{INK}">تغییرات این دوره</b><ul style="margin:4px 0;padding-right:18px">{lis}</ul></td></tr>')
+                        f'<b style="color:{INK}">تغییرات این هفته</b><ul style="margin:4px 0;padding-right:18px">{lis}</ul></td></tr>')
         head = "".join(f'<th style="padding:6px 8px;font-size:12px;color:{MUTE};text-align:right;border-bottom:1px solid {LINE}">{h}</th>'
-                       for h in ("منبع", "رده", "وضعیت", "کیفیت", "قبولی", "انتخاب"))
+                       for h in ("منبع", "رده", "وضعیت", "کیفیت", "قبولی", "انتخاب", "پیشنهاد"))
         body_rows = ""
         for r in rep["rows"]:
             if r.get("kind") == "paper":
                 continue
             cells = (t(r["name"]), tier_fa.get(r.get("tier", 2), ""), st_fa.get(r["status"], r["status"]),
-                     r["avg"] if r["avg"] is not None else "", f'{r["acc_rate"]}%' if r.get("acc_rate") is not None else "", r["picks"])
+                     r["avg"] if r["avg"] is not None else "", f'{r["acc_rate"]}%' if r.get("acc_rate") is not None else "", r["picks"], r.get("suggest", ""))
             body_rows += "<tr>" + "".join(f'<td style="padding:5px 8px;font-size:12.5px;color:{INK};border-bottom:1px solid {LINE};font-family:{FONT}">{c}</td>' for c in cells) + "</tr>"
         rows.append(f'<tr><td style="background:#fff;border:1px solid {LINE};border-radius:12px;padding:8px">'
                     f'<table role="presentation" dir="rtl" width="100%" cellpadding="0" cellspacing="0">{head}{body_rows}</table></td></tr>')
