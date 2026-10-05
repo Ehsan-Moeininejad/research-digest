@@ -1,7 +1,8 @@
 {
  "_meta": {
   "last_scout": "2026-10-03",
-  "last_linkcheck": "2026-10-03"
+  "last_linkcheck": "2026-10-03",
+  "log": []
  },
  "http://feeds.hbr.org/harvardbusiness": {
   "status": "active",
@@ -75,7 +76,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 2
  },
  "https://sloanreview.mit.edu/feed/": {
   "status": "active",
@@ -101,7 +103,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-30"
+  "last_item": "2026-09-30",
+  "tier": 2
  },
  "https://knowledge.wharton.upenn.edu/feed/": {
   "status": "active",
@@ -131,7 +134,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 2
  },
  "https://www.mckinsey.com/insights/rss": {
   "status": "active",
@@ -205,7 +209,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 2
  },
  "https://stratechery.com/feed/": {
   "status": "active",
@@ -224,6 +229,7 @@
    5.0,
    5.0,
    7.0,
+   5.0,
    5.0
   ],
   "picks": 0,
@@ -233,7 +239,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-05",
+  "tier": 2
  },
  "https://review.firstround.com/feed": {
   "status": "active",
@@ -247,7 +254,8 @@
   "last_try": "2026-10-05",
   "resolved_url": "https://review.firstround.com/glossary/rss/",
   "last_ok": "2026-10-05",
-  "last_item": "2025-10-27"
+  "last_item": "2025-10-27",
+  "tier": 2
  },
  "https://searchengineland.com/feed": {
   "status": "disabled",
@@ -258,7 +266,8 @@
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://ppc.land/rss/": {
   "status": "active",
@@ -333,7 +342,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
-  "last_pick": "2026-10-05"
+  "last_pick": "2026-10-05",
+  "tier": 3
  },
  "https://blog.google/products/ads-commerce/rss/": {
   "status": "active",
@@ -357,7 +367,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-01"
+  "last_item": "2026-10-01",
+  "tier": 1
  },
  "https://cxl.com/blog/feed/": {
   "status": "disabled",
@@ -368,7 +379,8 @@
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 2
  },
  "https://www.marketingweek.com/feed/": {
   "status": "disabled",
@@ -379,7 +391,8 @@
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://seths.blog/feed/": {
   "status": "active",
@@ -401,7 +414,8 @@
    5.0,
    5.0,
    3.0,
-   3.0
+   3.0,
+   4.0
   ],
   "picks": 2,
   "name": "Seth Godin",
@@ -410,8 +424,9 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-04",
-  "last_pick": "2026-10-04"
+  "last_item": "2026-10-05",
+  "last_pick": "2026-10-04",
+  "tier": 2
  },
  "https://www.lennysnewsletter.com/feed": {
   "status": "active",
@@ -450,7 +465,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-04"
+  "last_item": "2026-10-04",
+  "tier": 2
  },
  "https://andrewchen.substack.com/feed": {
   "status": "disabled",
@@ -461,7 +477,8 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 2
  },
  "https://www.elenaverna.com/feed": {
   "status": "active",
@@ -479,7 +496,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-24"
+  "last_item": "2026-09-24",
+  "tier": 2
  },
  "https://www.growthunhinged.com/feed": {
   "status": "disabled",
@@ -490,7 +508,8 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 2
  },
  "https://netflixtechblog.com/feed": {
   "status": "active",
@@ -506,7 +525,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-25"
+  "last_item": "2026-09-25",
+  "tier": 1
  },
  "https://medium.com/feed/airbnb-engineering": {
   "status": "active",
@@ -525,7 +545,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-09-29",
-  "last_pick": "2026-10-03"
+  "last_pick": "2026-10-03",
+  "tier": 1
  },
  "https://booking.ai/feed": {
   "status": "active",
@@ -543,7 +564,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 1
  },
  "https://engineering.atspotify.com/feed/": {
   "status": "active",
@@ -559,7 +581,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-16"
+  "last_item": "2026-09-16",
+  "tier": 1
  },
  "https://www.uber.com/blog/engineering/rss/": {
   "status": "disabled",
@@ -570,7 +593,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 1
  },
  "https://tech.instacart.com/feed": {
   "status": "active",
@@ -583,7 +607,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-03"
+  "last_item": "2026-09-03",
+  "tier": 1
  },
  "https://engineering.zalando.com/atom.xml": {
   "status": "active",
@@ -598,7 +623,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-24"
+  "last_item": "2026-09-24",
+  "tier": 1
  },
  "https://eugeneyan.com/rss/": {
   "status": "active",
@@ -611,7 +637,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-06-21"
+  "last_item": "2026-06-21",
+  "tier": 2
  },
  "https://openai.com/news/rss.xml": {
   "status": "active",
@@ -667,7 +694,8 @@
    4.0,
    4.0,
    3.0,
-   7.0
+   7.0,
+   6.0
   ],
   "picks": 0,
   "name": "OpenAI News",
@@ -676,7 +704,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-05",
+  "tier": 1
  },
  "https://blog.google/technology/ai/rss/": {
   "status": "paused",
@@ -706,7 +735,8 @@
   "last_try": "2026-10-04",
   "last_ok": "2026-10-04",
   "last_item": "2026-10-02",
-  "until": "2026-11-03"
+  "until": "2026-11-03",
+  "tier": 1
  },
  "https://www.oneusefulthing.org/feed": {
   "status": "active",
@@ -723,7 +753,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-01"
+  "last_item": "2026-10-01",
+  "tier": 2
  },
  "https://simonwillison.net/atom/everything/": {
   "status": "paused",
@@ -776,7 +807,8 @@
   "last_try": "2026-10-04",
   "last_ok": "2026-10-04",
   "last_item": "2026-10-02",
-  "until": "2026-11-03"
+  "until": "2026-11-03",
+  "tier": 2
  },
  "https://www.latent.space/feed": {
   "status": "paused",
@@ -821,7 +853,8 @@
   "last_try": "2026-10-04",
   "last_ok": "2026-10-04",
   "last_item": "2026-10-03",
-  "until": "2026-11-03"
+  "until": "2026-11-03",
+  "tier": 2
  },
  "https://www.modernretail.co/feed/": {
   "status": "active",
@@ -859,7 +892,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
-  "last_pick": "2026-10-04"
+  "last_pick": "2026-10-04",
+  "tier": 3
  },
  "https://www.retaildive.com/feeds/news/": {
   "status": "active",
@@ -884,7 +918,9 @@
    4.0,
    4.0,
    4.0,
-   2.0
+   2.0,
+   4.0,
+   4.0
   ],
   "picks": 1,
   "name": "Retail Dive",
@@ -893,8 +929,9 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02",
-  "last_pick": "2026-10-03"
+  "last_item": "2026-10-05",
+  "last_pick": "2026-10-03",
+  "tier": 3
  },
  "https://ahrefs.com/blog/feed/": {
   "status": "active",
@@ -922,7 +959,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "last_pick": "2026-10-03"
+  "last_pick": "2026-10-03",
+  "tier": 2
  },
  "https://www.searchenginejournal.com/feed/": {
   "status": "active",
@@ -972,7 +1010,8 @@
    5.0,
    6.0,
    7.0,
-   4.0
+   4.0,
+   5.0
   ],
   "picks": 1,
   "name": "Search Engine Journal",
@@ -981,8 +1020,9 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-04",
-  "last_pick": "2026-10-03"
+  "last_item": "2026-10-05",
+  "last_pick": "2026-10-03",
+  "tier": 3
  },
  "https://machinelearningmastery.com/feed/": {
   "status": "active",
@@ -1009,7 +1049,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-01"
+  "last_item": "2026-10-01",
+  "tier": 2
  },
  "https://towardsdatascience.com/feed": {
   "status": "active",
@@ -1062,7 +1103,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-04"
+  "last_item": "2026-10-04",
+  "tier": 2
  },
  "https://blog.growthbook.io/rss/": {
   "status": "disabled",
@@ -1073,7 +1115,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://huggingface.co/blog/feed.xml": {
   "status": "paused",
@@ -1107,7 +1150,8 @@
   "last_try": "2026-10-04",
   "last_ok": "2026-10-04",
   "last_item": "2026-10-02",
-  "until": "2026-11-03"
+  "until": "2026-11-03",
+  "tier": 1
  },
  "https://www.omnisend.com/blog/feed": {
   "status": "active",
@@ -1130,7 +1174,11 @@
    3.0,
    7.0,
    6.0,
-   7.0
+   7.0,
+   5.0,
+   5.0,
+   5.0,
+   5.0
   ],
   "picks": 1,
   "name": "Omnisend Blog",
@@ -1140,7 +1188,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
-  "last_pick": "2026-10-03"
+  "last_pick": "2026-10-03",
+  "tier": 2
  },
  "https://www.practicalecommerce.com/feed": {
   "status": "active",
@@ -1175,7 +1224,8 @@
    3.0,
    6.0,
    4.0,
-   3.0
+   3.0,
+   4.0
   ],
   "picks": 1,
   "name": "Practical Ecommerce",
@@ -1184,8 +1234,9 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-04",
-  "last_pick": "2026-10-04"
+  "last_item": "2026-10-05",
+  "last_pick": "2026-10-04",
+  "tier": 2
  },
  "https://www.digitalcommerce360.com/feed": {
   "status": "active",
@@ -1221,7 +1272,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "last_pick": "2026-10-03"
+  "last_pick": "2026-10-03",
+  "tier": 2
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Aadvertising%20AND%20%28cat%3Acs.IR%20OR%20cat%3Acs.LG%20OR%20cat%3Aecon.GN%29&sortBy=submittedDate&sortOrder=descending&max_results=25": {
   "status": "active",
@@ -1347,6 +1399,8 @@
    4.0,
    8.0,
    6.0,
+   5.0,
+   5.0,
    5.0
   ],
   "picks": 1,
@@ -1356,8 +1410,9 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02",
-  "last_pick": "2026-10-04"
+  "last_item": "2026-10-05",
+  "last_pick": "2026-10-04",
+  "tier": 3
  },
  "https://digiday.com/feed/": {
   "status": "active",
@@ -1381,7 +1436,8 @@
    6.0,
    5.0,
    3.0,
-   4.0
+   4.0,
+   6.0
   ],
   "picks": 6,
   "name": "Digiday",
@@ -1391,7 +1447,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
-  "last_pick": "2026-10-05"
+  "last_pick": "2026-10-05",
+  "tier": 3
  },
  "https://www.adexchanger.com/feed/": {
   "status": "active",
@@ -1419,7 +1476,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
-  "last_pick": "2026-10-05"
+  "last_pick": "2026-10-05",
+  "tier": 3
  },
  "https://www.socialmediaexaminer.com/feed/": {
   "status": "active",
@@ -1449,7 +1507,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-01"
+  "last_item": "2026-10-01",
+  "tier": 3
  },
  "https://blog.hubspot.com/marketing/rss.xml": {
   "status": "active",
@@ -1476,7 +1535,8 @@
   "kind": "article",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 3
  },
  "https://www.retailtouchpoints.com/feed": {
   "status": "disabled",
@@ -1487,7 +1547,8 @@
   "hint": "campaign",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://www.growth-memo.com/feed": {
   "status": "active",
@@ -1509,7 +1570,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "last_pick": "2026-10-04"
+  "last_pick": "2026-10-04",
+  "tier": 2
  },
  "https://mixpanel.com/blog/feed/": {
   "status": "disabled",
@@ -1520,7 +1582,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://www.optimizely.com/insights/blog/feed/": {
   "status": "disabled",
@@ -1531,7 +1594,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://www.klaviyo.com/blog/feed": {
   "status": "disabled",
@@ -1542,7 +1606,8 @@
   "hint": "ecrm",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "https://customer.io/blog/feed/": {
   "status": "disabled",
@@ -1553,7 +1618,8 @@
   "hint": "ecrm",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-04"
+  "last_try": "2026-10-04",
+  "tier": 3
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Aadvertising%20AND%20%28cat%3Acs.IR%20OR%20cat%3Acs.LG%20OR%20cat%3Aecon.GN%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1591,7 +1657,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-09-29",
-  "last_pick": "2026-10-04"
+  "last_pick": "2026-10-04",
+  "tier": 1
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Auplift%20AND%20%28abs%3Amarketing%20OR%20abs%3Acoupon%20OR%20abs%3Aincentive%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1607,7 +1674,8 @@
   "kind": "paper",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-24"
+  "last_item": "2026-09-24",
+  "tier": 1
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Ae-commerce%20AND%20abs%3Arecommendation%20AND%20cat%3Acs.IR&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1627,7 +1695,8 @@
   "kind": "paper",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-09-30"
+  "last_item": "2026-09-30",
+  "tier": 1
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Achurn%20OR%20%28abs%3Acustomer%20AND%20abs%3Aretention%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1663,7 +1732,8 @@
   "kind": "paper",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 1
  },
  "http://export.arxiv.org/api/query?search_query=%28abs%3Apromotion%20OR%20abs%3Acoupon%20OR%20abs%3Adiscount%29%20AND%20%28abs%3Ae-commerce%20OR%20abs%3Aretail%20OR%20abs%3Amarketing%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1689,7 +1759,8 @@
   "kind": "paper",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-02"
+  "last_item": "2026-10-02",
+  "tier": 1
  },
  "http://export.arxiv.org/api/query?search_query=%28abs%3ALLM%20OR%20abs%3Aagent%29%20AND%20%28abs%3Amarketing%20OR%20abs%3Aadvertising%20OR%20abs%3Ae-commerce%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1751,7 +1822,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "last_pick": "2026-10-04"
+  "last_pick": "2026-10-04",
+  "tier": 1
  },
  "http://export.arxiv.org/api/query?search_query=cat%3Aecon.GN%20AND%20%28abs%3Aplatform%20OR%20abs%3Amarketplace%20OR%20abs%3Apricing%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1793,6 +1865,7 @@
   "kind": "paper",
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
-  "last_item": "2026-10-01"
+  "last_item": "2026-10-01",
+  "tier": 1
  }
 }
