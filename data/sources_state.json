@@ -2,10 +2,77 @@
  "_meta": {
   "last_scout": "2026-10-03",
   "last_linkcheck": "2026-10-03",
-  "log": []
+  "log": [
+   [
+    "2026-10-05",
+    "منبع Harvard Business Review به دلیل میانگین کیفیت 5.0 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Knowledge at Wharton به دلیل میانگین کیفیت 4.9 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع McKinsey Insights به دلیل میانگین کیفیت 5.0 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع PPC Land به دلیل میانگین کیفیت 4.2 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Seth Godin به دلیل میانگین کیفیت 5.3 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع OpenAI News به دلیل میانگین کیفیت 4.2 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Retail Dive به دلیل میانگین کیفیت 4.3 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Search Engine Journal به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Towards Data Science به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Omnisend Blog به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Practical Ecommerce به دلیل میانگین کیفیت 5.1 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Digital Commerce 360 به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Digiday به دلیل میانگین کیفیت 5.5 برای 30 روز متوقف شد"
+   ],
+   [
+    "2026-10-05",
+    "منبع Social Media Examiner به دلیل میانگین کیفیت 5.1 برای 30 روز متوقف شد"
+   ]
+  ],
+  "primary_cites": {
+   "ads.openai.com": {
+    "dates": [
+     "2026-10-05"
+    ],
+    "cat": "ai",
+    "home": "http://ads.openai.com/"
+   }
+  },
+  "last_report": "2026-10-05"
  },
  "http://feeds.hbr.org/harvardbusiness": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    6.0,
@@ -77,7 +144,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://sloanreview.mit.edu/feed/": {
   "status": "active",
@@ -107,7 +175,7 @@
   "tier": 2
  },
  "https://knowledge.wharton.upenn.edu/feed/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    5.0,
@@ -135,10 +203,11 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://www.mckinsey.com/insights/rss": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    7.0,
@@ -210,7 +279,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://stratechery.com/feed/": {
   "status": "active",
@@ -270,7 +340,7 @@
   "tier": 3
  },
  "https://ppc.land/rss/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    4.0,
@@ -334,7 +404,7 @@
    5.0,
    3.0
   ],
-  "picks": 2,
+  "picks": 3,
   "name": "PPC Land",
   "hint": "performance",
   "origin": "config",
@@ -343,7 +413,10 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-05",
-  "tier": 3
+  "tier": 3,
+  "rev": 4,
+  "acc": 0,
+  "until": "2026-11-04"
  },
  "https://blog.google/products/ads-commerce/rss/": {
   "status": "active",
@@ -395,7 +468,7 @@
   "tier": 3
  },
  "https://seths.blog/feed/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    6.0,
@@ -426,7 +499,8 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-04",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://www.lennysnewsletter.com/feed": {
   "status": "active",
@@ -641,7 +715,7 @@
   "tier": 2
  },
  "https://openai.com/news/rss.xml": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    8.0,
@@ -705,7 +779,10 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
-  "tier": 1
+  "tier": 1,
+  "rev": 1,
+  "acc": 1,
+  "until": "2026-11-04"
  },
  "https://blog.google/technology/ai/rss/": {
   "status": "paused",
@@ -896,7 +973,7 @@
   "tier": 3
  },
  "https://www.retaildive.com/feeds/news/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    5.0,
@@ -931,7 +1008,8 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-03",
-  "tier": 3
+  "tier": 3,
+  "until": "2026-11-04"
  },
  "https://ahrefs.com/blog/feed/": {
   "status": "active",
@@ -963,7 +1041,7 @@
   "tier": 2
  },
  "https://www.searchenginejournal.com/feed/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    5.0,
@@ -1022,7 +1100,8 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-03",
-  "tier": 3
+  "tier": 3,
+  "until": "2026-11-04"
  },
  "https://machinelearningmastery.com/feed/": {
   "status": "active",
@@ -1053,7 +1132,7 @@
   "tier": 2
  },
  "https://towardsdatascience.com/feed": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    5.0,
@@ -1104,7 +1183,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-04",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://blog.growthbook.io/rss/": {
   "status": "disabled",
@@ -1154,7 +1234,7 @@
   "tier": 1
  },
  "https://www.omnisend.com/blog/feed": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    5.0,
@@ -1189,10 +1269,11 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-03",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://www.practicalecommerce.com/feed": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    4.0,
@@ -1236,10 +1317,11 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-04",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "https://www.digitalcommerce360.com/feed": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    6.0,
@@ -1273,7 +1355,8 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-02",
   "last_pick": "2026-10-03",
-  "tier": 2
+  "tier": 2,
+  "until": "2026-11-04"
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Aadvertising%20AND%20%28cat%3Acs.IR%20OR%20cat%3Acs.LG%20OR%20cat%3Aecon.GN%29&sortBy=submittedDate&sortOrder=descending&max_results=25": {
   "status": "active",
@@ -1415,7 +1498,7 @@
   "tier": 3
  },
  "https://digiday.com/feed/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    6.0,
@@ -1439,7 +1522,7 @@
    4.0,
    6.0
   ],
-  "picks": 6,
+  "picks": 7,
   "name": "Digiday",
   "hint": "marketing",
   "origin": "config",
@@ -1448,7 +1531,10 @@
   "last_ok": "2026-10-05",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-05",
-  "tier": 3
+  "tier": 3,
+  "rev": 1,
+  "acc": 1,
+  "until": "2026-11-04"
  },
  "https://www.adexchanger.com/feed/": {
   "status": "active",
@@ -1468,7 +1554,7 @@
    7.0,
    6.0
   ],
-  "picks": 5,
+  "picks": 6,
   "name": "AdExchanger",
   "hint": "performance",
   "origin": "config",
@@ -1480,7 +1566,7 @@
   "tier": 3
  },
  "https://www.socialmediaexaminer.com/feed/": {
-  "status": "active",
+  "status": "paused",
   "fails": 0,
   "scores": [
    5.0,
@@ -1508,7 +1594,8 @@
   "last_try": "2026-10-05",
   "last_ok": "2026-10-05",
   "last_item": "2026-10-01",
-  "tier": 3
+  "tier": 3,
+  "until": "2026-11-04"
  },
  "https://blog.hubspot.com/marketing/rss.xml": {
   "status": "active",
