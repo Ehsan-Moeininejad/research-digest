@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دایجست تیم پرفورمنس | 1405/07/15</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16.5px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+.topbar{background:#fff;border-bottom:3px solid var(--focus)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:12px;flex-wrap:wrap}
+.topbar .logo{color:var(--focus);font-weight:800;font-size:20px}
+.topbar .sub{color:var(--mute);font-size:13px}
+.mast{padding:30px 0 22px;background:#fff;border-bottom:1px solid var(--rule)}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+.brand b{color:var(--soft)}
+.date{margin:18px 0 2px;font-size:clamp(30px,6.5vw,46px);font-weight:800;line-height:1.3}
+.greg{color:var(--mute);font-size:14.5px}
+.note{margin:20px 0 0;font-size:18px;line-height:2;color:var(--soft);max-width:68ch}
+.stats{display:flex;gap:26px;margin-top:18px;color:var(--mute);font-size:13.5px;flex-wrap:wrap}
+.stats strong{display:block;color:var(--text);font-size:21px;font-weight:700;line-height:1.4}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.tabbar{display:flex;gap:4px;padding-top:10px}
+.tab{border:0;background:transparent;color:var(--mute);font:inherit;font-size:15.5px;font-weight:700;padding:8px 16px 10px;cursor:pointer;
+  border-bottom:2.5px solid transparent;text-decoration:none}
+.tab[aria-selected="true"]{color:var(--focus);border-bottom-color:var(--focus)}
+.tab span{font-weight:400;opacity:.65;margin-inline-start:4px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1 1 100%;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--rule);background:transparent;color:var(--soft);font:inherit;font-size:13.5px;padding:3px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--c,#EF4056);border-color:var(--c,#EF4056);color:#fff;font-weight:700}
+.chip span{opacity:.7;margin-inline-start:4px}
+.search{flex:1 1 220px;min-width:0;background:var(--sheet);border:1px solid var(--rule);color:var(--text);font:inherit;font-size:14.5px;padding:6px 14px;border-radius:10px}
+.search::placeholder{color:var(--mute)}
+select{background:var(--sheet);border:1px solid var(--rule);color:var(--soft);font:inherit;font-size:14px;padding:6px 10px;border-radius:10px}
+
+.panel{padding:6px 0 60px}
+.panel[hidden]{display:none}
+.group{margin-top:34px}
+.group h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--c);margin:0 0 4px}
+.group h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.group h2 small{color:var(--mute);font-weight:400}
+
+article{position:relative;margin:14px 0;background:var(--sheet);border-radius:12px;border:1px solid var(--rule);border-right:4px solid var(--c);padding:20px 22px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;color:var(--mute);font-size:13px}
+.meta .src{color:var(--soft);font-weight:700}
+.badge{border:1px solid currentColor;border-radius:6px;padding:0 7px;font-size:12px;color:var(--c)}
+.badge.hot{background:var(--focus);border-color:var(--focus);color:#fff;font-weight:700}
+.badge.day{color:var(--mute)}
+.meta .score{margin-inline-start:auto}
+article.ranked .meta,article.ranked h3{padding-left:46px}
+.rank{position:absolute;top:18px;left:18px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--c);color:#fff}
+article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
+.orig{color:var(--mute);font-size:13.5px;line-height:1.6;margin:2px 0 0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:14px 0 0;font-size:17.5px;line-height:1.95;font-weight:700;color:var(--text)}
+.new{margin:8px 0 0;color:var(--soft)}
+.via{margin:6px 0 0;font-size:13px;color:var(--mute)}.via a{color:var(--focus)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+.box{background:var(--sheet-2);border-radius:10px;padding:10px 14px}
+.box h4{margin:0 0 4px;font-size:13.5px;color:var(--c);font-weight:700}
+.box ul,.act ul{margin:0;padding-inline-start:18px}
+.box li,.act li{margin:3px 0;font-size:15px;line-height:1.85}
+.act{margin-top:12px;border-right:3px solid var(--focus);border-radius:8px;padding:10px 14px;background:#FFF2F4}
+.act h4{margin:0 0 4px;font-size:13.5px;color:var(--focus);font-weight:800}
+.cav{margin-top:10px;color:var(--mute);font-size:14px}
+.cav b{color:var(--soft);font-weight:700}
+.foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)}
+.teams{display:flex;gap:6px;flex-wrap:wrap}
+.teams span,.tags span{font-size:12px;color:var(--soft);background:#F0F0F1;padding:1px 10px;border-radius:12px}
+.tags span{color:var(--mute)}
+.go{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;background:var(--focus);padding:7px 18px;border-radius:8px}
+.go:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.go.ghost{background:#fff;color:var(--soft);border:1px solid var(--rule)}
+.url{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+.url:hover{color:var(--soft)}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:18px;color:var(--c);font-weight:800}
+details.more[open] summary::before{content:"−"}
+
+.lead{color:var(--soft);margin:18px 0 0;max-width:70ch}
+.empty{display:none;text-align:center;color:var(--mute);padding:40px 0}
+.tw{overflow-x:auto;margin-top:20px}
+table.src{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+table.src th{white-space:nowrap;text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
+.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
+footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+@media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
+</style>
+</head>
+<body>
+
+
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span><span class="ltr sub">Research &amp; Industry Digest</span></div></div>
+<header class="mast">
+  <div class="wrap">
+    <div class="date">چهارشنبه 15 مهر 1405</div>
+    <div class="greg ltr" style="text-align:right">07 Oct 2026</div>
+    <p class="note">پژوهش های امروز بر چالش های اندازه گیری، مدیریت ریسک و کنترل سوگیری در عصر هوش مصنوعی و بازاریابی دیجیتال تمرکز دارند. تیم باید با بازنگری در مدل های اتریبیوشن و ایجاد چارچوب های کنترلی، خطاهای ناشی از اتکای صرف به ابزارهای خودکار را به حداقل برساند.</p>
+    <div class="stats">
+      <div><strong>7</strong>مطلب تازهٔ این نوبت</div>
+      <div><strong>28</strong>متن کامل بازبینی‌شده</div>
+      <div><strong>72</strong>مطلب غربال‌شده</div>
+      
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="بخش‌ها">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab" role="tab" data-tab="latest" aria-selected="true">مطالب این نوبت<span>7</span></button>
+      
+      <a class="tab" href="../index.html">بازگشت به آخرین نسخه</a>
+      
+    </div>
+    <div class="tools">
+      <div class="chips" role="group" aria-label="دسته‌ها"></div>
+      <input class="search" type="search" placeholder="جست‌وجو: عنوان، اقدام، تیم (eCRM، Ads ...)" aria-label="جست‌وجو">
+      <select class="arch" aria-label="آرشیو نوبت‌ها" onchange="if(this.value)location.href=this.value">
+        <option value="../archive/2026-10-07.html" selected>1405/07/15</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" data-panel="latest">
+    
+    
+    <div class="group" data-group="marketing" style="--c:#E6123D">
+      <h2>مارکتینگ و برند <small class="ltr">Marketing &amp; Brand</small></h2>
+      <article data-cat="marketing" data-text="سنجش دیده‌شدن در جستجوی هوش مصنوعی هنگام ضعف ابزارهای اتریبیوشن how to measure ai search visibility when attribution falls short برای توجیه سرمایه‌گذاری روی جستجوی هوش مصنوعی، باید نشانگرهای پنهان مانند ارجاعات مستقیم، نظرسنجی از مشتریان و رشد منشن‌های برند را ترکیب کرد. این راهنما که توسط بخش بازاریابی محتوای ahrefs نوشته شده است، روش‌های عملی و چندبعدی را برای اندازه‌گیری تأثیر و ترافیک موتورهای جستجوی مبتنی بر هوش مصنوعی مانند chatgpt و claude روی کسب‌وکارها بررسی می‌کند. نویسنده استدلال می‌کند که اتریبیوشن سنتی فقط نوک کوه یخ تأثیر هوش مصنوعی را نشان می‌دهد و شرکت‌ها نباید به دلیل محدودیت ابزارهای تحلیلی، سرمایه‌گذاری روی هوش مصنوعی را متوقف کنند؛ بلکه باید با ترکیب داده‌های آشکار و سیگنال‌های پیشرو، تصویر کاملی از بازگشت سرمایه بسازند. سوال &#39;چگونه ما را پیدا کردید؟&#39; در جریان آنبردینگ کاربران مارکت‌پلیس را بازبینی کرده و گزینه‌های llm را اضافه کنیم. تغییرات ترافیک دایرکت و برند سرچ را بعد از کمپین‌های محتوایی هوش مصنوعی به دقت مانیتور کنیم. ابزارهای تحلیل مکالمات و بازخوردهای کیفی ecrm را برای استخراج پرامپت‌ها و نام بردن از برند توسط کاربران کاوش کنیم. ai search attribution analytics seo ads ecrm data product ahrefs blog" style="--c:#E6123D">
+  
+  <div class="meta">
+    <span class="src">Ahrefs Blog</span>
+    <span class="badge">آموزش</span>
+    <span class="badge">تحلیل معتبر</span>
+    <span>کاربردی</span>
+    <span>6 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.3/10</span>
+  </div>
+  <h3>سنجش دیده‌شدن در جستجوی هوش مصنوعی هنگام ضعف ابزارهای اتریبیوشن</h3>
+  <p class="orig ltr">How to Measure AI Search Visibility When Attribution Falls Short</p>
+  
+  <p class="tldr">برای توجیه سرمایه‌گذاری روی جستجوی هوش مصنوعی، باید نشانگرهای پنهان مانند ارجاعات مستقیم، نظرسنجی از مشتریان و رشد منشن‌های برند را ترکیب کرد.</p>
+  <p class="new">این راهنما که توسط بخش بازاریابی محتوای Ahrefs نوشته شده است، روش‌های عملی و چندبعدی را برای اندازه‌گیری تأثیر و ترافیک موتورهای جستجوی مبتنی بر هوش مصنوعی مانند ChatGPT و Claude روی کسب‌وکارها بررسی می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>سوال &#39;چگونه ما را پیدا کردید؟&#39; در جریان آنبردینگ کاربران مارکت‌پلیس را بازبینی کرده و گزینه‌های LLM را اضافه کنیم.</li><li>تغییرات ترافیک دایرکت و برند سرچ را بعد از کمپین‌های محتوایی هوش مصنوعی به دقت مانیتور کنیم.</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">eCRM</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/b5405b00d2edfa7d.html">خواندن بریف کامل</a><a class="go ghost" href="https://ahrefs.com/blog/how-to-measure-ai-search-visibility/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://ahrefs.com/blog/how-to-measure-ai-search-visibility/" target="_blank" rel="noopener">https://ahrefs.com/blog/how-to-measure-ai-search-visibility/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="data" style="--c:#1E88E5">
+      <h2>داده و آزمایش <small class="ltr">Data &amp; Experimentation</small></h2>
+      <article data-cat="data" data-text="استفاده از خطای نمونه‌برداری برای انتخاب متریک‌های پروکسی در تست‌های ای/بی the noise is the signal: correlated sampling error is rank-informative for proxy metric selection خطای نمونه‌برداری مشترک میان متریک پروکسی و متریک اصلی، برخلاف تصور گذشته، اطلاعات مفیدی برای انتخاب بهترین متریک پروکسی فراهم می‌کند. این مقاله پژوهشی از حوزه پلتفرم‌ها و اقتصاد، به چالش انتخاب متریک‌های پروکسی (جانشین) در آزمایش‌های ای/بی می‌پردازد. نویسندگان بررسی می‌کنند که چگونه می‌توان بر تأخیر و نویز متریک‌های بلندمدت مانند ltv غلبه کرد. متن ارائه‌شده چکیده یک مقاله علمی است که به رویکردهای نوین در پلتفرم‌های بزرگ آزمایش اشاره دارد. نویسندگان استدلال می‌کنند که برخلاف تلاش‌های معمول برای حذف خطای نمونه‌برداری مشترک، این خطا حاوی اطلاعات رتبه‌ای ارزشمندی است. این اطلاعات می‌تواند در انتخاب بهینه متریک‌های پروکسی برای هدایت تست‌های ای/بی کوتاه‌مدت به کار گرفته شود. بررسی متریک‌های پروکسی فعلی در تیم‌های ads و ecrm برای تصمیم‌گیری‌های سریع‌تر تحلیل همبستگی خطای آماری میان متریک‌های واسطه و ltv واقعی کاربران در مارکت‌پلیس آزمایش روش‌های نوین اعتبارسنجی متریک‌های جایگزین در پلتفرم experimentation ab testing metrics experimentation proxy metric data product leadership arxiv · platforms &amp; econ" style="--c:#1E88E5">
+  
+  <div class="meta">
+    <span class="src">arXiv · Platforms &amp; Econ</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>3 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>استفاده از خطای نمونه‌برداری برای انتخاب متریک‌های پروکسی در تست‌های ای/بی</h3>
+  <p class="orig ltr">The Noise Is the Signal: Correlated Sampling Error Is Rank-Informative for Proxy Metric Selection</p>
+  
+  <p class="tldr">خطای نمونه‌برداری مشترک میان متریک پروکسی و متریک اصلی، برخلاف تصور گذشته، اطلاعات مفیدی برای انتخاب بهترین متریک پروکسی فراهم می‌کند.</p>
+  <p class="new">این مقاله پژوهشی از حوزه پلتفرم‌ها و اقتصاد، به چالش انتخاب متریک‌های پروکسی (جانشین) در آزمایش‌های ای/بی می‌پردازد. نویسندگان بررسی می‌کنند که چگونه می‌توان بر تأخیر و نویز متریک‌های بلندمدت مانند LTV غلبه کرد. متن ارائه‌شده چکیده یک مقاله علمی است که به رویکردهای نوین در پلتفرم‌های بزرگ آزمایش اشاره دارد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی متریک‌های پروکسی فعلی در تیم‌های Ads و eCRM برای تصمیم‌گیری‌های سریع‌تر</li><li>تحلیل همبستگی خطای آماری میان متریک‌های واسطه و LTV واقعی کاربران در مارکت‌پلیس</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/9a96c4191d05b212.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.08194v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.08194v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.08194v1</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="ai" style="--c:#6A4BC4">
+      <h2>هوش مصنوعی <small class="ltr">AI &amp; Agents</small></h2>
+      <article data-cat="ai" data-text="بررسی سیستماتیک سوگیری در مدل‌های زبانی بزرگ برای ارزیابی ربط تبلیغات a systematic investigation of bias in large language models for advertising relevance پژوهش نشان می‌دهد مدل‌های زبانی بزرگ مانند gpt-4o و qwen-7b در قضاوت درباره ربط تبلیغات به کوئری‌ها دچار سوگیری‌های ساختاری ناشی از هویت تبلیغ‌کننده، زبان و متن جمعیت‌شناختی می‌شوند. این پژوهش که در قالب یک مقاله علمی در حوزه هوش مصنوعی و بازاریابی منتشر شده، به ارزیابی عدالت و سوگیری در قضاوت‌های ربط تبلیغات توسط مدل‌های زبانی بزرگ می‌پردازد. نویسندگان از مدل‌های gpt-4o و qwen-7b به‌عنوان داور ربط استفاده کرده‌اند. نویسندگان استدلال می‌کنند که استفاده از llmها به عنوان داوران خودکار ربط تبلیغات بدون کنترل سوگیری‌های زمینه‌ای و زبانی می‌تواند نتایج ناعادلانه و غیردقیقی تولید کند که نیازمند بازنگری در طراحی پرامپت‌ها و داده‌های آموزشی است. موتورهای تصمیم‌گیری مبتنی بر llm برای بهینه‌سازی ads و رنکینگ تبلیغات را از نظر سوگیری هویت و زبان ممیزی کنید در شخصی‌سازی پیام‌ها و تبلیغات از طریق llmها، اثر متغیرهای جمعیت‌شناختی را با آزمایش‌های کنترلی بسنجید از اتکای صرف به مدل‌های زبانی آماده برای قضاوت‌های اتوماتیک کیفیت و ربط بدون نگهبان‌های داده‌محور پرهیز کنید llm ads bias evaluation ads data product arxiv · llm for marketing" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">arXiv · LLM for Marketing</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>بررسی سیستماتیک سوگیری در مدل‌های زبانی بزرگ برای ارزیابی ربط تبلیغات</h3>
+  <p class="orig ltr">A Systematic Investigation of Bias in Large Language Models for Advertising Relevance</p>
+  
+  <p class="tldr">پژوهش نشان می‌دهد مدل‌های زبانی بزرگ مانند GPT-4o و Qwen-7B در قضاوت درباره ربط تبلیغات به کوئری‌ها دچار سوگیری‌های ساختاری ناشی از هویت تبلیغ‌کننده، زبان و متن جمعیت‌شناختی می‌شوند.</p>
+  <p class="new">این پژوهش که در قالب یک مقاله علمی در حوزه هوش مصنوعی و بازاریابی منتشر شده، به ارزیابی عدالت و سوگیری در قضاوت‌های ربط تبلیغات توسط مدل‌های زبانی بزرگ می‌پردازد. نویسندگان از مدل‌های GPT-4o و Qwen-7B به‌عنوان داور ربط استفاده کرده‌اند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>موتورهای تصمیم‌گیری مبتنی بر LLM برای بهینه‌سازی Ads و رنکینگ تبلیغات را از نظر سوگیری هویت و زبان ممیزی کنید</li><li>در شخصی‌سازی پیام‌ها و تبلیغات از طریق LLMها، اثر متغیرهای جمعیت‌شناختی را با آزمایش‌های کنترلی بسنجید</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/5e8f12d0d0299eb8.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.07544v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.07544v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.07544v1</a>
+</article><article data-cat="ai" data-text="مدیریت ریسک مالی و اثربخشی در عصر عاملیت هوش مصنوعی در تبلیغات who eats the spending gap when agentic spend outpaces proof of impact? عوامل هوش مصنوعی در تبلیغات می‌توانند پیش از دریافت داده‌های اثربخشی واقعی، سرمایه زیادی را هدر دهند که نیازمند بودجه‌های ریسک مجزا و ضمانت‌های قراردادی است. این مقاله تحلیلی نوشته evgeny popov در وبسایت adexchanger به بررسی چالش مالی و اعتباری ناشی از سرعت بالای تصمیم‌گیری ایجنت‌های هوش مصنوعی در مقایسه با تاخیر زمانی دریافت داده‌های بازگشت سرمایه و اثربخشی می‌پردازد. نویسنده نتیجه می‌گیرد که ایجنت‌های هوش مصنوعی نمی‌توانند اعتبار داده‌های خود را تضمین کنند و سرعت بالای تصمیم‌گیری آن‌ها خطرات مالی جدیدی ایجاد می‌کند. حل این مشکل مستلزم تفکیک استاندارد اثربخشی در تست، تعهد پرداخت در قرارداد و پشتیبانی ترازنامه مالی و بیمه‌ای از ریسک‌های احتمالی است. بررسی میزان بودجه‌ای که ایجنت‌های خودکار پیش از دریافت بازخورد قطعی کمپین مصرف می‌کنند طراحی مکانیسم‌های حفاظتی و سقف بودجه برای آزمایش‌های خودکار در حوزه‌های ads و ecrm تکمیل قراردادهای همکاری با پلتفرم‌ها و تامین‌کنندگان برای انتقال ریسک افت عملکرد به طرف مقابل پرهیز از اتکای صرف به امتیاز اعتماد درون‌سیستمی ایجنت‌ها برای توسعه دامنه کمپین‌ها ai-agents ad-spend risk-management attribution ads data product leadership adexchanger" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">AdExchanger</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.3/10</span>
+  </div>
+  <h3>مدیریت ریسک مالی و اثربخشی در عصر عاملیت هوش مصنوعی در تبلیغات</h3>
+  <p class="orig ltr">Who Eats The Spending Gap When Agentic Spend Outpaces Proof Of Impact?</p>
+  
+  <p class="tldr">عوامل هوش مصنوعی در تبلیغات می‌توانند پیش از دریافت داده‌های اثربخشی واقعی، سرمایه زیادی را هدر دهند که نیازمند بودجه‌های ریسک مجزا و ضمانت‌های قراردادی است.</p>
+  <p class="new">این مقاله تحلیلی نوشته Evgeny Popov در وبسایت AdExchanger به بررسی چالش مالی و اعتباری ناشی از سرعت بالای تصمیم‌گیری ایجنت‌های هوش مصنوعی در مقایسه با تاخیر زمانی دریافت داده‌های بازگشت سرمایه و اثربخشی می‌پردازد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی میزان بودجه‌ای که ایجنت‌های خودکار پیش از دریافت بازخورد قطعی کمپین مصرف می‌کنند</li><li>طراحی مکانیسم‌های حفاظتی و سقف بودجه برای آزمایش‌های خودکار در حوزه‌های Ads و eCRM</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/f1bc88d33cb96248.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.adexchanger.com/data-driven-thinking/who-eats-the-spending-gap-when-agentic-spend-outpaces-proof-of-impact/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.adexchanger.com/data-driven-thinking/who-eats-the-spending-gap-when-agentic-spend-outpaces-proof-of-impact/" target="_blank" rel="noopener">https://www.adexchanger.com/data-driven-thinking/who-eats-the-spending-gap-when-agentic-spend-outpaces-proof-of-impact/</a>
+</article><article data-cat="ai" data-text="اعتبارسنجی مدل‌های ترکیب بازاریابی ساخته شده با هوش مصنوعی want an ai-built mmm you can trust? start with a thesis ساخت سریع مدل‌های بازاریابی با ai نیازمند مثلث‌سازی با تست‌های افزایشی و فرضیه‌محوری برای جلوگیری از خطاهای فاجعه‌بار است. این متن گزارشی از پادکست inside the stack در نشریه adexchanger است که در آن مادان بارادواج، بنیانگذار و مدیرعامل شرکت m-squared، درباره چگونگی ارزیابی قابلیت اعتماد مدل‌های marketing mix model (mmm) ساخته شده با هوش مصنوعی صحبت می‌کند. سرعت بالای تولید مدل توسط هوش مصنوعی قضاوت انسانی را بی‌نیاز نمی‌کند، بلکه آن را حیاتی‌تر می‌سازد؛ بنابراین بازاریابان باید با تدوین فرضیه و استفاده از روش‌های ترکیبی مانند تست‌های افزایشی، اعتبار مدل‌ها را تضمین کنند. بررسی قابلیت اتکای مدل‌های اسناد و انتساب در بخش ads با اجرای تست‌های holdout پیاده‌سازی رویکرد تست‌های افزایشی موازی برای اعتبارسنجی الگوریتم‌های پیشنهاددهنده تحلیل داده‌ها در سطوح خردتر (مانند دسته‌بندی کالاها) به جای تکیه صرف بر کلان‌داده‌های مارکت‌پلیس mmm ai incrementality attribution ads data leadership adexchanger" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">AdExchanger</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>3 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.6/10</span>
+  </div>
+  <h3>اعتبارسنجی مدل‌های ترکیب بازاریابی ساخته شده با هوش مصنوعی</h3>
+  <p class="orig ltr">Want an AI-Built MMM You Can Trust? Start With a Thesis</p>
+  
+  <p class="tldr">ساخت سریع مدل‌های بازاریابی با AI نیازمند مثلث‌سازی با تست‌های افزایشی و فرضیه‌محوری برای جلوگیری از خطاهای فاجعه‌بار است.</p>
+  <p class="new">این متن گزارشی از پادکست Inside the Stack در نشریه AdExchanger است که در آن مادان بارادواج، بنیانگذار و مدیرعامل شرکت M-Squared، درباره چگونگی ارزیابی قابلیت اعتماد مدل‌های Marketing Mix Model (MMM) ساخته شده با هوش مصنوعی صحبت می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی قابلیت اتکای مدل‌های اسناد و انتساب در بخش Ads با اجرای تست‌های holdout</li><li>پیاده‌سازی رویکرد تست‌های افزایشی موازی برای اعتبارسنجی الگوریتم‌های پیشنهاددهنده</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/a3591a324b465190.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.adexchanger.com/inside-the-stack/want-an-ai-built-mmm-you-can-trust-start-with-a-thesis/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.adexchanger.com/inside-the-stack/want-an-ai-built-mmm-you-can-trust-start-with-a-thesis/" target="_blank" rel="noopener">https://www.adexchanger.com/inside-the-stack/want-an-ai-built-mmm-you-can-trust-start-with-a-thesis/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="commerce" style="--c:#C2185B">
+      <h2>ای‌کامرس و محصول <small class="ltr">E-commerce &amp; Product</small></h2>
+      <article data-cat="commerce" data-text="تخمین غیرپارامتریک و مقیاس‌پذیر تقاضا در بازارهای محصولات متمایز scalable nonparametric demand estimation in differentiated product markets این مقاله یک روش غیرپارامتریک مقیاس‌پذیر برای تخمین منحنی تقاضا با استفاده از داده‌های سطح بازار معرفی می‌کند که نفرین ابعاد را دور می‌زند. این پژوهش که در قالب یک مقاله علمی در آرخیو منتشر شده است، به توسعه یک چارچوب جدید برای تخمین تقاضا در بازارهای با محصولات متمایز می‌پردازد. نویسنده روشی را ارائه می‌کند که انعطاف‌پذیری مدل‌های غیرپارامتریک را با مقیاس‌پذیری مورد نیاز برای محصولات متعدد ترکیب می‌کند. نویسنده نتیجه می‌گیرد که با ترکیب محدودیت‌های اقتصادی و رویکرد غیرپارامتریک می‌توان تقاضای محصولات متمایز را به شکلی مقیاس‌پذیر و دقیق تخمین زد. این روش بدون قربانی کردن انعطاف‌پذیری منحنی تقاضا، زمان محاسبات را به شدت کاهش می‌دهد و پاسخ‌های واقع‌بینانه‌تری به سناریوهای قیمتی ارائه می‌کند. بررسی امکان استفاده از این متد برای بهینه‌سازی قیمت‌گذاری پویا در مارکت‌پلیس ارزیابی سرعت محاسبات این مدل در مقایسه با الگوریتم‌های فعلی تخمین کشش قیمت تست مدل روی دسته‌بندی‌های کالایی بزرگ برای سنجش کارایی در مقیاس میلیون‌ها کاربر demand-estimation pricing econometrics nonparametric data ads product leadership arxiv · platforms &amp; econ" style="--c:#C2185B">
+  
+  <div class="meta">
+    <span class="src">arXiv · Platforms &amp; Econ</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.5/10</span>
+  </div>
+  <h3>تخمین غیرپارامتریک و مقیاس‌پذیر تقاضا در بازارهای محصولات متمایز</h3>
+  <p class="orig ltr">Scalable Nonparametric Demand Estimation in Differentiated Product Markets</p>
+  
+  <p class="tldr">این مقاله یک روش غیرپارامتریک مقیاس‌پذیر برای تخمین منحنی تقاضا با استفاده از داده‌های سطح بازار معرفی می‌کند که نفرین ابعاد را دور می‌زند.</p>
+  <p class="new">این پژوهش که در قالب یک مقاله علمی در آرخیو منتشر شده است، به توسعه یک چارچوب جدید برای تخمین تقاضا در بازارهای با محصولات متمایز می‌پردازد. نویسنده روشی را ارائه می‌کند که انعطاف‌پذیری مدل‌های غیرپارامتریک را با مقیاس‌پذیری مورد نیاز برای محصولات متعدد ترکیب می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان استفاده از این متد برای بهینه‌سازی قیمت‌گذاری پویا در مارکت‌پلیس</li><li>ارزیابی سرعت محاسبات این مدل در مقایسه با الگوریتم‌های فعلی تخمین کشش قیمت</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Data</span><span class="ltr">Ads</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/048db32e6708b551.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.08467v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.08467v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.08467v1</a>
+</article><article data-cat="commerce" data-text="استراتژی موفق برند shapermint در فروش tiktok shop از طریق اینفلوئنسرهای بالای 35 سال shapermint is on track to hit $10m in tiktok shop sales by targeting women ages 35-65 برند shapermint با تمرکز روی اینفلوئنسرهای زن بالای 35 سال در tiktok shop مسیر رشد سریع‌تری را تجربه کرده و به درآمد 10 میلیون دلاری نزدیک می‌شود. این مقاله که در وب‌سایت modern retail منتشر شده، به بررسی استراتژی بازاریابی برند لباس فرم و گن shapermint در پلتفرم tiktok shop می‌پردازد. گزارش شامل مصاحبه با گابریل ریچاردز، مدیر برند shapermint است و نحوه تطبیق این برند با الگوی خرید جدید مبتنی بر کشف محصول را تشریح می‌کند. نویسندگان و مدیران برند بر این باورند که برخلاف جستجوی سنتی، خریداران در tiktok shop بر اساس کشف محتوا تصمیم می‌گیرند. تطبیق سن اینفلوئنسرها با دموگرافیک واقعی خریداران و نشان دادن کاربرد واقعی محصول در خانه، کلید اصلی تبدیل مخاطب و مقیاس‌پذیری فروش در این پلتفرم است. تست افیلیت مارکتینگ با اینفلوئنسرهای خارج از رده سنی جوان و متناسب با دموگرافیک واقعی خریداران کالاهای خاص ایجاد ساختار ارتباطی اختصاصی مانند کانال‌های discord یا ابزارهای مشابه برای بریف‌دهی و پشتیبانی سازندگان محتوا اجرای قوانین سخت‌گیرانه نمونه‌برداری (sample policy) برای اطمینان از انتشار محتوا در بازه زمانی مشخص تمرکز بر محتواهای آموزشی و کاربردی خانگی برای دسته‌بندی‌هایی که خرید آنلاین آن‌ها نیاز به اعتمادسازی دارد tiktok shop affiliate marketing influencer marketing ecommerce affiliate engagement ads leadership modern retail" style="--c:#C2185B">
+  
+  <div class="meta">
+    <span class="src">Modern Retail</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>4 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.6/10</span>
+  </div>
+  <h3>استراتژی موفق برند Shapermint در فروش TikTok Shop از طریق اینفلوئنسرهای بالای 35 سال</h3>
+  <p class="orig ltr">Shapermint is on track to hit $10M in TikTok Shop sales by targeting women ages 35-65</p>
+  
+  <p class="tldr">برند Shapermint با تمرکز روی اینفلوئنسرهای زن بالای 35 سال در TikTok Shop مسیر رشد سریع‌تری را تجربه کرده و به درآمد 10 میلیون دلاری نزدیک می‌شود.</p>
+  <p class="new">این مقاله که در وب‌سایت Modern Retail منتشر شده، به بررسی استراتژی بازاریابی برند لباس فرم و گن Shapermint در پلتفرم TikTok Shop می‌پردازد. گزارش شامل مصاحبه با گابریل ریچاردز، مدیر برند Shapermint است و نحوه تطبیق این برند با الگوی خرید جدید مبتنی بر کشف محصول را تشریح می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>تست افیلیت مارکتینگ با اینفلوئنسرهای خارج از رده سنی جوان و متناسب با دموگرافیک واقعی خریداران کالاهای خاص</li><li>ایجاد ساختار ارتباطی اختصاصی مانند کانال‌های Discord یا ابزارهای مشابه برای بریف‌دهی و پشتیبانی سازندگان محتوا</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Affiliate</span><span class="ltr">Engagement</span><span class="ltr">Ads</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/e681c53382ce8d2f.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.modernretail.co/marketing/shapermint-is-on-track-to-hit-10m-in-tiktok-shop-sales-by-targeting-women-ages-35-65/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.modernretail.co/marketing/shapermint-is-on-track-to-hit-10m-in-tiktok-shop-sales-by-targeting-women-ages-35-65/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">https://www.modernretail.co/marketing/shapermint-is-on-track-to-hit-10m-in-tiktok-shop-sales-by-targeting-women-ages-35-65/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss</a>
+</article>
+    </div>
+    
+    
+    <p class="empty">مطلبی با این فیلتر پیدا نشد.</p>
+  </section>
+
+  
+</main>
+
+<footer><div class="wrap">به‌روزرسانی: 12:11 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+
+<script>
+(function(){
+  var CATS={"ai": {"color": "#6A4BC4", "en": "AI \u0026 Agents", "fa": "\u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc"}, "campaign": {"color": "#F57C00", "en": "Campaigns \u0026 Promotions", "fa": "\u06a9\u0645\u067e\u06cc\u0646 \u0648 \u067e\u0631\u0648\u0645\u0648\u0634\u0646"}, "commerce": {"color": "#C2185B", "en": "E-commerce \u0026 Product", "fa": "\u0627\u06cc\u200c\u06a9\u0627\u0645\u0631\u0633 \u0648 \u0645\u062d\u0635\u0648\u0644"}, "data": {"color": "#1E88E5", "en": "Data \u0026 Experimentation", "fa": "\u062f\u0627\u062f\u0647 \u0648 \u0622\u0632\u0645\u0627\u06cc\u0634"}, "ecrm": {"color": "#8E44AD", "en": "eCRM \u0026 Retention", "fa": "eCRM \u0648 \u0648\u0641\u0627\u062f\u0627\u0631\u06cc"}, "growth": {"color": "#2E9E4F", "en": "Growth", "fa": "\u0631\u0634\u062f"}, "management": {"color": "#3F51B5", "en": "Management \u0026 Strategy", "fa": "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0648 \u0627\u0633\u062a\u0631\u0627\u062a\u0698\u06cc"}, "marketing": {"color": "#E6123D", "en": "Marketing \u0026 Brand", "fa": "\u0645\u0627\u0631\u06a9\u062a\u06cc\u0646\u06af \u0648 \u0628\u0631\u0646\u062f"}, "performance": {"color": "#0097A7", "en": "Performance \u0026 Ads", "fa": "\u067e\u0631\u0641\u0648\u0631\u0645\u0646\u0633 \u0648 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a"}};
+  var tabs=[].slice.call(document.querySelectorAll('[data-tab]')), panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+  var chipsEl=document.querySelector('.chips'), q=document.querySelector('.search'), sel=document.querySelector('.arch');
+  var state={tab:'latest',cat:'all'};
+  function panel(){return document.querySelector('[data-panel="'+state.tab+'"]');}
+  function buildChips(){
+    var p=panel(), arts=[].slice.call(p.querySelectorAll('article')), counts={};
+    arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
+    var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
+    Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
+    chipsEl.innerHTML=h; chipsEl.style.display=(state.tab==='sources')?'none':'flex'; q.style.display=(state.tab==='sources')?'none':'';
+    sel.style.display=(state.tab==='latest')?'':'none';
+  }
+  function apply(){
+    var p=panel(), term=(q.value||'').trim().toLowerCase(), shown=0, arts=[].slice.call(p.querySelectorAll('article'));
+    arts.forEach(function(a){var ok=(state.cat==='all'||a.dataset.cat===state.cat)&&(!term||a.dataset.text.indexOf(term)>-1);a.hidden=!ok;if(ok)shown++;});
+    [].forEach.call(p.querySelectorAll('.group'),function(g){g.hidden=!g.querySelector('article:not([hidden])');});
+    var e=p.querySelector('.empty'); if(e)e.style.display=(arts.length&&!shown)?'block':'none';
+  }
+  function show(name,push){
+    if(!document.querySelector('[data-panel="'+name+'"]'))name='latest';
+    state.tab=name; state.cat='all';
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===name?'true':'false');});
+    panels.forEach(function(p){p.hidden=p.dataset.panel!==name;});
+    buildChips(); apply();
+    if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
+    [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
+  q.addEventListener('input',apply);
+  var prefix="../", cur="2026-10-07";
+  fetch(prefix+'archive.json').then(function(r){return r.json();}).then(function(list){
+    sel.innerHTML='';
+    list.forEach(function(a,i){var o=document.createElement('option');o.value=prefix+'archive/'+a.date+'.html';
+      o.textContent=a.short+(i===0?' (آخرین)':'');if(a.date===cur)o.selected=true;sel.appendChild(o);});
+  }).catch(function(){});
+  show((location.hash||'').replace('#','')||'latest',false);
+})();
+</script>
+</body>
+</html>
