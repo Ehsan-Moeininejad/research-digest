@@ -71,6 +71,20 @@
     ],
     "cat": "ai",
     "home": "http://ads.openai.com/"
+   },
+   "adcontextprotocol.org": {
+    "dates": [
+     "2026-10-08"
+    ],
+    "cat": "ai",
+    "home": "https://adcontextprotocol.org/"
+   },
+   "reuters.com": {
+    "dates": [
+     "2026-10-08"
+    ],
+    "cat": "commerce",
+    "home": "https://www.reuters.com/"
    }
   },
   "last_report": "2026-10-05"
@@ -168,16 +182,17 @@
    7.0,
    7.0,
    6.0,
-   6.0
+   6.0,
+   7.0
   ],
   "picks": 0,
   "name": "MIT Sloan Mgmt Review",
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-06",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
   "tier": 2
  },
  "https://knowledge.wharton.upenn.edu/feed/": {
@@ -307,17 +322,21 @@
    7.0,
    5.0,
    5.0,
-   4.0
+   4.0,
+   5.0,
+   7.0
   ],
   "picks": 0,
   "name": "Stratechery",
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-06",
-  "tier": 2
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-08",
+  "tier": 2,
+  "rev": 2,
+  "acc": 0
  },
  "https://review.firstround.com/feed": {
   "status": "active",
@@ -328,9 +347,9 @@
   "hint": "management",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
+  "last_try": "2026-10-08",
   "resolved_url": "https://review.firstround.com/glossary/rss/",
-  "last_ok": "2026-10-07",
+  "last_ok": "2026-10-08",
   "last_item": "2025-10-27",
   "tier": 2
  },
@@ -445,8 +464,8 @@
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-01",
   "tier": 1
  },
@@ -546,11 +565,11 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-05",
   "tier": 2,
-  "rev": 1,
+  "rev": 2,
   "acc": 0
  },
  "https://andrewchen.substack.com/feed": {
@@ -580,8 +599,8 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-05",
   "tier": 2
  },
@@ -609,8 +628,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-09-25",
   "tier": 1
  },
@@ -629,8 +648,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-06",
   "last_pick": "2026-10-03",
   "tier": 1
@@ -649,8 +668,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-02",
   "tier": 1,
   "rev": 1,
@@ -661,16 +680,17 @@
   "fails": 0,
   "scores": [
    6.0,
-   8.0
+   8.0,
+   4.0
   ],
   "picks": 0,
   "name": "Spotify Engineering",
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-09-16",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-08",
   "tier": 1
  },
  "https://www.uber.com/blog/engineering/rss/": {
@@ -694,8 +714,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-09-03",
   "tier": 1
  },
@@ -703,16 +723,17 @@
   "status": "active",
   "fails": 0,
   "scores": [
-   8.0
+   8.0,
+   6.0
   ],
   "picks": 0,
   "name": "Zalando Engineering",
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-09-24",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
   "tier": 1
  },
  "https://eugeneyan.com/rss/": {
@@ -724,8 +745,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-06-21",
   "tier": 2
  },
@@ -843,8 +864,8 @@
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-01",
   "tier": 2
  },
@@ -979,20 +1000,23 @@
    8.0,
    4.0,
    7.0,
-   6.0
+   6.0,
+   7.0,
+   6.0,
+   8.0
   ],
-  "picks": 6,
+  "picks": 7,
   "name": "Modern Retail",
   "hint": "commerce",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-07",
-  "last_pick": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-08",
+  "last_pick": "2026-10-08",
   "tier": 3,
-  "rev": 1,
-  "acc": 1
+  "rev": 3,
+  "acc": 2
  },
  "https://www.retaildive.com/feeds/news/": {
   "status": "paused",
@@ -1058,12 +1082,12 @@
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-06",
   "last_pick": "2026-10-07",
   "tier": 2,
-  "rev": 2,
+  "rev": 5,
   "acc": 1
  },
  "https://www.searchenginejournal.com/feed/": {
@@ -1147,16 +1171,18 @@
    5.0,
    6.0,
    5.0,
-   7.0
+   7.0,
+   6.0,
+   6.0
   ],
   "picks": 0,
   "name": "Machine Learning Mastery",
   "hint": "ai",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-06",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-08",
   "tier": 2
  },
  "https://towardsdatascience.com/feed": {
@@ -1599,20 +1625,24 @@
    6.0,
    7.0,
    6.0,
-   8.0
+   8.0,
+   7.0,
+   7.0,
+   6.0,
+   7.0
   ],
-  "picks": 8,
+  "picks": 10,
   "name": "AdExchanger",
   "hint": "performance",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-07",
-  "last_pick": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-08",
+  "last_pick": "2026-10-08",
   "tier": 3,
-  "rev": 5,
-  "acc": 2
+  "rev": 7,
+  "acc": 4
  },
  "https://www.socialmediaexaminer.com/feed/": {
   "status": "paused",
@@ -1668,18 +1698,20 @@
    6.0,
    5.0,
    6.0,
-   5.0
+   5.0,
+   7.0,
+   8.0
   ],
   "picks": 0,
   "name": "HubSpot Marketing",
   "hint": "marketing",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-06",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
   "tier": 3,
-  "rev": 4,
+  "rev": 6,
   "acc": 0
  },
  "https://www.retailtouchpoints.com/feed": {
@@ -1712,8 +1744,8 @@
   "hint": "growth",
   "origin": "config",
   "kind": "article",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-05",
   "last_pick": "2026-10-04",
   "tier": 2,
@@ -1796,18 +1828,21 @@
    2.0,
    8.0,
    6.0,
-   5.0
+   5.0,
+   8.0
   ],
-  "picks": 1,
+  "picks": 2,
   "name": "arXiv · Advertising",
   "hint": "performance",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-05",
-  "last_pick": "2026-10-04",
-  "tier": 1
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
+  "last_pick": "2026-10-08",
+  "tier": 1,
+  "rev": 1,
+  "acc": 1
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Auplift%20AND%20%28abs%3Amarketing%20OR%20abs%3Acoupon%20OR%20abs%3Aincentive%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -1821,8 +1856,8 @@
   "hint": "data",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-09-24",
   "tier": 1
  },
@@ -1843,11 +1878,11 @@
   "hint": "commerce",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-06",
   "tier": 1,
-  "rev": 2,
+  "rev": 3,
   "acc": 0
  },
  "http://export.arxiv.org/api/query?search_query=abs%3Achurn%20OR%20%28abs%3Acustomer%20AND%20abs%3Aretention%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
@@ -1876,16 +1911,17 @@
    2.0,
    8.0,
    2.0,
-   7.0
+   7.0,
+   5.0
   ],
   "picks": 0,
   "name": "arXiv · Retention",
   "hint": "ecrm",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-06",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
   "tier": 1,
   "rev": 1,
   "acc": 0
@@ -1905,29 +1941,28 @@
    4.0,
    8.0,
    6.0,
-   2.0
+   2.0,
+   8.0,
+   5.0,
+   5.0
   ],
-  "picks": 0,
+  "picks": 1,
   "name": "arXiv · Promotions",
   "hint": "campaign",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-02",
-  "tier": 1
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
+  "tier": 1,
+  "rev": 1,
+  "acc": 1,
+  "last_pick": "2026-10-08"
  },
  "http://export.arxiv.org/api/query?search_query=%28abs%3ALLM%20OR%20abs%3Aagent%29%20AND%20%28abs%3Amarketing%20OR%20abs%3Aadvertising%20OR%20abs%3Ae-commerce%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
   "fails": 0,
   "scores": [
-   7.0,
-   7.0,
-   7.0,
-   8.0,
-   8.0,
-   8.0,
-   6.0,
    6.0,
    8.0,
    7.0,
@@ -1979,20 +2014,28 @@
    5.0,
    4.0,
    7.0,
-   6.0
+   6.0,
+   6.0,
+   5.0,
+   5.0,
+   5.0,
+   5.0,
+   5.0,
+   5.0,
+   7.0
   ],
-  "picks": 4,
+  "picks": 5,
   "name": "arXiv · LLM for Marketing",
   "hint": "ai",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
-  "last_item": "2026-10-06",
-  "last_pick": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
+  "last_item": "2026-10-07",
+  "last_pick": "2026-10-08",
   "tier": 1,
-  "rev": 6,
-  "acc": 3
+  "rev": 7,
+  "acc": 4
  },
  "http://export.arxiv.org/api/query?search_query=cat%3Aecon.GN%20AND%20%28abs%3Aplatform%20OR%20abs%3Amarketplace%20OR%20abs%3Apricing%29&sortBy=submittedDate&sortOrder=descending&max_results=40": {
   "status": "active",
@@ -2037,8 +2080,8 @@
   "hint": "management",
   "origin": "config",
   "kind": "paper",
-  "last_try": "2026-10-07",
-  "last_ok": "2026-10-07",
+  "last_try": "2026-10-08",
+  "last_ok": "2026-10-08",
   "last_item": "2026-10-06",
   "tier": 1,
   "rev": 2,

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ترکیب قیمت‌گذاری و تبلیغات با مدل‌های زبانی بزرگ از طریق الگوریتم Actor-Critic | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;--c:#0097A7;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border-right:4px solid var(--focus);border-radius:10px;padding:14px 20px;background:#FFF2F4}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:var(--focus);padding:8px 20px;border-radius:8px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">پرفورمنس و تبلیغات <span class="ltr" style="color:var(--mute);font-weight:400">Performance &amp; Ads</span></div>
+  <h1>ترکیب قیمت‌گذاری و تبلیغات با مدل‌های زبانی بزرگ از طریق الگوریتم Actor-Critic</h1>
+  <p class="orig ltr">Marrying Pricing and Advertising with LLMs</p>
+  <div class="meta">
+    <span><b>arXiv · Advertising</b></span>
+    <span>منبع اصلی</span>
+    <span>مقالهٔ علمی</span>
+    <span>سطح: پیشرفته</span>
+    <span>انتشار: 1405/07/15</span>
+    <span>متن اصلی: 5 دقیقه</span>
+    <span>امتیاز: 8.8/10</span>
+  </div>
+  
+  <div class="tldr">پژوهشگران یک الگوریتم آنلاین Actor-Critic مبتنی بر LoRA برای بهینه‌سازی همزمان قیمت و محتوای تبلیغاتی تولید شده توسط LLM پیشنهاد داده‌اند.</div>
+
+  <h2>درباره چیست</h2><p>این مقاله پژوهشی دانشگاهی که در حوزه تبلیغات و یادگیری ماشین نوشته شده است، به مسئله قیمت‌گذاری ترتیبی و بهینه‌سازی همزمان قیمت‌گذاری کالا و تولید متن تبلیغاتی توسط مدل‌های زبانی بزرگ می‌پردازد. نویسندگان چارچوب جدیدی ارائه میدهند که در آن فروشنده بدون داشتن دانش قبلی از تابع تقاضا، تنها با مشاهده رویداد خرید یا عدم خرید، تصمیمات خود را بهینه می‌کند.</p>
+  <h2>مسئله و اهمیت</h2><p>در پلتفرم‌های تجارت الکترونیک، قیمت کالا و کیفیت یا جذابیت متن تبلیغاتی تأثیر مستقیمی بر تقاضا دارند، اما معمولاً به صورت مجزا بهینه‌سازی می‌شوند. مسئله کلیدی این است که چگونه می‌توان همزمان قیمت و محتوای تولید شده توسط LLM را در شرایطی که تابع تقاضا نامشخص است و تنها بازخورد باینری خرید دریافت می‌شود، برای حداکثرسازی درآمد هدایت کرد.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>نویسندگان یک الگوریتم آنلاین Actor-Critic توسعه داده‌اند که از ترکیب تکنیک تطبیق با رتبه پایین روی مدل زبانی از پیش آموزش‌دیده (LoRA) و یک مدل تقاضای آماری استفاده می‌کند. بخش Actor مسئول تولید محتوای تبلیغاتی است و بخش Critic احتمالات خرید را برای تعیین قیمت بهینه تخمین می‌زند. بازخورد ناشی از هر تراکنش برای به‌روزرسانی مداوم هر دو بخش به کار گرفته می‌شود.</p>
+  <h2>روش و اجزا</h2><ul><li>تعریف مسئله قیمت‌گذاری ترتیبی و بهینه‌سازی مشترک قیمت و تبلیغ</li><li>طراحی الگوریتم آنلاین Actor-Critic با بهره‌گیری از LoRA روی LLM</li><li>توسعه مدل تخمین تقاضا بر اساس داده‌های تعامل و بازخورد خرید</li><li>به‌روزرسانی همزمان بخش‌های Actor و Critic در هر دور بر اساس بازخورد درآمدی</li></ul>
+  
+  <h2>نتیجه‌گیری</h2><p>نویسندگان استدلال می‌کنند که ترکیب مدل‌های زبانی بزرگ با الگوریتم‌های یادگیری تقویتی آنلاین و تخمین‌گرهای تقاضا می‌تواند به طور همزمان قیمت و محتوا را در محیط‌های ناشناخته بهینه‌سازی کند. این رویکرد به فروشندگان اجازه می‌دهد بدون نیاز به فرض‌های اولیه سنگین درباره تابع تقاضا، درآمد خود را از طریق یادگیری تعاملی افزایش دهند.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>بررسی امکان استفاده از مدل‌های زبانی مجهز به LoRA برای شخصی‌سازی متن تبلیغات در واحد Ads</li><li>آزمایش رویکردهای یادگیری تقویتی آنلاین برای قیمت‌گذاری پویا همراه با تولید محتوا</li><li>ارزیابی الگوهای Actor-Critic برای تصمیم‌گیری ترکیبی در کمپین‌های پرفورمنس مارکتینگ</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>متن در دست رس تنها شامل چکیده مقاله است و جزئیات تجربی کامل یا اعداد دقیق عملکرد ذکر نشده است</li><li>اثربخشی روش در مقیاس واقعی روی میلیون‌ها کاربر نیاز به تست‌های میدانی دارد</li></ul>
+  <div class="tags"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">LLM</span><span class="ltr">Pricing</span><span class="ltr">Ads</span><span class="ltr">Actor-Critic</span></div>
+
+  <div class="source">
+    <a class="go" href="https://arxiv.org/abs/2610.09985v1" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://arxiv.org/abs/2610.09985v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.09985v1</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>
