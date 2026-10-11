@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مسدودسازی دامنه‌ای ارائه‌دهندگان هویت در iOS 27 و پیامدهای آن برای صنعت Ad Tech | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;--c:#0097A7;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border-right:4px solid var(--focus);border-radius:10px;padding:14px 20px;background:#FFF2F4}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:var(--focus);padding:8px 20px;border-radius:8px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">پرفورمنس و تبلیغات <span class="ltr" style="color:var(--mute);font-weight:400">Performance &amp; Ads</span></div>
+  <h1>مسدودسازی دامنه‌ای ارائه‌دهندگان هویت در iOS 27 و پیامدهای آن برای صنعت Ad Tech</h1>
+  <p class="orig ltr">How Data And Ad Tech Vendors Are Preparing For The iOS 27 Fallout</p>
+  <div class="meta">
+    <span><b>AdExchanger</b></span>
+    <span>خبری / vendor</span>
+    <span>تحلیل</span>
+    <span>سطح: کاربردی</span>
+    <span>انتشار: 1405/07/16</span>
+    <span>متن اصلی: 5 دقیقه</span>
+    <span>امتیاز: 6.6/10</span>
+  </div>
+  
+  <div class="tldr">اقدام اپل در بلاک کردن دامنه‌ای وندورهای هویت در iOS 27، رهگیری و اتریبیوشن برون‌برنامه‌ای را فلج کرده و پلتفرم‌ها را وادار به بازگشت اضطراری به زیرساخت‌های First-party می‌کند.</div>
+
+  <h2>درباره چیست</h2><p>این گزارش تحلیلی به قلم وب‌سایت AdExchanger به بررسی عواقب انتشار نسخه جدید سیستم‌عامل اپل یعنی iOS 27 و تغییرات موتور WebKit در مسدودسازی ارائه‌دهندگان داده و هویت تبلیغاتی پرداخته است. مقاله بر اساس گفت‌وگو با مدیران فنی شرکت‌های بلاک‌شده از جمله The Trade Desk، LiveRamp، Permutive و منابع نزدیک به تیم WebKit تهیه شده و بحران ایجادشده در اکوسیستم Programmatic را تشریح می‌کند.</p>
+  <h2>مسئله و اهمیت</h2><p>اپل بدون اطلاع‌رسانی قبلی، دامنه‌های ریشه‌ای وندورهای هویت نظیر UID2، LiveRamp و حتی دامنه اصلی سرو تبلیغات The Trade Desk یعنی adsrvr.org را مسدود کرد. این مسدودسازی نه در سطح کوکی، بلکه در سطح کامل دامنه اعمال شد که موجب شکست کامل فرآیند تطبیق هویت، قطعی اتریبیوشن چندکاناله، و حتی سوخت شدن بودجه تبلیغ‌دهندگانی گردید که برنده مزایده‌ها در DSP شدند اما ایمپرشن آن‌ها در مرورگر Safari هرگز رندر نشد.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>نویسنده از طریق مصاحبه‌های میدانی و تحلیل تعاملات فنی در WebKit Bugzilla، ابعاد مداخله اپل و رویکرد کمپانی‌ها را ردیابی کرده است. گزارش مقایسه‌ای تاریخی میان سیاست‌های شفاف قبلی اپل مانند ITP در سال 2017 و ATT در سال 2021 با سیاست فعلی مبتنی بر پنهان‌کاری نشان می‌دهد؛ در حالی که اپل در نسخه بتای iOS 27.2 به طور موقت دامنه اصلی سرو TTD را آزاد کرده، اما لیست سیاهی از صدها ارائه‌دهنده داده شخص ثالث در حال گسترش است.</p>
+  <h2>روش و اجزا</h2><ul><li>مسدودسازی گسترده دامنه‌های همگام‌سازی و سرو تبلیغات مانند adsrvr.org و pippio.com در WebKit با انتشار نسخه iOS 27</li><li>پیگیری فنی DSPها از طریق Bugzilla و توافق موقت برای خروج دامنه سرو TTD در نسخه بتای iOS 27.2 با تاخیر 3 تا 4 هفته‌ای در انتشار عمومی</li><li>افشای پیروزی تبلیغ‌دهندگان در بیدها و پرداخت هزینه برای تبلیغاتی که به دلیل بلاک دامنه هرگز رندر نشدند</li><li>کوچ شتاب‌زده ناشران و ارائه‌دهندگان هویت به معماری‌های کاملا بومی First-party و دامنه‌های اختصاصی مشتریان</li></ul>
+  <h2>یافته‌ها و اعداد</h2><ul><li>اپل در نسخه بتای iOS 27.2 تنها دامنه adsrvr.org مربوط به TTD را آزاد کرد، در حالی که زیردامنه تطبیق کوکی match.adsrvr.org و سایر شناسه‌ها مسدود ماندند</li><li>انتشار عمومی نسخه پایدار iOS 27.2 حدود 3 الی 4 هفته زمان می‌برد و تا آن زمان تمام ایمپرشن‌های Safari در iOS 27 مسدود هستند</li><li>دامنه‌های هویتی با قدمت نزدیک به 10 سال مانند pippio.com (متعلق به LiveRamp) که پایه‌گذار RampID بودند، به همراه UID2 به طور کامل در Safari از کار افتادند</li><li>لاگ‌های برندگان حراج در آژانس‌ها نشان می‌دهد تبلیغ‌دهندگان هزینه تبلیغاتی را پرداخت کرده‌اند که در دیوایس‌های دارای iOS 27 اصلا رندر نشده‌اند</li></ul>
+  <h2>نتیجه‌گیری</h2><p>رویکرد اپل از محدودسازی تدریجی به اجرای سیاست عدم تحمل ردگیری و Fingerprinting در سطح دامنه تغییر یافته است. وندورهایی که گراف‌های هویتی خود را طی سال‌ها روی دامنه‌های اشتراکی بنا کرده بودند، در معرض حذف کامل قرار دارند و تغییر دامنه صرفاً راه‌حلی موقت است. صنعت تبلیغات چاره‌ای جز پذیرش مدل‌های هویت مبتنی بر دیتای مستقیم و First-party روی زیرساخت خود ناشر یا تبلیغ‌دهنده ندارد.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>بررسی وضعیت لاگ‌های پیروزی مزایده در ادنتورک‌ها و DSPهای طرف قرارداد برای شناسایی ترافیک‌های iOS 27 که بدون رندر شدن برای مارکت‌پلیس فاکتور شده‌اند</li><li>قطع وابستگی مدل‌های اتریبیوشن و ترکینگ کمپین‌های Ads به شناسه‌های شخص ثالث نظیر UID2 و انتقال کامل به سرور اختصاصی First-party</li><li>بازنگری در قراردادهای آژانس‌ها و پلتفرم‌های تبلیغاتی جهت درج بندهای شفاف در خصوص بازگشت بودجه (Reconciliation) در زمان مسدودسازی‌های سطح پلتفرم</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>متن مقاله در پاراگراف پایانی ناقص و قطع شده است</li><li>نام‌گذاری نسخه iOS به صورت 27 در متن اصلی آمده که ممکن است نگارش فرضی یا اشتباه تایپی منبع در برابر نسخه‌های رایج بازار باشد</li></ul>
+  <div class="tags"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Leadership</span><span class="ltr">AdTech</span><span class="ltr">Safari</span><span class="ltr">Identity</span><span class="ltr">Attribution</span></div>
+
+  <div class="source">
+    <a class="go" href="https://www.adexchanger.com/platforms/how-data-and-ad-tech-vendors-are-preparing-for-the-ios-27-fallout/" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://www.adexchanger.com/platforms/how-data-and-ad-tech-vendors-are-preparing-for-the-ios-27-fallout/" target="_blank" rel="noopener">https://www.adexchanger.com/platforms/how-data-and-ad-tech-vendors-are-preparing-for-the-ios-27-fallout/</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>
