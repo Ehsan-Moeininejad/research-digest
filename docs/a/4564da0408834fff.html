@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تحلیل پرسش‌های انشعابی و الگوهای استناد در جستجوی ChatGPT | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;--c:#2E9E4F;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border-right:4px solid var(--focus);border-radius:10px;padding:14px 20px;background:#FFF2F4}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:var(--focus);padding:8px 20px;border-radius:8px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">رشد <span class="ltr" style="color:var(--mute);font-weight:400">Growth</span></div>
+  <h1>تحلیل پرسش‌های انشعابی و الگوهای استناد در جستجوی ChatGPT</h1>
+  <p class="orig ltr">How ChatGPT Does Query Fan-Out (15 Million Queries Studied)</p>
+  <div class="meta">
+    <span><b>Ahrefs Blog</b></span>
+    <span>تحلیل معتبر</span>
+    <span>تحلیل</span>
+    <span>سطح: پیشرفته</span>
+    <span>انتشار: 1405/07/20</span>
+    <span>متن اصلی: 8 دقیقه</span>
+    <span>امتیاز: 8.0/10</span>
+  </div>
+  
+  <div class="tldr">بررسی 66 میلیون پاسخ چت‌جی‌پی‌تی نشان می‌دهد که این ابزار برای پرسش‌های فاکتوال به سایت‌های رسمی برندها تکیه می‌کند و سهم استناد به پلتفرم‌هایی مانند ردیت کاهش یافته است.</div>
+
+  <h2>درباره چیست</h2><p>این مقاله پژوهشی که توسط تیم محتوای Ahrefs نوشته شده است، به بررسی نحوه بازیابی اطلاعات توسط ChatGPT و رفتار جستجوی آن می‌پردازد. نویسندگان 66.6 میلیون پاسخ لاگ‌اوت‌نشده از نسخه رایگان و 15 میلیون پرسش انشعابی (Fan-out queries) را در ماه‌های اوت و سپتامبر تحلیل کرده‌اند تا مشخص شود این مدل چطور منابع خود را پیدا می‌کند.</p>
+  <h2>مسئله و اهمیت</h2><p>صنعت سئو نیازمند درک دقیق نحوه کارکرد موتور جستجوی هوش مصنوعی و استراتژی‌های ارتقای دیداری برند در هوش مصنوعی است. با توجه به هزینه‌های بالای جستجوی وب، مدل‌ها تنها در درصد کمی از مواقع جستجو انجام می‌دهند و این پرسش مطرح می‌شود که برندها چگونه می‌توانند مطمئن شوند در نتایج و استنادهای چت‌جی‌پی‌تی حضور دارند.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>پژوهشگران از داده‌های ابزار Brand Radar استفاده کرده و 66.6 میلیون پاسخ رایگان ChatGPT همراه با 15 میلیون پرسش انشعابی را بررسی کردند. آن‌ها الگوهای استفاده از عملگر site:، تفاوت میان پرسش‌های فاکتوال و مقایسه‌ای، و تغییرات سهم استناد دامنه‌های مختلف از ماه مارس تا سپتامبر را با تحلیل آماری دقیق مقایسه نمودند.</p>
+  <h2>روش و اجزا</h2><ul><li>تحلیل 66.6 میلیون پاسخ رایگان و لاگ‌اوت‌نشده برای شناسایی نرخ تریگر شدن جستجوی وب</li><li>بررسی 15 میلیون پرسش انشعابی و تحلیل استفاده از عملگر site: برای هدف قرار دادن دامنه‌های خاص</li><li>دسته‌بندی پرسش‌ها به دو دسته فاکتوال (قیمت، مشخصات) و مقایسه‌ای (A در برابر B) برای ارزیابی ترکیب منابع</li><li>مقایسه حجم استنادها و تغییرات رتبه دامنه‌ها میان ماه‌های مارس و سپتامبر با استفاده از داده‌های Brand Radar</li></ul>
+  <h2>یافته‌ها و اعداد</h2><ul><li>تنها 14.4 درصد از 66.6 میلیون پاسخ ردیابی شده، جستجوی وب را فعال کردند.</li><li>هنگام جستجو، چت‌جی‌پی‌تی به طور میانگین 1.6 پرسش انشعابی برای هر پاسخ اجرا کرد.</li><li>حدود 6.8 درصد از پرسش‌های انشعابی از عملگر site: برای جستجوی یک وب‌سایت منفرد استفاده کردند که 75 درصد آن‌ها سایت‌های برندی بودند.</li><li>برای پرسش‌های فاکتوال، 84.4 درصد استنادها حداقل به یک منبع رسمی اشاره داشتند، در حالی که برای مقایسه‌ها این رقم به 68.3 درصد رسید.</li><li>استناد به ردیت از 1 از هر 5 پاسخ در مارس به 1 از هر 43 پاسخ در سپتامبر کاهش یافت.</li></ul>
+  <h2>نتیجه‌گیری</h2><p>نویسندگان استدلال می‌کنند که چت‌جی‌پی‌تی اولویت خود را بر منابع اولیه و رسمی برای پاسخ به پرسش‌های ساختاریافته و فاکتوال قرار داده است. در حالی که پلتفرم‌های محتوای کاربر‌ساخته مانند ردیت همچنان برای نظرات کاربران بررسی می‌شوند، سهم استناد آن‌ها افت کرده و منابع تخصصی، پژوهشی و سایت‌های رسمی برندها جایگاه بالاتری در ارجاعات کسب کرده‌اند.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>اطمینان حاصل کنید که اطلاعات قیمت، مشخصات فنی و جزئیات پشتیبانی محصولات روی سایت مارکت‌پلیس به صورت متن ساده و قابل ایندکس درج شده است.</li><li>گزارش‌های پنل Brand Radar را برای رصد پرسش‌های انشعابی مرتبط با دسته‌بندی کالاهای مارکت‌پلیس بررسی کنید.</li><li>استراتژی حضور در نشریات و پلتفرم‌های شریک OpenAI را برای بهبود سهم استناد در پاسخ‌های مقایسه‌ای ارزیابی کنید.</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>داده‌ها محدود به جلسات رایگان و لاگ‌اوت‌نشده در بازه زمانی مشخص اوت و سپتامبر هستند.</li><li>نتایج ممکن است تحت تأثیر نوع پرامپت‌های ردیابی شده در ابزار Brand Radar قرار داشته باشد.</li></ul>
+  <div class="tags"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Leadership</span><span class="ltr">AI Search</span><span class="ltr">SEO</span><span class="ltr">ChatGPT</span><span class="ltr">Query Fan-Out</span></div>
+
+  <div class="source">
+    <a class="go" href="https://ahrefs.com/blog/query-fan-out-chatgpt/" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://ahrefs.com/blog/query-fan-out-chatgpt/" target="_blank" rel="noopener">https://ahrefs.com/blog/query-fan-out-chatgpt/</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>
