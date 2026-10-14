@@ -214,7 +214,8 @@
    6.0,
    6.0,
    7.0,
-   8.0
+   8.0,
+   5.0
   ],
   "picks": 1,
   "name": "MIT Sloan Mgmt Review",
@@ -223,7 +224,7 @@
   "kind": "article",
   "last_try": "2026-10-14",
   "last_ok": "2026-10-14",
-  "last_item": "2026-10-13",
+  "last_item": "2026-10-14",
   "tier": 2,
   "rev": 1,
   "acc": 1,
@@ -361,7 +362,8 @@
    7.0,
    4.0,
    0.0,
-   5.0
+   5.0,
+   4.0
   ],
   "picks": 0,
   "name": "Stratechery",
@@ -370,7 +372,7 @@
   "kind": "article",
   "last_try": "2026-10-14",
   "last_ok": "2026-10-14",
-  "last_item": "2026-10-13",
+  "last_item": "2026-10-14",
   "tier": 2,
   "rev": 2,
   "acc": 0
@@ -601,7 +603,8 @@
    6.0,
    5.0,
    6.0,
-   7.0
+   7.0,
+   5.0
   ],
   "picks": 0,
   "name": "Lenny's Newsletter",
@@ -610,7 +613,7 @@
   "kind": "article",
   "last_try": "2026-10-14",
   "last_ok": "2026-10-14",
-  "last_item": "2026-10-13",
+  "last_item": "2026-10-14",
   "tier": 2,
   "rev": 3,
   "acc": 0
@@ -1059,6 +1062,7 @@
    5.0,
    6.0,
    5.0,
+   5.0,
    5.0
   ],
   "picks": 9,
@@ -1233,6 +1237,7 @@
    6.0,
    7.0,
    6.0,
+   6.0,
    6.0
   ],
   "picks": 0,
@@ -1242,7 +1247,7 @@
   "kind": "article",
   "last_try": "2026-10-14",
   "last_ok": "2026-10-14",
-  "last_item": "2026-10-13",
+  "last_item": "2026-10-14",
   "tier": 2
  },
  "https://towardsdatascience.com/feed": {
@@ -1705,7 +1710,9 @@
    5.0,
    6.0,
    7.0,
-   5.0
+   5.0,
+   7.0,
+   6.0
   ],
   "picks": 11,
   "name": "AdExchanger",
