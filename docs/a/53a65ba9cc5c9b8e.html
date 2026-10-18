@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مقایسه بازیابی مولد و متراکم در سیستم‌های پیشنهاددهی ای‌کامرس و نقش ارزش ثابت | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;--c:#C2185B;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border-right:4px solid var(--focus);border-radius:10px;padding:14px 20px;background:#FFF2F4}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:var(--focus);padding:8px 20px;border-radius:8px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">ای‌کامرس و محصول <span class="ltr" style="color:var(--mute);font-weight:400">E-commerce &amp; Product</span></div>
+  <h1>مقایسه بازیابی مولد و متراکم در سیستم‌های پیشنهاددهی ای‌کامرس و نقش ارزش ثابت</h1>
+  <p class="orig ltr">Revisiting Generative vs. Dense Retrieval: A Static Value Prior Reverses the Gap</p>
+  <div class="meta">
+    <span><b>arXiv · E-commerce RecSys</b></span>
+    <span>منبع اصلی</span>
+    <span>مقالهٔ علمی</span>
+    <span>سطح: پیشرفته</span>
+    <span>انتشار: 1405/07/21</span>
+    <span>متن اصلی: 5 دقیقه</span>
+    <span>امتیاز: 8.8/10</span>
+  </div>
+  
+  <div class="tldr">افزودن یک پیش‌فرض ارزش ثابت به بازیابی متراکم می‌تواند برتری بازیابی مولد در پیشنهاد محصولات را جبران کند.</div>
+
+  <h2>درباره چیست</h2><p>این مقاله پژوهشی به بررسی و مقایسه دو رویکرد اصلی بازیابی مولد و بازیابی متراکم به عنوان تولیدکنندگان کاندیدا در سیستم‌های پیشنهاددهی ترتیبی می‌پردازد. نویسندگان عملکرد این دو روش را در حوزه خرده‌فروشی آنلاین و با استفاده از دو مجموعه داده از آمازون زیر ذره‌بین قرار داده‌اند.</p>
+  <h2>مسئله و اهمیت</h2><p>مسئله اصلی این است که اگرچه بازیابی مولد به دلیل پیشرفت مدل‌های زبانی و شناسه‌های معنایی محبوبیت یافته است، اما لزوماً جایگزین برتری برای بازیابی متراکم در خرده‌فروشی آنلاین محسوب نمی‌شود و تفاوت‌های عملکردی آن‌ها نیازمند واکاوی دقیق است.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>پژوهشگران عملکرد دو روش یاد شده را روی دو مجموعه داده Amazon Toys تحت معیارهای مختلف ارزیابی کردند و نقش فاکتور محبوبیت کالا را در نتایج سنجیدند. در ادامه، یک روش اصلاحی شامل افزودن ارزش ثابت آیتم به بازیابی متراکم در مرحله رتبه‌بندی مجدد پیاده‌سازی و آزمایش شد.</p>
+  <h2>روش و اجزا</h2><ul><li>بررسی و مقایسه بازیابی مولد و بازیابی متراکم روی مجموعه‌های داده Amazon Toys</li><li>تحلیل معیارهای گوناگون شامل بالاترین ارزش اقلام مرتبط و بازیابی هدف دقیق</li><li>شناسایی میزان تأثیر محبوبیت کالا بر عملکرد برتر بازیابی مولد</li><li>افزودن ارزش ثابت آیتم به بازیابی متراکم در یک مرحله رتبه‌بندی مجدد</li></ul>
+  <h2>یافته‌ها و اعداد</h2><ul><li>بازیابی مولد در بالاترین ارزش اقلام مرتبط در میان کاربران مشترک دو روش پیشتاز است</li><li>بازیابی متراکم در معیارهای بازیابی هدف دقیق و ارزش مرتبط در کل لیست رتبه‌بندی شده عملکرد بهتری دارد</li><li>عامل محبوبیت بیشترین سهم را در برتری ارزشی بازیابی مولد داراست</li><li>اعمال ارزش ثابت به بازیابی متراکم توانست برتری بازیابی مولد را معکوس کند و دقت را حفظ نماید</li></ul>
+  <h2>نتیجه‌گیری</h2><p>نویسندگان استدلال می‌کنند که برتری ظاهری بازیابی مولد در سیستم‌های پیشنهاددهی ناشی از وابستگی آن به محبوبیت اقلام است و با ساده‌ترین تنظیمات ارزش ثابت در مرحله رتبه‌بندی بازیابی متراکم می‌توان این فاصله عملکردی را پر کرد.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>بررسی الگوریتم‌های پیشنهاددهنده مارکت‌پلیس برای تفکیک اثر محبوبیت از ارتباط واقعی کالا</li><li>آزمایش رویکردهای رتبه‌بندی مجدد با افزودن امتیاز ارزش ثابت به مدل‌های بازیابی متراکم</li><li>شخصی‌سازی نتایج لایه کاندیداگریشن با استفاده از ترکیب بهینه‌تری از متدهای Retrieval</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>متن موجود تنها چکیده مقاله است و جزئیات کامل معماری و هایپرپارامترها ذکر نشده است</li><li>نتایج تنها روی دو مجموعه داده از یک حوزه خاص (اسباب‌بازی آمازون) ارزیابی شده است</li></ul>
+  <div class="tags"><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Engagement</span><span class="ltr">RecSys</span><span class="ltr">Information Retrieval</span><span class="ltr">E-commerce</span><span class="ltr">Machine Learning</span></div>
+
+  <div class="source">
+    <a class="go" href="https://arxiv.org/abs/2610.19065v1" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://arxiv.org/abs/2610.19065v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.19065v1</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دایجست تیم پرفورمنس | 1405/07/26</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16.5px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+.topbar{background:#fff;border-bottom:3px solid var(--focus)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:12px;flex-wrap:wrap}
+.topbar .logo{color:var(--focus);font-weight:800;font-size:20px}
+.topbar .sub{color:var(--mute);font-size:13px}
+.mast{padding:30px 0 22px;background:#fff;border-bottom:1px solid var(--rule)}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+.brand b{color:var(--soft)}
+.date{margin:18px 0 2px;font-size:clamp(30px,6.5vw,46px);font-weight:800;line-height:1.3}
+.greg{color:var(--mute);font-size:14.5px}
+.note{margin:20px 0 0;font-size:18px;line-height:2;color:var(--soft);max-width:68ch}
+.stats{display:flex;gap:26px;margin-top:18px;color:var(--mute);font-size:13.5px;flex-wrap:wrap}
+.stats strong{display:block;color:var(--text);font-size:21px;font-weight:700;line-height:1.4}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.tabbar{display:flex;gap:4px;padding-top:10px}
+.tab{border:0;background:transparent;color:var(--mute);font:inherit;font-size:15.5px;font-weight:700;padding:8px 16px 10px;cursor:pointer;
+  border-bottom:2.5px solid transparent;text-decoration:none}
+.tab[aria-selected="true"]{color:var(--focus);border-bottom-color:var(--focus)}
+.tab span{font-weight:400;opacity:.65;margin-inline-start:4px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1 1 100%;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--rule);background:transparent;color:var(--soft);font:inherit;font-size:13.5px;padding:3px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--c,#EF4056);border-color:var(--c,#EF4056);color:#fff;font-weight:700}
+.chip span{opacity:.7;margin-inline-start:4px}
+.search{flex:1 1 220px;min-width:0;background:var(--sheet);border:1px solid var(--rule);color:var(--text);font:inherit;font-size:14.5px;padding:6px 14px;border-radius:10px}
+.search::placeholder{color:var(--mute)}
+select{background:var(--sheet);border:1px solid var(--rule);color:var(--soft);font:inherit;font-size:14px;padding:6px 10px;border-radius:10px}
+
+.panel{padding:6px 0 60px}
+.panel[hidden]{display:none}
+.group{margin-top:34px}
+.group h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--c);margin:0 0 4px}
+.group h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.group h2 small{color:var(--mute);font-weight:400}
+
+article{position:relative;margin:14px 0;background:var(--sheet);border-radius:12px;border:1px solid var(--rule);border-right:4px solid var(--c);padding:20px 22px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;color:var(--mute);font-size:13px}
+.meta .src{color:var(--soft);font-weight:700}
+.badge{border:1px solid currentColor;border-radius:6px;padding:0 7px;font-size:12px;color:var(--c)}
+.badge.hot{background:var(--focus);border-color:var(--focus);color:#fff;font-weight:700}
+.badge.day{color:var(--mute)}
+.meta .score{margin-inline-start:auto}
+article.ranked .meta,article.ranked h3{padding-left:46px}
+.rank{position:absolute;top:18px;left:18px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--c);color:#fff}
+article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
+.orig{color:var(--mute);font-size:13.5px;line-height:1.6;margin:2px 0 0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:14px 0 0;font-size:17.5px;line-height:1.95;font-weight:700;color:var(--text)}
+.new{margin:8px 0 0;color:var(--soft)}
+.via{margin:6px 0 0;font-size:13px;color:var(--mute)}.via a{color:var(--focus)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+.box{background:var(--sheet-2);border-radius:10px;padding:10px 14px}
+.box h4{margin:0 0 4px;font-size:13.5px;color:var(--c);font-weight:700}
+.box ul,.act ul{margin:0;padding-inline-start:18px}
+.box li,.act li{margin:3px 0;font-size:15px;line-height:1.85}
+.act{margin-top:12px;border-right:3px solid var(--focus);border-radius:8px;padding:10px 14px;background:#FFF2F4}
+.act h4{margin:0 0 4px;font-size:13.5px;color:var(--focus);font-weight:800}
+.cav{margin-top:10px;color:var(--mute);font-size:14px}
+.cav b{color:var(--soft);font-weight:700}
+.foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)}
+.teams{display:flex;gap:6px;flex-wrap:wrap}
+.teams span,.tags span{font-size:12px;color:var(--soft);background:#F0F0F1;padding:1px 10px;border-radius:12px}
+.tags span{color:var(--mute)}
+.go{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;background:var(--focus);padding:7px 18px;border-radius:8px}
+.go:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.go.ghost{background:#fff;color:var(--soft);border:1px solid var(--rule)}
+.url{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+.url:hover{color:var(--soft)}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:18px;color:var(--c);font-weight:800}
+details.more[open] summary::before{content:"−"}
+
+.lead{color:var(--soft);margin:18px 0 0;max-width:70ch}
+.empty{display:none;text-align:center;color:var(--mute);padding:40px 0}
+.tw{overflow-x:auto;margin-top:20px}
+table.src{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+table.src th{white-space:nowrap;text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
+.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
+footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+@media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
+</style>
+</head>
+<body>
+
+
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span><span class="ltr sub">Research &amp; Industry Digest</span></div></div>
+<header class="mast">
+  <div class="wrap">
+    <div class="date">یکشنبه 26 مهر 1405</div>
+    <div class="greg ltr" style="text-align:right">18 Oct 2026</div>
+    <p class="note">محور اصلی رویدادهای امروز، گذر از ابزارهای بازاریابی سنتی و اتکا بر زیرساخت‌های هوشمند مبتنی بر هوش مصنوعی و کانال‌های تعاملی نوین است. در عمل، تیم باید روی بازآرایی استراتژی‌های پرفورمنس مارکتینگ و بهره‌گیری از مدل‌های یکپارچه متمرکز شود تا کارایی و نرخ تبدیل در مقیاس بزرگ حفظ شود.</p>
+    <div class="stats">
+      <div><strong>7</strong>مطلب تازهٔ این نوبت</div>
+      <div><strong>29</strong>متن کامل بازبینی‌شده</div>
+      <div><strong>90</strong>مطلب غربال‌شده</div>
+      
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="بخش‌ها">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab" role="tab" data-tab="latest" aria-selected="true">مطالب این نوبت<span>7</span></button>
+      
+      <a class="tab" href="../index.html">بازگشت به آخرین نسخه</a>
+      
+    </div>
+    <div class="tools">
+      <div class="chips" role="group" aria-label="دسته‌ها"></div>
+      <input class="search" type="search" placeholder="جست‌وجو: عنوان، اقدام، تیم (eCRM، Ads ...)" aria-label="جست‌وجو">
+      <select class="arch" aria-label="آرشیو نوبت‌ها" onchange="if(this.value)location.href=this.value">
+        <option value="../archive/2026-10-18.html" selected>1405/07/26</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" data-panel="latest">
+    
+    
+    <div class="group" data-group="performance" style="--c:#0097A7">
+      <h2>پرفورمنس و تبلیغات <small class="ltr">Performance &amp; Ads</small></h2>
+      <article data-cat="performance" data-text="تغییر استراتژی بودجه تبلیغاتی ruggable به سمت اینفلوئنسرهای shopmy ruggable’s new ad spend strategy shifts focus to shopmy creators برند ruggable با انتقال بودجه از کانال‌های سنتی عمل‌گرا مانند meta به اینفلوئنسرهای shopmy، رشد چشمگیری در درآمد و کارایی کانال‌های خود ایجاد کرده است. این مقاله که در سایت digiday منتشر شده، به تغییر استراتژی بازاریابی برند مستقیم به مصرف‌کننده (dtc) یعنی ruggable می‌پردازد. این برند فرآیند انتقال بودجه از شبکه‌های تبلیغاتی سنتی به سمت پلتفرم‌های اینفلوئنسرمارکتینگ و ساختار ترکیبی جدید را تشریح می‌کند. مدیران ruggable بر این باورند که استراتژی‌های قدیمی دیگر پاسخگوی نیازهای رشد آینده نیستند و برندها باید با ترکیب هوشمندانه‌ای از افیلیت مارکتینگ مقیاس‌پذیر و سفیران برند، آگاهی برند و نرخ تبدیل را هم‌زمان به دست آورند. این نگرش کل‌نگر به بازاریابی، مرز بین آگاهی و عمل‌گرایی را از بین می‌برد. ارزیابی مجدد سهم بودجه کانال‌های performance مثل meta در مقایسه با پلتفرم‌های اینفلوئنسری و افیلیت بررسی امکان جایگزینی شبکه‌های افیلیت سنتی و کم‌بازده با پلتفرم‌های تخصصی‌تر و مستقیم‌تر تست رویکرد دوگانه ترکیب افیلیت مارکترها برای مقیاس و سفیران برند برای ایجاد ارزش افزوده پایش دقیق داده‌های درآمدی ماهانه برای سنجش سرعت رشد کانال‌های جایگزین influencer affiliate performance strategy ads affiliate engagement leadership digiday.com" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">digiday.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>4 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>تغییر استراتژی بودجه تبلیغاتی Ruggable به سمت اینفلوئنسرهای ShopMy</h3>
+  <p class="orig ltr">Ruggable’s new ad spend strategy shifts focus to ShopMy creators</p>
+  <p class="via">پوشش از طریق <a href="https://www.modernretail.co/marketing/ruggables-new-ad-spend-strategy-shifts-focus-to-shopmy-creators/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">Modern Retail</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">برند Ruggable با انتقال بودجه از کانال‌های سنتی عمل‌گرا مانند Meta به اینفلوئنسرهای ShopMy، رشد چشمگیری در درآمد و کارایی کانال‌های خود ایجاد کرده است.</p>
+  <p class="new">این مقاله که در سایت Digiday منتشر شده، به تغییر استراتژی بازاریابی برند مستقیم به مصرف‌کننده (DTC) یعنی Ruggable می‌پردازد. این برند فرآیند انتقال بودجه از شبکه‌های تبلیغاتی سنتی به سمت پلتفرم‌های اینفلوئنسرمارکتینگ و ساختار ترکیبی جدید را تشریح می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>ارزیابی مجدد سهم بودجه کانال‌های Performance مثل Meta در مقایسه با پلتفرم‌های اینفلوئنسری و افیلیت</li><li>بررسی امکان جایگزینی شبکه‌های افیلیت سنتی و کم‌بازده با پلتفرم‌های تخصصی‌تر و مستقیم‌تر</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Affiliate</span><span class="ltr">Engagement</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/a8671fd45c8be257.html">خواندن بریف کامل</a><a class="go ghost" href="https://digiday.com/marketing/ruggables-new-ad-spend-strategy-shifts-focus-to-shopmy-creators/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://digiday.com/marketing/ruggables-new-ad-spend-strategy-shifts-focus-to-shopmy-creators/" target="_blank" rel="noopener">https://digiday.com/marketing/ruggables-new-ad-spend-strategy-shifts-focus-to-shopmy-creators/</a>
+</article><article data-cat="performance" data-text="معرفی سبد خرید هوشمند گوگل با قابلیت یکپارچه‌سازی خرید an intelligent new shopping cart گوگل سبد خرید هوشمند universal cart را برای مدیریت یکپارچه محصولات، تخفیف‌ها و پرداخت در بستر search و gemini عرضه کرد. این مقاله توسط تیم google ads &amp; commerce منتشر شده و به معرفی ابزار جدیدی به نام universal cart می‌پردازد. این قابلیت جدید به‌عنوان یک هاب متمرکز برای خرید کاربران در اکوسیستم گوگل طراحی شده است. نویسندگان استدلال می‌کنند که با ترکیب قابلیت‌های ایجنت‌محور، دسترسی به دیتای عظیم shopping graph و ابزارهای پرداخت امن، می‌توان تجربه خرید کاربران را در ایام خرید فصلی به‌طور چشمگیری ساده‌تر و مطمئن‌تر ساخت. بررسی امکان یکپارچه‌سازی سبد خرید بین‌پلتفرمی برای کاهش نرخ ریزش کاربران پیاده‌سازی سیستم‌های هوشمند پیشنهاد تخفیف و انتخاب بهینه روش پرداخت ارزیابی تأثیر ابزارهای مبتنی بر ai در بهبود نرخ تبدیل در بخش ecrm و engagement ai e-commerce agent checkout ads ecrm engagement product google ads &amp; commerce" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">Google Ads &amp; Commerce</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>مقدماتی</span>
+    <span>3 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.2/10</span>
+  </div>
+  <h3>معرفی سبد خرید هوشمند گوگل با قابلیت یکپارچه‌سازی خرید</h3>
+  <p class="orig ltr">An intelligent new shopping cart</p>
+  
+  <p class="tldr">گوگل سبد خرید هوشمند Universal Cart را برای مدیریت یکپارچه محصولات، تخفیف‌ها و پرداخت در بستر Search و Gemini عرضه کرد.</p>
+  <p class="new">این مقاله توسط تیم Google Ads &amp; Commerce منتشر شده و به معرفی ابزار جدیدی به نام Universal Cart می‌پردازد. این قابلیت جدید به‌عنوان یک هاب متمرکز برای خرید کاربران در اکوسیستم گوگل طراحی شده است.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان یکپارچه‌سازی سبد خرید بین‌پلتفرمی برای کاهش نرخ ریزش کاربران</li><li>پیاده‌سازی سیستم‌های هوشمند پیشنهاد تخفیف و انتخاب بهینه روش پرداخت</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">eCRM</span><span class="ltr">Engagement</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/b792a990c3cca17b.html">خواندن بریف کامل</a><a class="go ghost" href="https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/" target="_blank" rel="noopener">https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/</a>
+</article><article data-cat="performance" data-text="قابلیت جدید متا برای فروش جایگاه‌های تبلیغاتی به سبک تلویزیون meta is selling ad slots, tv-style متا ابزار تبلیغاتی جدیدی به نام ads super burst معرفی کرده است که به برندها امکان می‌دهد بازه‌های زمانی مشخص را به صورت پیش‌خرید رزرو کنند. این مقاله خبری-تحلیلی از وب‌سایت adexchanger به معرفی ابزارها و قابلیت‌های جدید برندینگ متا می‌پردازد. این گزارش بر اساس مصاحبه با simon whitcombe، معاون گروه کسب‌وکار جهانی متا در آمریکای شمالی، تنظیم شده است و استراتژی‌های جدید این شرکت را در زمینه فروش تضمینی جایگاه‌های تبلیغاتی مشابه تلویزیون و یوتیوب بررسی می‌کند. متا استدلال می‌کند که برای ساخت و تقویت حافظه برند در دنیای دیجیتال، به ابزارهای ترکیبی نیاز است که فراتر از متریک‌های سنتی ویو بروند. ابزارهایی مانند super burst برای ساخت حافظه در لحظات کلیدی و معیارهایی مانند aggregated view time برای تقویت استمرار در طول زمان طراحی شده‌اند تا به برندها کمک کنند پیش از شروع فرایند خرید، در ذهن مخاطب جای بگیرند. بررسی امکان استفاده از مدل‌های خرید تضمینی و پیش‌خرید برای کمپین‌های پروموشن و مناسبت‌های بزرگ ای‌کامرس تست معیارهای سنجش توجه تجمعی (aggregated view time) به جای اتکای صرف به تعداد بازدید در ویدیو مارکتینگ استفاده از رویکرد فرکانس کنترل‌شده (فیکس شده روی یک) در کمپین‌های awareness برای بیشترین پوشش مخاطب یونیک meta ads branding upfront ads engagement leadership adexchanger" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">AdExchanger</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>4 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.6/10</span>
+  </div>
+  <h3>قابلیت جدید متا برای فروش جایگاه‌های تبلیغاتی به سبک تلویزیون</h3>
+  <p class="orig ltr">Meta Is Selling Ad Slots, TV-Style</p>
+  
+  <p class="tldr">متا ابزار تبلیغاتی جدیدی به نام Ads Super Burst معرفی کرده است که به برندها امکان می‌دهد بازه‌های زمانی مشخص را به صورت پیش‌خرید رزرو کنند.</p>
+  <p class="new">این مقاله خبری-تحلیلی از وب‌سایت AdExchanger به معرفی ابزارها و قابلیت‌های جدید برندینگ متا می‌پردازد. این گزارش بر اساس مصاحبه با Simon Whitcombe، معاون گروه کسب‌وکار جهانی متا در آمریکای شمالی، تنظیم شده است و استراتژی‌های جدید این شرکت را در زمینه فروش تضمینی جایگاه‌های تبلیغاتی مشابه تلویزیون و یوتیوب بررسی می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان استفاده از مدل‌های خرید تضمینی و پیش‌خرید برای کمپین‌های پروموشن و مناسبت‌های بزرگ ای‌کامرس</li><li>تست معیارهای سنجش توجه تجمعی (Aggregated View Time) به جای اتکای صرف به تعداد بازدید در ویدیو مارکتینگ</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Engagement</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/0cc57bb7ad01436d.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.adexchanger.com/platforms/meta-is-selling-ad-slots-tv-style/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.adexchanger.com/platforms/meta-is-selling-ad-slots-tv-style/" target="_blank" rel="noopener">https://www.adexchanger.com/platforms/meta-is-selling-ad-slots-tv-style/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="data" style="--c:#1E88E5">
+      <h2>داده و آزمایش <small class="ltr">Data &amp; Experimentation</small></h2>
+      <article data-cat="data" data-text="یکپارچه‌سازی مدل پایه نتفلیکس در برنامه‌های شخصی‌سازی integrating netflix’s foundation model into personalization applications نتفلیکس برای کاهش هزینه‌های نگهداری و تسریع نوآوری، یادگیری ترجیحات کاربران را در یک مدل پایه مرکزی متمرکز کرده است. این مقاله فنی از وبلاگ نتفلیکس که توسط divya gadde و همکاران نوشته شده، نحوه ادغام و استفاده از مدل پایه مرکزی این شرکت را برای ارتقای سیستم‌های شخصی‌سازی صفحه اصلی بررسی می‌کند. متن منتشرشده در واقع مقدمه و بخش‌هایی از یک مجموعه مقالات تخصصی درباره معماری مدل‌های یادگیری ماشین در مقیاس بزرگ است. نویسندگان استدلال می‌کنند که متمرکز کردن یادگیری ترجیحات کاربران در قالب یک مدل پایه واحد، هزینه‌های نگهداری مدل‌های متعدد را کاهش داده و مسیر نوآوری و شخصی‌سازی در مقیاس بزرگ را هموارتر می‌کند. بررسی امکان پیاده‌سازی مدل‌های پایه مرکزی برای یکپارچه‌سازی داده‌های رفتاری کاربران در مارکت‌پلیس سنجش میزان کاهش هزینه‌های زیرساختی و مهندسی با حرکت به سمت مدل‌های متمرکز ارزیابی نحوه انتقال و توزیع خروجی‌های مدل مرکزی به مدل‌های تخصصی‌تر در حوزه‌های مختلف foundation model personalization machine learning recommendation system engagement data product leadership netflix techblog" style="--c:#1E88E5">
+  
+  <div class="meta">
+    <span class="src">Netflix TechBlog</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>4 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.8/10</span>
+  </div>
+  <h3>یکپارچه‌سازی مدل پایه نتفلیکس در برنامه‌های شخصی‌سازی</h3>
+  <p class="orig ltr">Integrating Netflix’s Foundation Model into Personalization applications</p>
+  
+  <p class="tldr">نتفلیکس برای کاهش هزینه‌های نگهداری و تسریع نوآوری، یادگیری ترجیحات کاربران را در یک مدل پایه مرکزی متمرکز کرده است.</p>
+  <p class="new">این مقاله فنی از وبلاگ نتفلیکس که توسط Divya Gadde و همکاران نوشته شده، نحوه ادغام و استفاده از مدل پایه مرکزی این شرکت را برای ارتقای سیستم‌های شخصی‌سازی صفحه اصلی بررسی می‌کند. متن منتشرشده در واقع مقدمه و بخش‌هایی از یک مجموعه مقالات تخصصی درباره معماری مدل‌های یادگیری ماشین در مقیاس بزرگ است.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان پیاده‌سازی مدل‌های پایه مرکزی برای یکپارچه‌سازی داده‌های رفتاری کاربران در مارکت‌پلیس</li><li>سنجش میزان کاهش هزینه‌های زیرساختی و مهندسی با حرکت به سمت مدل‌های متمرکز</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Engagement</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/ed5131a764070b5e.html">خواندن بریف کامل</a><a class="go ghost" href="https://netflixtechblog.com/integrating-netflixs-foundation-model-into-personalization-applications-cf176b5860eb?source=rss----2615bd06b42e---4" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://netflixtechblog.com/integrating-netflixs-foundation-model-into-personalization-applications-cf176b5860eb?source=rss----2615bd06b42e---4" target="_blank" rel="noopener">https://netflixtechblog.com/integrating-netflixs-foundation-model-into-personalization-applications-cf176b5860eb?source=rss----2615bd06b42e---4</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="ai" style="--c:#6A4BC4">
+      <h2>هوش مصنوعی <small class="ltr">AI &amp; Agents</small></h2>
+      <article data-cat="ai" data-text="بررسی تاثیر عوامل مدل زبانی بر رقابت قیمت‌گذاری الگوریتمی how language model agents reshape price competition عوامل مبتنی بر مدل‌های زبانی بزرگ می‌توانند با انطباق سریع تر و استفاده از نقاط ضعف رقبای کندتر، از تعادل نش سنتی در رقابت قیمت‌گذاری فراتر روند. این مقاله پژوهشی که در آرخیو منتشر شده، به بررسی رفتار عوامل قیمت‌گذاری مبتنی بر مدل‌های زبانی بزرگ (llm) در یک محیط رقابتی تکرارپذیر به نام رقابت برتراند می‌پردازد. این پژوهش نشان می‌دهد که چگونه استقرار هوش مصنوعی می‌تواند پویایی قیمت‌گذاری در بازارهای کالاهای همگن را دگرگون کند. نویسندگان نتیجه می‌گیرند که مدل‌های زبانی بزرگ صرفاً ابزارهای بهینه‌سازی نیستند، بلکه نحوه تعامل استراتژیک در بازارهای دیجیتال را تغییر می‌دهند. موفقیت آن‌ها در قیمت‌گذاری به نحوه استقرار، دسترسی به تاریخچه بازار و سرعت واکنش رقبا وابسته است. بررسی استفاده از عوامل هوش مصنوعی در استراتژی‌های پویا قیمت‌گذاری محصولات تست الگوریتم‌های قیمت‌گذاری هوشمند بر اساس سرعت انطباق با رفتار رقبا در مارکت‌پلیس ارزیابی میزان تاثیرگذاری اطلاعات کامل بازار بر تصمیمات قیمت‌گذاری الگوریتمی pricing llm agents competition data product leadership arxiv · llm for marketing" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">arXiv · LLM for Marketing</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>بررسی تاثیر عوامل مدل زبانی بر رقابت قیمت‌گذاری الگوریتمی</h3>
+  <p class="orig ltr">How language model agents reshape price competition</p>
+  
+  <p class="tldr">عوامل مبتنی بر مدل‌های زبانی بزرگ می‌توانند با انطباق سریع تر و استفاده از نقاط ضعف رقبای کندتر، از تعادل نش سنتی در رقابت قیمت‌گذاری فراتر روند.</p>
+  <p class="new">این مقاله پژوهشی که در آرخیو منتشر شده، به بررسی رفتار عوامل قیمت‌گذاری مبتنی بر مدل‌های زبانی بزرگ (LLM) در یک محیط رقابتی تکرارپذیر به نام رقابت برتراند می‌پردازد. این پژوهش نشان می‌دهد که چگونه استقرار هوش مصنوعی می‌تواند پویایی قیمت‌گذاری در بازارهای کالاهای همگن را دگرگون کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی استفاده از عوامل هوش مصنوعی در استراتژی‌های پویا قیمت‌گذاری محصولات</li><li>تست الگوریتم‌های قیمت‌گذاری هوشمند بر اساس سرعت انطباق با رفتار رقبا در مارکت‌پلیس</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/b61cd87cd50dcd8a.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.21711v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.21711v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.21711v1</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="commerce" style="--c:#C2185B">
+      <h2>ای‌کامرس و محصول <small class="ltr">E-commerce &amp; Product</small></h2>
+      <article data-cat="commerce" data-text="مقایسه بازیابی مولد و متراکم در سیستم‌های پیشنهاددهی ای‌کامرس و نقش ارزش ثابت revisiting generative vs. dense retrieval: a static value prior reverses the gap افزودن یک پیش‌فرض ارزش ثابت به بازیابی متراکم می‌تواند برتری بازیابی مولد در پیشنهاد محصولات را جبران کند. این مقاله پژوهشی به بررسی و مقایسه دو رویکرد اصلی بازیابی مولد و بازیابی متراکم به عنوان تولیدکنندگان کاندیدا در سیستم‌های پیشنهاددهی ترتیبی می‌پردازد. نویسندگان عملکرد این دو روش را در حوزه خرده‌فروشی آنلاین و با استفاده از دو مجموعه داده از آمازون زیر ذره‌بین قرار داده‌اند. نویسندگان استدلال می‌کنند که برتری ظاهری بازیابی مولد در سیستم‌های پیشنهاددهی ناشی از وابستگی آن به محبوبیت اقلام است و با ساده‌ترین تنظیمات ارزش ثابت در مرحله رتبه‌بندی بازیابی متراکم می‌توان این فاصله عملکردی را پر کرد. بررسی الگوریتم‌های پیشنهاددهنده مارکت‌پلیس برای تفکیک اثر محبوبیت از ارتباط واقعی کالا آزمایش رویکردهای رتبه‌بندی مجدد با افزودن امتیاز ارزش ثابت به مدل‌های بازیابی متراکم شخصی‌سازی نتایج لایه کاندیداگریشن با استفاده از ترکیب بهینه‌تری از متدهای retrieval recsys information retrieval e-commerce machine learning data product engagement arxiv · e-commerce recsys" style="--c:#C2185B">
+  
+  <div class="meta">
+    <span class="src">arXiv · E-commerce RecSys</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>مقایسه بازیابی مولد و متراکم در سیستم‌های پیشنهاددهی ای‌کامرس و نقش ارزش ثابت</h3>
+  <p class="orig ltr">Revisiting Generative vs. Dense Retrieval: A Static Value Prior Reverses the Gap</p>
+  
+  <p class="tldr">افزودن یک پیش‌فرض ارزش ثابت به بازیابی متراکم می‌تواند برتری بازیابی مولد در پیشنهاد محصولات را جبران کند.</p>
+  <p class="new">این مقاله پژوهشی به بررسی و مقایسه دو رویکرد اصلی بازیابی مولد و بازیابی متراکم به عنوان تولیدکنندگان کاندیدا در سیستم‌های پیشنهاددهی ترتیبی می‌پردازد. نویسندگان عملکرد این دو روش را در حوزه خرده‌فروشی آنلاین و با استفاده از دو مجموعه داده از آمازون زیر ذره‌بین قرار داده‌اند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی الگوریتم‌های پیشنهاددهنده مارکت‌پلیس برای تفکیک اثر محبوبیت از ارتباط واقعی کالا</li><li>آزمایش رویکردهای رتبه‌بندی مجدد با افزودن امتیاز ارزش ثابت به مدل‌های بازیابی متراکم</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Engagement</span></div>
+    <span class="btns"><a class="go" href="../a/53a65ba9cc5c9b8e.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.19065v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.19065v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.19065v1</a>
+</article><article data-cat="commerce" data-text="استراتژی بازاریابی موسیقی‌محور دیپاپ و همکاری با هنرمندان برجسته why depop is putting music at the center of its marketing, collaborating with zara larsson and olivia rodrigo پلتفرم پلتفرم ریسیل دیپاپ با اتکا به داده‌های رفتاری کاربران، موسیقی زنده و همکاری با ستاره‌های موسیقی را محور بازاریابی خود قرار داده است. این مقاله از modern retail که بر اساس مصاحبه با استیو دول، مدیر ارشد برند و خلاقیت در دیپاپ تهیه شده، به بررسی استراتژی بازاریابی این پلتفرم پیرامون تلفیق مد و موسیقی می‌پردازد. این متن کوتاه نشان می‌دهد که چگونه دیپاپ با شناسایی هم‌پوشانی مخاطبان خود با رویدادهای موسیقی، کمپین‌های سراسری و همکاری‌های استراتژیک را اجرا می‌کند. دیپاپ نتیجه می‌گیرد که اتصال ارگانیک مد دست‌دوم به فرهنگ پاپ و موسیقی زنده، ابزاری قدرتمند برای تمایز برند و ایجاد ارتباط عمیق‌تر با نسل جوان است. همکاری با هنرمندانی که خود کاربر واقعی پلتفرم هستند، اعتبار و اصالت کمپین‌ها را دوچندان می‌کند. داده‌های رفتار خرید کاربران را با علایق لایف‌استایل و رویدادهای فرهنگی پیوند بزنید میکرواینفلوئنسرها یا سفیران برندی را جذب کنید که از قبل کاربر واقعی پلتفرم بوده‌اند فرصت‌های مارکتینگ رویدادمحور و پاپ‌آپ‌های تعاملی را برای تعامل آفلاین و آنلاین ارزیابی کنید marketing music partnerships ecommerce engagement ads modern retail" style="--c:#C2185B">
+  
+  <div class="meta">
+    <span class="src">Modern Retail</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>مقدماتی</span>
+    <span>3 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">6.6/10</span>
+  </div>
+  <h3>استراتژی بازاریابی موسیقی‌محور دیپاپ و همکاری با هنرمندان برجسته</h3>
+  <p class="orig ltr">Why Depop is putting music at the center of its marketing, collaborating with Zara Larsson and Olivia Rodrigo</p>
+  
+  <p class="tldr">پلتفرم پلتفرم ریسیل دیپاپ با اتکا به داده‌های رفتاری کاربران، موسیقی زنده و همکاری با ستاره‌های موسیقی را محور بازاریابی خود قرار داده است.</p>
+  <p class="new">این مقاله از Modern Retail که بر اساس مصاحبه با استیو دول، مدیر ارشد برند و خلاقیت در دیپاپ تهیه شده، به بررسی استراتژی بازاریابی این پلتفرم پیرامون تلفیق مد و موسیقی می‌پردازد. این متن کوتاه نشان می‌دهد که چگونه دیپاپ با شناسایی هم‌پوشانی مخاطبان خود با رویدادهای موسیقی، کمپین‌های سراسری و همکاری‌های استراتژیک را اجرا می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>داده‌های رفتار خرید کاربران را با علایق لایف‌استایل و رویدادهای فرهنگی پیوند بزنید</li><li>میکرواینفلوئنسرها یا سفیران برندی را جذب کنید که از قبل کاربر واقعی پلتفرم بوده‌اند</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Engagement</span><span class="ltr">Ads</span></div>
+    <span class="btns"><a class="go" href="../a/dc616a69f172fea1.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.modernretail.co/operations/why-depop-is-putting-music-at-the-center-of-its-marketing-collaborating-with-zara-larsson-and-olivia-rodrigo/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.modernretail.co/operations/why-depop-is-putting-music-at-the-center-of-its-marketing-collaborating-with-zara-larsson-and-olivia-rodrigo/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">https://www.modernretail.co/operations/why-depop-is-putting-music-at-the-center-of-its-marketing-collaborating-with-zara-larsson-and-olivia-rodrigo/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss</a>
+</article>
+    </div>
+    
+    
+    <p class="empty">مطلبی با این فیلتر پیدا نشد.</p>
+  </section>
+
+  
+</main>
+
+<footer><div class="wrap">به‌روزرسانی: 12:11 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+
+<script>
+(function(){
+  var CATS={"ai": {"color": "#6A4BC4", "en": "AI \u0026 Agents", "fa": "\u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc"}, "campaign": {"color": "#F57C00", "en": "Campaigns \u0026 Promotions", "fa": "\u06a9\u0645\u067e\u06cc\u0646 \u0648 \u067e\u0631\u0648\u0645\u0648\u0634\u0646"}, "commerce": {"color": "#C2185B", "en": "E-commerce \u0026 Product", "fa": "\u0627\u06cc\u200c\u06a9\u0627\u0645\u0631\u0633 \u0648 \u0645\u062d\u0635\u0648\u0644"}, "data": {"color": "#1E88E5", "en": "Data \u0026 Experimentation", "fa": "\u062f\u0627\u062f\u0647 \u0648 \u0622\u0632\u0645\u0627\u06cc\u0634"}, "ecrm": {"color": "#8E44AD", "en": "eCRM \u0026 Retention", "fa": "eCRM \u0648 \u0648\u0641\u0627\u062f\u0627\u0631\u06cc"}, "growth": {"color": "#2E9E4F", "en": "Growth", "fa": "\u0631\u0634\u062f"}, "management": {"color": "#3F51B5", "en": "Management \u0026 Strategy", "fa": "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0648 \u0627\u0633\u062a\u0631\u0627\u062a\u0698\u06cc"}, "marketing": {"color": "#E6123D", "en": "Marketing \u0026 Brand", "fa": "\u0645\u0627\u0631\u06a9\u062a\u06cc\u0646\u06af \u0648 \u0628\u0631\u0646\u062f"}, "performance": {"color": "#0097A7", "en": "Performance \u0026 Ads", "fa": "\u067e\u0631\u0641\u0648\u0631\u0645\u0646\u0633 \u0648 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a"}};
+  var tabs=[].slice.call(document.querySelectorAll('[data-tab]')), panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+  var chipsEl=document.querySelector('.chips'), q=document.querySelector('.search'), sel=document.querySelector('.arch');
+  var state={tab:'latest',cat:'all'};
+  function panel(){return document.querySelector('[data-panel="'+state.tab+'"]');}
+  function buildChips(){
+    var p=panel(), arts=[].slice.call(p.querySelectorAll('article')), counts={};
+    arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
+    var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
+    Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
+    chipsEl.innerHTML=h; chipsEl.style.display=(state.tab==='sources')?'none':'flex'; q.style.display=(state.tab==='sources')?'none':'';
+    sel.style.display=(state.tab==='latest')?'':'none';
+  }
+  function apply(){
+    var p=panel(), term=(q.value||'').trim().toLowerCase(), shown=0, arts=[].slice.call(p.querySelectorAll('article'));
+    arts.forEach(function(a){var ok=(state.cat==='all'||a.dataset.cat===state.cat)&&(!term||a.dataset.text.indexOf(term)>-1);a.hidden=!ok;if(ok)shown++;});
+    [].forEach.call(p.querySelectorAll('.group'),function(g){g.hidden=!g.querySelector('article:not([hidden])');});
+    var e=p.querySelector('.empty'); if(e)e.style.display=(arts.length&&!shown)?'block':'none';
+  }
+  function show(name,push){
+    if(!document.querySelector('[data-panel="'+name+'"]'))name='latest';
+    state.tab=name; state.cat='all';
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===name?'true':'false');});
+    panels.forEach(function(p){p.hidden=p.dataset.panel!==name;});
+    buildChips(); apply();
+    if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
+    [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
+  q.addEventListener('input',apply);
+  var prefix="../", cur="2026-10-18";
+  fetch(prefix+'archive.json').then(function(r){return r.json();}).then(function(list){
+    sel.innerHTML='';
+    list.forEach(function(a,i){var o=document.createElement('option');o.value=prefix+'archive/'+a.date+'.html';
+      o.textContent=a.short+(i===0?' (آخرین)':'');if(a.date===cur)o.selected=true;sel.appendChild(o);});
+  }).catch(function(){});
+  show((location.hash||'').replace('#','')||'latest',false);
+})();
+</script>
+</body>
+</html>

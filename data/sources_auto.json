@@ -41,5 +41,29 @@
   "tier": 1,
   "origin": "scout",
   "added": "2026-10-10"
+ },
+ {
+  "name": "Journal of Marketing",
+  "url": "https://www.ama.org/feed/",
+  "hint": "marketing",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-10-18"
+ },
+ {
+  "name": "Think with Google",
+  "url": "https://www.thinkwithgoogle.com/rss.xml",
+  "hint": "campaign",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-10-18"
+ },
+ {
+  "name": "Duolingo Blog",
+  "url": "https://blog.duolingo.com/rss/",
+  "hint": "ecrm",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-10-18"
  }
 ]
