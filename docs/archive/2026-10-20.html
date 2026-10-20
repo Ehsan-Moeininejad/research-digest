@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دایجست تیم پرفورمنس | 1405/07/28</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16.5px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+.topbar{background:#fff;border-bottom:3px solid var(--focus)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:12px;flex-wrap:wrap}
+.topbar .logo{color:var(--focus);font-weight:800;font-size:20px}
+.topbar .sub{color:var(--mute);font-size:13px}
+.mast{padding:30px 0 22px;background:#fff;border-bottom:1px solid var(--rule)}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+.brand b{color:var(--soft)}
+.date{margin:18px 0 2px;font-size:clamp(30px,6.5vw,46px);font-weight:800;line-height:1.3}
+.greg{color:var(--mute);font-size:14.5px}
+.note{margin:20px 0 0;font-size:18px;line-height:2;color:var(--soft);max-width:68ch}
+.stats{display:flex;gap:26px;margin-top:18px;color:var(--mute);font-size:13.5px;flex-wrap:wrap}
+.stats strong{display:block;color:var(--text);font-size:21px;font-weight:700;line-height:1.4}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.tabbar{display:flex;gap:4px;padding-top:10px}
+.tab{border:0;background:transparent;color:var(--mute);font:inherit;font-size:15.5px;font-weight:700;padding:8px 16px 10px;cursor:pointer;
+  border-bottom:2.5px solid transparent;text-decoration:none}
+.tab[aria-selected="true"]{color:var(--focus);border-bottom-color:var(--focus)}
+.tab span{font-weight:400;opacity:.65;margin-inline-start:4px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1 1 100%;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--rule);background:transparent;color:var(--soft);font:inherit;font-size:13.5px;padding:3px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--c,#EF4056);border-color:var(--c,#EF4056);color:#fff;font-weight:700}
+.chip span{opacity:.7;margin-inline-start:4px}
+.search{flex:1 1 220px;min-width:0;background:var(--sheet);border:1px solid var(--rule);color:var(--text);font:inherit;font-size:14.5px;padding:6px 14px;border-radius:10px}
+.search::placeholder{color:var(--mute)}
+select{background:var(--sheet);border:1px solid var(--rule);color:var(--soft);font:inherit;font-size:14px;padding:6px 10px;border-radius:10px}
+
+.panel{padding:6px 0 60px}
+.panel[hidden]{display:none}
+.group{margin-top:34px}
+.group h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--c);margin:0 0 4px}
+.group h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.group h2 small{color:var(--mute);font-weight:400}
+
+article{position:relative;margin:14px 0;background:var(--sheet);border-radius:12px;border:1px solid var(--rule);border-right:4px solid var(--c);padding:20px 22px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;color:var(--mute);font-size:13px}
+.meta .src{color:var(--soft);font-weight:700}
+.badge{border:1px solid currentColor;border-radius:6px;padding:0 7px;font-size:12px;color:var(--c)}
+.badge.hot{background:var(--focus);border-color:var(--focus);color:#fff;font-weight:700}
+.badge.day{color:var(--mute)}
+.meta .score{margin-inline-start:auto}
+article.ranked .meta,article.ranked h3{padding-left:46px}
+.rank{position:absolute;top:18px;left:18px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--c);color:#fff}
+article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
+.orig{color:var(--mute);font-size:13.5px;line-height:1.6;margin:2px 0 0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:14px 0 0;font-size:17.5px;line-height:1.95;font-weight:700;color:var(--text)}
+.new{margin:8px 0 0;color:var(--soft)}
+.via{margin:6px 0 0;font-size:13px;color:var(--mute)}.via a{color:var(--focus)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+.box{background:var(--sheet-2);border-radius:10px;padding:10px 14px}
+.box h4{margin:0 0 4px;font-size:13.5px;color:var(--c);font-weight:700}
+.box ul,.act ul{margin:0;padding-inline-start:18px}
+.box li,.act li{margin:3px 0;font-size:15px;line-height:1.85}
+.act{margin-top:12px;border-right:3px solid var(--focus);border-radius:8px;padding:10px 14px;background:#FFF2F4}
+.act h4{margin:0 0 4px;font-size:13.5px;color:var(--focus);font-weight:800}
+.cav{margin-top:10px;color:var(--mute);font-size:14px}
+.cav b{color:var(--soft);font-weight:700}
+.foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)}
+.teams{display:flex;gap:6px;flex-wrap:wrap}
+.teams span,.tags span{font-size:12px;color:var(--soft);background:#F0F0F1;padding:1px 10px;border-radius:12px}
+.tags span{color:var(--mute)}
+.go{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;background:var(--focus);padding:7px 18px;border-radius:8px}
+.go:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.go.ghost{background:#fff;color:var(--soft);border:1px solid var(--rule)}
+.url{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+.url:hover{color:var(--soft)}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:18px;color:var(--c);font-weight:800}
+details.more[open] summary::before{content:"−"}
+
+.lead{color:var(--soft);margin:18px 0 0;max-width:70ch}
+.empty{display:none;text-align:center;color:var(--mute);padding:40px 0}
+.tw{overflow-x:auto;margin-top:20px}
+table.src{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+table.src th{white-space:nowrap;text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
+.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
+footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+@media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
+</style>
+</head>
+<body>
+
+
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span><span class="ltr sub">Research &amp; Industry Digest</span></div></div>
+<header class="mast">
+  <div class="wrap">
+    <div class="date">سه‌شنبه 28 مهر 1405</div>
+    <div class="greg ltr" style="text-align:right">20 Oct 2026</div>
+    <p class="note">محور اصلی در داده های امروز، گذار ساختاری از ابزارهای بازاریابی سنتی به سیستم های پویا، ایجنت محور و مبتنی بر هوش مصنوعی است که از کانال های پنهان و تولید محتوای خودکار بهره می برند. برای تیم، این روند به معنای ضرورت ارتقای ابزارهای سنجش و تحلیل برای پوشش ترافیک تاریک موتورهای پاسخگو، استفاده از مدل های هوش مصنوعی تخصصی در فروش و تبلیغات، و بازنگری در ساختارهای نظارتی برای مقابله با تقلب در زنجیره تامین دیجیتال است.</p>
+    <div class="stats">
+      <div><strong>9</strong>مطلب تازهٔ این نوبت</div>
+      <div><strong>35</strong>متن کامل بازبینی‌شده</div>
+      <div><strong>92</strong>مطلب غربال‌شده</div>
+      
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="بخش‌ها">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab" role="tab" data-tab="latest" aria-selected="true">مطالب این نوبت<span>9</span></button>
+      
+      <a class="tab" href="../index.html">بازگشت به آخرین نسخه</a>
+      
+    </div>
+    <div class="tools">
+      <div class="chips" role="group" aria-label="دسته‌ها"></div>
+      <input class="search" type="search" placeholder="جست‌وجو: عنوان، اقدام، تیم (eCRM، Ads ...)" aria-label="جست‌وجو">
+      <select class="arch" aria-label="آرشیو نوبت‌ها" onchange="if(this.value)location.href=this.value">
+        <option value="../archive/2026-10-20.html" selected>1405/07/28</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" data-panel="latest">
+    
+    
+    <div class="group" data-group="performance" style="--c:#0097A7">
+      <h2>پرفورمنس و تبلیغات <small class="ltr">Performance &amp; Ads</small></h2>
+      <article data-cat="performance" data-text="بررسی سایت‌های تولید محتوای هوش مصنوعی و تقلب در تبلیغات دیجیتال ai slop sites are on the rise. is ad tech ready for its new mfa challenge? سایت‌های تولید محتوا با هوش مصنوعی که اغلب در حوزه آشپزی فعالیت دارند، بودجه تبلیغاتی برندهای بزرگ را هدر داده و چالش‌های جدیدی برای صنعت ادتک ایجاد می‌کنند. این گزارش تحقیقاتی توسط تیم decryptads منتشر شده و به بررسی پدیده رو به رشد سایت‌های موسوم به ai slop و made-for-advertising (mfa) می‌پردازد. این گزارش نشان می‌دهد چگونه محتوای تولید شده توسط هوش مصنوعی همراه با تصاویر و هویت‌های جعلی برای جذب ترافیک و کسب درآمد از طریق تبلیغات برنامه‌ریزی‌شده استفاده می‌شود. نویسندگان استدلال می‌کنند که اکوسیستم تبلیغات برنامه‌ریزی‌شده دچار نقص نظارتی است و شبکه‌های واسطه و sspها به دلیل نظارت حداقلی، ناخواسته به monetization این سایت‌های جعلی کمک می‌کنند. این وضعیت نیازمند رویکردهای پیشرفته‌تر مبتنی بر اثر انگشت‌های فنی و داده‌های چندلایه برای پاکسازی زنجیره تامین تبلیغات است. بررسی و پایش دقیق پارتنرهای تبلیغاتی و لیست‌های ads.txt برای جلوگیری از نمایش آگهی‌ها در سایت‌های mfa و تولید شده با هوش مصنوعی افزودن فیلترهای کیفی به کمپین‌های ads برای شناسایی و مسدود کردن دامنه‌های مشکوک با ترافیک جعلی بازنگری در معیارهای انتخاب پلتفرم‌های ssp و شبکه تأمین‌کنندگان برای حفظ ایمنی برند و بهینه‌سازی بودجه ad-fraud mfa ai-slop programmatic ads data leadership decryptads.com" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">decryptads.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>بررسی سایت‌های تولید محتوای هوش مصنوعی و تقلب در تبلیغات دیجیتال</h3>
+  <p class="orig ltr">AI Slop Sites Are On The Rise. Is Ad Tech Ready For Its New MFA Challenge?</p>
+  <p class="via">پوشش از طریق <a href="https://www.adexchanger.com/programmatic/ai-slop-sites-are-on-the-rise-is-ad-tech-ready-for-its-new-mfa-challenge/" target="_blank" rel="noopener">AdExchanger</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">سایت‌های تولید محتوا با هوش مصنوعی که اغلب در حوزه آشپزی فعالیت دارند، بودجه تبلیغاتی برندهای بزرگ را هدر داده و چالش‌های جدیدی برای صنعت ادتک ایجاد می‌کنند.</p>
+  <p class="new">این گزارش تحقیقاتی توسط تیم DecryptAds منتشر شده و به بررسی پدیده رو به رشد سایت‌های موسوم به AI Slop و Made-for-advertising (MFA) می‌پردازد. این گزارش نشان می‌دهد چگونه محتوای تولید شده توسط هوش مصنوعی همراه با تصاویر و هویت‌های جعلی برای جذب ترافیک و کسب درآمد از طریق تبلیغات برنامه‌ریزی‌شده استفاده می‌شود.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی و پایش دقیق پارتنرهای تبلیغاتی و لیست‌های ads.txt برای جلوگیری از نمایش آگهی‌ها در سایت‌های MFA و تولید شده با هوش مصنوعی</li><li>افزودن فیلترهای کیفی به کمپین‌های Ads برای شناسایی و مسدود کردن دامنه‌های مشکوک با ترافیک جعلی</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/57ab41b4dcb7c193.html">خواندن بریف کامل</a><a class="go ghost" href="https://decryptads.com/blog/posts/ai-recipe-slop-networks.html" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://decryptads.com/blog/posts/ai-recipe-slop-networks.html" target="_blank" rel="noopener">https://decryptads.com/blog/posts/ai-recipe-slop-networks.html</a>
+</article><article data-cat="performance" data-text="سیستم تبلیغات ویدیویی شخصی‌سازی‌شده مبتنی بر چند ایجنت و یادگیری تقویتی maps: a multi-agent personalized script-driven video advertising system enhanced by reinforcement learning سیستم maps با استفاده از چند ایجنت و اسکریپت‌نویسی پویا، محدودیت تبلیغات ویدیویی از‌پیش‌تولید‌شده را برطرف کرده و شخصی‌سازی را افزایش می‌دهد. این مقاله پژوهشی که در حوزه تبلیغات دیجیتال منتشر شده است، سیستم جدیدی به نام maps را برای تولید و بهینه‌سازی تبلیغات ویدیویی شخصی‌سازی‌شده معرفی می‌کند. نویسندگان به چالش ناکارآمدی سیستم‌های سنتی مبتنی بر بازیابی در شخصی‌سازی ویدیوها پرداخته‌اند. این پژوهش از رویکرد یادگیری تقویتی و معماری چند ایجنتی برای بهبود فرآیند ساخت خلاقه‌های ویدیویی استفاده می‌کند. نویسندگان استدلال می‌کنند که گذار از سیستم‌های سنتی بازیابی به تولید پویا و اسکریپت‌محور توسط ایجنت‌ها، می‌تواند محدودیت‌های گرانولاری و شخصی‌سازی ویدیو را حل کند. این رویکرد به دلیل انطباق کامل با ویژگی‌های منحصر‌به‌فرد هر کاربر، عملکرد تبلیغات دیجیتال را در میان گروه‌های مختلف مخاطبان متوازن‌تر و اثربخش‌تر می‌سازد. بررسی امکان استفاده از llm و ایجنت‌ها برای تولید محتوای ویدیویی شخصی‌سازی‌شده در کمپین‌های ads آزمایش سناریوهای تولید اسکریپت پویا بر اساس داده‌های رفتار خرید کاربران در مارکت‌پلیس سنجش میزان uplift در نرخ تبدیل ویدیو ادز با جایگزینی محتوای ثابت با محتوای ایجنت‌محور multi-agent video-advertising reinforcement-learning personalization ads engagement data product arxiv · advertising" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">arXiv · Advertising</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.5/10</span>
+  </div>
+  <h3>سیستم تبلیغات ویدیویی شخصی‌سازی‌شده مبتنی بر چند ایجنت و یادگیری تقویتی</h3>
+  <p class="orig ltr">MAPS: A Multi-Agent Personalized Script-Driven Video Advertising System Enhanced by Reinforcement Learning</p>
+  
+  <p class="tldr">سیستم MAPS با استفاده از چند ایجنت و اسکریپت‌نویسی پویا، محدودیت تبلیغات ویدیویی از‌پیش‌تولید‌شده را برطرف کرده و شخصی‌سازی را افزایش می‌دهد.</p>
+  <p class="new">این مقاله پژوهشی که در حوزه تبلیغات دیجیتال منتشر شده است، سیستم جدیدی به نام MAPS را برای تولید و بهینه‌سازی تبلیغات ویدیویی شخصی‌سازی‌شده معرفی می‌کند. نویسندگان به چالش ناکارآمدی سیستم‌های سنتی مبتنی بر بازیابی در شخصی‌سازی ویدیوها پرداخته‌اند. این پژوهش از رویکرد یادگیری تقویتی و معماری چند ایجنتی برای بهبود فرآیند ساخت خلاقه‌های ویدیویی استفاده می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان استفاده از LLM و ایجنت‌ها برای تولید محتوای ویدیویی شخصی‌سازی‌شده در کمپین‌های Ads</li><li>آزمایش سناریوهای تولید اسکریپت پویا بر اساس داده‌های رفتار خرید کاربران در مارکت‌پلیس</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Engagement</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/ee02a0d2f625b4a5.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.25748v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.25748v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.25748v1</a>
+</article><article data-cat="performance" data-text="استفاده آمازون از هوش مصنوعی برای ساده‌سازی تبلیغات برنامه‌ریزی‌شده و نتایج تست‌های اولیه how amazon ads plans to make programmatic simple without taking control from marketers پلتفرم جدید مبتنی بر هوش مصنوعی آمازون با ساده‌سازی کمپین‌های پرودماتیک، کاهشی چشمگیر در هزینه‌ها و بهبود تحویل ایجاد کرده است. این متن گزارش مصاحبه‌ای از نشریه adexchanger است که در آن الیسون شیف با کلی مک‌لین، معاون بخش علم، مهندسی و محصول در آمازون ادز، درباره قابلیت‌های جدید معرفی شده در رویداد unboxed گفتگو می‌کند. بحث اصلی متمرکز بر پلتفرم جدید و مبتنی بر هوش مصنوعی آمازون است که کنسول تبلیغاتی و dsp را ادغام می‌کند تا فرآیند اجرای کمپین‌ها خودکار و ساده شود. مدیران آمازون استدلال می‌کنند که با واگذاری کارهای مکانیکی و اجرایی به هوش مصنوعی، بازاریابان می‌توانند روی اهداف استراتژیک تمرکز کنند. دسترسی به داده‌های خرید واقعی و بینش یکپارچه از کل مسیر مشتری، کلید اصلی بهبود عملکرد تبلیغات و دموکراتیزه کردن پرودماتیک برای کسب‌وکارها در هر ابعادی است. بررسی امکان اتوماسیون مشابه برای کاهش زمان راه‌اندازی کمپین‌های پرفورمنس مارکتینگ استفاده از داده‌های خرید فرست-پارتی برای اتصال کانال‌های مختلف در مارکت‌پلیس تست رویکردهای مبتنی بر agent برای ساده‌سازی مدیریت کمپین‌های پیچیده ads ai programmatic dsp amazon ads ads data product leadership adexchanger" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">AdExchanger</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>3 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.6/10</span>
+  </div>
+  <h3>استفاده آمازون از هوش مصنوعی برای ساده‌سازی تبلیغات برنامه‌ریزی‌شده و نتایج تست‌های اولیه</h3>
+  <p class="orig ltr">How Amazon Ads Plans To Make Programmatic Simple Without Taking Control From Marketers</p>
+  
+  <p class="tldr">پلتفرم جدید مبتنی بر هوش مصنوعی آمازون با ساده‌سازی کمپین‌های پرودماتیک، کاهشی چشمگیر در هزینه‌ها و بهبود تحویل ایجاد کرده است.</p>
+  <p class="new">این متن گزارش مصاحبه‌ای از نشریه AdExchanger است که در آن الیسون شیف با کلی مک‌لین، معاون بخش علم، مهندسی و محصول در آمازون ادز، درباره قابلیت‌های جدید معرفی شده در رویداد unBoxed گفتگو می‌کند. بحث اصلی متمرکز بر پلتفرم جدید و مبتنی بر هوش مصنوعی آمازون است که کنسول تبلیغاتی و DSP را ادغام می‌کند تا فرآیند اجرای کمپین‌ها خودکار و ساده شود.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان اتوماسیون مشابه برای کاهش زمان راه‌اندازی کمپین‌های پرفورمنس مارکتینگ</li><li>استفاده از داده‌های خرید فرست-پارتی برای اتصال کانال‌های مختلف در مارکت‌پلیس</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/f40b0a8e61a43730.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.adexchanger.com/inside-the-stack/how-amazon-ads-plans-to-make-programmatic-simple-without-taking-control-from-marketers/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.adexchanger.com/inside-the-stack/how-amazon-ads-plans-to-make-programmatic-simple-without-taking-control-from-marketers/" target="_blank" rel="noopener">https://www.adexchanger.com/inside-the-stack/how-amazon-ads-plans-to-make-programmatic-simple-without-taking-control-from-marketers/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="campaign" style="--c:#F57C00">
+      <h2>کمپین و پروموشن <small class="ltr">Campaigns &amp; Promotions</small></h2>
+      <article data-cat="campaign" data-text="گزارش دلایت: پیش‌بینی افزایش 4 درصدی هزینه‌های تعطیلات و نقش کلیدی نسل زد nearly 30% of holiday budgets expected to be spent by the end of october میانگین هزینه‌های خانوار در تعطیلات پیش رو با 4 درصد رشد به us$1654 می‌رسد و نسل زد و میلنیال‌ها 50 درصد این بازار را به خود اختصاص می‌دهند. این مطلب چهل و یکمین گزارش سالانه دلایت (deloitte) درباره روندهای خرید در فصل تعطیلات است که به بررسی رفتار مصرف‌کنندگان، بودجه‌ها، الگوهای خرید و کانال‌های آنلاین می‌پردازد. نویسندگان نتیجه می‌گیرند که خرده‌فروشان باید با ارائه ارزش شفاف، تبلیغات به موقع در بازه‌های زودهنگام مانند اکتبر، و ساده‌سازی کشف هدیه، از تمایل مصرف‌کنندگان به جشن گرفتن بهره ببرند و از هوش مصنوعی مولد برای افزایش اعتماد کاربر استفاده کنند. کمپین‌های ads و ecrm را برای شروع زودهنگام خریدهای فصلی از ماه اکتبر بهینه‌سازی کنید. پیشنهادهای ترکیبی کالا و تجربه را در کانال‌های engagement و ecrm برجسته کنید. استراتژی تخفیف‌ها و پاداش‌ها را برای جذب بخش ارزش‌جویان (value seekers) شخصی‌سازی کنید. دستیارهای هوش مصنوعی مولد را برای افزایش اعتماد و راهنمایی خرید مشتریان پیاده‌سازی کنید. holiday-shopping retail-trends gen-ai consumer-behavior ads ecrm engagement data deloitte.com" style="--c:#F57C00">
+  
+  <div class="meta">
+    <span class="src">deloitte.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>مقدماتی</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>گزارش دلایت: پیش‌بینی افزایش 4 درصدی هزینه‌های تعطیلات و نقش کلیدی نسل زد</h3>
+  <p class="orig ltr">Nearly 30% of holiday budgets expected to be spent by the end of October</p>
+  <p class="via">پوشش از طریق <a href="https://www.modernretail.co/operations/nearly-30-of-holiday-budgets-expected-to-be-spent-by-the-end-of-october/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">Modern Retail</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">میانگین هزینه‌های خانوار در تعطیلات پیش رو با 4 درصد رشد به US$1654 می‌رسد و نسل زد و میلنیال‌ها 50 درصد این بازار را به خود اختصاص می‌دهند.</p>
+  <p class="new">این مطلب چهل و یکمین گزارش سالانه دلایت (Deloitte) درباره روندهای خرید در فصل تعطیلات است که به بررسی رفتار مصرف‌کنندگان، بودجه‌ها، الگوهای خرید و کانال‌های آنلاین می‌پردازد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>کمپین‌های Ads و eCRM را برای شروع زودهنگام خریدهای فصلی از ماه اکتبر بهینه‌سازی کنید.</li><li>پیشنهادهای ترکیبی کالا و تجربه را در کانال‌های Engagement و eCRM برجسته کنید.</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">eCRM</span><span class="ltr">Engagement</span><span class="ltr">Data</span></div>
+    <span class="btns"><a class="go" href="../a/3f2cc30e9d6894e4.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html" target="_blank" rel="noopener">https://www.deloitte.com/us/en/insights/industry/retail-distribution/holiday-retail-sales-consumer-survey.html</a>
+</article><article data-cat="campaign" data-text="استراتژی کمپین تعطیلات آنتروپولوژی: ادغام پلتفرم‌های محتوایی و تحویل فوری love actually’ reunions, delivered by doordash: inside anthropologie’s holiday sales pitch برند آنتروپولوژی برای کمپین تعطیلات خود با همکاری داودش، تنوع‌بخشی به سبد محصولات و روایت‌های تاثیرگذار اینفلوئنسری تلاش دارد تا هزینه‌های خرد و مناسبت‌های کوچک را جذب کند. این مقاله که در وب‌سایت مدرن ریتیل منتشر شده است، نگاهی به استراتژی بازاریابی و فروش برند آنتروپولوژی برای فصل تعطیلات سال دارد. این گزارش به بررسی نحوه تلفیق فیلم‌های کوتاه، همکاری‌های انحصاری، خدمات استایلینگ و همکاری تجاری با پلتفرم تحویل فوری داودش می‌پردازد. هدف این کمپین پاسخگویی به رفتارهای پیچیده مصرف‌کنندگان در فصل خرید است. مدیران آنتروپولوژی بر این باورند که با ارائه طیفی انعطاف‌پذیر از محصولات کاربردی و هدیه‌محور، در کنار حذف اصطکاک خرید از طریق تحویل فوری داودش و راهنمایی‌های بودجه‌ای، می‌توان سهم بیشتری از سبد خرید مشتریان را به دست آورد. این رویکرد به برند اجازه می‌دهد تا از خریدهای کوچک و فرعی در کنار مراسم بزرگ سنتی بهره‌برداری تجاری کند. بررسی امکان شراکت با پلتفرم‌های تحویل سریع محلی برای پوشش نیازهای لحظه آخری و مناسبت‌های فوری کاربران طراحی دسته‌بندی‌های ترکیبی و اقلام مکمل (bundle) برای افزایش میانگین ارزش سبد خرید در کمپین‌های فصلی شخصی‌سازی راهنماهای هدیه و ابزارهای مشاوره قیمت‌محور برای کاهش اصطکاک خرید کاربران حساس به بودجه تست و به‌کارگیری استراتژی‌های محتوایی و ویدیویی مبتنی بر اینفلوئنسرهای خرد برای شناسایی زودهنگام کالاهای پرمخاطب retail-media holiday-campaign omnichannel partnership ads affiliate ecrm engagement modern retail" style="--c:#F57C00">
+  
+  <div class="meta">
+    <span class="src">Modern Retail</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.3/10</span>
+  </div>
+  <h3>استراتژی کمپین تعطیلات آنتروپولوژی: ادغام پلتفرم‌های محتوایی و تحویل فوری</h3>
+  <p class="orig ltr">Love Actually’ reunions, delivered by DoorDash: Inside Anthropologie’s holiday sales pitch</p>
+  
+  <p class="tldr">برند آنتروپولوژی برای کمپین تعطیلات خود با همکاری داودش، تنوع‌بخشی به سبد محصولات و روایت‌های تاثیرگذار اینفلوئنسری تلاش دارد تا هزینه‌های خرد و مناسبت‌های کوچک را جذب کند.</p>
+  <p class="new">این مقاله که در وب‌سایت مدرن ریتیل منتشر شده است، نگاهی به استراتژی بازاریابی و فروش برند آنتروپولوژی برای فصل تعطیلات سال دارد. این گزارش به بررسی نحوه تلفیق فیلم‌های کوتاه، همکاری‌های انحصاری، خدمات استایلینگ و همکاری تجاری با پلتفرم تحویل فوری داودش می‌پردازد. هدف این کمپین پاسخگویی به رفتارهای پیچیده مصرف‌کنندگان در فصل خرید است.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان شراکت با پلتفرم‌های تحویل سریع محلی برای پوشش نیازهای لحظه آخری و مناسبت‌های فوری کاربران</li><li>طراحی دسته‌بندی‌های ترکیبی و اقلام مکمل (Bundle) برای افزایش میانگین ارزش سبد خرید در کمپین‌های فصلی</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Affiliate</span><span class="ltr">eCRM</span><span class="ltr">Engagement</span></div>
+    <span class="btns"><a class="go" href="../a/450e1671c8ec374f.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.modernretail.co/marketing/love-actually-reunions-delivered-by-doordash-inside-anthropologies-holiday-sales-pitch/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.modernretail.co/marketing/love-actually-reunions-delivered-by-doordash-inside-anthropologies-holiday-sales-pitch/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss" target="_blank" rel="noopener">https://www.modernretail.co/marketing/love-actually-reunions-delivered-by-doordash-inside-anthropologies-holiday-sales-pitch/?utm_campaign=modernretaildis&amp;utm_medium=rss&amp;utm_source=general-rss</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="growth" style="--c:#2E9E4F">
+      <h2>رشد <small class="ltr">Growth</small></h2>
+      <article data-cat="growth" data-text="بررسی تاثیر هوش مصنوعی و موتورهای پاسخگو بر ترافیک مستقیم و سئو does ai drive more direct traffic? تحقیقات رَمپ نشان داد 30 الی 40 درصد از ترافیک مستقیم وب‌سایت در واقع ناشی از ارجاعات موتورهای پاسخگوی هوش مصنوعی است که از دید ابزارهای تحلیل معمولی پنهان می‌ماند. این مطلب گزارش پادکستی از سیج مدیا است که در آن راس هاجنس با اریک وو، مسئول بخش سئو، ژئو و تبدیل در شرکت رَمپ، درباره برنامه‌های سئوی مبتنی بر آزمایش گفتگو می‌کند. این گفت‌وگو به بررسی روش‌های بازاریابی برای هوش مصنوعی و کشف منابع ترافیک پنهان می‌پردازد. موتورهای پاسخگو و ایجنت‌های هوش مصنوعی کانال‌های اصلی ترافیک ایجاد کرده‌اند که مدل‌های سنتی تحلیل وب قادر به شناسایی آن‌ها نیستند. شرکت‌ها باید با اجرای آزمایش‌های مداوم، استفاده از نشانه‌گذاری‌های ساختاریافته و پرسش‌های مستقیم، دید درستی از این کانال تاریک به دست آورند. بررسی پرسش نحوه آشنایی کاربران در فرم‌های ثبت‌نام برای سنجش ترافیک تاریک هوش مصنوعی آزمایش تأثیر فایل‌های مارک‌داون و ساختار داده‌ها بر نحوه پاسخ‌دهی llmها به نام برند لحاظ کردن تاثیر ایجنت‌های هوش مصنوعی و موتورهای پاسخگو در استراتژی‌های سئو و بازاریابی محتوایی seo llm attribution analytics ads data product leadership siegemedia.com" style="--c:#2E9E4F">
+  
+  <div class="meta">
+    <span class="src">siegemedia.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>10 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.5/10</span>
+  </div>
+  <h3>بررسی تاثیر هوش مصنوعی و موتورهای پاسخگو بر ترافیک مستقیم و سئو</h3>
+  <p class="orig ltr">Does AI drive more direct traffic?</p>
+  <p class="via">پوشش از طریق <a href="https://www.growth-memo.com/p/does-ai-drive-more-direct-traffic" target="_blank" rel="noopener">Growth Memo</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">تحقیقات رَمپ نشان داد 30 الی 40 درصد از ترافیک مستقیم وب‌سایت در واقع ناشی از ارجاعات موتورهای پاسخگوی هوش مصنوعی است که از دید ابزارهای تحلیل معمولی پنهان می‌ماند.</p>
+  <p class="new">این مطلب گزارش پادکستی از سیج مدیا است که در آن راس هاجنس با اریک وو، مسئول بخش سئو، ژئو و تبدیل در شرکت رَمپ، درباره برنامه‌های سئوی مبتنی بر آزمایش گفتگو می‌کند. این گفت‌وگو به بررسی روش‌های بازاریابی برای هوش مصنوعی و کشف منابع ترافیک پنهان می‌پردازد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی پرسش نحوه آشنایی کاربران در فرم‌های ثبت‌نام برای سنجش ترافیک تاریک هوش مصنوعی</li><li>آزمایش تأثیر فایل‌های مارک‌داون و ساختار داده‌ها بر نحوه پاسخ‌دهی LLMها به نام برند</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/38990e5f1e79f0da.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu" target="_blank" rel="noopener">https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="data" style="--c:#1E88E5">
+      <h2>داده و آزمایش <small class="ltr">Data &amp; Experimentation</small></h2>
+      <article data-cat="data" data-text="مدل‌سازی تخصیص کوپن چندبعدی در مارکت‌پلیس با ترنسفورمر taqformer taqformer: a treatment-as-query transformer with data-fusion for multidimensional treatment modeling in coupon allocation استفاده از taqformer، یک مدل ترنسفورمر مبتنی بر پرس‌وجو، برای بهینه‌سازی تخصیص تخفیف‌های دسته‌بندی‌شده و پیش‌بینی جابجایی تقاضا در مارکت‌پلیس‌ها. این مقاله پژوهشی علمی که در حوزه یادگیری ماشین علّی و بهینه‌سازی تخفیف ارائه شده است، به مسئله تخصیص همزمان کوپن‌های چندبعدی در یک پلتفرم آنلاین با خدمات متنوع می‌پردازد. نویسندگان معماری جدیدی به نام taqformer را توسعه داده‌اند تا اثرات مستقیم و تغییرات تقاضای بین دسته‌بندی‌ها را در تخصیص تخفیف مدیریت کنند. نویسندگان استدلال می‌کنند که استفاده از ترنسفورمرها با رویکرد درمان به عنوان پرس‌وجو و ترکیب داده‌های مشاهداتی بایاس‌دار با داده‌های آزمایشی از طریق lora، امکان مدل‌سازی دقیق‌تر و بهینه‌تر تخفیف‌های چندبعدی را در پلتفرم‌های پیچیده فراهم می‌کند و چالش تعاملات متقاطع تقاضا را حل می‌نماید. بررسی معماری taqformer برای بهینه‌سازی بودجه تخفیف و کوپن در کمپین‌های ecrm و ads تست روش ترکیب داده‌های مشاهداتی با داده‌های a/b test برای تخمین دقیق‌تر uplift در تخصیص تخفیف ارزیابی اثرات متقاطع تخفیف‌های دسته‌بندی‌های مختلف روی رفتارهای خرید کاربران مارکت‌پلیس causal-inference transformer coupon-allocation uplift ads ecrm data product arxiv · uplift &amp; causal" style="--c:#1E88E5">
+  
+  <div class="meta">
+    <span class="src">arXiv · Uplift &amp; Causal</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">9.9/10</span>
+  </div>
+  <h3>مدل‌سازی تخصیص کوپن چندبعدی در مارکت‌پلیس با ترنسفورمر TaQFormer</h3>
+  <p class="orig ltr">TaQFormer: A Treatment-as-Query Transformer with Data-Fusion for Multidimensional Treatment Modeling in Coupon Allocation</p>
+  
+  <p class="tldr">استفاده از TaQFormer، یک مدل ترنسفورمر مبتنی بر پرس‌وجو، برای بهینه‌سازی تخصیص تخفیف‌های دسته‌بندی‌شده و پیش‌بینی جابجایی تقاضا در مارکت‌پلیس‌ها.</p>
+  <p class="new">این مقاله پژوهشی علمی که در حوزه یادگیری ماشین علّی و بهینه‌سازی تخفیف ارائه شده است، به مسئله تخصیص همزمان کوپن‌های چندبعدی در یک پلتفرم آنلاین با خدمات متنوع می‌پردازد. نویسندگان معماری جدیدی به نام TaQFormer را توسعه داده‌اند تا اثرات مستقیم و تغییرات تقاضای بین دسته‌بندی‌ها را در تخصیص تخفیف مدیریت کنند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی معماری TaQFormer برای بهینه‌سازی بودجه تخفیف و کوپن در کمپین‌های eCRM و Ads</li><li>تست روش ترکیب داده‌های مشاهداتی با داده‌های A/B test برای تخمین دقیق‌تر uplift در تخصیص تخفیف</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">eCRM</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/f0e28d89312f6ac8.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.26199v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.26199v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.26199v1</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="ai" style="--c:#6A4BC4">
+      <h2>هوش مصنوعی <small class="ltr">AI &amp; Agents</small></h2>
+      <article data-cat="ai" data-text="ارزیابی ایجنت فروش هوش مصنوعی در برابر مدل‌های عمومی و انسان‌ها در محیط واقعی selling in the wild: benchmark and randomized field evidence for a sales agent trained on commercial conversations ایجنت تخصصی فروش آموزش‌دیده روی مکالمات تجاری، به طور معناداری در بنچمارک‌ها و آزمایش‌های میدانی از مدل‌های عمومی و انسان‌ها عملکرد بهتری ثبت کرده است. این مقاله پژوهشی به بررسی عملکرد یک ایجنت فروش تخصصی به نام javo می‌پردازد که روی 4.6 میلیون مکالمه تجاری واقعی آموزش دیده است. پژوهشگران این ابزار را در مقایسه با مدل‌های هوش مصنوعی عمومی و فروشندگان انسانی در بنچمارک‌ها و آزمایش‌های میدانی ارزیابی کرده‌اند. نویسندگان استدلال می‌کنند که آموزش مدل‌های هوش مصنوعی با داده‌های اختصاصی و محاورات تجاری واقعی، مزیت رقابتی پایدار و کارایی بسیار بالاتری نسبت به اتکا صرف به مدل‌های عمومی همه‌منظوره در حوزه فروش ایجاد می‌کند. آزمایش ایجنت‌های تخصصی مبتنی بر llm برای اتوماسیون و بهبود نرخ تبدیل در بخش چت و پشتیبانی فروش بررسی امکان استفاده از داده‌های مکالمات تاریخی کاربران برای فاین‌تیون مدل‌های داخلی طراحی آزمایش‌های a/b و holdout مشابه روی پلتفرم مارکت‌پلیس برای سنجش تأثیر واقعی ایجنت‌ها بر فروش llm agent sales benchmark ads engagement data product arxiv · llm for marketing" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">arXiv · LLM for Marketing</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>15 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">9.5/10</span>
+  </div>
+  <h3>ارزیابی ایجنت فروش هوش مصنوعی در برابر مدل‌های عمومی و انسان‌ها در محیط واقعی</h3>
+  <p class="orig ltr">Selling in the Wild: Benchmark and Randomized Field Evidence for a Sales Agent Trained on Commercial Conversations</p>
+  
+  <p class="tldr">ایجنت تخصصی فروش آموزش‌دیده روی مکالمات تجاری، به طور معناداری در بنچمارک‌ها و آزمایش‌های میدانی از مدل‌های عمومی و انسان‌ها عملکرد بهتری ثبت کرده است.</p>
+  <p class="new">این مقاله پژوهشی به بررسی عملکرد یک ایجنت فروش تخصصی به نام Javo می‌پردازد که روی 4.6 میلیون مکالمه تجاری واقعی آموزش دیده است. پژوهشگران این ابزار را در مقایسه با مدل‌های هوش مصنوعی عمومی و فروشندگان انسانی در بنچمارک‌ها و آزمایش‌های میدانی ارزیابی کرده‌اند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>آزمایش ایجنت‌های تخصصی مبتنی بر LLM برای اتوماسیون و بهبود نرخ تبدیل در بخش چت و پشتیبانی فروش</li><li>بررسی امکان استفاده از داده‌های مکالمات تاریخی کاربران برای فاین‌تیون مدل‌های داخلی</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Engagement</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/e5df42e46156ef59.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.25461v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.25461v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.25461v1</a>
+</article><article data-cat="ai" data-text="سنجش تاثیر هوش مصنوعی و مدل‌سازی ترکیبی در بازاریابی لندی how australian home lender lendi measures the invisible work of ai شرکت لندی با استفاده از مدل‌سازی ترکیبی بازاریابی و ابزارهای هوش مصنوعی، اثرگذاری پنهان چت‌بات‌ها و کانال‌های سنتی را اندازه‌گیری می‌کند. این مقاله گزارشی از نشریه adexchanger است که به استراتژی‌های اندازه‌گیری بازاریابی و ارزیابی تأثیر هوش مصنوعی توسط مایکل مک‌کش، مدیر رشد شرکت وام مسکن استرالیایی lendi group می‌پردازد. این مطلب بررسی می‌کند که چگونه این برند بودجه بیش از 10 میلیون دلاری خود را مدیریت کرده و با ابزارهای نوین، کانال‌های دیجیتال و سنتی را ارزیابی می‌کند. نتیجه‌گیری نویسندگان و مدیران لندی این است که در حال حاضر سرمایه‌گذاری روی هوش مصنوعی باید به جای خرید تبلیغات مستقیم در چت‌بات‌ها، روی اندازه‌گیری و درک نحوه تأثیرگذاری آن‌ها بر کشف برند متمرکز شود. کارهای تحقیقی اولیه مشتریان به درون پلتفرم‌های هوش مصنوعی منتقل شده و دسترسی به این دانش، مرز بعدی بازاریابی است. بررسی امکان پیاده‌سازی marketing mix modeling برای سنجش دقیق‌تر اثر کانال‌های سنتی و دیجیتال طراحی روش‌هایی برای تست و پرامپت انبوه مدل‌های llm جهت رصد میزان دیده‌شدن برند یا aeo تحلیل کیفیت ترافیک ورودی از کانال‌های مبتنی بر هوش مصنوعی و مقایسه نرخ تبدیل آن‌ها در قیف فروش پرهیز از تخصیص بودجه سنگین به تبلیغات مستقیم چت‌بات‌ها تا زمان بهبود مدل‌های attribution و کاهش cpm mmm ai visibility attribution llm discovery ads data product leadership adexchanger" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">AdExchanger</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">6.6/10</span>
+  </div>
+  <h3>سنجش تاثیر هوش مصنوعی و مدل‌سازی ترکیبی در بازاریابی لندی</h3>
+  <p class="orig ltr">How Australian Home Lender Lendi Measures The Invisible Work Of AI</p>
+  
+  <p class="tldr">شرکت لندی با استفاده از مدل‌سازی ترکیبی بازاریابی و ابزارهای هوش مصنوعی، اثرگذاری پنهان چت‌بات‌ها و کانال‌های سنتی را اندازه‌گیری می‌کند.</p>
+  <p class="new">این مقاله گزارشی از نشریه AdExchanger است که به استراتژی‌های اندازه‌گیری بازاریابی و ارزیابی تأثیر هوش مصنوعی توسط مایکل مک‌کش، مدیر رشد شرکت وام مسکن استرالیایی Lendi Group می‌پردازد. این مطلب بررسی می‌کند که چگونه این برند بودجه بیش از 10 میلیون دلاری خود را مدیریت کرده و با ابزارهای نوین، کانال‌های دیجیتال و سنتی را ارزیابی می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان پیاده‌سازی Marketing Mix Modeling برای سنجش دقیق‌تر اثر کانال‌های سنتی و دیجیتال</li><li>طراحی روش‌هایی برای تست و پرامپت انبوه مدل‌های LLM جهت رصد میزان دیده‌شدن برند یا AEO</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/7f79a85b265f943f.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.adexchanger.com/measurement/how-australian-home-lender-lendi-measures-the-invisible-work-of-ai/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.adexchanger.com/measurement/how-australian-home-lender-lendi-measures-the-invisible-work-of-ai/" target="_blank" rel="noopener">https://www.adexchanger.com/measurement/how-australian-home-lender-lendi-measures-the-invisible-work-of-ai/</a>
+</article>
+    </div>
+    
+    
+    <p class="empty">مطلبی با این فیلتر پیدا نشد.</p>
+  </section>
+
+  
+</main>
+
+<footer><div class="wrap">به‌روزرسانی: 17:24 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+
+<script>
+(function(){
+  var CATS={"ai": {"color": "#6A4BC4", "en": "AI \u0026 Agents", "fa": "\u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc"}, "campaign": {"color": "#F57C00", "en": "Campaigns \u0026 Promotions", "fa": "\u06a9\u0645\u067e\u06cc\u0646 \u0648 \u067e\u0631\u0648\u0645\u0648\u0634\u0646"}, "commerce": {"color": "#C2185B", "en": "E-commerce \u0026 Product", "fa": "\u0627\u06cc\u200c\u06a9\u0627\u0645\u0631\u0633 \u0648 \u0645\u062d\u0635\u0648\u0644"}, "data": {"color": "#1E88E5", "en": "Data \u0026 Experimentation", "fa": "\u062f\u0627\u062f\u0647 \u0648 \u0622\u0632\u0645\u0627\u06cc\u0634"}, "ecrm": {"color": "#8E44AD", "en": "eCRM \u0026 Retention", "fa": "eCRM \u0648 \u0648\u0641\u0627\u062f\u0627\u0631\u06cc"}, "growth": {"color": "#2E9E4F", "en": "Growth", "fa": "\u0631\u0634\u062f"}, "management": {"color": "#3F51B5", "en": "Management \u0026 Strategy", "fa": "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0648 \u0627\u0633\u062a\u0631\u0627\u062a\u0698\u06cc"}, "marketing": {"color": "#E6123D", "en": "Marketing \u0026 Brand", "fa": "\u0645\u0627\u0631\u06a9\u062a\u06cc\u0646\u06af \u0648 \u0628\u0631\u0646\u062f"}, "performance": {"color": "#0097A7", "en": "Performance \u0026 Ads", "fa": "\u067e\u0631\u0641\u0648\u0631\u0645\u0646\u0633 \u0648 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a"}};
+  var tabs=[].slice.call(document.querySelectorAll('[data-tab]')), panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+  var chipsEl=document.querySelector('.chips'), q=document.querySelector('.search'), sel=document.querySelector('.arch');
+  var state={tab:'latest',cat:'all'};
+  function panel(){return document.querySelector('[data-panel="'+state.tab+'"]');}
+  function buildChips(){
+    var p=panel(), arts=[].slice.call(p.querySelectorAll('article')), counts={};
+    arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
+    var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
+    Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
+    chipsEl.innerHTML=h; chipsEl.style.display=(state.tab==='sources')?'none':'flex'; q.style.display=(state.tab==='sources')?'none':'';
+    sel.style.display=(state.tab==='latest')?'':'none';
+  }
+  function apply(){
+    var p=panel(), term=(q.value||'').trim().toLowerCase(), shown=0, arts=[].slice.call(p.querySelectorAll('article'));
+    arts.forEach(function(a){var ok=(state.cat==='all'||a.dataset.cat===state.cat)&&(!term||a.dataset.text.indexOf(term)>-1);a.hidden=!ok;if(ok)shown++;});
+    [].forEach.call(p.querySelectorAll('.group'),function(g){g.hidden=!g.querySelector('article:not([hidden])');});
+    var e=p.querySelector('.empty'); if(e)e.style.display=(arts.length&&!shown)?'block':'none';
+  }
+  function show(name,push){
+    if(!document.querySelector('[data-panel="'+name+'"]'))name='latest';
+    state.tab=name; state.cat='all';
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===name?'true':'false');});
+    panels.forEach(function(p){p.hidden=p.dataset.panel!==name;});
+    buildChips(); apply();
+    if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
+    [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
+  q.addEventListener('input',apply);
+  var prefix="../", cur="2026-10-20";
+  fetch(prefix+'archive.json').then(function(r){return r.json();}).then(function(list){
+    sel.innerHTML='';
+    list.forEach(function(a,i){var o=document.createElement('option');o.value=prefix+'archive/'+a.date+'.html';
+      o.textContent=a.short+(i===0?' (آخرین)':'');if(a.date===cur)o.selected=true;sel.appendChild(o);});
+  }).catch(function(){});
+  show((location.hash||'').replace('#','')||'latest',false);
+})();
+</script>
+</body>
+</html>

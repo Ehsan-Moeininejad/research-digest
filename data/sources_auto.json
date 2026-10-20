@@ -57,13 +57,5 @@
   "tier": 1,
   "origin": "scout",
   "added": "2026-10-18"
- },
- {
-  "name": "Duolingo Blog",
-  "url": "https://blog.duolingo.com/rss/",
-  "hint": "ecrm",
-  "tier": 1,
-  "origin": "scout",
-  "added": "2026-10-18"
  }
 ]
