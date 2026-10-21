@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بهبود ایندکس‌های معنایی در بازیابی مولد با جستجوی تکاملی مبتنی بر LLM | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;--c:#C2185B;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border-right:4px solid var(--focus);border-radius:10px;padding:14px 20px;background:#FFF2F4}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:var(--focus);padding:8px 20px;border-radius:8px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <div class="cat">ای‌کامرس و محصول <span class="ltr" style="color:var(--mute);font-weight:400">E-commerce &amp; Product</span></div>
+  <h1>بهبود ایندکس‌های معنایی در بازیابی مولد با جستجوی تکاملی مبتنی بر LLM</h1>
+  <p class="orig ltr">Evolving Semantic Indexes for Generative Retrieval</p>
+  <div class="meta">
+    <span><b>arXiv · E-commerce RecSys</b></span>
+    <span>منبع اصلی</span>
+    <span>مقالهٔ علمی</span>
+    <span>سطح: پیشرفته</span>
+    <span>انتشار: 1405/07/28</span>
+    <span>متن اصلی: 5 دقیقه</span>
+    <span>امتیاز: 8.5/10</span>
+  </div>
+  
+  <div class="tldr">استفاده از جستجوی تکاملی هدایت‌شده با LLM اجزای بازیابی مولد را بدون نیاز به APIهای اختصاصی بهینه‌سازی می‌کند.</div>
+
+  <h2>درباره چیست</h2><p>این مقاله پژوهشی در حوزه سیستم‌های توصیه‌گر ای‌کامرس به بررسی بازیابی مولد و شناسه‌های معنایی می‌پردازد. نویسندگان چارچوبی جدید برای بهینه‌سازی اجزای گسسته ایندکس‌های معنایی با استفاده از مدل‌های زبانی بزرگ ارائه کرده‌اند.</p>
+  <h2>مسئله و اهمیت</h2><p>سیستم‌های بازیابی مولد از شناسه‌های معنایی گسسته استفاده می‌کنند که اجزای آن‌ها قابلیت بهینه‌سازی سرتاسری با گرادیان را ندارند. این محدودیت باعث می‌شود طراحان ناچار به استفاده از روش‌های دستی و غیربهینه برای ساخت شناسه، مدیریت برخورد و رمزگشایی شوند که کیفیت جستجو و توصیک را کاهش می‌دهد.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>پژوهشگران چارچوبی را طراحی کردند که در آن یک مدل 31 میلیارد پارامتری متن‌باز محلی، اجزای اجرایی سیستم بازیابی مولد را جهش می‌دهد. برای ارزیابی سریع و جایگزینی بازخورد کند، از یک دیکودر پروکسی با 1 میلیون پارامتر به عنوان تابع ارزیابی استفاده شد تا بهینه‌سازی تکاملی ممکن شود.</p>
+  <h2>روش و اجزا</h2><ul><li>تعریف اجزای گسسته سیستم بازیابی مولد شامل ساخت شناسه و مدیریت برخورد</li><li>به کارگیری یک مدل زبانی بزرگ 31 بیتی متن‌باز برای جهش و تولید نسخه‌های جدید اجزا</li><li>استفاده از یک دیکودر پروکسی 1 میلیون پارامتری برای بازخورد سریع به جای آموزش کامل</li><li>اجرای جستجوی تکاملی برنامه‌ها برای یافتن ترکیب بهینه اجزای سیستم</li></ul>
+  
+  <h2>نتیجه‌گیری</h2><p>نویسندگان استدلال می‌کنند که ترکیب مدل‌های زبانی متن‌باز محلی با جستجوی تکاملی برنامه‌ها می‌تواند بر محدودیت بهینه‌سازی ناپیوسته اجزای بازیابی مولد غلبه کند. این رویکرد بدون اتکا به APIهای گران‌قیمت تجاری، امکان بهینه‌سازی خودکار اجزای ساختاریافته را فراهم می‌سازد.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>بررسی امکان استفاده از مدل‌های زبانی متن‌باز محلی برای بهینه‌سازی خودکار الگوریتم‌های سرچ و ریکامندر</li><li>تست رویکردهای مبتنی بر پروکسی مدل برای کاهش زمان و هزینه محاسباتی تست‌های الگوریتمی</li><li>ارزیابی پتانسیل ساختارهای مولد در سیستم‌های جستجوی مارکت‌پلیس برای مقیاس‌های میلیونی</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>متن موجود تنها چکیده مقاله است و داده‌های کمی نتایج و معیارهای دقیق ارزیابی را شامل نمی‌شود</li><li>جزئیات عملکرد دیکودر پروکسی در مقایسه با مدل اصلی کامل ارائه نشده است</li></ul>
+  <div class="tags"><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span><span class="ltr">Generative Retrieval</span><span class="ltr">LLM</span><span class="ltr">RecSys</span><span class="ltr">Evolutionary Search</span></div>
+
+  <div class="source">
+    <a class="go" href="https://arxiv.org/abs/2610.28568v1" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://arxiv.org/abs/2610.28568v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.28568v1</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>
