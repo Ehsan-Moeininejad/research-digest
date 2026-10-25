@@ -49,5 +49,21 @@
   "tier": 1,
   "origin": "scout",
   "added": "2026-10-18"
+ },
+ {
+  "name": "webkit.org",
+  "url": "https://webkit.org/feed/",
+  "hint": "performance",
+  "tier": 1,
+  "origin": "primary",
+  "added": "2026-10-25"
+ },
+ {
+  "name": "eBay Tech Blog",
+  "url": "https://www.ebayinc.com/stories/news/rss/",
+  "hint": "commerce",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-10-25"
  }
 ]
