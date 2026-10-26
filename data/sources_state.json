@@ -110,6 +110,10 @@
    [
     "2026-10-25",
     "منبع جدید در دورهٔ آزمایشی: eBay Tech Blog (ردهٔ 1)"
+   ],
+   [
+    "2026-10-26",
+    "آدرس فید Machine Learning Mastery خودکار اصلاح شد"
    ]
   ],
   "primary_cites": {
@@ -318,7 +322,7 @@
   "kind": "article",
   "last_try": "2026-10-26",
   "last_ok": "2026-10-26",
-  "last_item": "2026-10-21",
+  "last_item": "2026-10-26",
   "tier": 2,
   "rev": 2,
   "acc": 1,
@@ -724,7 +728,7 @@
   "kind": "article",
   "last_try": "2026-10-26",
   "last_ok": "2026-10-26",
-  "last_item": "2026-10-25",
+  "last_item": "2026-10-26",
   "tier": 2,
   "rev": 5,
   "acc": 0
@@ -1411,8 +1415,9 @@
   "kind": "article",
   "last_try": "2026-10-26",
   "last_ok": "2026-10-26",
-  "last_item": "2026-10-23",
-  "tier": 2
+  "last_item": "2026-10-26",
+  "tier": 2,
+  "resolved_url": "https://feeds.feedburner.com/MachineLearningMastery"
  },
  "https://towardsdatascience.com/feed": {
   "status": "paused",
@@ -2024,7 +2029,7 @@
   "kind": "article",
   "last_try": "2026-10-26",
   "last_ok": "2026-10-26",
-  "last_item": "2026-10-22",
+  "last_item": "2026-10-26",
   "last_pick": "2026-10-04",
   "tier": 2,
   "rev": 5,
