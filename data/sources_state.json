@@ -1431,7 +1431,8 @@
    6.0,
    6.0,
    4.0,
-   4.0
+   4.0,
+   7.0
   ],
   "picks": 0,
   "name": "Machine Learning Mastery",
@@ -1440,7 +1441,7 @@
   "kind": "article",
   "last_try": "2026-10-28",
   "last_ok": "2026-10-28",
-  "last_item": "2026-10-27",
+  "last_item": "2026-10-28",
   "tier": 2,
   "resolved_url": "https://feeds.feedburner.com/MachineLearningMastery"
  },
