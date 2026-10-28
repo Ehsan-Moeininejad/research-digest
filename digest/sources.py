@@ -244,8 +244,9 @@ class SourceRegistry:
                 continue
             recent = [e for e in parsed.entries if (entry_date(e) or recent_cut) > recent_cut]
             if len(parsed.entries) >= 3 and recent:
+                how = "کشف خودکار: منبع اصلی پراستناد در مطالب دیگر" if origin == "primary" else "پیشنهاد هفتگی منابع"
                 entry = {"name": str(name)[:40], "url": u, "hint": cat, "tier": tier, "origin": origin,
-                         "added": TODAY.isoformat()}
+                         "added": TODAY.isoformat(), "why": f"{how} ({TODAY.isoformat()})"}
                 if kind_type == "tutorial":
                     entry["type"] = "tutorial"
                 self.auto.append(entry)
@@ -337,6 +338,7 @@ class SourceRegistry:
                 "avg": round(sum(sc) / len(sc), 1) if sc else None, "picks": s.get("picks", 0),
                 "acc_rate": round(100 * acc / rev) if rev else None, "reviewed": rev,
                 "suggest": self._suggest(int(f.get("tier", 2)), sc, rev, acc),
+                "why": f.get("why", "") or ("جدیدترین پژوهش‌های علمی arXiv در همین موضوع" if f.get("kind") == "paper" else ""),
                 "repaired": bool(s.get("resolved_url")), "kind": f.get("kind", "article"),
             })
         order = {"active": 0, "probation": 1, "new": 2, "paused": 3, "disabled": 4, "rejected": 5}

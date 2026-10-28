@@ -61,6 +61,28 @@ def normalize(a: dict) -> dict:
     return a
 
 
+def build_guide(root: Path, settings: dict, rows: list) -> str:
+    """config/guide.md is a Jinja template: numbers come from settings, the source table from live state."""
+    import markdown
+    f = root / "config" / "guide.md"
+    if not f.exists():
+        return ""
+    cats = settings["categories"]
+    order = {"active": 0, "probation": 1, "new": 2, "paused": 3, "disabled": 4, "rejected": 5}
+    lines = ["| منبع | رده | دسته | وضعیت | دلیل انتخاب |", "| --- | --- | --- | --- | --- |"]
+    for r in sorted(rows, key=lambda r: (r.get("tier", 2), order.get(r["status"], 9), r["name"].lower())):
+        cell = lambda x: str(x or "").replace("|", "/").replace("\n", " ")
+        lines.append("| " + " | ".join(cell(x) for x in (
+            r["name"], TIERS.get(r.get("tier", 2), ""), cats[r["hint"]]["fa"] if r.get("hint") in cats else "",
+            STATUS.get(r["status"], r["status"]), r.get("why", ""))) + " |")
+    bonus = settings.get("tiers", {}).get("score_bonus", {})
+    fmt = lambda v: (f"+{v}" if v > 0 else f"{v}") if v else "0"
+    text = Environment().from_string(f.read_text(encoding="utf-8")).render(
+        s=settings, cats="، ".join(c["fa"] for c in cats.values()), sources_table="\n".join(lines),
+        bonus1=fmt(bonus.get(1, 0)), bonus3=fmt(bonus.get(3, 0)))
+    return markdown.markdown(text, extensions=["tables"])
+
+
 def cats_present(settings, articles):
     out = []
     for key, meta in settings["categories"].items():
@@ -70,11 +92,18 @@ def cats_present(settings, articles):
     return out
 
 
-def render_site(root: Path, settings: dict, board: dict | None = None, source_rows: list | None = None):
+def render_site(root: Path, settings: dict, board: dict | None = None, source_rows: list | None = None,
+                source_log: list | None = None):
     docs = root / "docs"
     files = sorted((docs / "data").glob("2*.json"), reverse=True)
     if not files:
         return
+    # keep only the last N runs in the archive (site stays small and fast); the leaderboard is separate
+    keep = int(settings.get("archive", {}).get("keep", 20))
+    for old in files[keep:]:
+        for f in (old, docs / "archive" / f"{old.stem}.html", docs / "full" / f"{old.stem}.html"):
+            f.unlink(missing_ok=True)
+    files = files[:keep]
     arch_dir = docs / "archive"
     arch_dir.mkdir(parents=True, exist_ok=True)
     (docs / "archive.json").write_text(
@@ -118,10 +147,14 @@ def render_site(root: Path, settings: dict, board: dict | None = None, source_ro
         r["last_item_short"] = jalali(r["last_item"])["short"] if r.get("last_item") else ""
         r["status_fa"] = STATUS.get(r["status"], r["status"])
         r["tier_fa"] = TIERS.get(r.get("tier", 2), "")
+    guide = build_guide(root, settings, rows)
+    cut = (dt.date.today() - dt.timedelta(days=30)).isoformat()
+    changes = [{"date": jalali(d)["short"], "text": t} for d, t in reversed(source_log or []) if d >= cut][:40]
     (docs / "index.html").write_text(tpl.render(
         **base, archive_view=False, prefix="", fonts=font_css(root, ""), digest=today, d=jalali(today["date"]),
         current=today["date"], latest=latest, latest_cats=cats_present(settings, latest),
-        board=board, board_n=len(flat), board_cats=cats_present(settings, flat), rows=rows), encoding="utf-8")
+        board=board, board_n=len(flat), board_cats=cats_present(settings, flat), rows=rows,
+        guide=guide, changes=changes), encoding="utf-8")
     # one page per article: the full brief
     adir = docs / "a"
     adir.mkdir(parents=True, exist_ok=True)
@@ -131,6 +164,13 @@ def render_site(root: Path, settings: dict, board: dict | None = None, source_ro
         pool.setdefault(e["id"], e)
     for a in [normalize(x) for x in today["articles"]]:
         pool.setdefault(a["id"], a)
+    # brief pages stay only while a kept run or the leaderboard still links to them
+    live = set(pool)
+    for f in files:
+        live |= {x["id"] for x in load(f)["articles"]}
+    for page in adir.glob("*.html"):
+        if page.stem not in live:
+            page.unlink()
     for aid, a in pool.items():
         (adir / f"{aid}.html").write_text(btpl.render(
             a=a, c=settings["categories"][a["category"]], settings=settings, fonts=font_css(root, "../"),
@@ -253,6 +293,29 @@ table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align
 .st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
 .st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
 footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+.guide{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 26px 26px;margin-top:20px}
+.guide h2{font-size:20px;font-weight:800;color:var(--text);margin:30px 0 8px;padding-right:10px;border-right:4px solid var(--focus)}
+.guide h3{font-size:16px;font-weight:800;color:var(--focus);margin:22px 0 6px}
+.guide p,.guide li{color:var(--soft)}
+.guide strong{color:var(--text)}
+.guide ul,.guide ol{padding-inline-start:22px}
+.guide li{margin:4px 0}
+.guide code{background:var(--sheet-2);border-radius:5px;padding:1px 6px;font-size:.88em;direction:ltr;unicode-bidi:isolate}
+.guide a{color:var(--focus)}
+.guide{overflow-x:auto}
+.changes{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 22px 14px;margin-top:20px}
+.changes h3{font-size:16px;font-weight:800;color:var(--focus);margin:14px 0 6px}
+.changes ul{list-style:none;margin:0;padding:0}
+.changes li{padding:7px 0;border-bottom:1px dashed var(--rule);color:var(--soft);font-size:14.5px}
+.changes li:last-child{border-bottom:0}
+.cdate{display:inline-block;min-width:92px;margin-left:14px;color:var(--mute);font-size:13px}
+.helpbtn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:13.5px;color:var(--focus);border:1.5px solid var(--focus);border-radius:999px;padding:4px 14px;background:#fff}
+.helpbtn:hover{background:#FFF2F4}
+.guide table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+.guide td:nth-child(2),.guide td:nth-child(3),.guide td:nth-child(4){white-space:nowrap}
+.guide th{text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--rule);white-space:nowrap}
+.guide td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--text)}
+@media (max-width:560px){.guide{padding:4px 16px 18px}}
 @media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
 </style>
 </head>
@@ -284,7 +347,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
 </article>
 {%- endmacro %}
 
-<div class="topbar"><div class="wrap"><span class="logo">{{ settings.site_title }}</span><span class="ltr sub">{{ settings.site_subtitle }}</span></div></div>
+<div class="topbar"><div class="wrap"><span class="logo">{{ settings.site_title }}</span>
+  <a class="helpbtn" href="{{ prefix }}index.html#guide" {% if not archive_view %}data-open="guide"{% endif %}>راهنما و نحوهٔ امتیازدهی</a></div></div>
 <header class="mast">
   <div class="wrap">
     <div class="date">{{ d.long }}</div>
@@ -308,6 +372,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
       {% else %}
       <button class="tab" role="tab" data-tab="board" aria-selected="false">لیدربورد<span>{{ board_n }}</span></button>
       <button class="tab" role="tab" data-tab="sources" aria-selected="false">منابع<span>{{ rows|length }}</span></button>
+      {% if guide %}<button class="tab" role="tab" data-tab="guide" aria-selected="false">راهنما</button>{% endif %}
       {% endif %}
     </div>
     <div class="tools">
@@ -347,6 +412,12 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </section>
 
   <section class="panel" data-panel="sources" hidden>
+    {% if changes %}
+    <div class="changes">
+      <h3>تغییرات منابع در 30 روز اخیر</h3>
+      <ul>{% for c in changes %}<li><span class="cdate ltr">{{ c.date }}</span>{{ c.text }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
     <p class="lead">منابعی که در هر نوبت خوانده می‌شوند. فید خراب خودکار ترمیم یا غیرفعال می‌شود، منبع کم‌کیفیت 30 روز متوقف می‌شود و هر هفته منابع جدید پس از تأیید اضافه می‌شوند.</p>
     <div class="tw"><table class="src">
       <thead><tr><th>منبع</th><th>رده</th><th>دسته</th><th>وضعیت</th><th>آخرین مطلب</th><th>میانگین کیفیت</th><th>نرخ قبولی</th><th>دفعات انتخاب</th><th>پیشنهاد</th></tr></thead>
@@ -365,6 +436,11 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
       </tbody>
     </table></div>
   </section>
+  {% if guide %}
+  <section class="panel guide" data-panel="guide" hidden>
+    {{ guide | safe }}
+  </section>
+  {% endif %}
   {% endif %}
 </main>
 
@@ -382,7 +458,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
     var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
     Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
-    chipsEl.innerHTML=h; chipsEl.style.display=(state.tab==='sources')?'none':'flex'; q.style.display=(state.tab==='sources')?'none':'';
+    chipsEl.innerHTML=h; var plain=(state.tab==='sources'||state.tab==='guide'); chipsEl.style.display=plain?'none':'flex'; q.style.display=plain?'none':'';
     sel.style.display=(state.tab==='latest')?'':'none';
   }
   function apply(){
@@ -399,6 +475,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     buildChips(); apply();
     if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
   }
+  [].forEach.call(document.querySelectorAll('[data-open]'),function(a){a.addEventListener('click',function(e){
+    e.preventDefault(); show(a.dataset.open,true); window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
   chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
     [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
@@ -460,6 +538,7 @@ footer{color:var(--mute);font-size:13.5px;margin-top:30px}
 <body>
 <main class="wrap">
   <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <a class="back" href="../index.html#guide" style="margin-right:16px">راهنما و نحوهٔ امتیازدهی</a>
   <div class="cat">{{ c.fa }} <span class="ltr" style="color:var(--mute);font-weight:400">{{ c.en }}</span></div>
   <h1>{{ a.title_fa }}</h1>
   <p class="orig ltr">{{ a.title }}</p>

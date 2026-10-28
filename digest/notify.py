@@ -17,7 +17,7 @@ def t(x) -> str:
     return html.escape(str(x or "").translate(FA))
 
 
-def send_email(digest: dict, settings: dict):
+def send_email(digest: dict, settings: dict, board: dict | None = None):
     user, pwd = os.environ["SMTP_USER"], os.environ["SMTP_PASS"]
     to = [x.strip() for x in os.environ["MAIL_TO"].split(",") if x.strip()]
     page = os.getenv("PAGE_URL", "").strip()
@@ -63,73 +63,61 @@ def send_email(digest: dict, settings: dict):
                 f'font-family:{FONT};font-size:13px;color:{SOFT};text-decoration:none">منبع اصلی</a></td>'
                 f'</tr></table>')
 
-    rows = [section("مطالب تازه", f"{n} مطلب برتر هفتهٔ اخیر که از بازبینی کیفی عبور کرد"
+    order = list(cats)
+    rows = [section("مطالب تازه بر اساس دسته", f"{n} مطلب برتر هفتهٔ اخیر که از بازبینی کیفی عبور کرد"
                     if n else "در این نوبت مطلب تازه‌ای از بازبینی کیفی عبور نکرد")]
-    for i, a in enumerate(arts, 1):
+    by_cat = sorted(arts, key=lambda a: (order.index(a["category"]) if a["category"] in order else 99, -a["score"]))
+    last_cat = None
+    for a in by_cat:
         c = cats[a["category"]]
-        about = short(a.get("about") or a.get("summary"), 380)
-        concl = short(a.get("conclusion"), 300)
+        if a["category"] != last_cat:
+            last_cat = a["category"]
+            rows.append(f'<tr><td {td}padding:16px 2px 4px"><span style="display:inline-block;width:9px;height:9px;'
+                        f'border-radius:3px;background:{c["color"]}"></span>&nbsp;<b style="font-size:14.5px;color:{c["color"]}">'
+                        f'{t(c["fa"])}</b></td></tr>')
+        about = short(a.get("about") or a.get("summary"), 320)
         use = (a.get("for_us") or a.get("actions") or [""])[0]
         rows.append(f"""
-<tr><td style="padding:6px 0">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid {LINE};border-radius:12px">
-<tr><td {td}padding:18px 20px">
-  <div>{pill(c)} <span style="color:{MUTE};font-size:12.5px">&nbsp;{t(a['source'])}</span></div>
-  <div style="margin:10px 0 6px;font-size:17px;line-height:1.75;font-weight:bold;color:{INK}">{i}. {t(a['title_fa'])}</div>
+<tr><td style="padding:5px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid {LINE};border-right:3px solid {c['color']};border-radius:12px">
+<tr><td {td}padding:16px 20px">
+  <div style="color:{MUTE};font-size:12.5px">{t(a['source'])}{' · منبع اصلی' if a.get('tier') == 1 else ''}{' · ورود به لیدربورد' if a.get('board') else ''}</div>
+  <div style="margin:6px 0 6px;font-size:16.5px;line-height:1.75;font-weight:bold;color:{INK}">{t(a['title_fa'])}</div>
   {f'<div style="font-size:12.5px;color:{MUTE};margin-bottom:4px">بریف از منبع اصلی · پوشش از طریق {t(a["via"]["source"])}</div>' if a.get("via") else ''}
   <div style="font-size:14.5px;line-height:1.95;color:{INK}">{t(a.get('tldr'))}</div>
-  {f'<div style="margin-top:10px;font-size:13.5px;line-height:1.95;color:{SOFT}"><b style="color:{INK}">درباره</b> · {t(about)}</div>' if about else ''}
-  {f'<div style="margin-top:6px;font-size:13.5px;line-height:1.95;color:{SOFT}"><b style="color:{INK}">نتیجه‌گیری</b> · {t(concl)}</div>' if concl else ''}
+  {f'<div style="margin-top:8px;font-size:13.5px;line-height:1.95;color:{SOFT}">{t(about)}</div>' if about else ''}
   {f'<div style="margin-top:10px;background:#FFF2F4;border-right:3px solid {RED};border-radius:6px;padding:8px 12px;font-size:13.5px;line-height:1.9;color:{INK}"><b style="color:{RED}">کاربرد برای تیم</b> · {t(use)}</div>' if use else ''}
   {btns(f"{page}a/{a['id']}.html", a['url'])}
 </td></tr></table>
 </td></tr>""")
 
+    # leaderboard summary: top 3 of every category, new entries marked
     bn = digest.get("board_new") or []
-    if bn:
-        rows.append(section("ورودی‌های جدید لیدربورد", f"{len(bn)} مطلب وارد برترین‌های دسته‌ها شد"))
-        order = list(cats)
-        for e in sorted(bn, key=lambda x: (order.index(x["category"]) if x["category"] in order else 99, x.get("rank", 99))):
-            c = cats.get(e["category"], {"fa": e["category"], "color": MUTE})
-            rows.append(f"""
-<tr><td style="padding:4px 0">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid {LINE};border-radius:12px">
-<tr><td width="46" valign="top" style="padding:16px 0 0 0;text-align:center">
-  <div style="width:30px;height:30px;line-height:30px;border-radius:15px;background:{RED};color:#fff;font-family:{FONT};font-weight:bold;font-size:14px;margin:0 auto">{e.get('rank', '')}</div></td>
-<td {td}padding:14px 16px 14px 0">
-  <div>{pill(c)} <span style="color:{MUTE};font-size:12.5px">&nbsp;{t(e['source'])}</span></div>
-  <div style="margin:6px 0 2px;font-size:15.5px;line-height:1.75;font-weight:bold">
-    <a href="{t(page + 'a/' + e['id'] + '.html')}" style="color:{INK};text-decoration:none">{t(e['title_fa'])}</a></div>
-  <div style="font-size:13.5px;line-height:1.9;color:{SOFT}">{t(e.get('tldr'))}</div>
-</td></tr></table>
-</td></tr>""")
-
-    rep = digest.get("source_report")
-    if rep:
-        st_fa = {"active": "فعال", "probation": "آزمایشی", "paused": "متوقف", "disabled": "غیرفعال", "rejected": "ردشده", "new": "جدید"}
-        tier_fa = {1: "اصلی", 2: "تحلیلی", 3: "خبری"}
-        rows.append(section("گزارش هفتگی منابع", "برای مرور تیم: رده، وضعیت، کیفیت، نرخ قبولی و پیشنهاد تغییر رده"))
-        if rep.get("changes"):
-            lis = "".join(f'<li style="margin:2px 0">{t(c)}</li>' for c in rep["changes"][:15])
-            rows.append(f'<tr><td {td}padding:4px 0 10px;font-size:13px;line-height:1.9;color:{SOFT}">'
-                        f'<b style="color:{INK}">تغییرات این هفته</b><ul style="margin:4px 0;padding-right:18px">{lis}</ul></td></tr>')
-        head = "".join(f'<th style="padding:6px 8px;font-size:12px;color:{MUTE};text-align:right;border-bottom:1px solid {LINE}">{h}</th>'
-                       for h in ("منبع", "رده", "وضعیت", "کیفیت", "قبولی", "انتخاب", "پیشنهاد"))
-        body_rows = ""
-        for r in rep["rows"]:
-            if r.get("kind") == "paper":
+    new_ids = {e["id"] for e in bn}
+    board = board or {}
+    if any(board.get(k) for k in order):
+        rows.append(section("خلاصهٔ لیدربورد", "3 مطلب برتر هر دسته" + (f" · {len(bn)} ورود تازه در این نوبت" if bn else "")))
+        for k in order:
+            top = (board.get(k) or [])[:3]
+            if not top:
                 continue
-            cells = (t(r["name"]), tier_fa.get(r.get("tier", 2), ""), st_fa.get(r["status"], r["status"]),
-                     r["avg"] if r["avg"] is not None else "", f'{r["acc_rate"]}%' if r.get("acc_rate") is not None else "", r["picks"], r.get("suggest", ""))
-            body_rows += "<tr>" + "".join(f'<td style="padding:5px 8px;font-size:12.5px;color:{INK};border-bottom:1px solid {LINE};font-family:{FONT}">{c}</td>' for c in cells) + "</tr>"
-        rows.append(f'<tr><td style="background:#fff;border:1px solid {LINE};border-radius:12px;padding:8px">'
-                    f'<table role="presentation" dir="rtl" width="100%" cellpadding="0" cellspacing="0">{head}{body_rows}</table></td></tr>')
-
-    events = digest.get("events") or []
-    if events:
-        lis = "".join(f'<li style="margin:2px 0">{t(e)}</li>' for e in events[:8])
-        rows.append(f'<tr><td {td}padding:22px 0 0;color:{MUTE};font-size:12.5px;line-height:1.9">'
-                    f'<b style="color:{SOFT}">نگهداری منابع</b><ul style="margin:4px 0;padding-right:18px">{lis}</ul></td></tr>')
+            c = cats[k]
+            items = ""
+            for r, e in enumerate(top, 1):
+                tag = (f' <span style="background:{RED};color:#fff;font-size:11px;font-weight:bold;padding:1px 7px;'
+                       f'border-radius:8px">تازه</span>') if e["id"] in new_ids else ""
+                items += (f'<tr><td width="28" valign="top" style="padding:5px 0;font-family:{FONT};font-weight:bold;'
+                          f'color:{c["color"]};font-size:14px;text-align:center">{r}</td>'
+                          f'<td {td}padding:5px 6px;font-size:14px;line-height:1.8">'
+                          f'<a href="{t(page + "a/" + e["id"] + ".html")}" style="color:{INK};text-decoration:none">{t(e.get("title_fa"))}</a>{tag}'
+                          f'<div style="font-size:12px;color:{MUTE}">{t(e.get("source"))} · {e.get("score", "")}/10</div></td></tr>')
+            rows.append(f"""
+<tr><td style="padding:5px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid {LINE};border-radius:12px">
+<tr><td {td}padding:12px 16px 4px">{pill(c)}</td></tr>
+<tr><td style="padding:0 12px 10px"><table role="presentation" dir="rtl" width="100%" cellpadding="0" cellspacing="0">{items}</table></td></tr>
+</table></td></tr>""")
+        rows.append(f'<tr><td {td}padding:8px 2px 0;font-size:13px"><a href="{t(page)}index.html#board" style="color:{RED}">مشاهدهٔ کامل لیدربورد</a></td></tr>')
 
     nbn = len(bn)
     body = f"""<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
@@ -164,7 +152,7 @@ def send_email(digest: dict, settings: dict):
   <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:{RED};border-radius:10px">
     <a href="{t(page)}" style="display:inline-block;padding:12px 28px;font-family:{FONT};font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none">مشاهدهٔ دایجست و لیدربورد</a>
   </td></tr></table>
-  <div style="margin-top:12px;font-family:{FONT};font-size:12.5px"><a href="{t(page)}full/{digest['date']}.html" style="color:{MUTE}">متن کامل همهٔ بریف‌ها در یک صفحه (مناسب NotebookLM)</a></div>
+  <div style="margin-top:12px;font-family:{FONT};font-size:12.5px"><a href="{t(page)}index.html#guide" style="color:{MUTE}">راهنما و نحوهٔ امتیازدهی</a> &nbsp;·&nbsp; <a href="{t(page)}full/{digest['date']}.html" style="color:{MUTE}">متن کامل همهٔ بریف‌ها در یک صفحه (مناسب NotebookLM)</a></div>
 </td></tr>
 <tr><td {td}padding:14px 0 6px;text-align:center;font-size:11.5px;color:{MUTE}">خلاصه‌ها با AI از منبع اصلی تهیه شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</td></tr>
 

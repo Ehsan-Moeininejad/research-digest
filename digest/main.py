@@ -74,6 +74,7 @@ def to_items(parsed, src, since):
 def arxiv_sources(cfg):
     n = cfg.get("arxiv_max_results", 25)
     return [{"name": q["name"], "hint": q.get("hint", ""), "kind": "paper", "origin": "config", "tier": 1,
+             "why": "جدیدترین پژوهش‌های علمی arXiv در همین موضوع",
              "url": "http://export.arxiv.org/api/query?search_query=" + quote(q["query"]) +
                     f"&sortBy=submittedDate&sortOrder=descending&max_results={n}"}
             for q in cfg.get("arxiv", [])]
@@ -584,7 +585,7 @@ def main():
         reg.save()
         if entered:
             board.save()
-            render_site(ROOT, settings, board.board, reg.rows(arxiv))
+            render_site(ROOT, settings, board.board, reg.rows(arxiv), reg.meta.get("log", []))
         return
 
     # ---- daily digest: best of the last 7 days that has not been featured yet
@@ -640,7 +641,6 @@ def main():
         "generated_at": dt.datetime.now(TEHRAN).isoformat(timespec="minutes"),
         "candidates": len(week), "reviewed": len([it for it in pool if "ok" in it]),
         "note": note, "articles": articles, "board_new": board_new, "events": reg.events,
-        "source_report": reg.monthly_report(arxiv),
     }
     data_file.parent.mkdir(parents=True, exist_ok=True)
     data_file.write_text(json.dumps(digest, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -657,11 +657,11 @@ def main():
     board.save()
     reg.save()
 
-    render_site(ROOT, settings, board.board, reg.rows(arxiv))
+    render_site(ROOT, settings, board.board, reg.rows(arxiv), reg.meta.get("log", []))
     log.info("site rendered | LLM calls: %d", llm.calls)
 
     if os.getenv("SMTP_USER") and os.getenv("MAIL_TO"):
-        send_email(digest, settings)
+        send_email(digest, settings, board.board)
     else:
         log.info("SMTP not configured — email skipped")
 
