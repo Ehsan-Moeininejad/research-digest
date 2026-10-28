@@ -105,13 +105,37 @@ table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align
 .st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
 .st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
 footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+.guide{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 26px 26px;margin-top:20px}
+.guide h2{font-size:20px;font-weight:800;color:var(--text);margin:30px 0 8px;padding-right:10px;border-right:4px solid var(--focus)}
+.guide h3{font-size:16px;font-weight:800;color:var(--focus);margin:22px 0 6px}
+.guide p,.guide li{color:var(--soft)}
+.guide strong{color:var(--text)}
+.guide ul,.guide ol{padding-inline-start:22px}
+.guide li{margin:4px 0}
+.guide code{background:var(--sheet-2);border-radius:5px;padding:1px 6px;font-size:.88em;direction:ltr;unicode-bidi:isolate}
+.guide a{color:var(--focus)}
+.guide{overflow-x:auto}
+.changes{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 22px 14px;margin-top:20px}
+.changes h3{font-size:16px;font-weight:800;color:var(--focus);margin:14px 0 6px}
+.changes ul{list-style:none;margin:0;padding:0}
+.changes li{padding:7px 0;border-bottom:1px dashed var(--rule);color:var(--soft);font-size:14.5px}
+.changes li:last-child{border-bottom:0}
+.cdate{display:inline-block;min-width:92px;margin-left:14px;color:var(--mute);font-size:13px}
+.helpbtn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:13.5px;color:var(--focus);border:1.5px solid var(--focus);border-radius:999px;padding:4px 14px;background:#fff}
+.helpbtn:hover{background:#FFF2F4}
+.guide table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+.guide td:nth-child(2),.guide td:nth-child(3),.guide td:nth-child(4){white-space:nowrap}
+.guide th{text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--rule);white-space:nowrap}
+.guide td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--text)}
+@media (max-width:560px){.guide{padding:4px 16px 18px}}
 @media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
 </style>
 </head>
 <body>
 
 
-<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span><span class="ltr sub">Research &amp; Industry Digest</span></div></div>
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span>
+  <a class="helpbtn" href="../index.html#guide" >راهنما و نحوهٔ امتیازدهی</a></div></div>
 <header class="mast">
   <div class="wrap">
     <div class="date">چهارشنبه 6 آبان 1405</div>
@@ -183,7 +207,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   
 </main>
 
-<footer><div class="wrap">به‌روزرسانی: 12:08 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+<footer><div class="wrap">به‌روزرسانی: 17:16 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
 
 <script>
 (function(){
@@ -197,7 +221,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
     var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
     Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
-    chipsEl.innerHTML=h; chipsEl.style.display=(state.tab==='sources')?'none':'flex'; q.style.display=(state.tab==='sources')?'none':'';
+    chipsEl.innerHTML=h; var plain=(state.tab==='sources'||state.tab==='guide'); chipsEl.style.display=plain?'none':'flex'; q.style.display=plain?'none':'';
     sel.style.display=(state.tab==='latest')?'':'none';
   }
   function apply(){
@@ -214,6 +238,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     buildChips(); apply();
     if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
   }
+  [].forEach.call(document.querySelectorAll('[data-open]'),function(a){a.addEventListener('click',function(e){
+    e.preventDefault(); show(a.dataset.open,true); window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
   chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
     [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});

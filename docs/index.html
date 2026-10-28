@@ -105,13 +105,37 @@ table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align
 .st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
 .st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
 footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+.guide{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 26px 26px;margin-top:20px}
+.guide h2{font-size:20px;font-weight:800;color:var(--text);margin:30px 0 8px;padding-right:10px;border-right:4px solid var(--focus)}
+.guide h3{font-size:16px;font-weight:800;color:var(--focus);margin:22px 0 6px}
+.guide p,.guide li{color:var(--soft)}
+.guide strong{color:var(--text)}
+.guide ul,.guide ol{padding-inline-start:22px}
+.guide li{margin:4px 0}
+.guide code{background:var(--sheet-2);border-radius:5px;padding:1px 6px;font-size:.88em;direction:ltr;unicode-bidi:isolate}
+.guide a{color:var(--focus)}
+.guide{overflow-x:auto}
+.changes{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 22px 14px;margin-top:20px}
+.changes h3{font-size:16px;font-weight:800;color:var(--focus);margin:14px 0 6px}
+.changes ul{list-style:none;margin:0;padding:0}
+.changes li{padding:7px 0;border-bottom:1px dashed var(--rule);color:var(--soft);font-size:14.5px}
+.changes li:last-child{border-bottom:0}
+.cdate{display:inline-block;min-width:92px;margin-left:14px;color:var(--mute);font-size:13px}
+.helpbtn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:13.5px;color:var(--focus);border:1.5px solid var(--focus);border-radius:999px;padding:4px 14px;background:#fff}
+.helpbtn:hover{background:#FFF2F4}
+.guide table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+.guide td:nth-child(2),.guide td:nth-child(3),.guide td:nth-child(4){white-space:nowrap}
+.guide th{text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--rule);white-space:nowrap}
+.guide td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--text)}
+@media (max-width:560px){.guide{padding:4px 16px 18px}}
 @media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
 </style>
 </head>
 <body>
 
 
-<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span><span class="ltr sub">Research &amp; Industry Digest</span></div></div>
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span>
+  <a class="helpbtn" href="index.html#guide" data-open="guide">راهنما و نحوهٔ امتیازدهی</a></div></div>
 <header class="mast">
   <div class="wrap">
     <div class="date">چهارشنبه 6 آبان 1405</div>
@@ -121,7 +145,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
       <div><strong>1</strong>مطلب تازهٔ این نوبت</div>
       <div><strong>11</strong>متن کامل بازبینی‌شده</div>
       <div><strong>43</strong>مطلب غربال‌شده</div>
-      <div><strong>60</strong>مطلب در لیدربورد</div>
+      <div><strong>61</strong>مطلب در لیدربورد</div>
     </div>
   </div>
 </header>
@@ -131,8 +155,9 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     <div class="tabbar" role="tablist">
       <button class="tab" role="tab" data-tab="latest" aria-selected="true">مطالب تازه<span>10</span></button>
       
-      <button class="tab" role="tab" data-tab="board" aria-selected="false">لیدربورد<span>60</span></button>
+      <button class="tab" role="tab" data-tab="board" aria-selected="false">لیدربورد<span>61</span></button>
       <button class="tab" role="tab" data-tab="sources" aria-selected="false">منابع<span>65</span></button>
+      <button class="tab" role="tab" data-tab="guide" aria-selected="false">راهنما</button>
       
     </div>
     <div class="tools">
@@ -1032,8 +1057,31 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     <span class="btns"><a class="go" href="a/38990e5f1e79f0da.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu" target="_blank" rel="noopener">منبع اصلی</a></span>
   </div>
   <a class="url ltr" href="https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu" target="_blank" rel="noopener">https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu</a>
-</article><article class="ranked" data-cat="growth" data-text="افزایش دو برابری ترافیک خرید مبتنی بر هوش مصنوعی و تغییر رفتار خریداران consumer ai use a boon for the holidays as ai traffic doubles ترافیک ارجاعی از سوی هوش مصنوعی بیش از دو برابر شده و کاربران هوش مصنوعی ۴۳ درصد درآمد بیشتری به ازای هر بازدید ایجاد می‌کنند. ترافیک هوش مصنوعی که ۱۸ ماه پیش ارزش کمتری داشت، اکنون به دلیل اعتماد کاربران به ابزارهای هوش مصنوعی، نرخ تبدیل و سبد خرید بالاتری تولید می‌کند.  بهینه‌سازی توضیحات محصولات و داده‌های ساختاریافته برای خوانش توسط ایجنت‌های هوش مصنوعی و ربات‌های جستجوگر تحلیل داده‌های ترافیک ورودی سایت برای تفکیک بازدیدهای هدایت‌شده توسط ابزارهای هوش مصنوعی از سایر کانال‌ها سنجش نرخ سبد خرید و وفاداری کاربران ارجاع‌شده از طریق چت‌بات‌ها و دستیارهای هوش مصنوعی ai agents ecommerce traffic consumer behavior ads data product leadership retail dive" style="--c:#2E9E4F">
+</article><article class="ranked" data-cat="growth" data-text="بررسی تاثیر هوش مصنوعی و موتورهای پاسخگو بر ترافیک مستقیم و سئو در رمپ does ai drive more direct traffic? آزمایش‌های پیشرفته در رمپ نشان داد که 30 الی 40 درصد از ترافیک مستقیم وب‌سایت در واقع ناشی از ارجاعات موتورهای پاسخگو و هوش مصنوعی است. این متن گزارش یک پادکست و مصاحبه تخصصی است که در وبسایت siege media منتشر شده و در آن ross hudgens با eric wu، مدیر بخش seo، geo و cro در شرکت ramp گفتگو می‌کند. این گفتگو به بررسی برنامه‌های بازاریابی آزمایش‌محور، نحوه تعامل با موتورهای جستجوی مبتنی بر هوش مصنوعی (answer engines) و ظهور ترافیک تاریک (dark search) در بستر b2b می‌پردازد. نویسندگان و کارشناسان نتیجه می‌گیرند که سنجه‌های سنتی سئو و ترافیک دیگر پاسخگوی دنیای تحت تسلط هوش مصنوعی نیستند. پنهان ماندن کلیک‌های هوش مصنوعی و تبدیل شدن آن‌ها به ترافیک تاریک نیازمند تغییر رویکرد از متریک‌های نمایشی (vanity metrics) به روش‌های کیفی مانند بررسی دقیق نظرسنجی‌های ورودی کاربران و انجام آزمایش‌های مداوم و طولانی‌مدت است. بررسی سهم ترافیک مستقیم مارکت‌پلیس برای شناسایی بازدیدهای پنهان موتورهای پاسخگو طراحی و پیاده‌سازی سوالات دقیق در فرم‌های ثبت‌نام برای سنجش دقیق‌تر ترافیک تاریک اجرای تست‌های مبتنی بر داده روی ساختارهای داده‌ای و محتوای هدف‌گذاری شده برای llmها پرهیز از اتکای صرف به متریک‌های سطحی و تمرکز روی همبستگی سنجه‌های ai با فروش واقعی ai seo cro attribution ads data product leadership siegemedia.com" style="--c:#2E9E4F">
   <span class="rank">3</span>
+  <div class="meta">
+    <span class="src">siegemedia.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    
+    <span>ورود: 1405/08/06</span>
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.5/10</span>
+  </div>
+  <h3>بررسی تاثیر هوش مصنوعی و موتورهای پاسخگو بر ترافیک مستقیم و سئو در رمپ</h3>
+  <p class="orig ltr">Does AI drive more direct traffic?</p>
+  <p class="via">پوشش از طریق <a href="https://www.growth-memo.com/p/does-ai-drive-more-direct-traffic" target="_blank" rel="noopener">Growth Memo</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">آزمایش‌های پیشرفته در رمپ نشان داد که 30 الی 40 درصد از ترافیک مستقیم وب‌سایت در واقع ناشی از ارجاعات موتورهای پاسخگو و هوش مصنوعی است.</p>
+  <p class="new">این متن گزارش یک پادکست و مصاحبه تخصصی است که در وبسایت Siege Media منتشر شده و در آن Ross Hudgens با Eric Wu، مدیر بخش SEO، GEO و CRO در شرکت Ramp گفتگو می‌کند. این گفتگو به بررسی برنامه‌های بازاریابی آزمایش‌محور، نحوه تعامل با موتورهای جستجوی مبتنی بر هوش مصنوعی (Answer Engines) و ظهور ترافیک تاریک (Dark Search) در بستر B2B می‌پردازد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی سهم ترافیک مستقیم مارکت‌پلیس برای شناسایی بازدیدهای پنهان موتورهای پاسخگو</li><li>طراحی و پیاده‌سازی سوالات دقیق در فرم‌های ثبت‌نام برای سنجش دقیق‌تر ترافیک تاریک</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="a/38990e5f1e79f0da.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu" target="_blank" rel="noopener">https://www.siegemedia.com/conversation/how-ramp-accurately-tracks-ai-traffic-w-eric-wiu</a>
+</article><article class="ranked" data-cat="growth" data-text="افزایش دو برابری ترافیک خرید مبتنی بر هوش مصنوعی و تغییر رفتار خریداران consumer ai use a boon for the holidays as ai traffic doubles ترافیک ارجاعی از سوی هوش مصنوعی بیش از دو برابر شده و کاربران هوش مصنوعی ۴۳ درصد درآمد بیشتری به ازای هر بازدید ایجاد می‌کنند. ترافیک هوش مصنوعی که ۱۸ ماه پیش ارزش کمتری داشت، اکنون به دلیل اعتماد کاربران به ابزارهای هوش مصنوعی، نرخ تبدیل و سبد خرید بالاتری تولید می‌کند.  بهینه‌سازی توضیحات محصولات و داده‌های ساختاریافته برای خوانش توسط ایجنت‌های هوش مصنوعی و ربات‌های جستجوگر تحلیل داده‌های ترافیک ورودی سایت برای تفکیک بازدیدهای هدایت‌شده توسط ابزارهای هوش مصنوعی از سایر کانال‌ها سنجش نرخ سبد خرید و وفاداری کاربران ارجاع‌شده از طریق چت‌بات‌ها و دستیارهای هوش مصنوعی ai agents ecommerce traffic consumer behavior ads data product leadership retail dive" style="--c:#2E9E4F">
+  <span class="rank">4</span>
   <div class="meta">
     <span class="src">Retail Dive</span>
     <span class="badge">تحلیل</span>
@@ -1056,7 +1104,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </div>
   <a class="url ltr" href="https://www.retaildive.com/news/consumer-ai-use-boon-holidays-ai-traffic-doubles/831790/" target="_blank" rel="noopener">https://www.retaildive.com/news/consumer-ai-use-boon-holidays-ai-traffic-doubles/831790/</a>
 </article><article class="ranked" data-cat="growth" data-text="فروپاشی مدل‌های اتریبیوشن سنتی در عصر جستجوی هوش مصنوعی the usefulness of attribution for ai search با ظهور جستجوی مبتنی بر هوش مصنوعی و از بین رفتن کوکی‌ها و کلیک‌ها، مدل‌های اتریبیوشن سنتی کارایی خود را از دست داده‌اند و باید با رویکردهایی مثل مثلث‌بندی جایگزین شوند. این مقاله از خبرنامه growth memo نوشتهٔ یک استراتژیست رشد با همکاری george boancă (معاون رشد ramp)، چالش‌های اندازه‌گیری ارزش کانال‌های غیرپولی و دیدبانی برند در اکوسیستم جدید هوش مصنوعی را بررسی می‌کند. این مطلب یک تحلیل راهبردی دربارهٔ ناکارآمدی اتریبیوشن سنتی در بسترهای مدرن است. مدل‌های اتریبیوشن سنتی ناقص هستند و نباید به عنوان یک عصای جادویی برای تصمیم‌گیری استفاده شوند. مارکترها باید بپذیرند که اندازه‌گیری کامل غیرممکن است و به جای آن باید روی شاخص‌های پیشرو منطقی، اهداف مبتنی بر عمل و مثلث‌بندی چند سیگنال مختلف تمرکز کنند. وابستگی تیم‌های مارکتینگ و ads به اتریبیوشن کلیک‌محور را بازبینی کنید و خطاهای آن را مستند سازید روش مثلث‌بندی را برای اندازه‌گیری سهم صدا در هوش مصنوعی، تگ‌های crm و داده‌های خوداظهاری کاربران پیاده‌سازی کنید برای کانال‌های engagement و ecrm که مسیر تبدیل پیچیده‌ای دارند، به جای اتریبیوشن لحظه‌ای روی شاخص‌های پیشرو تمرکز کنید attribution ai-search analytics growth ads data leadership growth memo" style="--c:#2E9E4F">
-  <span class="rank">4</span>
+  <span class="rank">5</span>
   <div class="meta">
     <span class="src">Growth Memo</span>
     <span class="badge">تحلیل</span>
@@ -1079,7 +1127,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </div>
   <a class="url ltr" href="https://www.growth-memo.com/p/the-collapse-of-attribution" target="_blank" rel="noopener">https://www.growth-memo.com/p/the-collapse-of-attribution</a>
 </article><article class="ranked" data-cat="growth" data-text="مجموعه ایده‌های رشد خلاقانه و غیرمتعارف برای تیم‌های مارکتینگ 60+ new creative growth ideas این مقاله مجموعه‌ای از ایده‌های رشد خلاقانه و غیرمتعارف را ارائه می‌دهد که توجه مخاطبان را بدون نیاز به بودجه‌های کلان تبلیغاتی جلب می‌کنند. این مقاله توسط لنی راشتر (lenny rachitsky) در خبرنامه معتبر او منتشر شده و حاصل همکاری با تام اورباخ (tom orbach)، مدیر رشد در wiz و خالق خبرنامه marketing ideas است. این مطلب در قالب یک راهنمای جامع و فهرست‌وار از تاکتیک‌های غیرمعمول بازاریابی برای جذب توجه و رشد محصول تهیه شده است. نویسنده استدلال می‌کند که توجه همیشه به سمت اتفاقات غیرمنتظره و غیرقابل پیش‌بینی جلب می‌شود. بیشتر شرکت‌ها از پلی‌بوک‌های تکراری پیروی می‌کنند و اجرای ایده‌های جسورانه، ارزان‌تر از هزینه‌های تبلیغاتی یک هفته است و نتایج به مراتب بهتری در جلب توجه ارگانیک به همراه دارد. بررسی امکان استفاده از فایل این ایده‌ها به همراه ai agentها برای طوفان فکری کمپین‌های اختصاصی مارکت‌پلیس تست کردن ایده‌های غیرمعمول و ساختارشکنانه در بخش‌های engagement و ecrm برای افزایش تعامل کاربران برنامه‌ریزی برای تخصیص بخشی از بودجه مارکتینگ به فعالیت‌های خلاقانه غیرسنتی به جای کانال‌های پرهزینه روتین growth-hacking marketing-ideas viral-loops creative-strategy ads engagement ecrm product lenny&#39;s newsletter" style="--c:#2E9E4F">
-  <span class="rank">5</span>
+  <span class="rank">6</span>
   <div class="meta">
     <span class="src">Lenny&#39;s Newsletter</span>
     <span class="badge">تحلیل</span>
@@ -1102,7 +1150,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </div>
   <a class="url ltr" href="https://www.lennysnewsletter.com/p/60-creative-growth-ideas" target="_blank" rel="noopener">https://www.lennysnewsletter.com/p/60-creative-growth-ideas</a>
 </article><article class="ranked" data-cat="growth" data-text="مدیریت منابع هوش مصنوعی در تیم‌های مارکتینگ: ساخت، خرید یا مشاوره؟ are you doing marketing… or building software? تیم‌های مارکتینگ پیش از توسعه داخلی ابزارهای هوش مصنوعی باید فرآیندها را دسته‌بندی کرده و بین خرید نرم‌افزار، استخدام مشاور یا توسعه درون‌سازمانی یکی را انتخاب کنند. این مقاله از خبرنامه growth memo به بررسی چالش‌های تخصیص منابع و زمان تیم‌های مارکتینگ برای خودکارسازی با هوش مصنوعی می‌پردازد. نویسندگان با تکیه بر تجربه مشاوره و داده‌های صنعت، راهنمایی عملی برای تصمیم‌گیری بین ساخت داخلی، خرید ابزار آماده یا استفاده از تخصص خارجی ارائه می‌کنند. توسعه داخلی هوش مصنوعی بدون ارزیابی اولیه، خطایی پرهزینه است که ساعت‌های پنهان زیادی از تیم را تلف می‌کند. موفقیت در به‌کارگیری هوش مصنوعی در مارکتینگ مستلزم خرید ابزارهای آماده برای مسائل مشترک، خرید دانش تخصصی برای فرآیندهای انحصاری، و حفظ نظارت دقیق انسانی بر تمامی خروجی‌ها است. هزینه توسعه داخلی ابزارهای هوش مصنوعی در حوزه‌های ads و ecrm را با هزینه لایسنس ونورهای خارجی مقایسه کنید. ساعت‌های پنهان تیم فنی و مارکتینگ برای تست و نگهداری ابزارهای داخلی را به دقت محاسبه کنید. برای اتوماسیون‌های سفارشی فرآیندهای engagement، به جای کشف دوباره مسیر، از الگوهای مشاوران با تجربه استفاده کنید. یک لایه کنترل انسانی اجباری برای تمامی گزارش‌ها و محتواهای تولیدشده توسط سیستم‌های ai و agentها در نظر بگیرید. ai automation build vs buy resource allocation marketing ops ads ecrm engagement data growth memo" style="--c:#2E9E4F">
-  <span class="rank">6</span>
+  <span class="rank">7</span>
   <div class="meta">
     <span class="src">Growth Memo</span>
     <span class="badge">تحلیل</span>
@@ -1125,7 +1173,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </div>
   <a class="url ltr" href="https://www.growth-memo.com/p/are-you-doing-marketing-or-building" target="_blank" rel="noopener">https://www.growth-memo.com/p/are-you-doing-marketing-or-building</a>
 </article><article class="ranked" data-cat="growth" data-text="تحلیل پرسش‌های انشعابی و الگوهای استناد در جستجوی chatgpt how chatgpt does query fan-out (15 million queries studied) بررسی 66 میلیون پاسخ چت‌جی‌پی‌تی نشان می‌دهد که این ابزار برای پرسش‌های فاکتوال به سایت‌های رسمی برندها تکیه می‌کند و سهم استناد به پلتفرم‌هایی مانند ردیت کاهش یافته است. این مقاله پژوهشی که توسط تیم محتوای ahrefs نوشته شده است، به بررسی نحوه بازیابی اطلاعات توسط chatgpt و رفتار جستجوی آن می‌پردازد. نویسندگان 66.6 میلیون پاسخ لاگ‌اوت‌نشده از نسخه رایگان و 15 میلیون پرسش انشعابی (fan-out queries) را در ماه‌های اوت و سپتامبر تحلیل کرده‌اند تا مشخص شود این مدل چطور منابع خود را پیدا می‌کند. نویسندگان استدلال می‌کنند که چت‌جی‌پی‌تی اولویت خود را بر منابع اولیه و رسمی برای پاسخ به پرسش‌های ساختاریافته و فاکتوال قرار داده است. در حالی که پلتفرم‌های محتوای کاربر‌ساخته مانند ردیت همچنان برای نظرات کاربران بررسی می‌شوند، سهم استناد آن‌ها افت کرده و منابع تخصصی، پژوهشی و سایت‌های رسمی برندها جایگاه بالاتری در ارجاعات کسب کرده‌اند. اطمینان حاصل کنید که اطلاعات قیمت، مشخصات فنی و جزئیات پشتیبانی محصولات روی سایت مارکت‌پلیس به صورت متن ساده و قابل ایندکس درج شده است. گزارش‌های پنل brand radar را برای رصد پرسش‌های انشعابی مرتبط با دسته‌بندی کالاهای مارکت‌پلیس بررسی کنید. استراتژی حضور در نشریات و پلتفرم‌های شریک openai را برای بهبود سهم استناد در پاسخ‌های مقایسه‌ای ارزیابی کنید. ai search seo chatgpt query fan-out ads data leadership ahrefs blog" style="--c:#2E9E4F">
-  <span class="rank">7</span>
+  <span class="rank">8</span>
   <div class="meta">
     <span class="src">Ahrefs Blog</span>
     <span class="badge">تحلیل</span>
@@ -1842,6 +1890,12 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
   </section>
 
   <section class="panel" data-panel="sources" hidden>
+    
+    <div class="changes">
+      <h3>تغییرات منابع در 30 روز اخیر</h3>
+      <ul><li><span class="cdate ltr">1405/08/06</span>منبع AdExchanger به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/08/04</span>آدرس فید Machine Learning Mastery خودکار اصلاح شد</li><li><span class="cdate ltr">1405/08/03</span>منبع جدید در دورهٔ آزمایشی: eBay Tech Blog (ردهٔ 1)</li><li><span class="cdate ltr">1405/08/03</span>منبع جدید در دورهٔ آزمایشی: webkit.org (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/29</span>منبع Journal of Marketing در دورهٔ آزمایشی با میانگین 4.3 رد شد</li><li><span class="cdate ltr">1405/07/28</span>منبع Duolingo Blog در دورهٔ آزمایشی با میانگین 2.1 رد شد</li><li><span class="cdate ltr">1405/07/26</span>منبع Stratechery به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/26</span>منبع جدید در دورهٔ آزمایشی: Duolingo Blog (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/26</span>منبع جدید در دورهٔ آزمایشی: Think with Google (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/26</span>منبع جدید در دورهٔ آزمایشی: Journal of Marketing (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/20</span>منبع HubSpot Marketing به دلیل نرخ قبولی 0% برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/18</span>منبع جدید در دورهٔ آزمایشی: Code as Craft (Etsy Engineering) (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/18</span>منبع جدید در دورهٔ آزمایشی: Amazon Science (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/18</span>منبع جدید در دورهٔ آزمایشی: Shopify Engineering (ردهٔ 1)</li><li><span class="cdate ltr">1405/07/14</span>منبع Marketing Dive به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Social Media Examiner به دلیل میانگین کیفیت 5.1 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Digiday به دلیل میانگین کیفیت 5.5 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Digital Commerce 360 به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Practical Ecommerce به دلیل میانگین کیفیت 5.1 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Omnisend Blog به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Towards Data Science به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Search Engine Journal به دلیل میانگین کیفیت 5.4 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Retail Dive به دلیل میانگین کیفیت 4.3 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع OpenAI News به دلیل میانگین کیفیت 4.2 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Seth Godin به دلیل میانگین کیفیت 5.3 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع PPC Land به دلیل میانگین کیفیت 4.2 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع McKinsey Insights به دلیل میانگین کیفیت 5.0 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Knowledge at Wharton به دلیل میانگین کیفیت 4.9 برای 30 روز متوقف شد</li><li><span class="cdate ltr">1405/07/13</span>منبع Harvard Business Review به دلیل میانگین کیفیت 5.0 برای 30 روز متوقف شد</li></ul>
+    </div>
+    
     <p class="lead">منابعی که در هر نوبت خوانده می‌شوند. فید خراب خودکار ترمیم یا غیرفعال می‌شود، منبع کم‌کیفیت 30 روز متوقف می‌شود و هر هفته منابع جدید پس از تأیید اضافه می‌شوند.</p>
     <div class="tw"><table class="src">
       <thead><tr><th>منبع</th><th>رده</th><th>دسته</th><th>وضعیت</th><th>آخرین مطلب</th><th>میانگین کیفیت</th><th>نرخ قبولی</th><th>دفعات انتخاب</th><th>پیشنهاد</th></tr></thead>
@@ -1851,8 +1905,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>منبع اصلی</td>
         <td>هوش مصنوعی</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/08/01</td>
-        <td class="ltr" style="text-align:right">6.0</td>
+        <td class="ltr" style="text-align:right">1405/08/05</td>
+        <td class="ltr" style="text-align:right">5.9</td>
         <td class="ltr" style="text-align:right">42%</td>
         <td class="ltr" style="text-align:right">12</td>
         <td></td></tr>
@@ -1861,8 +1915,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>منبع اصلی</td>
         <td>پرفورمنس و تبلیغات</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/07/30</td>
-        <td class="ltr" style="text-align:right">7.2</td>
+        <td class="ltr" style="text-align:right">1405/08/05</td>
+        <td class="ltr" style="text-align:right">7.3</td>
         <td class="ltr" style="text-align:right">38%</td>
         <td class="ltr" style="text-align:right">4</td>
         <td></td></tr>
@@ -1871,7 +1925,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>منبع اصلی</td>
         <td>ای‌کامرس و محصول</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/08/01</td>
+        <td class="ltr" style="text-align:right">1405/08/05</td>
         <td class="ltr" style="text-align:right">7.7</td>
         <td class="ltr" style="text-align:right">33%</td>
         <td class="ltr" style="text-align:right">3</td>
@@ -1881,9 +1935,9 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>منبع اصلی</td>
         <td>مدیریت و استراتژی</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/08/01</td>
-        <td class="ltr" style="text-align:right">5.5</td>
-        <td class="ltr" style="text-align:right">40%</td>
+        <td class="ltr" style="text-align:right">1405/08/04</td>
+        <td class="ltr" style="text-align:right">5.4</td>
+        <td class="ltr" style="text-align:right">33%</td>
         <td class="ltr" style="text-align:right">2</td>
         <td></td></tr>
       
@@ -1891,8 +1945,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>منبع اصلی</td>
         <td>کمپین و پروموشن</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/07/30</td>
-        <td class="ltr" style="text-align:right">5.7</td>
+        <td class="ltr" style="text-align:right">1405/08/05</td>
+        <td class="ltr" style="text-align:right">5.6</td>
         <td class="ltr" style="text-align:right">40%</td>
         <td class="ltr" style="text-align:right">2</td>
         <td></td></tr>
@@ -1981,8 +2035,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>منبع اصلی</td>
         <td>eCRM و وفاداری</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/07/24</td>
-        <td class="ltr" style="text-align:right">5.1</td>
+        <td class="ltr" style="text-align:right">1405/08/05</td>
+        <td class="ltr" style="text-align:right">5.3</td>
         <td class="ltr" style="text-align:right">0%</td>
         <td class="ltr" style="text-align:right">0</td>
         <td></td></tr>
@@ -1991,8 +2045,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>تحلیل معتبر</td>
         <td>مارکتینگ و برند</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/07/30</td>
-        <td class="ltr" style="text-align:right">6.7</td>
+        <td class="ltr" style="text-align:right">1405/08/06</td>
+        <td class="ltr" style="text-align:right">6.6</td>
         <td class="ltr" style="text-align:right">33%</td>
         <td class="ltr" style="text-align:right">4</td>
         <td></td></tr>
@@ -2011,8 +2065,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>تحلیل معتبر</td>
         <td>مدیریت و استراتژی</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/08/05</td>
-        <td class="ltr" style="text-align:right">6.2</td>
+        <td class="ltr" style="text-align:right">1405/08/06</td>
+        <td class="ltr" style="text-align:right">6.3</td>
         <td class="ltr" style="text-align:right">50%</td>
         <td class="ltr" style="text-align:right">1</td>
         <td></td></tr>
@@ -2051,7 +2105,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
         <td>تحلیل معتبر</td>
         <td>رشد</td>
         <td><span class="st st-active">فعال</span></td>
-        <td class="ltr" style="text-align:right">1405/08/04</td>
+        <td class="ltr" style="text-align:right">1405/08/06</td>
         <td class="ltr" style="text-align:right">5.7</td>
         <td class="ltr" style="text-align:right">0%</td>
         <td class="ltr" style="text-align:right">0</td>
@@ -2501,9 +2555,676 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     </table></div>
   </section>
   
+  <section class="panel guide" data-panel="guide" hidden>
+    <h2>خلاصهٔ سریع: استفاده و امتیازدهی</h2>
+<ul>
+<li><strong>خواندن:</strong> کارت هر مطلب یک خلاصهٔ یک‌جمله‌ای و «کاربرد برای تیم» دارد؛ «خواندن بریف کامل» تحلیل یک‌صفحه‌ای مطلب را باز می‌کند.</li>
+<li><strong>فیلتر:</strong> دکمه‌های دسته و جست‌وجو (عنوان، تگ یا نام تیم مثل <code>eCRM</code> و <code>Ads</code>).</li>
+<li><strong>امتیاز هر مطلب (از 10):</strong> <code>0.35 × ارتباط با مارکتینگ + 0.65 × کیفیت + اثر ردهٔ منبع</code>. هر دو امتیاز را یک ویراستار AI پس از خواندن متن کامل می‌دهد.</li>
+<li><strong>شرط انتشار:</strong> ارتباط حداقل 8 و کیفیت حداقل 7؛ در موارد مرزی مطلب رد می‌شود.</li>
+<li><strong>اثر ردهٔ منبع:</strong> منبع اصلی +0.5، تحلیل معتبر 0، خبری / vendor -0.7.</li>
+<li><strong>لیدربورد:</strong> 10 مطلب برتر هر دسته با امتیاز حداقل 8؛ مطلب تازه فقط در صورت برتری در مقایسهٔ مستقیم وارد می‌شود.</li>
+</ul>
+<h2>دایجست چیست</h2>
+<p>دایجست تحقیقات یک ایجنت خودکار است که برترین مقالات، پژوهش‌ها و آموزش‌های مرتبط با مارکتینگ را از منابع معتبر پیدا می‌کند، با دو مرحله بازبینی کیفی غربال می‌کند و برای هر مطلب منتخب یک بریف یک‌صفحه‌ای فارسی می‌نویسد. هدف این است که تیم بدون صرف وقت برای جست‌وجو، همیشه از مهم‌ترین تحولات حوزهٔ خود مطلع باشد.</p>
+<p><strong>زمان‌بندی:</strong> روزهای زوج ماه میلادی (2، 4، 6 و ...) ساعت 12:03 به وقت تهران روی سرورهای GitHub اجرا می‌شود و خروجی معمولاً تا ساعت 12:45 آماده است.</p>
+<table>
+<thead>
+<tr>
+<th>بخش</th>
+<th>محتوا</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>تب «مطالب تازه»</td>
+<td>10 مطلب آخر با خلاصه، کاربرد برای تیم و لینک بریف</td>
+</tr>
+<tr>
+<td>تب «لیدربورد»</td>
+<td>10 مطلب برتر هر دسته، با رتبه</td>
+</tr>
+<tr>
+<td>تب «منابع»</td>
+<td>وضعیت لحظه‌ای هر منبع (رده، کیفیت، نرخ قبولی، پیشنهاد) و تغییرات 30 روز اخیر منابع</td>
+</tr>
+<tr>
+<td>تب «راهنما»</td>
+<td>همین صفحه</td>
+</tr>
+<tr>
+<td>بریف کامل</td>
+<td>تحلیل یک‌صفحه‌ای هر مطلب؛ دکمهٔ «خواندن بریف کامل»</td>
+</tr>
+<tr>
+<td><a href="full/latest.html">متن کامل آخرین نوبت</a></td>
+<td>همهٔ بریف‌های آخرین اجرا در یک صفحه؛ مناسب چاپ و NotebookLM</td>
+</tr>
+<tr>
+<td>ایمیل</td>
+<td>مطالب تازه بر اساس دسته و خلاصهٔ لیدربورد (3 مطلب برتر هر دسته)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>دسته‌ها:</strong> مدیریت و استراتژی، مارکتینگ و برند، پرفورمنس و تبلیغات، کمپین و پروموشن، رشد، eCRM و وفاداری، داده و آزمایش، هوش مصنوعی، ای‌کامرس و محصول. نوع هر مطلب هم مشخص است: آموزش، مقالهٔ علمی یا تحلیل.</p>
+<h2>استفاده برای اعضای تیم</h2>
+<ul>
+<li><strong>مرور سریع:</strong> خلاصهٔ یک‌جمله‌ای و «کاربرد برای تیم» هر کارت نشان می‌دهد آیا مطلب ارزش خواندن بریف کامل را دارد.</li>
+<li><strong>مطالعهٔ عمیق:</strong> «خواندن بریف کامل» این بخش‌ها را دارد: درباره چیست، مسئله، روی چه چیزی کار کرده‌اند، روش، یافته‌ها و اعداد، نتیجه‌گیری، کاربرد برای تیم و محدودیت‌ها.</li>
+<li><strong>فیلتر:</strong> دکمه‌های دسته فیلتر می‌کنند. جست‌وجو روی عنوان، کاربرد، تگ‌ها و نام تیم‌ها (<code>Ads</code>، <code>Affiliate</code>، <code>eCRM</code>، <code>Engagement</code>، <code>Data</code>، <code>Product</code>، <code>Leadership</code>) کار می‌کند.</li>
+<li><strong>مرجع همیشگی:</strong> تب «لیدربورد» برای آشنایی اعضای جدید یا مرور پایه‌ای یک حوزه مناسب است.</li>
+<li><strong>آرشیو:</strong> منوی کشویی کنار جست‌وجو، دایجست هر نوبت گذشته را باز می‌کند.</li>
+</ul>
+<h2>جریان کار هر نوبت</h2>
+<ol>
+<li><strong>جمع‌آوری:</strong> خواندن همهٔ منابع برای مطالب 30 روز گذشته؛ فید خراب خودکار ترمیم می‌شود.</li>
+<li><strong>غربال اول:</strong> امتیاز «ارتباط با مارکتینگ» و «کیفیت» از روی عنوان و چکیده؛ فقط مطالب تازه امتیاز می‌گیرند و نتیجهٔ بقیه از حافظه خوانده می‌شود.</li>
+<li><strong>غربال دوم:</strong> متن کامل حدود 22 کاندیدای برتر 7 روز اخیر را یک ویراستار سخت‌گیر (AI) می‌خواند. اگر مطلبی گزارش کار دیگران باشد، منبع اصلی جایگزین آن می‌شود.</li>
+<li><strong>انتخاب:</strong> 10 مطلب برتر که قبلاً نمایش داده نشده‌اند، با پوشش متوازن دسته‌ها.</li>
+<li><strong>بریف‌نویسی:</strong> یک بریف یک‌صفحه‌ای فارسی برای هر مطلب.</li>
+<li><strong>لیدربورد:</strong> رقابت مطالب منتخب با برترین‌های هر دسته؛ دسته‌های ناقص از برترین مطالب 7 تا 30 روز گذشته پر می‌شوند.</li>
+<li><strong>ارزیابی منابع و انتشار:</strong> به‌روزرسانی کیفیت منابع، ساخت وب‌سایت و ارسال ایمیل.</li>
+</ol>
+<h2>منابع: انتخاب، رده‌بندی و به‌روزرسانی</h2>
+<h3>ردهٔ اعتبار</h3>
+<table>
+<thead>
+<tr>
+<th>رده</th>
+<th>تعریف</th>
+<th>اثر در انتخاب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. منبع اصلی</td>
+<td>پژوهش، گزارش آزمایش‌های خود شرکت‌ها، اعلان رسمی پلتفرم‌ها</td>
+<td>+0.5 امتیاز؛ مجاز در لیدربورد</td>
+</tr>
+<tr>
+<td>2. تحلیل معتبر</td>
+<td>دانشکده‌های کسب‌وکار، مشاوران، نویسندگان شناخته‌شده</td>
+<td>بدون تغییر امتیاز؛ مجاز در لیدربورد</td>
+</tr>
+<tr>
+<td>3. خبری / vendor</td>
+<td>پوشش خبری و محتوای شرکت‌هایی که محصول می‌فروشند</td>
+<td>-0.7 امتیاز؛ حداکثر 3 مطلب در هر نوبت؛ ممنوع در لیدربورد</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ترجیح منبع اصلی:</strong> در غربال دوم بررسی می‌شود که آیا مطلب گزارش پژوهش، آزمایش یا نظرسنجی شخص یا سازمان دیگری است. اگر هست، منبع اصلی از لینک‌های متن پیدا، دانلود و بازبینی می‌شود و در صورت تأیید جای مطلب واسطه را می‌گیرد. در بریف عبارت «پوشش از طریق ...» دیده می‌شود.</p>
+<h3>رشد و نگهداری خودکار</h3>
+<ul>
+<li><strong>کشف منابع اصلی:</strong> دامنه‌ای که در 30 روز گذشته حداقل 2 بار منبع اصلی مطالب دیگر بوده، نامزد افزودن به‌عنوان ردهٔ 1 می‌شود.</li>
+<li><strong>پیشنهاد هفتگی:</strong> هر هفته تا 3 منبع جدید، با اولویت منابع اصلی و دسته‌های کم‌منبع. سایت‌های خبری، vendor و تجمیع‌کننده پیشنهاد نمی‌شوند.</li>
+<li><strong>دورهٔ آزمایشی:</strong> منبع جدید ابتدا امتیاز می‌گیرد ولی منتشر نمی‌شود. بعد از 10 مطلب، با میانگین کیفیت حداقل 7 فعال و با میانگین زیر 5 رد می‌شود.</li>
+<li><strong>سلامت:</strong> فید خراب ترمیم می‌شود؛ بعد از 3 خطای پیاپی غیرفعال می‌شود و هفته‌ای یک بار دوباره امتحان می‌شود.</li>
+<li><strong>کیفیت:</strong> منبعی که میانگین کیفیتش زیر 5.5 یا نرخ قبولی‌اش زیر 5% باشد، 30 روز متوقف می‌شود.</li>
+</ul>
+<h3>چرخهٔ هفتگی</h3>
+<table>
+<thead>
+<tr>
+<th>دوره</th>
+<th>کار</th>
+<th>نوع</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>هر نوبت</td>
+<td>سلامت فیدها، به‌روزرسانی کیفیت و نرخ قبولی، توقف منابع ضعیف، فعال‌سازی منابع آزمایشی موفق</td>
+<td>خودکار</td>
+</tr>
+<tr>
+<td>هفتگی</td>
+<td>کشف منابع اصلی، پیشنهاد منابع جدید، حذف لینک‌های مرده؛ ثبت همهٔ تغییرات در تب «منابع»</td>
+<td>خودکار</td>
+</tr>
+<tr>
+<td>هفتگی</td>
+<td>مرور تب «منابع» و اعمال تصمیم‌ها در <code>config/sources.yaml</code></td>
+<td>تیم، حدود 5 دقیقه</td>
+</tr>
+</tbody>
+</table>
+<p>ستون «پیشنهاد» در تب «منابع» تغییر رده را پیشنهاد می‌دهد، اما تغییر رده همیشه دستی است، چون رده نوع منبع را توصیف می‌کند.</p>
+<h3>فهرست فعلی منابع</h3>
+<p>این جدول هر نوبت از فایل منابع و وضعیت فعلی ساخته می‌شود و همیشه به‌روز است. منابعی که خودکار اضافه شده‌اند، دلیل و تاریخ افزودنشان را دارند.</p>
+<table>
+<thead>
+<tr>
+<th>منبع</th>
+<th>رده</th>
+<th>دسته</th>
+<th>وضعیت</th>
+<th>دلیل انتخاب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Airbnb Tech</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>کیس‌استادی واقعی experimentation و ranking در مارکت‌پلیس</td>
+</tr>
+<tr>
+<td>arXiv · Advertising</td>
+<td>منبع اصلی</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>arXiv · E-commerce RecSys</td>
+<td>منبع اصلی</td>
+<td>ای‌کامرس و محصول</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>arXiv · LLM for Marketing</td>
+<td>منبع اصلی</td>
+<td>هوش مصنوعی</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>arXiv · Platforms &amp; Econ</td>
+<td>منبع اصلی</td>
+<td>مدیریت و استراتژی</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>arXiv · Promotions</td>
+<td>منبع اصلی</td>
+<td>کمپین و پروموشن</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>arXiv · Retention</td>
+<td>منبع اصلی</td>
+<td>eCRM و وفاداری</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>arXiv · Uplift &amp; Causal</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>جدیدترین پژوهش‌های علمی arXiv در همین موضوع</td>
+</tr>
+<tr>
+<td>Booking.com Data</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>از مرجع‌ترین تیم‌های experimentation در ای‌کامرس</td>
+</tr>
+<tr>
+<td>Google Ads &amp; Commerce</td>
+<td>منبع اصلی</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>فعال</td>
+<td>اعلان رسمی تغییرات پلتفرم تبلیغات Google</td>
+</tr>
+<tr>
+<td>Instacart Tech</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>تبلیغات retail media و ای‌کامرس خواربار</td>
+</tr>
+<tr>
+<td>Netflix TechBlog</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>آزمایش‌ها و زیرساخت A/B testing در مقیاس بسیار بزرگ</td>
+</tr>
+<tr>
+<td>Spotify Engineering</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>شخصی‌سازی، آزمایش و تحلیل رفتار کاربر</td>
+</tr>
+<tr>
+<td>Zalando Engineering</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>ای‌کامرس بزرگ اروپایی، نزدیک به مدل کسب‌وکار دیجی‌کالا</td>
+</tr>
+<tr>
+<td>Amazon Science</td>
+<td>منبع اصلی</td>
+<td>ای‌کامرس و محصول</td>
+<td>دورهٔ آزمایشی</td>
+<td></td>
+</tr>
+<tr>
+<td>Code as Craft (Etsy Engineering)</td>
+<td>منبع اصلی</td>
+<td>ای‌کامرس و محصول</td>
+<td>دورهٔ آزمایشی</td>
+<td></td>
+</tr>
+<tr>
+<td>eBay Tech Blog</td>
+<td>منبع اصلی</td>
+<td>ای‌کامرس و محصول</td>
+<td>دورهٔ آزمایشی</td>
+<td></td>
+</tr>
+<tr>
+<td>Shopify Engineering</td>
+<td>منبع اصلی</td>
+<td>ای‌کامرس و محصول</td>
+<td>دورهٔ آزمایشی</td>
+<td></td>
+</tr>
+<tr>
+<td>Think with Google</td>
+<td>منبع اصلی</td>
+<td>کمپین و پروموشن</td>
+<td>دورهٔ آزمایشی</td>
+<td></td>
+</tr>
+<tr>
+<td>webkit.org</td>
+<td>منبع اصلی</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>دورهٔ آزمایشی</td>
+<td></td>
+</tr>
+<tr>
+<td>Google AI Blog</td>
+<td>منبع اصلی</td>
+<td>هوش مصنوعی</td>
+<td>متوقف (کیفیت)</td>
+<td>پژوهش و اعلان رسمی Google در AI</td>
+</tr>
+<tr>
+<td>Hugging Face Learn</td>
+<td>منبع اصلی</td>
+<td>هوش مصنوعی</td>
+<td>متوقف (کیفیت)</td>
+<td>آموزش‌ها و ابزارهای متن‌باز AI</td>
+</tr>
+<tr>
+<td>OpenAI News</td>
+<td>منبع اصلی</td>
+<td>هوش مصنوعی</td>
+<td>متوقف (کیفیت)</td>
+<td>اعلان رسمی مدل‌ها و قابلیت‌های جدید</td>
+</tr>
+<tr>
+<td>Uber Engineering</td>
+<td>منبع اصلی</td>
+<td>داده و آزمایش</td>
+<td>غیرفعال (خطا)</td>
+<td>مدل‌سازی مارکت‌پلیس، قیمت‌گذاری و incentive</td>
+</tr>
+<tr>
+<td>Ahrefs Blog</td>
+<td>تحلیل معتبر</td>
+<td>مارکتینگ و برند</td>
+<td>فعال</td>
+<td>مطالعات داده‌محور SEO با داده‌های اختصاصی</td>
+</tr>
+<tr>
+<td>Elena Verna</td>
+<td>تحلیل معتبر</td>
+<td>رشد</td>
+<td>فعال</td>
+<td>استراتژی رشد product-led</td>
+</tr>
+<tr>
+<td>Eugene Yan</td>
+<td>تحلیل معتبر</td>
+<td>داده و آزمایش</td>
+<td>فعال</td>
+<td>سیستم‌های توصیه‌گر و کاربرد عملی ML</td>
+</tr>
+<tr>
+<td>First Round Review</td>
+<td>تحلیل معتبر</td>
+<td>مدیریت و استراتژی</td>
+<td>فعال</td>
+<td>مصاحبه‌های عمیق عملیاتی با مدیران رشد</td>
+</tr>
+<tr>
+<td>Growth Memo</td>
+<td>تحلیل معتبر</td>
+<td>رشد</td>
+<td>فعال</td>
+<td>SEO و رشد ارگانیک داده‌محور</td>
+</tr>
+<tr>
+<td>Lenny's Newsletter</td>
+<td>تحلیل معتبر</td>
+<td>رشد</td>
+<td>فعال</td>
+<td>مرجع اول growth و محصول</td>
+</tr>
+<tr>
+<td>Machine Learning Mastery</td>
+<td>تحلیل معتبر</td>
+<td>هوش مصنوعی</td>
+<td>فعال</td>
+<td>آموزش‌های گام‌به‌گام ML</td>
+</tr>
+<tr>
+<td>MIT Sloan Mgmt Review</td>
+<td>تحلیل معتبر</td>
+<td>مدیریت و استراتژی</td>
+<td>فعال</td>
+<td>پژوهش دانشگاهی کاربردی در مدیریت و دیجیتال</td>
+</tr>
+<tr>
+<td>One Useful Thing</td>
+<td>تحلیل معتبر</td>
+<td>هوش مصنوعی</td>
+<td>فعال</td>
+<td>کاربرد عملی AI در کار تیم‌ها</td>
+</tr>
+<tr>
+<td>Digital Commerce 360</td>
+<td>تحلیل معتبر</td>
+<td>ای‌کامرس و محصول</td>
+<td>متوقف (کیفیت)</td>
+<td></td>
+</tr>
+<tr>
+<td>Harvard Business Review</td>
+<td>تحلیل معتبر</td>
+<td>مدیریت و استراتژی</td>
+<td>متوقف (کیفیت)</td>
+<td>مرجع مدیریت و استراتژی</td>
+</tr>
+<tr>
+<td>Knowledge at Wharton</td>
+<td>تحلیل معتبر</td>
+<td>مدیریت و استراتژی</td>
+<td>متوقف (کیفیت)</td>
+<td>پژوهش‌های مارکتینگ و رفتار مصرف‌کننده</td>
+</tr>
+<tr>
+<td>Latent Space</td>
+<td>تحلیل معتبر</td>
+<td>هوش مصنوعی</td>
+<td>متوقف (کیفیت)</td>
+<td>تحولات مهندسی AI و agentها</td>
+</tr>
+<tr>
+<td>McKinsey Insights</td>
+<td>تحلیل معتبر</td>
+<td>مدیریت و استراتژی</td>
+<td>متوقف (کیفیت)</td>
+<td>گزارش‌های صنعت و داده‌های کلان</td>
+</tr>
+<tr>
+<td>Omnisend Blog</td>
+<td>تحلیل معتبر</td>
+<td>eCRM و وفاداری</td>
+<td>متوقف (کیفیت)</td>
+<td></td>
+</tr>
+<tr>
+<td>Practical Ecommerce</td>
+<td>تحلیل معتبر</td>
+<td>ای‌کامرس و محصول</td>
+<td>متوقف (کیفیت)</td>
+<td></td>
+</tr>
+<tr>
+<td>Seth Godin</td>
+<td>تحلیل معتبر</td>
+<td>مارکتینگ و برند</td>
+<td>متوقف (کیفیت)</td>
+<td>دیدگاه‌های پایه‌ای برند و مارکتینگ</td>
+</tr>
+<tr>
+<td>Simon Willison</td>
+<td>تحلیل معتبر</td>
+<td>هوش مصنوعی</td>
+<td>متوقف (کیفیت)</td>
+<td>ارزیابی دقیق ابزارها و مدل‌های LLM</td>
+</tr>
+<tr>
+<td>Stratechery</td>
+<td>تحلیل معتبر</td>
+<td>مدیریت و استراتژی</td>
+<td>متوقف (کیفیت)</td>
+<td>تحلیل استراتژی پلتفرم‌ها و تکنولوژی</td>
+</tr>
+<tr>
+<td>Towards Data Science</td>
+<td>تحلیل معتبر</td>
+<td>داده و آزمایش</td>
+<td>متوقف (کیفیت)</td>
+<td>آموزش‌های عملی داده و ML</td>
+</tr>
+<tr>
+<td>Andrew Chen</td>
+<td>تحلیل معتبر</td>
+<td>رشد</td>
+<td>غیرفعال (خطا)</td>
+<td>چارچوب‌های network effect و growth loop</td>
+</tr>
+<tr>
+<td>CXL</td>
+<td>تحلیل معتبر</td>
+<td>مارکتینگ و برند</td>
+<td>غیرفعال (خطا)</td>
+<td>آموزش‌های بهینه‌سازی تبدیل و آزمایش</td>
+</tr>
+<tr>
+<td>Growth Unhinged</td>
+<td>تحلیل معتبر</td>
+<td>رشد</td>
+<td>غیرفعال (خطا)</td>
+<td>داده و بنچمارک‌های رشد</td>
+</tr>
+<tr>
+<td>Modern Retail</td>
+<td>خبری / vendor</td>
+<td>ای‌کامرس و محصول</td>
+<td>فعال</td>
+<td>خبر و تحلیل ریتیل و ای‌کامرس</td>
+</tr>
+<tr>
+<td>AdExchanger</td>
+<td>خبری / vendor</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>متوقف (کیفیت)</td>
+<td>خبر ad tech و برنامه‌ریزی خرید رسانه</td>
+</tr>
+<tr>
+<td>Digiday</td>
+<td>خبری / vendor</td>
+<td>مارکتینگ و برند</td>
+<td>متوقف (کیفیت)</td>
+<td>خبر رسانه و تبلیغات دیجیتال</td>
+</tr>
+<tr>
+<td>HubSpot Marketing</td>
+<td>خبری / vendor</td>
+<td>مارکتینگ و برند</td>
+<td>متوقف (کیفیت)</td>
+<td>محتوای vendor با آموزش‌های پایه</td>
+</tr>
+<tr>
+<td>Marketing Dive</td>
+<td>خبری / vendor</td>
+<td>مارکتینگ و برند</td>
+<td>متوقف (کیفیت)</td>
+<td>خبر روزانهٔ مارکتینگ</td>
+</tr>
+<tr>
+<td>PPC Land</td>
+<td>خبری / vendor</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>متوقف (کیفیت)</td>
+<td>خبر تغییرات پلتفرم‌های تبلیغاتی</td>
+</tr>
+<tr>
+<td>Practical Ecommerce</td>
+<td>خبری / vendor</td>
+<td>ای‌کامرس و محصول</td>
+<td>متوقف (کیفیت)</td>
+<td>آموزش‌های عملی ای‌کامرس</td>
+</tr>
+<tr>
+<td>Retail Dive</td>
+<td>خبری / vendor</td>
+<td>ای‌کامرس و محصول</td>
+<td>متوقف (کیفیت)</td>
+<td>خبر صنعت ریتیل</td>
+</tr>
+<tr>
+<td>Search Engine Journal</td>
+<td>خبری / vendor</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>متوقف (کیفیت)</td>
+<td>خبر و آموزش SEO و تبلیغات</td>
+</tr>
+<tr>
+<td>Social Media Examiner</td>
+<td>خبری / vendor</td>
+<td>مارکتینگ و برند</td>
+<td>متوقف (کیفیت)</td>
+<td>آموزش‌های مارکتینگ شبکه‌های اجتماعی</td>
+</tr>
+<tr>
+<td>Customer.io Blog</td>
+<td>خبری / vendor</td>
+<td>eCRM و وفاداری</td>
+<td>غیرفعال (خطا)</td>
+<td>محتوای vendor پیام‌رسانی lifecycle</td>
+</tr>
+<tr>
+<td>GrowthBook Blog</td>
+<td>خبری / vendor</td>
+<td>داده و آزمایش</td>
+<td>غیرفعال (خطا)</td>
+<td>محتوای vendor ابزار experimentation</td>
+</tr>
+<tr>
+<td>Klaviyo Blog</td>
+<td>خبری / vendor</td>
+<td>eCRM و وفاداری</td>
+<td>غیرفعال (خطا)</td>
+<td>محتوای vendor ایمیل و eCRM</td>
+</tr>
+<tr>
+<td>Marketing Week</td>
+<td>خبری / vendor</td>
+<td>مارکتینگ و برند</td>
+<td>غیرفعال (خطا)</td>
+<td>خبر و تحلیل صنعت مارکتینگ</td>
+</tr>
+<tr>
+<td>Mixpanel Blog</td>
+<td>خبری / vendor</td>
+<td>داده و آزمایش</td>
+<td>غیرفعال (خطا)</td>
+<td>محتوای vendor تحلیل محصول</td>
+</tr>
+<tr>
+<td>Optimizely Insights</td>
+<td>خبری / vendor</td>
+<td>داده و آزمایش</td>
+<td>غیرفعال (خطا)</td>
+<td>محتوای vendor experimentation</td>
+</tr>
+<tr>
+<td>Retail TouchPoints</td>
+<td>خبری / vendor</td>
+<td>کمپین و پروموشن</td>
+<td>غیرفعال (خطا)</td>
+<td>خبر کمپین‌ها و پروموشن‌های ریتیل</td>
+</tr>
+<tr>
+<td>Search Engine Land</td>
+<td>خبری / vendor</td>
+<td>پرفورمنس و تبلیغات</td>
+<td>غیرفعال (خطا)</td>
+<td>خبر روزانهٔ جست‌وجو و تبلیغات</td>
+</tr>
+</tbody>
+</table>
+<h2>انتخاب مطالب و لیدربورد</h2>
+<table>
+<thead>
+<tr>
+<th>مرحله</th>
+<th>معیار عبور</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>غربال اول</td>
+<td>ارتباط با مارکتینگ حداقل 6 و کیفیت حداقل 6 از 10</td>
+</tr>
+<tr>
+<td>غربال دوم</td>
+<td>ارتباط محوری حداقل 8 و کیفیت حداقل 7؛ در موارد مرزی رد</td>
+</tr>
+</tbody>
+</table>
+<p><strong>امتیاز نهایی:</strong> <code>0.35 × ارتباط + 0.65 × کیفیت + اثر ردهٔ منبع</code></p>
+<p><strong>انتخاب هر نوبت:</strong> بهترین مطلب هر دسته، سپس حداقل 3 آموزش عملی، سپس بالاترین امتیازها. از هر منبع حداکثر 2 مطلب. مطلبی که یک بار آمده، دوباره نمی‌آید. کیفیت بر تعداد مقدم است و آستانه برای پر کردن تعداد پایین نمی‌آید.</p>
+<p><strong>لیدربورد:</strong> 10 مطلب برتر هر دسته، با امتیاز حداقل 8 و فقط از ردهٔ 1 و 2. مطلب تازه در مقایسهٔ مستقیم با فهرست فعلی سنجیده می‌شود و فقط اگر واقعاً برتر باشد وارد می‌شود. لینک‌های مرده هفتگی حذف می‌شوند.</p>
+<h2>نگهداری و اعمال تغییرات</h2>
+<p>همهٔ تنظیمات در پوشهٔ <code>config</code> ریپو هستند و از خود GitHub ویرایش می‌شوند (باز کردن فایل، آیکون مداد، Commit). این راهنما هم در <code>config/guide.md</code> است و اعداد آن خودکار از تنظیمات خوانده می‌شوند.</p>
+<table>
+<thead>
+<tr>
+<th>تغییر</th>
+<th>محل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>افزودن، حذف یا تغییر ردهٔ منبع</td>
+<td><code>config/sources.yaml</code> (<code>name</code>، <code>url</code>، <code>hint</code>، <code>tier</code>، <code>why</code>)</td>
+</tr>
+<tr>
+<td>تعریف موضوعات مارکتینگ و توصیف تیم</td>
+<td><code>scope</code> و <code>audience</code> در <code>config/settings.yaml</code></td>
+</tr>
+<tr>
+<td>تعداد مطالب، آستانه‌ها، لیدربورد، قواعد منابع</td>
+<td><code>config/settings.yaml</code></td>
+</tr>
+<tr>
+<td>گیرندگان ایمیل</td>
+<td>Secret با نام <code>MAIL_TO</code> در Settings ریپو</td>
+</tr>
+</tbody>
+</table>
+<h2>محدودیت‌ها و پرسش‌های رایج</h2>
+<ul>
+<li><strong>قضاوت AI:</strong> امتیازها و بریف‌ها قضاوت AI هستند و صددرصد بی‌خطا نیستند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</li>
+<li><strong>متن کامل:</strong> برخی سایت‌ها مثل Medium، HBR و McKinsey دانلود متن کامل را مسدود می‌کنند و بریف آن‌ها از چکیده ساخته می‌شود.</li>
+<li><strong>arXiv:</strong> مقالات arXiv پیش‌انتشار و داوری‌نشده‌اند.</li>
+<li><strong>چرا کمتر از 10 مطلب تازه؟</strong> آستانهٔ کیفیت پایین نمی‌آید و جای خالی با مطالب نوبت‌های قبل پر می‌شود.</li>
+<li><strong>چرا یک مطلب معروف نیامده؟</strong> یا منبعش در فهرست نیست، یا از غربال دوم عبور نکرده، یا سهم آن منبع پر شده است.</li>
+<li><strong>ایمیل نرسید؟</strong> پوشهٔ Spam بررسی شود.</li>
+</ul>
+  </section>
+  
+  
 </main>
 
-<footer><div class="wrap">به‌روزرسانی: 12:08 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+<footer><div class="wrap">به‌روزرسانی: 17:16 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
 
 <script>
 (function(){
@@ -2517,7 +3238,7 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
     var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
     Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
-    chipsEl.innerHTML=h; chipsEl.style.display=(state.tab==='sources')?'none':'flex'; q.style.display=(state.tab==='sources')?'none':'';
+    chipsEl.innerHTML=h; var plain=(state.tab==='sources'||state.tab==='guide'); chipsEl.style.display=plain?'none':'flex'; q.style.display=plain?'none':'';
     sel.style.display=(state.tab==='latest')?'':'none';
   }
   function apply(){
@@ -2534,6 +3255,8 @@ footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;paddi
     buildChips(); apply();
     if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
   }
+  [].forEach.call(document.querySelectorAll('[data-open]'),function(a){a.addEventListener('click',function(e){
+    e.preventDefault(); show(a.dataset.open,true); window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
   chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
     [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
