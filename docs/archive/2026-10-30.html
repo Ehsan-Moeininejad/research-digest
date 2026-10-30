@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دایجست تیم پرفورمنس | 1405/08/08</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16.5px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+.topbar{background:#fff;border-bottom:3px solid var(--focus)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:12px;flex-wrap:wrap}
+.topbar .logo{color:var(--focus);font-weight:800;font-size:20px}
+.topbar .sub{color:var(--mute);font-size:13px}
+.mast{padding:30px 0 22px;background:#fff;border-bottom:1px solid var(--rule)}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+.brand b{color:var(--soft)}
+.date{margin:18px 0 2px;font-size:clamp(30px,6.5vw,46px);font-weight:800;line-height:1.3}
+.greg{color:var(--mute);font-size:14.5px}
+.note{margin:20px 0 0;font-size:18px;line-height:2;color:var(--soft);max-width:68ch}
+.stats{display:flex;gap:26px;margin-top:18px;color:var(--mute);font-size:13.5px;flex-wrap:wrap}
+.stats strong{display:block;color:var(--text);font-size:21px;font-weight:700;line-height:1.4}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.tabbar{display:flex;gap:4px;padding-top:10px}
+.tab{border:0;background:transparent;color:var(--mute);font:inherit;font-size:15.5px;font-weight:700;padding:8px 16px 10px;cursor:pointer;
+  border-bottom:2.5px solid transparent;text-decoration:none}
+.tab[aria-selected="true"]{color:var(--focus);border-bottom-color:var(--focus)}
+.tab span{font-weight:400;opacity:.65;margin-inline-start:4px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1 1 100%;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--rule);background:transparent;color:var(--soft);font:inherit;font-size:13.5px;padding:3px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--c,#EF4056);border-color:var(--c,#EF4056);color:#fff;font-weight:700}
+.chip span{opacity:.7;margin-inline-start:4px}
+.search{flex:1 1 220px;min-width:0;background:var(--sheet);border:1px solid var(--rule);color:var(--text);font:inherit;font-size:14.5px;padding:6px 14px;border-radius:10px}
+.search::placeholder{color:var(--mute)}
+select{background:var(--sheet);border:1px solid var(--rule);color:var(--soft);font:inherit;font-size:14px;padding:6px 10px;border-radius:10px}
+
+.panel{padding:6px 0 60px}
+.panel[hidden]{display:none}
+.group{margin-top:34px}
+.group h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--c);margin:0 0 4px}
+.group h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.group h2 small{color:var(--mute);font-weight:400}
+
+article{position:relative;margin:14px 0;background:var(--sheet);border-radius:12px;border:1px solid var(--rule);border-right:4px solid var(--c);padding:20px 22px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;color:var(--mute);font-size:13px}
+.meta .src{color:var(--soft);font-weight:700}
+.badge{border:1px solid currentColor;border-radius:6px;padding:0 7px;font-size:12px;color:var(--c)}
+.badge.hot{background:var(--focus);border-color:var(--focus);color:#fff;font-weight:700}
+.badge.day{color:var(--mute)}
+.meta .score{margin-inline-start:auto}
+article.ranked .meta,article.ranked h3{padding-left:46px}
+.rank{position:absolute;top:18px;left:18px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--c);color:#fff}
+article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
+.orig{color:var(--mute);font-size:13.5px;line-height:1.6;margin:2px 0 0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:14px 0 0;font-size:17.5px;line-height:1.95;font-weight:700;color:var(--text)}
+.new{margin:8px 0 0;color:var(--soft)}
+.via{margin:6px 0 0;font-size:13px;color:var(--mute)}.via a{color:var(--focus)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+.box{background:var(--sheet-2);border-radius:10px;padding:10px 14px}
+.box h4{margin:0 0 4px;font-size:13.5px;color:var(--c);font-weight:700}
+.box ul,.act ul{margin:0;padding-inline-start:18px}
+.box li,.act li{margin:3px 0;font-size:15px;line-height:1.85}
+.act{margin-top:12px;border-right:3px solid var(--focus);border-radius:8px;padding:10px 14px;background:#FFF2F4}
+.act h4{margin:0 0 4px;font-size:13.5px;color:var(--focus);font-weight:800}
+.cav{margin-top:10px;color:var(--mute);font-size:14px}
+.cav b{color:var(--soft);font-weight:700}
+.foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)}
+.teams{display:flex;gap:6px;flex-wrap:wrap}
+.teams span,.tags span{font-size:12px;color:var(--soft);background:#F0F0F1;padding:1px 10px;border-radius:12px}
+.tags span{color:var(--mute)}
+.go{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;background:var(--focus);padding:7px 18px;border-radius:8px}
+.go:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.go.ghost{background:#fff;color:var(--soft);border:1px solid var(--rule)}
+.url{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+.url:hover{color:var(--soft)}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:18px;color:var(--c);font-weight:800}
+details.more[open] summary::before{content:"−"}
+
+.lead{color:var(--soft);margin:18px 0 0;max-width:70ch}
+.empty{display:none;text-align:center;color:var(--mute);padding:40px 0}
+.tw{overflow-x:auto;margin-top:20px}
+table.src{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+table.src th{white-space:nowrap;text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
+.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
+footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+.guide{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 26px 26px;margin-top:20px}
+.guide h2{font-size:20px;font-weight:800;color:var(--text);margin:30px 0 8px;padding-right:10px;border-right:4px solid var(--focus)}
+.guide h3{font-size:16px;font-weight:800;color:var(--focus);margin:22px 0 6px}
+.guide p,.guide li{color:var(--soft)}
+.guide strong{color:var(--text)}
+.guide ul,.guide ol{padding-inline-start:22px}
+.guide li{margin:4px 0}
+.guide code{background:var(--sheet-2);border-radius:5px;padding:1px 6px;font-size:.88em;direction:ltr;unicode-bidi:isolate}
+.guide a{color:var(--focus)}
+.guide{overflow-x:auto}
+.changes{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 22px 14px;margin-top:20px}
+.changes h3{font-size:16px;font-weight:800;color:var(--focus);margin:14px 0 6px}
+.changes ul{list-style:none;margin:0;padding:0}
+.changes li{padding:7px 0;border-bottom:1px dashed var(--rule);color:var(--soft);font-size:14.5px}
+.changes li:last-child{border-bottom:0}
+.cdate{display:inline-block;min-width:92px;margin-left:14px;color:var(--mute);font-size:13px}
+.helpbtn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:13.5px;color:var(--focus);border:1.5px solid var(--focus);border-radius:999px;padding:4px 14px;background:#fff}
+.helpbtn:hover{background:#FFF2F4}
+.guide table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+.guide td:nth-child(2),.guide td:nth-child(3),.guide td:nth-child(4){white-space:nowrap}
+.guide th{text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--rule);white-space:nowrap}
+.guide td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--text)}
+@media (max-width:560px){.guide{padding:4px 16px 18px}}
+@media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
+</style>
+</head>
+<body>
+
+
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span>
+  <a class="helpbtn" href="../index.html#guide" >راهنما و نحوهٔ امتیازدهی</a></div></div>
+<header class="mast">
+  <div class="wrap">
+    <div class="date">جمعه 8 آبان 1405</div>
+    <div class="greg ltr" style="text-align:right">30 Oct 2026</div>
+    <p class="note">الگوی محوری پژوهش‌های امروز، گذار از سیستم‌های تک‌منظوره ایستا به معماری‌های ترکیبی و همگرایی هوش مصنوعی با مکانیسم‌های اقتصادی نظیر مزایده، تخصیص منابع و تفکیک قیمت است. در عمل، بهره‌برداری موثر از این ابزارها مستلزم مهار نوسانات ذاتی و تاخیر محاسباتی از طریق پیاده‌سازی لایه‌های کنترلی چندسطحی، مانند تلفیق یادگیری تقویتی با کنترلرهای پایدار یا پیش‌رتبه‌بندی بیزی است. بر این اساس، رویکرد عملیاتی بهینه به جای جایگزینی کامل زیرساخت‌ها، استفاده از مدل‌های زبانی و مولد به عنوان اجزای تنظیم‌کننده در چارچوب‌های کم‌تاخیر و قابل‌تفسیر خواهد بود.</p>
+    <div class="stats">
+      <div><strong>6</strong>مطلب تازهٔ این نوبت</div>
+      <div><strong>25</strong>متن کامل بازبینی‌شده</div>
+      <div><strong>88</strong>مطلب غربال‌شده</div>
+      
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="بخش‌ها">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab" role="tab" data-tab="latest" aria-selected="true">مطالب این نوبت<span>6</span></button>
+      
+      <a class="tab" href="../index.html">بازگشت به آخرین نسخه</a>
+      
+    </div>
+    <div class="tools">
+      <div class="chips" role="group" aria-label="دسته‌ها"></div>
+      <input class="search" type="search" placeholder="جست‌وجو: عنوان، اقدام، تیم (eCRM، Ads ...)" aria-label="جست‌وجو">
+      <select class="arch" aria-label="آرشیو نوبت‌ها" onchange="if(this.value)location.href=this.value">
+        <option value="../archive/2026-10-30.html" selected>1405/08/08</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" data-panel="latest">
+    
+    
+    <div class="group" data-group="marketing" style="--c:#E6123D">
+      <h2>مارکتینگ و برند <small class="ltr">Marketing &amp; Brand</small></h2>
+      <article data-cat="marketing" data-text="پایداری استنادهای هوش مصنوعی و تحلیل نوسانات آن how stable are ai citations? 10 things we learned tracking 37,500 citations استنادهای هوش مصنوعی نوسان شدیدی دارند و 50 الی 83 درصد آن‌ها روز بعد ناپدید می‌شوند، اما حدود 75 درصدشان طی 20 روز برمی‌گردند. این مقاله پژوهشی از وبلاگ ahrefs به بررسی میزان پایداری و رفتار استنادهای موتورهای جستجوی مبتنی بر هوش مصنوعی می‌پردازد. نویسندگان 37,500 استناد را در 5 ابزار مختلف هوش مصنوعی طی 20 روز متوالی ردیابی کرده‌اند تا الگوهای ناپدید شدن و بازگشت لینک‌ها را تحلیل کنند. نویسندگان استدلال می‌کنند که نوسان در استنادهای هوش مصنوعی ماهیتی طبیعی دارد و نباید افت یک‌روزه را فاجعه تلقی کرد. از آنجا که این استنادها به طور منظم برمی‌گردند، به جای تمرکز روی تک‌تک لینک‌ها، باید استمرار حضور در بازه‌های 7 روزه و ذکر نام برند (brand mentions) را به عنوان معیارهای قابل‌اعتمادتر سنجش دیده‌شدن در هوش مصنوعی در نظر گرفت. تعریف شاخص دیده‌شدن در هوش مصنوعی بر اساس میانگین تعداد روزهای حضور در بازه هفتگی به جای بررسی لحظه‌ای پرهیز از تغییرات زودهنگام در صفحات وب‌سایت صرفاً به دلیل یک روز افت استناد در ابزارهای هوش مصنوعی جداسازی پرسش‌های مربوط به برند از پرسش‌های عمومی و اکتشافی در گزارش‌های تحلیل بازاریابی aeo seo llm analytics ads engagement data leadership ahrefs blog" style="--c:#E6123D">
+  
+  <div class="meta">
+    <span class="src">Ahrefs Blog</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">تحلیل معتبر</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.0/10</span>
+  </div>
+  <h3>پایداری استنادهای هوش مصنوعی و تحلیل نوسانات آن</h3>
+  <p class="orig ltr">How Stable Are AI Citations? 10 Things We Learned Tracking 37,500 Citations</p>
+  
+  <p class="tldr">استنادهای هوش مصنوعی نوسان شدیدی دارند و 50 الی 83 درصد آن‌ها روز بعد ناپدید می‌شوند، اما حدود 75 درصدشان طی 20 روز برمی‌گردند.</p>
+  <p class="new">این مقاله پژوهشی از وبلاگ Ahrefs به بررسی میزان پایداری و رفتار استنادهای موتورهای جستجوی مبتنی بر هوش مصنوعی می‌پردازد. نویسندگان 37,500 استناد را در 5 ابزار مختلف هوش مصنوعی طی 20 روز متوالی ردیابی کرده‌اند تا الگوهای ناپدید شدن و بازگشت لینک‌ها را تحلیل کنند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>تعریف شاخص دیده‌شدن در هوش مصنوعی بر اساس میانگین تعداد روزهای حضور در بازه هفتگی به جای بررسی لحظه‌ای</li><li>پرهیز از تغییرات زودهنگام در صفحات وب‌سایت صرفاً به دلیل یک روز افت استناد در ابزارهای هوش مصنوعی</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Engagement</span><span class="ltr">Data</span><span class="ltr">Leadership</span></div>
+    <span class="btns"><a class="go" href="../a/e847f9b6986836f2.html">خواندن بریف کامل</a><a class="go ghost" href="https://ahrefs.com/blog/how-stable-are-ai-citations/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://ahrefs.com/blog/how-stable-are-ai-citations/" target="_blank" rel="noopener">https://ahrefs.com/blog/how-stable-are-ai-citations/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="performance" style="--c:#0097A7">
+      <h2>پرفورمنس و تبلیغات <small class="ltr">Performance &amp; Ads</small></h2>
+      <article data-cat="performance" data-text="تنظیم پارامترهای کنترلر بیدینگ خودکار پینترست با یادگیری تقویتی reinforcement learning for controller parameters in the auto-bidding system at pinterest پینترست با معماری هیبریدی rlbp از یادگیری تقویتی به عنوان متاکنترلر برای تنظیم پویای پارامترهای کنترلر pid در بیدینگ تبلیغات استفاده کرده است. این متن خلاصه اولیه‌ای از یک مقاله مهندسی و کاربردی ارائه‌شده توسط تیم فنی pinterest درباره سیستم بیدینگ خودکار (auto-bidding) است. پینترست در این اثر معماری جدیدی با نام rlbp را معرفی می‌کند که ترکیبی از مهندسی کنترل کلاسیک و هوش مصنوعی است. هدف سیستم ارائه‌شده، مدیریت بهینه و مقیاس‌پذیر مزایده‌های تبلیغاتی در مقیاس میلیون‌ها کاربر و هزاران کمپین فعال است. حل تعارض میان اهداف کوتاه‌مدت و بلندمدت در سیستم‌های بلادرنگ با کنترلرهای ایستا ممکن نیست، اما جایگزینی کامل سیستم‌های پایدار با مدل‌های پیچیده هوش مصنوعی نیز خطر عدم ثبات دارد. بهترین رویکرد، استفاده از معماری هیبریدی است که در آن یادگیری تقویتی نقش ناظر و تنظیم‌کننده پارامترها را برای یک کنترلر مطمئن و قابل‌تفسیر بر عهده می‌گیرد. بررسی تفکیک لایه تصمیم‌گیری بلادرنگ از لایه تنظیم استراتژی در سیستم‌های اتوبیدینگ و کمپین‌های مارکتینگی داخلی طراحی منطق متغیر برای کمپین‌های تبلیغاتی و تخفیفی به نحوی که حساسیت سیستم به cpa در ابتدای دوره بالا و حساسیت به نرخ تبدیل در ساعات پایانی دوره بیشینه باشد ارزیابی امکان استفاده از متاکنترلرهای داده‌محور یا rl جهت تنظیم خودکار سقف تخفیف‌ها یا نرخ بیدینگ در تبلیغات اسپانسری مارکت‌پلیس auto-bidding reinforcement learning pid control ad tech ads data product arxiv · advertising" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">arXiv · Advertising</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">9.9/10</span>
+  </div>
+  <h3>تنظیم پارامترهای کنترلر بیدینگ خودکار پینترست با یادگیری تقویتی</h3>
+  <p class="orig ltr">Reinforcement Learning for Controller Parameters in the Auto-Bidding System at Pinterest</p>
+  
+  <p class="tldr">پینترست با معماری هیبریدی RLBP از یادگیری تقویتی به عنوان متاکنترلر برای تنظیم پویای پارامترهای کنترلر PID در بیدینگ تبلیغات استفاده کرده است.</p>
+  <p class="new">این متن خلاصه اولیه‌ای از یک مقاله مهندسی و کاربردی ارائه‌شده توسط تیم فنی Pinterest درباره سیستم بیدینگ خودکار (Auto-bidding) است. پینترست در این اثر معماری جدیدی با نام RLBP را معرفی می‌کند که ترکیبی از مهندسی کنترل کلاسیک و هوش مصنوعی است. هدف سیستم ارائه‌شده، مدیریت بهینه و مقیاس‌پذیر مزایده‌های تبلیغاتی در مقیاس میلیون‌ها کاربر و هزاران کمپین فعال است.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی تفکیک لایه تصمیم‌گیری بلادرنگ از لایه تنظیم استراتژی در سیستم‌های اتوبیدینگ و کمپین‌های مارکتینگی داخلی</li><li>طراحی منطق متغیر برای کمپین‌های تبلیغاتی و تخفیفی به نحوی که حساسیت سیستم به CPA در ابتدای دوره بالا و حساسیت به نرخ تبدیل در ساعات پایانی دوره بیشینه باشد</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/bf53b35889c6c59d.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.33248v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.33248v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.33248v1</a>
+</article><article data-cat="performance" data-text="پیش‌رتبه‌بندی اکتشافی کریتیوهای تبلیغاتی با رویکرد بیزی تجربی سلسله‌مراتبی تامپسون سمپلینگ exploratory creative pre-ranking: hierarchical empirical-bayes thompson sampling for real-time creative optimization پیش‌رتبه‌بندی کریتیوها با تامپسون سمپلینگ بیزی سلسله‌مراتبی، چالش ارزیابی کریتیوهای پرتعداد هوش مصنوعی را در محدودیت شدید تاخیر زمانی برطرف می‌کند. این نوشتار یک مقاله پژوهشی در حوزه فناوری تبلیغات (adtech) است که در آرشیو مقالات علمی (arxiv) منتشر شده است. تمرکز پژوهش بر بهینه‌سازی پویای کریتیو (dynamic creative optimization یا dco) در حراجی‌های لحظه‌ای و پلتفرم‌های تبلیغات دیجیتال است. نویسندگان راهکاری برای غربالگری و تخصیص هوشمند کریتیوهای پرتعداد پیش از ورود به مدل اصلی رتبه‌بندی کاربر ارائه داده‌اند. طراحی پیش‌رتبه‌بندی اکتشافی مبتنی بر ساختارهای بیزی سلسله‌مراتبی، راهکاری پایدار برای غلبه بر مشکل کریتیوهای سرد و تنک بودن داده‌ها در عصر هوش مصنوعی است. نویسندگان استدلال می‌کنند که با انتقال بار اکتشاف به پیش از رتبه‌بند اصلی، می‌توان بدون تحمیل تاخیر زمانی اضافه و بدون افت در نرخ تبدیل، کریتیوهای پتانسیل‌دار جدید را سریع‌تر شناسایی کرد. طراحی یک لایه پیش‌رتبه‌بندی (pre-ranking) برای آگهی‌های اسپانسری و بنرهای مارکت‌پلیس جهت مدیریت حجم بالای کریتیوهای ai بدون افزایش latency استفاده از ساختار سلسله‌مراتبی (سگمنت کاربر -&gt; دسته‌بندی کالا -&gt; کالا -&gt; بنر) در سیستم dco برای رفع مشکل شروع سرد (cold-start) بنرهای جدید جایگزینی مدل‌های رتبه‌بندی قطعی با روش‌های دارای کالیبراسیون عدم‌قطعیت مانند thompson sampling در تست‌های خودکار بنرهای ecrm و ads dco thompson sampling adtech latency ads data product arxiv · advertising" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">arXiv · Advertising</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>8 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>پیش‌رتبه‌بندی اکتشافی کریتیوهای تبلیغاتی با رویکرد بیزی تجربی سلسله‌مراتبی تامپسون سمپلینگ</h3>
+  <p class="orig ltr">Exploratory creative pre-ranking: Hierarchical empirical-Bayes Thompson sampling for real-time creative optimization</p>
+  
+  <p class="tldr">پیش‌رتبه‌بندی کریتیوها با تامپسون سمپلینگ بیزی سلسله‌مراتبی، چالش ارزیابی کریتیوهای پرتعداد هوش مصنوعی را در محدودیت شدید تاخیر زمانی برطرف می‌کند.</p>
+  <p class="new">این نوشتار یک مقاله پژوهشی در حوزه فناوری تبلیغات (AdTech) است که در آرشیو مقالات علمی (arXiv) منتشر شده است. تمرکز پژوهش بر بهینه‌سازی پویای کریتیو (Dynamic Creative Optimization یا DCO) در حراجی‌های لحظه‌ای و پلتفرم‌های تبلیغات دیجیتال است. نویسندگان راهکاری برای غربالگری و تخصیص هوشمند کریتیوهای پرتعداد پیش از ورود به مدل اصلی رتبه‌بندی کاربر ارائه داده‌اند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>طراحی یک لایه پیش‌رتبه‌بندی (pre-ranking) برای آگهی‌های اسپانسری و بنرهای مارکت‌پلیس جهت مدیریت حجم بالای کریتیوهای AI بدون افزایش Latency</li><li>استفاده از ساختار سلسله‌مراتبی (سگمنت کاربر -&gt; دسته‌بندی کالا -&gt; کالا -&gt; بنر) در سیستم DCO برای رفع مشکل شروع سرد (Cold-start) بنرهای جدید</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/0410ee705c7ffeba.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.36020v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.36020v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.36020v1</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="ecrm" style="--c:#8E44AD">
+      <h2>eCRM و وفاداری <small class="ltr">eCRM &amp; Retention</small></h2>
+      <article data-cat="ecrm" data-text="مدل‌سازی uplift تخصیص پروموشن با استفاده از llm در کمپین‌های بازفعال‌سازی lcm-promo: an llm-based uplift model for promotion allocation مدل lcm-promo با تبدیل مسئله تخصیص تخفیف به یک تسک مبتنی بر llm، نرخ تبدیل بازفعال‌سازی را 1% افزایش و هزینه پروموشن را 6% کاهش داد. این مقاله پژوهشی به معرفی lcm-promo می‌پردازد که یک مدل تجارت مبتنی بر زبان بزرگ (large commerce model یا lcm) برای بهینه‌سازی تخصیص پروموشن است. نویسندگان یک مدل llm را روی داده‌های تراکنشی به شکل اختصاصی فاین‌تیون کرده‌اند تا قصد کاربر و حساسیت او نسبت به مشوق‌های قیمتی را تخمین بزند. خروجی این تحقیق نشان‌دهنده نحوه استفاده از مدل‌های زبانی به عنوان ابزار uplift modeling در پلتفرم‌های تجارت الکترونیک است. نویسندگان استدلال می‌کنند که مدل‌های زبانی فاین‌تیون‌شده روی داده‌های تجاری قادرند روابط غیرخطی پیچیده و زمینه‌های زمانی جلسه خرید را بهتر از مدل‌های سنتی بخش‌بندی شناسایی کنند. تفسیر خروجی به شکل آستانه‌های تبدیل امکان کنترل دقیق بهینگی بودجه را فراهم می‌آورد و اثبات می‌کند که استفاده از ساختارهای نوین یادگیری ماشینی می‌تواند به طور همزمان نرخ تبدیل را ارتقا داده و هزینه‌های بازاریابی را مهار کند. بررسی امکان حرکت از مدل‌های مبتنی بر segment به سمت uplift modeling مبتنی بر توالی داده‌های تراکنشی در کانال‌های ecrm و engagement. تزریق کانتکست‌های لحظه‌ای خرید (نظیر روز، ساعت و دسته‌بندی محصول) به عنوان ورودی‌های تصمیم‌گیری در سیستم‌های توزیع تخفیف و ووچر. ارزیابی متریک هم‌زمان conversion و promotion cost به ازای هر سفارش در آزمایش‌های a/b مربوط به بازفعال‌سازی کاربران غیرفعال. uplift modeling llm promotion allocation churn reactivation ecrm engagement data arxiv · retention" style="--c:#8E44AD">
+  
+  <div class="meta">
+    <span class="src">arXiv · Retention</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">9.5/10</span>
+  </div>
+  <h3>مدل‌سازی Uplift تخصیص پروموشن با استفاده از LLM در کمپین‌های بازفعال‌سازی</h3>
+  <p class="orig ltr">LCM-Promo: An LLM-Based Uplift Model for Promotion Allocation</p>
+  
+  <p class="tldr">مدل LCM-Promo با تبدیل مسئله تخصیص تخفیف به یک تسک مبتنی بر LLM، نرخ تبدیل بازفعال‌سازی را 1% افزایش و هزینه پروموشن را 6% کاهش داد.</p>
+  <p class="new">این مقاله پژوهشی به معرفی LCM-Promo می‌پردازد که یک مدل تجارت مبتنی بر زبان بزرگ (Large Commerce Model یا LCM) برای بهینه‌سازی تخصیص پروموشن است. نویسندگان یک مدل LLM را روی داده‌های تراکنشی به شکل اختصاصی فاین‌تیون کرده‌اند تا قصد کاربر و حساسیت او نسبت به مشوق‌های قیمتی را تخمین بزند. خروجی این تحقیق نشان‌دهنده نحوه استفاده از مدل‌های زبانی به عنوان ابزار Uplift Modeling در پلتفرم‌های تجارت الکترونیک است.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان حرکت از مدل‌های مبتنی بر Segment به سمت Uplift Modeling مبتنی بر توالی داده‌های تراکنشی در کانال‌های eCRM و Engagement.</li><li>تزریق کانتکست‌های لحظه‌ای خرید (نظیر روز، ساعت و دسته‌بندی محصول) به عنوان ورودی‌های تصمیم‌گیری در سیستم‌های توزیع تخفیف و ووچر.</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">eCRM</span><span class="ltr">Engagement</span><span class="ltr">Data</span></div>
+    <span class="btns"><a class="go" href="../a/dcb2f9c3a4d0e6ae.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.37570v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.37570v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.37570v1</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="ai" style="--c:#6A4BC4">
+      <h2>هوش مصنوعی <small class="ltr">AI &amp; Agents</small></h2>
+      <article data-cat="ai" data-text="فریم‌ورک مزایده‌محور diffauction برای تبلیغات تصویری مولد با چند آگهی‌دهنده diffauction: an auction-driven framework for generative image advertising فریم‌ورک diffauction با ترکیب مدل‌های انتشار، ارزیابی قصد کلیک و طراحی مزایده، امکان نمایش چند محصول در یک تصویر تولیدی مشترک متناسب با سهم پیشنهادی آگهی‌دهندگان را فراهم می‌کند. این متن خلاصه اولیه‌ای از یک پژوهش هوش مصنوعی در حوزه adtech است که چارچوبی به نام diffauction را معرفی می‌کند. این فریم‌ورک بر تلفیق مدل‌های انتشار تصویر (diffusion models) با اقتصاد تبلیغات تمرکز دارد تا امکان حضور چند آگهی‌دهنده در یک فضای بصری تولیدشده واحد را بررسی کند. مقاله رویکردی مهندسی-اقتصادی به تولید محتوای تبلیغاتی پویا و حراج‌های چندبرندی دارد. تلفیق مکانیزم‌های توجه در مدل‌های انتشار با نظریه مزایده امکان تولید تصاویر تبلیغاتی چندمحصولی مقرون‌به‌صرفه و کنترل‌پذیر را فراهم می‌سازد، به نحوی که تخصیص فضای بصری هم‌راستا با ارزش اقتصادی پیشنهادی آگهی‌دهندگان باشد. بررسی امکان‌پذیری تولید بنرهای ترکیبی چندمحصولی برای کمپین‌های مشترک برندها یا باندلینگ کاتالوگ در مارکت‌پلیس تحقیق روی متد rsc به عنوان روشی ارزان و بدون بازآموزی جهت کاهش هزینه‌های زیرساختی و gpu در تولید تصاویر سفارشی ارزیابی فرصت‌های قیمت‌گذاری مبتنی بر سهم دیده‌شدن (share of voice/pixel) در ویجت‌های تبلیغات بنری هوشمند diffusion models ad auction generative ai visual ad ads product data arxiv · llm for marketing" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">arXiv · LLM for Marketing</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>8 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>فریم‌ورک مزایده‌محور DiffAuction برای تبلیغات تصویری مولد با چند آگهی‌دهنده</h3>
+  <p class="orig ltr">DiffAuction: An Auction-Driven Framework for Generative Image Advertising</p>
+  
+  <p class="tldr">فریم‌ورک DiffAuction با ترکیب مدل‌های انتشار، ارزیابی قصد کلیک و طراحی مزایده، امکان نمایش چند محصول در یک تصویر تولیدی مشترک متناسب با سهم پیشنهادی آگهی‌دهندگان را فراهم می‌کند.</p>
+  <p class="new">این متن خلاصه اولیه‌ای از یک پژوهش هوش مصنوعی در حوزه AdTech است که چارچوبی به نام DiffAuction را معرفی می‌کند. این فریم‌ورک بر تلفیق مدل‌های انتشار تصویر (Diffusion Models) با اقتصاد تبلیغات تمرکز دارد تا امکان حضور چند آگهی‌دهنده در یک فضای بصری تولیدشده واحد را بررسی کند. مقاله رویکردی مهندسی-اقتصادی به تولید محتوای تبلیغاتی پویا و حراج‌های چندبرندی دارد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی امکان‌پذیری تولید بنرهای ترکیبی چندمحصولی برای کمپین‌های مشترک برندها یا باندلینگ کاتالوگ در مارکت‌پلیس</li><li>تحقیق روی متد RSC به عنوان روشی ارزان و بدون بازآموزی جهت کاهش هزینه‌های زیرساختی و GPU در تولید تصاویر سفارشی</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Product</span><span class="ltr">Data</span></div>
+    <span class="btns"><a class="go" href="../a/c792edb5e804d63b.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.34917v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.34917v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.34917v1</a>
+</article><article data-cat="ai" data-text="طراحی هم‌زمان مدل‌های تبلیغاتی و اشتراکی در پلتفرم‌های مبتنی بر llm monetizing intelligence: advertising and subscription design on llm platforms ترکیب پلن‌های تبلیغاتی و اشتراکی در پلتفرم‌های هوش مصنوعی، علاوه بر تأمین مالی سرویس‌دهی به کاربران جدید، به دلیل تضعیف جذابیت پلن‌های میانی، امکان افزایش قیمت پلن‌های پریمیوم را فراهم می‌کند. این مقاله پژوهشی در حوزه اقتصاد خرد و بازاریابی پلتفرم‌ها که در arxiv منتشر شده است، به تحلیل استراتژی درآمدزایی بهینه در پلتفرم‌های ارائه‌دهنده سرویس‌های llm می‌پردازد. نویسندگان رفتار یک پلتفرم انحصاری را بررسی می‌کنند که قصد دارد هم‌زمان ساختار اشتراک بدون تبلیغات و گزینه‌های دارای تبلیغات را قیمت‌گذاری و مدیریت کند. هدف اصلی مدل، فهم چگونگی تعامل کیفیت پاسخ مدل با شدت تبلیغات و تمایل کاربران به پرداخت اشتراک است. تبلیغات در پلتفرم‌های llm نه فقط یک کانال درآمدی مستقیم، بلکه ابزاری ساختاری برای تفکیک قیمت (price discrimination) است. وارد کردن تبلیغات به پلن‌های ارزان‌تر یا رایگان، با کاستن از ارزش گزینه جایگزین برای کاربران با ارزش بالا، امکان دریافت پرمیوم بالاتر برای سرویس‌های بدون اصطکاک را فراهم می‌سازد. بررسی ساختار قیمت‌گذاری ابزارهای هوش مصنوعی مصرف‌کننده در مارکت‌پلیس (مانند چت‌بات‌های جست‌وجو و پیشنهاد محصول) در دو حالت با اسپانسری فروشندگان و اشتراک پریمیوم استفاده استراتژیک از تبلیغات حمایتی جهت بازتوزیع کاربران میان لایه‌های وفاداری و سنجش کشش قیمتی سرویس‌های بدون تبلیغ آزمایش سناریوهای بهینه‌سازی ad intensity در رابط‌های مکالمه‌ای برای یافتن نقطه تعادل میان درآمد ادنتورک و فرسایش تجربه خرید llm monetization ad intensity subscription mechanism design ads product leadership data arxiv · llm for marketing" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">arXiv · LLM for Marketing</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>8 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>طراحی هم‌زمان مدل‌های تبلیغاتی و اشتراکی در پلتفرم‌های مبتنی بر LLM</h3>
+  <p class="orig ltr">Monetizing Intelligence: Advertising and Subscription Design on LLM Platforms</p>
+  
+  <p class="tldr">ترکیب پلن‌های تبلیغاتی و اشتراکی در پلتفرم‌های هوش مصنوعی، علاوه بر تأمین مالی سرویس‌دهی به کاربران جدید، به دلیل تضعیف جذابیت پلن‌های میانی، امکان افزایش قیمت پلن‌های پریمیوم را فراهم می‌کند.</p>
+  <p class="new">این مقاله پژوهشی در حوزه اقتصاد خرد و بازاریابی پلتفرم‌ها که در arXiv منتشر شده است، به تحلیل استراتژی درآمدزایی بهینه در پلتفرم‌های ارائه‌دهنده سرویس‌های LLM می‌پردازد. نویسندگان رفتار یک پلتفرم انحصاری را بررسی می‌کنند که قصد دارد هم‌زمان ساختار اشتراک بدون تبلیغات و گزینه‌های دارای تبلیغات را قیمت‌گذاری و مدیریت کند. هدف اصلی مدل، فهم چگونگی تعامل کیفیت پاسخ مدل با شدت تبلیغات و تمایل کاربران به پرداخت اشتراک است.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی ساختار قیمت‌گذاری ابزارهای هوش مصنوعی مصرف‌کننده در مارکت‌پلیس (مانند چت‌بات‌های جست‌وجو و پیشنهاد محصول) در دو حالت با اسپانسری فروشندگان و اشتراک پریمیوم</li><li>استفاده استراتژیک از تبلیغات حمایتی جهت بازتوزیع کاربران میان لایه‌های وفاداری و سنجش کشش قیمتی سرویس‌های بدون تبلیغ</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Product</span><span class="ltr">Leadership</span><span class="ltr">Data</span></div>
+    <span class="btns"><a class="go" href="../a/61b19ab9b828513b.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2610.32945v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2610.32945v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.32945v1</a>
+</article>
+    </div>
+    
+    
+    <p class="empty">مطلبی با این فیلتر پیدا نشد.</p>
+  </section>
+
+  
+</main>
+
+<footer><div class="wrap">به‌روزرسانی: 12:32 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+
+<script>
+(function(){
+  var CATS={"ai": {"color": "#6A4BC4", "en": "AI \u0026 Agents", "fa": "\u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc"}, "campaign": {"color": "#F57C00", "en": "Campaigns \u0026 Promotions", "fa": "\u06a9\u0645\u067e\u06cc\u0646 \u0648 \u067e\u0631\u0648\u0645\u0648\u0634\u0646"}, "commerce": {"color": "#C2185B", "en": "E-commerce \u0026 Product", "fa": "\u0627\u06cc\u200c\u06a9\u0627\u0645\u0631\u0633 \u0648 \u0645\u062d\u0635\u0648\u0644"}, "data": {"color": "#1E88E5", "en": "Data \u0026 Experimentation", "fa": "\u062f\u0627\u062f\u0647 \u0648 \u0622\u0632\u0645\u0627\u06cc\u0634"}, "ecrm": {"color": "#8E44AD", "en": "eCRM \u0026 Retention", "fa": "eCRM \u0648 \u0648\u0641\u0627\u062f\u0627\u0631\u06cc"}, "growth": {"color": "#2E9E4F", "en": "Growth", "fa": "\u0631\u0634\u062f"}, "management": {"color": "#3F51B5", "en": "Management \u0026 Strategy", "fa": "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0648 \u0627\u0633\u062a\u0631\u0627\u062a\u0698\u06cc"}, "marketing": {"color": "#E6123D", "en": "Marketing \u0026 Brand", "fa": "\u0645\u0627\u0631\u06a9\u062a\u06cc\u0646\u06af \u0648 \u0628\u0631\u0646\u062f"}, "performance": {"color": "#0097A7", "en": "Performance \u0026 Ads", "fa": "\u067e\u0631\u0641\u0648\u0631\u0645\u0646\u0633 \u0648 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a"}};
+  var tabs=[].slice.call(document.querySelectorAll('[data-tab]')), panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+  var chipsEl=document.querySelector('.chips'), q=document.querySelector('.search'), sel=document.querySelector('.arch');
+  var state={tab:'latest',cat:'all'};
+  function panel(){return document.querySelector('[data-panel="'+state.tab+'"]');}
+  function buildChips(){
+    var p=panel(), arts=[].slice.call(p.querySelectorAll('article')), counts={};
+    arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
+    var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
+    Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
+    chipsEl.innerHTML=h; var plain=(state.tab==='sources'||state.tab==='guide'); chipsEl.style.display=plain?'none':'flex'; q.style.display=plain?'none':'';
+    sel.style.display=(state.tab==='latest')?'':'none';
+  }
+  function apply(){
+    var p=panel(), term=(q.value||'').trim().toLowerCase(), shown=0, arts=[].slice.call(p.querySelectorAll('article'));
+    arts.forEach(function(a){var ok=(state.cat==='all'||a.dataset.cat===state.cat)&&(!term||a.dataset.text.indexOf(term)>-1);a.hidden=!ok;if(ok)shown++;});
+    [].forEach.call(p.querySelectorAll('.group'),function(g){g.hidden=!g.querySelector('article:not([hidden])');});
+    var e=p.querySelector('.empty'); if(e)e.style.display=(arts.length&&!shown)?'block':'none';
+  }
+  function show(name,push){
+    if(!document.querySelector('[data-panel="'+name+'"]'))name='latest';
+    state.tab=name; state.cat='all';
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===name?'true':'false');});
+    panels.forEach(function(p){p.hidden=p.dataset.panel!==name;});
+    buildChips(); apply();
+    if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
+  }
+  [].forEach.call(document.querySelectorAll('[data-open]'),function(a){a.addEventListener('click',function(e){
+    e.preventDefault(); show(a.dataset.open,true); window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
+    [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
+  q.addEventListener('input',apply);
+  var prefix="../", cur="2026-10-30";
+  fetch(prefix+'archive.json').then(function(r){return r.json();}).then(function(list){
+    sel.innerHTML='';
+    list.forEach(function(a,i){var o=document.createElement('option');o.value=prefix+'archive/'+a.date+'.html';
+      o.textContent=a.short+(i===0?' (آخرین)':'');if(a.date===cur)o.selected=true;sel.appendChild(o);});
+  }).catch(function(){});
+  show((location.hash||'').replace('#','')||'latest',false);
+})();
+</script>
+</body>
+</html>

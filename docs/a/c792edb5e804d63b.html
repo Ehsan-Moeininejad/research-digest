@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فریم‌ورک مزایده‌محور DiffAuction برای تبلیغات تصویری مولد با چند آگهی‌دهنده | دایجست تیم پرفورمنس</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;--c:#6A4BC4;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:17px;line-height:2.05;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:740px;margin:0 auto;padding:28px 22px 70px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.back{display:inline-block;color:var(--mute);text-decoration:none;font-size:14.5px;margin-bottom:22px}
+.back:hover{color:var(--text)}
+.cat{color:var(--c);font-weight:700;font-size:14.5px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--mute);font-size:14px;margin-top:6px}
+.meta b{color:var(--soft)}
+h1{font-size:clamp(25px,5vw,33px);line-height:1.55;font-weight:800;margin:10px 0 4px}
+.orig{color:var(--mute);font-size:14.5px;line-height:1.6;margin:0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:26px 0 8px;padding:16px 20px;border-right:4px solid var(--c);background:var(--sheet);border-radius:4px 12px 12px 4px;font-size:18.5px;font-weight:700;line-height:2}
+h2{font-size:16px;font-weight:800;color:var(--c);margin:34px 0 6px}
+p{margin:0 0 8px}
+ul{margin:4px 0 0;padding-inline-start:22px}
+li{margin:6px 0}
+.us{margin-top:34px;border-right:4px solid var(--focus);border-radius:10px;padding:14px 20px;background:#FFF2F4}
+.us h2{color:var(--focus);margin-top:0}
+.cav{color:var(--soft);font-size:15.5px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+.tags span{font-size:12.5px;color:var(--soft);background:var(--sheet);padding:2px 10px;border-radius:6px}
+.source{margin-top:30px;padding:16px 20px;background:var(--sheet);border-radius:12px}
+.go{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:var(--focus);padding:8px 20px;border-radius:8px}
+.url{display:block;margin-top:10px;color:var(--mute);font-size:13px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+footer{color:var(--mute);font-size:13.5px;margin-top:30px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../index.html">بازگشت به دایجست</a>
+  <a class="back" href="../index.html#guide" style="margin-right:16px">راهنما و نحوهٔ امتیازدهی</a>
+  <div class="cat">هوش مصنوعی <span class="ltr" style="color:var(--mute);font-weight:400">AI &amp; Agents</span></div>
+  <h1>فریم‌ورک مزایده‌محور DiffAuction برای تبلیغات تصویری مولد با چند آگهی‌دهنده</h1>
+  <p class="orig ltr">DiffAuction: An Auction-Driven Framework for Generative Image Advertising</p>
+  <div class="meta">
+    <span><b>arXiv · LLM for Marketing</b></span>
+    <span>منبع اصلی</span>
+    <span>مقالهٔ علمی</span>
+    <span>سطح: پیشرفته</span>
+    <span>انتشار: 1405/08/04</span>
+    <span>متن اصلی: 8 دقیقه</span>
+    <span>امتیاز: 8.8/10</span>
+  </div>
+  
+  <div class="tldr">فریم‌ورک DiffAuction با ترکیب مدل‌های انتشار، ارزیابی قصد کلیک و طراحی مزایده، امکان نمایش چند محصول در یک تصویر تولیدی مشترک متناسب با سهم پیشنهادی آگهی‌دهندگان را فراهم می‌کند.</div>
+
+  <h2>درباره چیست</h2><p>این متن خلاصه اولیه‌ای از یک پژوهش هوش مصنوعی در حوزه AdTech است که چارچوبی به نام DiffAuction را معرفی می‌کند. این فریم‌ورک بر تلفیق مدل‌های انتشار تصویر (Diffusion Models) با اقتصاد تبلیغات تمرکز دارد تا امکان حضور چند آگهی‌دهنده در یک فضای بصری تولیدشده واحد را بررسی کند. مقاله رویکردی مهندسی-اقتصادی به تولید محتوای تبلیغاتی پویا و حراج‌های چندبرندی دارد.</p>
+  <h2>مسئله و اهمیت</h2><p>در سناریوهایی که چند برند باید در یک تصویر تبلیغاتی تولیدی مشترک قرار گیرند، مدل‌های موجود برای تنظیم سهم بصری (Visual Share) متغیر بسیار پرهزینه‌اند و به محاسبات سنگین نیاز دارند. همچنین مشخص نیست که چگونه خروجی این تصاویر مشترک از نظر احتمال کلیک کاربر سنجیده شود و سازوکار قیمت‌گذاری و مزایده منصفانه بین آگهی‌دهندگان به چه ترتیبی تعیین گردد.</p>
+  <h2>روی چه چیزی کار کرده‌اند</h2><p>نویسندگان فریم‌ورک جامع DiffAuction را طراحی کرده‌اند که سه لایه تولید کنترل‌شده، ارزیابی قصد کلیک (Click-Intent) و طراحی مزایده را به یکدیگر متصل می‌کند. برای حل مشکل محاسباتی، روشی بدون نیاز به آموزش به نام Residual Share Calibration (RSC) معرفی شده که به‌روزرسانی‌های لایه Joint-Attention را به مؤلفه‌های تفکیک‌شده برای هر محصول تبدیل کرده و آن‌ها را بر اساس سهم هدف مقیاس‌بندی می‌کند. همچنین تکنیک Share-Conditioned Prompting (SCP) برای تنظیم زاویه دید تصویر متناسب با سهم برندها به کار گرفته شده است.</p>
+  <h2>روش و اجزا</h2><ul><li>تفکیک به‌روزرسانی‌های Joint-Attention در مدل انتشار به مؤلفه‌های Residual مختص هر محصول به روش RSC</li><li>تنظیم و مقیاس‌گذاری وزن‌های توجه متناسب با سهم‌های تعیین‌شده در مزایده بدون نیاز به بازآموزی مدل</li><li>اعمال پرامپت‌نویسی شرطی وابسته به سهم (SCP) جهت تعدیل هوشمند زاویه دید و پرسپکتیو تصویر نسبت به محصولات</li><li>سنجش قصد کلیک کاربران نسبت به تصویر خروجی و محاسبه قیمت‌گذاری تبلیغاتی بر اساس سازوکار حراج</li></ul>
+  
+  <h2>نتیجه‌گیری</h2><p>تلفیق مکانیزم‌های توجه در مدل‌های انتشار با نظریه مزایده امکان تولید تصاویر تبلیغاتی چندمحصولی مقرون‌به‌صرفه و کنترل‌پذیر را فراهم می‌سازد، به نحوی که تخصیص فضای بصری هم‌راستا با ارزش اقتصادی پیشنهادی آگهی‌دهندگان باشد.</p>
+  <div class="us"><h2>کاربرد برای تیم</h2><ul><li>بررسی امکان‌پذیری تولید بنرهای ترکیبی چندمحصولی برای کمپین‌های مشترک برندها یا باندلینگ کاتالوگ در مارکت‌پلیس</li><li>تحقیق روی متد RSC به عنوان روشی ارزان و بدون بازآموزی جهت کاهش هزینه‌های زیرساختی و GPU در تولید تصاویر سفارشی</li><li>ارزیابی فرصت‌های قیمت‌گذاری مبتنی بر سهم دیده‌شدن (Share of Voice/Pixel) در ویجت‌های تبلیغات بنری هوشمند</li></ul></div>
+  <h2>محدودیت‌ها</h2><ul class="cav"><li>متن ورودی تنها بخشی از چکیده مقاله است و داده‌های تجربی، ارقام تست یا نتایج اثرگذاری بر CTR در آن گزارش نشده است.</li><li>عملیاتی‌سازی این فرایند در سیستم‌های بلادرنگ مزایده (RTB) به دلیل تاخیر ذاتی مدل‌های انتشار چالش‌برانگیز خواهد بود.</li></ul>
+  <div class="tags"><span class="ltr">Ads</span><span class="ltr">Product</span><span class="ltr">Data</span><span class="ltr">Diffusion Models</span><span class="ltr">Ad Auction</span><span class="ltr">Generative AI</span><span class="ltr">Visual Ad</span></div>
+
+  <div class="source">
+    <a class="go" href="https://arxiv.org/abs/2610.34917v1" target="_blank" rel="noopener">خواندن منبع اصلی</a>
+    <a class="url ltr" href="https://arxiv.org/abs/2610.34917v1" target="_blank" rel="noopener">https://arxiv.org/abs/2610.34917v1</a>
+  </div>
+  <footer>این بریف با AI از متن منبع تهیه شده است؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</footer>
+</main>
+</body>
+</html>

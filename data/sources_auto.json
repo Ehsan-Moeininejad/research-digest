@@ -27,14 +27,6 @@
   "added": "2026-10-10"
  },
  {
-  "name": "Amazon Science",
-  "url": "https://www.amazon.science/index.rss",
-  "hint": "commerce",
-  "tier": 1,
-  "origin": "scout",
-  "added": "2026-10-10"
- },
- {
   "name": "Code as Craft (Etsy Engineering)",
   "url": "https://codeascraft.com/feed",
   "hint": "commerce",
