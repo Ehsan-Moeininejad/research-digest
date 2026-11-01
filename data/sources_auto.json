@@ -57,5 +57,23 @@
   "tier": 1,
   "origin": "scout",
   "added": "2026-10-25"
+ },
+ {
+  "name": "Baymard Institute",
+  "url": "https://feeds.baymard.com/baymard",
+  "hint": "commerce",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-11-01",
+  "why": "پیشنهاد هفتگی منابع (2026-11-01)"
+ },
+ {
+  "name": "Meta Engineering",
+  "url": "https://engineering.fb.com/feed/",
+  "hint": "performance",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-11-01",
+  "why": "پیشنهاد هفتگی منابع (2026-11-01)"
  }
 ]
