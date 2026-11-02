@@ -346,7 +346,8 @@
    5.0,
    6.0,
    5.0,
-   7.0
+   7.0,
+   6.0
   ],
   "picks": 1,
   "name": "MIT Sloan Mgmt Review",
@@ -355,7 +356,7 @@
   "kind": "article",
   "last_try": "2026-11-02",
   "last_ok": "2026-11-02",
-  "last_item": "2026-10-28",
+  "last_item": "2026-11-02",
   "tier": 2,
   "rev": 2,
   "acc": 1,
@@ -760,7 +761,9 @@
    7.0,
    7.0,
    5.0,
-   8.0
+   8.0,
+   5.0,
+   9.0
   ],
   "picks": 1,
   "name": "Lenny's Newsletter",
@@ -769,7 +772,7 @@
   "kind": "article",
   "last_try": "2026-11-02",
   "last_ok": "2026-11-02",
-  "last_item": "2026-11-01",
+  "last_item": "2026-11-02",
   "tier": 2,
   "rev": 6,
   "acc": 1,
@@ -1209,7 +1212,6 @@
   "fails": 0,
   "scores": [
    6.0,
-   6.0,
    8.0,
    7.0,
    5.0,
@@ -1267,7 +1269,8 @@
    5.0,
    4.0,
    5.0,
-   4.0
+   4.0,
+   7.0
   ],
   "picks": 14,
   "name": "Modern Retail",
@@ -1460,6 +1463,7 @@
    4.0,
    4.0,
    7.0,
+   7.0,
    7.0
   ],
   "picks": 0,
@@ -1469,7 +1473,7 @@
   "kind": "article",
   "last_try": "2026-11-02",
   "last_ok": "2026-11-02",
-  "last_item": "2026-10-30",
+  "last_item": "2026-11-02",
   "tier": 2,
   "resolved_url": "https://feeds.feedburner.com/MachineLearningMastery"
  },
@@ -2077,7 +2081,8 @@
    8.0,
    6.0,
    8.0,
-   6.0
+   6.0,
+   8.0
   ],
   "picks": 1,
   "name": "Growth Memo",
@@ -2086,7 +2091,7 @@
   "kind": "article",
   "last_try": "2026-11-02",
   "last_ok": "2026-11-02",
-  "last_item": "2026-10-30",
+  "last_item": "2026-11-02",
   "last_pick": "2026-10-04",
   "tier": 2,
   "rev": 7,
@@ -2621,7 +2626,8 @@
    6.0,
    7.0,
    4.0,
-   6.0
+   6.0,
+   7.0
   ],
   "picks": 0,
   "name": "Think with Google",
@@ -2631,7 +2637,7 @@
   "tier": 1,
   "last_try": "2026-11-02",
   "last_ok": "2026-11-02",
-  "last_item": "2026-10-29"
+  "last_item": "2026-10-30"
  },
  "https://blog.duolingo.com/rss/": {
   "status": "rejected",
