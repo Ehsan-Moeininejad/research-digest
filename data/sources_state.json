@@ -466,7 +466,8 @@
    6.0,
    5.0,
    7.0,
-   6.0
+   6.0,
+   5.0
   ],
   "picks": 1,
   "name": "MIT Sloan Mgmt Review",
@@ -475,7 +476,7 @@
   "kind": "article",
   "last_try": "2026-11-04",
   "last_ok": "2026-11-04",
-  "last_item": "2026-11-02",
+  "last_item": "2026-11-04",
   "tier": 2,
   "rev": 2,
   "acc": 1,
@@ -767,7 +768,8 @@
    5.0,
    5.0,
    3.0,
-   6.0
+   6.0,
+   4.0
   ],
   "picks": 2,
   "name": "Seth Godin",
@@ -776,7 +778,7 @@
   "kind": "article",
   "last_try": "2026-11-04",
   "last_ok": "2026-11-04",
-  "last_item": "2026-11-03",
+  "last_item": "2026-11-04",
   "last_pick": "2026-10-04",
   "tier": 2,
   "until": "2026-11-04",
@@ -1473,7 +1475,8 @@
    7.0,
    7.0,
    7.0,
-   7.0
+   7.0,
+   5.0
   ],
   "picks": 0,
   "name": "Machine Learning Mastery",
@@ -1482,7 +1485,7 @@
   "kind": "article",
   "last_try": "2026-11-04",
   "last_ok": "2026-11-04",
-  "last_item": "2026-11-03",
+  "last_item": "2026-11-04",
   "tier": 2,
   "resolved_url": "https://feeds.feedburner.com/MachineLearningMastery"
  },
@@ -1605,7 +1608,7 @@
   "last_pick": "2026-10-03",
   "tier": 2,
   "until": "2026-11-04",
-  "rev": 5,
+  "rev": 6,
   "acc": 0
  },
  "https://www.practicalecommerce.com/feed": {
