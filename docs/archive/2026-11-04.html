@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دایجست تیم پرفورمنس | 1405/08/13</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<style>
+@font-face{font-family:'Vazirmatn';font-weight:400;font-display:swap;src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:700;font-display:swap;src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-weight:800;font-display:swap;src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');}
+:root{--ink:#F0F0F1;--sheet:#FFFFFF;--sheet-2:#F7F7F8;--rule:#E4E4E7;--text:#232933;--soft:#4F545C;--mute:#81858B;--focus:#EF4056;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+body{margin:0;background:var(--ink);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16.5px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+.topbar{background:#fff;border-bottom:3px solid var(--focus)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px;padding-bottom:12px;flex-wrap:wrap}
+.topbar .logo{color:var(--focus);font-weight:800;font-size:20px}
+.topbar .sub{color:var(--mute);font-size:13px}
+.mast{padding:30px 0 22px;background:#fff;border-bottom:1px solid var(--rule)}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--mute);font-size:14px}
+.brand b{color:var(--soft)}
+.date{margin:18px 0 2px;font-size:clamp(30px,6.5vw,46px);font-weight:800;line-height:1.3}
+.greg{color:var(--mute);font-size:14.5px}
+.note{margin:20px 0 0;font-size:18px;line-height:2;color:var(--soft);max-width:68ch}
+.stats{display:flex;gap:26px;margin-top:18px;color:var(--mute);font-size:13.5px;flex-wrap:wrap}
+.stats strong{display:block;color:var(--text);font-size:21px;font-weight:700;line-height:1.4}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.tabbar{display:flex;gap:4px;padding-top:10px}
+.tab{border:0;background:transparent;color:var(--mute);font:inherit;font-size:15.5px;font-weight:700;padding:8px 16px 10px;cursor:pointer;
+  border-bottom:2.5px solid transparent;text-decoration:none}
+.tab[aria-selected="true"]{color:var(--focus);border-bottom-color:var(--focus)}
+.tab span{font-weight:400;opacity:.65;margin-inline-start:4px}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1 1 100%;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--rule);background:transparent;color:var(--soft);font:inherit;font-size:13.5px;padding:3px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--c,#EF4056);border-color:var(--c,#EF4056);color:#fff;font-weight:700}
+.chip span{opacity:.7;margin-inline-start:4px}
+.search{flex:1 1 220px;min-width:0;background:var(--sheet);border:1px solid var(--rule);color:var(--text);font:inherit;font-size:14.5px;padding:6px 14px;border-radius:10px}
+.search::placeholder{color:var(--mute)}
+select{background:var(--sheet);border:1px solid var(--rule);color:var(--soft);font:inherit;font-size:14px;padding:6px 10px;border-radius:10px}
+
+.panel{padding:6px 0 60px}
+.panel[hidden]{display:none}
+.group{margin-top:34px}
+.group h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--c);margin:0 0 4px}
+.group h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.group h2 small{color:var(--mute);font-weight:400}
+
+article{position:relative;margin:14px 0;background:var(--sheet);border-radius:12px;border:1px solid var(--rule);border-right:4px solid var(--c);padding:20px 22px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;color:var(--mute);font-size:13px}
+.meta .src{color:var(--soft);font-weight:700}
+.badge{border:1px solid currentColor;border-radius:6px;padding:0 7px;font-size:12px;color:var(--c)}
+.badge.hot{background:var(--focus);border-color:var(--focus);color:#fff;font-weight:700}
+.badge.day{color:var(--mute)}
+.meta .score{margin-inline-start:auto}
+article.ranked .meta,article.ranked h3{padding-left:46px}
+.rank{position:absolute;top:18px;left:18px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--c);color:#fff}
+article h3{margin:8px 0 0;font-size:20.5px;line-height:1.65;font-weight:800}
+.orig{color:var(--mute);font-size:13.5px;line-height:1.6;margin:2px 0 0;text-align:left;font-family:system-ui,-apple-system,sans-serif}
+.tldr{margin:14px 0 0;font-size:17.5px;line-height:1.95;font-weight:700;color:var(--text)}
+.new{margin:8px 0 0;color:var(--soft)}
+.via{margin:6px 0 0;font-size:13px;color:var(--mute)}.via a{color:var(--focus)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+.box{background:var(--sheet-2);border-radius:10px;padding:10px 14px}
+.box h4{margin:0 0 4px;font-size:13.5px;color:var(--c);font-weight:700}
+.box ul,.act ul{margin:0;padding-inline-start:18px}
+.box li,.act li{margin:3px 0;font-size:15px;line-height:1.85}
+.act{margin-top:12px;border-right:3px solid var(--focus);border-radius:8px;padding:10px 14px;background:#FFF2F4}
+.act h4{margin:0 0 4px;font-size:13.5px;color:var(--focus);font-weight:800}
+.cav{margin-top:10px;color:var(--mute);font-size:14px}
+.cav b{color:var(--soft);font-weight:700}
+.foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)}
+.teams{display:flex;gap:6px;flex-wrap:wrap}
+.teams span,.tags span{font-size:12px;color:var(--soft);background:#F0F0F1;padding:1px 10px;border-radius:12px}
+.tags span{color:var(--mute)}
+.go{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;color:#fff;background:var(--focus);padding:7px 18px;border-radius:8px}
+.go:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.go.ghost{background:#fff;color:var(--soft);border:1px solid var(--rule)}
+.url{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;text-align:left;overflow-wrap:anywhere;text-decoration:none}
+.url:hover{color:var(--soft)}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:18px;color:var(--c);font-weight:800}
+details.more[open] summary::before{content:"−"}
+
+.lead{color:var(--soft);margin:18px 0 0;max-width:70ch}
+.empty{display:none;text-align:center;color:var(--mute);padding:40px 0}
+.tw{overflow-x:auto;margin-top:20px}
+table.src{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+table.src th{white-space:nowrap;text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+table.src td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.st{font-size:12.5px;padding:1px 8px;border-radius:6px;white-space:nowrap}
+.st-active{background:#E6F6EE;color:#1B7F4B}.st-new{background:#EEF0F3;color:#4F545C}.st-paused{background:#FFF4E0;color:#A86400}.st-disabled{background:#FDE8EB;color:#C21F3A}.st-probation{background:#E8F1FD;color:#1E5FB4}.st-rejected{background:#EEEEEF;color:#81858B}
+footer{border-top:1px solid var(--rule);color:var(--mute);font-size:13.5px;padding:22px 0 48px}
+.guide{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 26px 26px;margin-top:20px}
+.guide h2{font-size:20px;font-weight:800;color:var(--text);margin:30px 0 8px;padding-right:10px;border-right:4px solid var(--focus)}
+.guide h3{font-size:16px;font-weight:800;color:var(--focus);margin:22px 0 6px}
+.guide p,.guide li{color:var(--soft)}
+.guide strong{color:var(--text)}
+.guide ul,.guide ol{padding-inline-start:22px}
+.guide li{margin:4px 0}
+.guide code{background:var(--sheet-2);border-radius:5px;padding:1px 6px;font-size:.88em;direction:ltr;unicode-bidi:isolate}
+.guide a{color:var(--focus)}
+.guide{overflow-x:auto}
+.changes{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:6px 22px 14px;margin-top:20px}
+.changes h3{font-size:16px;font-weight:800;color:var(--focus);margin:14px 0 6px}
+.changes ul{list-style:none;margin:0;padding:0}
+.changes li{padding:7px 0;border-bottom:1px dashed var(--rule);color:var(--soft);font-size:14.5px}
+.changes li:last-child{border-bottom:0}
+.cdate{display:inline-block;min-width:92px;margin-left:14px;color:var(--mute);font-size:13px}
+.helpbtn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:13.5px;color:var(--focus);border:1.5px solid var(--focus);border-radius:999px;padding:4px 14px;background:#fff}
+.helpbtn:hover{background:#FFF2F4}
+.guide table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+.guide td:nth-child(2),.guide td:nth-child(3),.guide td:nth-child(4){white-space:nowrap}
+.guide th{text-align:right;color:var(--mute);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--rule);white-space:nowrap}
+.guide td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--text)}
+@media (max-width:560px){.guide{padding:4px 16px 18px}}
+@media (max-width:560px){body{font-size:16px}article{padding:18px 16px 14px}article h3{font-size:19px}.tabs{position:static}.rank{display:none}article.ranked .meta,article.ranked h3{padding-left:0}}
+</style>
+</head>
+<body>
+
+
+<div class="topbar"><div class="wrap"><span class="logo">دایجست تیم پرفورمنس</span>
+  <a class="helpbtn" href="../index.html#guide" >راهنما و نحوهٔ امتیازدهی</a></div></div>
+<header class="mast">
+  <div class="wrap">
+    <div class="date">چهارشنبه 13 آبان 1405</div>
+    <div class="greg ltr" style="text-align:right">04 Nov 2026</div>
+    <p class="note">محور اصلی داده های امروز بر گذار از سئو سنتی به کانال های مالکیتی و هوش مصنوعی متمرکز است. در عمل، تیم باید حضور در بسترهایی مانند ردیت و بهینه سازی برای مدل های زبانی بزرگ را در کنار تقویت رسانه های خود مانند ایمیل در اولویت قرار دهد.</p>
+    <div class="stats">
+      <div><strong>8</strong>مطلب تازهٔ این نوبت</div>
+      <div><strong>45</strong>متن کامل بازبینی‌شده</div>
+      <div><strong>334</strong>مطلب غربال‌شده</div>
+      
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="بخش‌ها">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab" role="tab" data-tab="latest" aria-selected="true">مطالب این نوبت<span>8</span></button>
+      
+      <a class="tab" href="../index.html">بازگشت به آخرین نسخه</a>
+      
+    </div>
+    <div class="tools">
+      <div class="chips" role="group" aria-label="دسته‌ها"></div>
+      <input class="search" type="search" placeholder="جست‌وجو: عنوان، اقدام، تیم (eCRM، Ads ...)" aria-label="جست‌وجو">
+      <select class="arch" aria-label="آرشیو نوبت‌ها" onchange="if(this.value)location.href=this.value">
+        <option value="../archive/2026-11-04.html" selected>1405/08/13</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" data-panel="latest">
+    
+    
+    <div class="group" data-group="marketing" style="--c:#E6123D">
+      <h2>مارکتینگ و برند <small class="ltr">Marketing &amp; Brand</small></h2>
+      <article data-cat="marketing" data-text="بررسی ارتباط انوع منشن‌های برند با دیده‌شدن در هوش مصنوعی which types of mentions correlate the strongest with ai visibility? (260m ai prompts analyzed) منشن‌های ردیت قوی‌ترین همبستگی را با دیده‌شدن برند در پاسخ‌های هوش مصنوعی دارند و بازدهی منشن‌های وب دارای روندی نزولی است. این مقاله پژوهشی از وبلاگ ahrefs، به بررسی رابطه میان انواع منشن‌های برند در فضای آنلاین و میزان حضور آن‌ها در پاسخ‌های موتورهای جستجو و ابزارهای هوش مصنوعی مانند chatgpt و ai overviews می‌پردازد. نویسندگان با تحلیل داده‌های کلان، به دنبال کشف این موضوع هستند که کدام کانال‌ها یا پلتفرم‌ها بیشترین تأثیر را بر دیده‌شدن برند در هوش مصنوعی دارند. نویسندگان استدلال می‌کنند که حضور در انجمن‌هایی مانند ردیت به دلیل قراردادهای محتوایی با شرکت‌های هوش مصنوعی، سیگنال بسیار قدرتمندی محسوب می‌شود. در حالی که اندازه برند بخشی از این موفقیت را توجیه می‌کند، اما حتی با کنترل حجم جستجوی برندها، منشن‌های وب و فروم‌ها همچنان پیش‌بینی‌کننده مستقل دیده‌شدن در هوش مصنوعی هستند. بررسی جایگاه برند در ابزار brand radar و تعیین تعداد منشن‌های ردیت و وب تدوین استراتژی روابط عمومی و بازاریابی محتوایی برای حضور هدفمند در فروم‌های بحث و گفتگو مانند ردیت تمرکز بر گسترش دامنه وب‌سایت‌های ارجاع‌دهنده به جای تمرکز صرف روی رسانه‌های گران‌قیمت تنظیم انتظارات کمپین‌ها برای دستیابی به رشد پایدار و بلندمدت در کانال‌های هوش مصنوعی ai search seo brand mentions reddit ads affiliate ecrm engagement ahrefs blog" style="--c:#E6123D">
+  
+  <div class="meta">
+    <span class="src">Ahrefs Blog</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">تحلیل معتبر</span>
+    <span>کاربردی</span>
+    <span>7 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">9.0/10</span>
+  </div>
+  <h3>بررسی ارتباط انوع منشن‌های برند با دیده‌شدن در هوش مصنوعی</h3>
+  <p class="orig ltr">Which Types of Mentions Correlate the Strongest With AI Visibility? (260M AI Prompts Analyzed)</p>
+  
+  <p class="tldr">منشن‌های ردیت قوی‌ترین همبستگی را با دیده‌شدن برند در پاسخ‌های هوش مصنوعی دارند و بازدهی منشن‌های وب دارای روندی نزولی است.</p>
+  <p class="new">این مقاله پژوهشی از وبلاگ Ahrefs، به بررسی رابطه میان انواع منشن‌های برند در فضای آنلاین و میزان حضور آن‌ها در پاسخ‌های موتورهای جستجو و ابزارهای هوش مصنوعی مانند ChatGPT و AI Overviews می‌پردازد. نویسندگان با تحلیل داده‌های کلان، به دنبال کشف این موضوع هستند که کدام کانال‌ها یا پلتفرم‌ها بیشترین تأثیر را بر دیده‌شدن برند در هوش مصنوعی دارند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی جایگاه برند در ابزار Brand Radar و تعیین تعداد منشن‌های ردیت و وب</li><li>تدوین استراتژی روابط عمومی و بازاریابی محتوایی برای حضور هدفمند در فروم‌های بحث و گفتگو مانند ردیت</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Affiliate</span><span class="ltr">eCRM</span><span class="ltr">Engagement</span></div>
+    <span class="btns"><a class="go" href="../a/c2bb497c39dda03a.html">خواندن بریف کامل</a><a class="go ghost" href="https://ahrefs.com/blog/mention-types-ai-visibility/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://ahrefs.com/blog/mention-types-ai-visibility/" target="_blank" rel="noopener">https://ahrefs.com/blog/mention-types-ai-visibility/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="performance" style="--c:#0097A7">
+      <h2>پرفورمنس و تبلیغات <small class="ltr">Performance &amp; Ads</small></h2>
+      <article data-cat="performance" data-text="بررسی داده‌های گوگل ادز: رابطه قدرت تبلیغ، پین کردن و نرخ تبدیل google favors high ad strength rsas, but lower-rated ads convert better via @sejournal, @gregjarboe مطالعه داده‌محور روی بیش از 5900 حساب کاربری نشان می‌دهد که تبلیغات با ad strength بالاتر ایمپرشن بیشتری می‌گیرند، اما تبلیغات دارای امتیاز پایین‌تر (به‌دلیل استفاده از قابلیت پین کردن) اغلب نرخ تبدیل بالاتری دارند. این مقاله یک پژوهش داده‌محور است که توسط brad در وب‌سایت adalysis منتشر شده و به تحلیل عملکرد responsive search ads یا همان rsa در پلتفرم گوگل ادز می‌پردازد. نویسنده در این مقاله نتایج بررسی بیش از 5900 حساب کاربری را تحلیل کرده تا تأثیر ad strength و قابلیت پین کردن را روی معیارهای کلیدی مانند ctr، نرخ تبدیل و cpi بسنجد. نتیجه‌گیری نویسندگان این است که ارتباط میان ad strength و عملکرد تبلیغ ساده نیست. اگر تبلیغ پین نشود، هدف‌گذاری برای رسیدن به امتیاز excellent کاملاً منطقی است و موجب افزایش چشمگیر ctr و cpi می‌شود. با این حال، پین کردن دارایی‌ها امتیاز ad strength را کاهش می‌دهد اما با فیلتر کردن مخاطبان نامرتبط، نرخ تبدیل واقعی را بالا می‌برد؛ بنابراین تبلیغ‌کنندگان نباید کورکورانه فقط به دنبال بالاترین امتیاز گوگل باشند. تست کنید که آیا پین کردن هدرها در کمپین‌های performance مارکت‌پلیس ما نرخ تبدیل را با وجود کاهش ad strength بهبود می‌دهد یا خیر. بررسی کنید که چگونه تنوع محتوایی در هدرهای rsa می‌تواند بدون آسیب به نرخ تبدیل، حجم ایمپرشن و ترافیک ورودی را افزایش دهد. در طراحی تست‌های a/b برای اد گروپ‌ها دقت کنید که تفاوت در ad strength یا پین کردن می‌تواند زمان رسیدن به statistical significance را تحت تأثیر قرار دهد. google ads ad strength ppc conversion rate ads data product adalysis.com" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">adalysis.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>8 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">9.5/10</span>
+  </div>
+  <h3>بررسی داده‌های گوگل ادز: رابطه قدرت تبلیغ، پین کردن و نرخ تبدیل</h3>
+  <p class="orig ltr">Google Favors High Ad Strength RSAs, But Lower-Rated Ads Convert Better via @sejournal, @gregjarboe</p>
+  <p class="via">پوشش از طریق <a href="https://www.searchenginejournal.com/google-favors-high-ad-strength-rsas-but-lower-rated-ads-convert-better/595478/" target="_blank" rel="noopener">Search Engine Journal</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">مطالعه داده‌محور روی بیش از 5900 حساب کاربری نشان می‌دهد که تبلیغات با Ad Strength بالاتر ایمپرشن بیشتری می‌گیرند، اما تبلیغات دارای امتیاز پایین‌تر (به‌دلیل استفاده از قابلیت پین کردن) اغلب نرخ تبدیل بالاتری دارند.</p>
+  <p class="new">این مقاله یک پژوهش داده‌محور است که توسط Brad در وب‌سایت Adalysis منتشر شده و به تحلیل عملکرد Responsive Search Ads یا همان RSA در پلتفرم گوگل ادز می‌پردازد. نویسنده در این مقاله نتایج بررسی بیش از 5900 حساب کاربری را تحلیل کرده تا تأثیر Ad Strength و قابلیت پین کردن را روی معیارهای کلیدی مانند CTR، نرخ تبدیل و CPI بسنجد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>تست کنید که آیا پین کردن هدرها در کمپین‌های Performance مارکت‌پلیس ما نرخ تبدیل را با وجود کاهش Ad Strength بهبود می‌دهد یا خیر.</li><li>بررسی کنید که چگونه تنوع محتوایی در هدرهای RSA می‌تواند بدون آسیب به نرخ تبدیل، حجم ایمپرشن و ترافیک ورودی را افزایش دهد.</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/d8e32f86f35b6b87.html">خواندن بریف کامل</a><a class="go ghost" href="https://adalysis.com/blog/google-ads-data-study-does-a-higher-ad-strength-improve-your-performance/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://adalysis.com/blog/google-ads-data-study-does-a-higher-ad-strength-improve-your-performance/" target="_blank" rel="noopener">https://adalysis.com/blog/google-ads-data-study-does-a-higher-ad-strength-improve-your-performance/</a>
+</article><article data-cat="performance" data-text="مقصد کلیک پویا: شخصی‌سازی تجربه فرود پس از کلیک روی تبلیغات dynamic click destinations: personalizing post ad-click landing experiences استفاده از فریم‌ورک dynamic click destinations برای شخصی‌سازی مسیر پس از کلیک تبلیغات، نرخ تعامل و کارایی کسب‌وکار را بهبود می‌دهد. این مقاله پژوهشی از سوی پژوهشگران حوزه تبلیغات در arxiv منتشر شده و به معرفی یک فریم‌ورک تولیدی به نام dynamic click destinations (dcd) برای بهینه‌سازی تجربه‌های پس از کلیک تبلیغات برون‌سایت می‌پردازد. نویسندگان استدلال می‌کنند که رویکردهای ایستا در هدایت کاربران پس از کلیک ناکارآمد هستند و اتوماسیون مبتنی بر شخصی‌سازی پویا یا همان dcd می‌تواند به طور مؤثرتری این اهداف را محقق کند. بررسی سناریوهای مشابه برای بهینه‌سازی صفحه فرود و مسیر پس از کلیک در بخش ads استفاده از داده‌های قصد کاربر و نوع دستگاه برای شخصی‌سازی تجربه‌های ورودی انجام آزمایش‌های a/b روی مسیرهای هدایت درون‌اپلیکیشنی در مقایسه با وب ads personalization landing page automation ads data product arxiv · advertising" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">arXiv · Advertising</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>5 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>مقصد کلیک پویا: شخصی‌سازی تجربه فرود پس از کلیک روی تبلیغات</h3>
+  <p class="orig ltr">Dynamic Click Destinations: Personalizing Post Ad-Click Landing Experiences</p>
+  
+  <p class="tldr">استفاده از فریم‌ورک Dynamic Click Destinations برای شخصی‌سازی مسیر پس از کلیک تبلیغات، نرخ تعامل و کارایی کسب‌وکار را بهبود می‌دهد.</p>
+  <p class="new">این مقاله پژوهشی از سوی پژوهشگران حوزه تبلیغات در arXiv منتشر شده و به معرفی یک فریم‌ورک تولیدی به نام Dynamic Click Destinations (DCD) برای بهینه‌سازی تجربه‌های پس از کلیک تبلیغات برون‌سایت می‌پردازد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی سناریوهای مشابه برای بهینه‌سازی صفحه فرود و مسیر پس از کلیک در بخش Ads</li><li>استفاده از داده‌های قصد کاربر و نوع دستگاه برای شخصی‌سازی تجربه‌های ورودی</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/0c2d24ed9a8941fd.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2611.01287v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2611.01287v1" target="_blank" rel="noopener">https://arxiv.org/abs/2611.01287v1</a>
+</article><article data-cat="performance" data-text="راهنمای جامع مدیریت کمپین‌های ای‌کامرس در دوره بلک فرایدی و سایبر ماندی how to run a full-funnel ecommerce account through bfcm week via @sejournal, @tonyadam موفقیت در بلک فرایدی نیازمند پر کردن قیف فروش در نوامبر، دادن انعطاف به سیستم‌های بیدینگ در هفته اوج و حفظ کمپین‌های تبدیل در دسامبر است. این مقاله یک راهنمای عملیاتی و استراتژیک است که توسط tony adam در search engine journal منتشر شده و به بهینه‌سازی اکانت‌های تبلیغاتی ای‌کامرس در طول فصل خرید پایانی سال و هفته بلک فرایدی و سایبر ماندی (bfcm) اختصاص دارد. نتیجه‌گیری نویسنده این است که موفقیت در بلک فرایدی نتیجه کار سخت انجام‌شده در هفته‌های قبل از آن است؛ جایی که مخاطبان اولیه ساخته شده و در هفته اوج با ابزارهای بیدینگ انعطاف‌پذیر شکار می‌شوند و در دسامبر با رقابت کمتر تبدیل می‌گردند. بررسی کنید که بودجه‌های پروپکتینگ متا در اوایل نوامبر به صورت تدریجی افزایش یابند تا از افت راندمان جلوگیری شود. تنظیمات seasonality adjustments و تغییرات roas هدف را پیش از شروع مناسبت‌های بزرگ در گوگل اعمال کنید. وضعیت فیدهای محصولات، خطاهای دیسپرواوال و نرخ تبدیل را به صورت روزانه در هفته‌های اوج پایش کنید. کمپین‌های ریتارگتینگ دسامبر را روی بازدیدکنندگان هفته بلک فرایدی با تمرکز بر ددلاین ارسال متمرکز کنید. bfcm ppc meta ads google ads ads data product search engine journal" style="--c:#0097A7">
+  
+  <div class="meta">
+    <span class="src">Search Engine Journal</span>
+    <span class="badge">آموزش</span>
+    <span class="badge">خبری / vendor</span>
+    <span>کاربردی</span>
+    <span>6 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">7.6/10</span>
+  </div>
+  <h3>راهنمای جامع مدیریت کمپین‌های ای‌کامرس در دوره بلک فرایدی و سایبر ماندی</h3>
+  <p class="orig ltr">How To Run A Full-Funnel Ecommerce Account Through BFCM Week via @sejournal, @tonyadam</p>
+  
+  <p class="tldr">موفقیت در بلک فرایدی نیازمند پر کردن قیف فروش در نوامبر، دادن انعطاف به سیستم‌های بیدینگ در هفته اوج و حفظ کمپین‌های تبدیل در دسامبر است.</p>
+  <p class="new">این مقاله یک راهنمای عملیاتی و استراتژیک است که توسط Tony Adam در Search Engine Journal منتشر شده و به بهینه‌سازی اکانت‌های تبلیغاتی ای‌کامرس در طول فصل خرید پایانی سال و هفته بلک فرایدی و سایبر ماندی (BFCM) اختصاص دارد.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی کنید که بودجه‌های پروپکتینگ متا در اوایل نوامبر به صورت تدریجی افزایش یابند تا از افت راندمان جلوگیری شود.</li><li>تنظیمات Seasonality Adjustments و تغییرات ROAS هدف را پیش از شروع مناسبت‌های بزرگ در گوگل اعمال کنید.</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/53d7e51f875e2698.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.searchenginejournal.com/how-to-run-a-full-funnel-ecommerce-account-through-bfcm-week/594047/" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.searchenginejournal.com/how-to-run-a-full-funnel-ecommerce-account-through-bfcm-week/594047/" target="_blank" rel="noopener">https://www.searchenginejournal.com/how-to-run-a-full-funnel-ecommerce-account-through-bfcm-week/594047/</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="growth" style="--c:#2E9E4F">
+      <h2>رشد <small class="ltr">Growth</small></h2>
+      <article data-cat="growth" data-text="بررسی کانال‌های رشد یافته در پی افت ترافیک جستجوی ارگانیک what channels grow when organic search shrinks? با افت شدید جستجوی ارگانیک، کانال‌های ایمیل و ترافیک مستقیم به‌عنوان مسیرهای مالکانه‌ای که کمترین نوسان را دارند، رشد قابل‌توجهی نشان می‌دهند. این مقاله از خبرنامه growth memo نوشته شده و به تحلیل داده‌های ترافیک وب در بازار ایالات متحده و فرانسه می‌پردازد تا مشخص کند هنگام افت سئو و جستجوی ارگانیک، کدام کانال‌های بازاریابی در حال رشد هستند. نویسنده استدلال می‌کند که ایمیل و ترافیک مستقیم به عنوان دارایی‌های متعلق به برند (owned media) کمترین وابستگی و نوسان را نسبت به الگوریتم‌های جستجو دارند و با وجود ماهیت ترکیبی دایرکت و چالش‌های ایمیل، سرمایه‌گذاری روی آن‌ها برای بلندمدت حیاتی است. کانال ایمیل را به عنوان ابزار اصلی حفظ مخاطب و کاهش وابستگی به سرچ ارگانیک جدی‌تر توسعه دهید ورودی‌های دایرکت را در صفحه اصلی بر اساس مقصد بعدی کاربران (ورود، پشتیبانی، محصول) تفکیک و شخصی‌سازی کنید تأثیر تغییرات ابزارهای ردیابی و باگ‌های utm را در تحلیل داده‌های ترافیک مستقیم و ورودی‌های هوش مصنوعی لحاظ کنید organic-search email-marketing direct-traffic channel-growth ads ecrm engagement data growth memo" style="--c:#2E9E4F">
+  
+  <div class="meta">
+    <span class="src">Growth Memo</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge">تحلیل معتبر</span>
+    <span>کاربردی</span>
+    <span>6 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.3/10</span>
+  </div>
+  <h3>بررسی کانال‌های رشد یافته در پی افت ترافیک جستجوی ارگانیک</h3>
+  <p class="orig ltr">What channels grow when organic search shrinks?</p>
+  
+  <p class="tldr">با افت شدید جستجوی ارگانیک، کانال‌های ایمیل و ترافیک مستقیم به‌عنوان مسیرهای مالکانه‌ای که کمترین نوسان را دارند، رشد قابل‌توجهی نشان می‌دهند.</p>
+  <p class="new">این مقاله از خبرنامه Growth Memo نوشته شده و به تحلیل داده‌های ترافیک وب در بازار ایالات متحده و فرانسه می‌پردازد تا مشخص کند هنگام افت سئو و جستجوی ارگانیک، کدام کانال‌های بازاریابی در حال رشد هستند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>کانال ایمیل را به عنوان ابزار اصلی حفظ مخاطب و کاهش وابستگی به سرچ ارگانیک جدی‌تر توسعه دهید</li><li>ورودی‌های دایرکت را در صفحه اصلی بر اساس مقصد بعدی کاربران (ورود، پشتیبانی، محصول) تفکیک و شخصی‌سازی کنید</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">eCRM</span><span class="ltr">Engagement</span><span class="ltr">Data</span></div>
+    <span class="btns"><a class="go" href="../a/0bec1466f4219cd3.html">خواندن بریف کامل</a><a class="go ghost" href="https://www.growth-memo.com/p/what-channels-grow-when-organic-search" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://www.growth-memo.com/p/what-channels-grow-when-organic-search" target="_blank" rel="noopener">https://www.growth-memo.com/p/what-channels-grow-when-organic-search</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="ai" style="--c:#6A4BC4">
+      <h2>هوش مصنوعی <small class="ltr">AI &amp; Agents</small></h2>
+      <article data-cat="ai" data-text="معرفی فریم‌ورک adknob برای کنترل شدت و برچسب‌گذاری تبلیغات در مدل‌های زبانی بزرگ adknob: ad intensity control and labeling for llm-native advertising چارچوب adknob با استفاده از توکن‌های کنترل اختصاصی و بهینه‌سازی ترجیحات مستقیم، امکان تنظیم دقیق شدت و برچسب‌گذاری تبلیغات بومی در مدل‌های زبانی بزرگ را فراهم می‌کند. این مقاله پژوهشی که در حوزه تبلیغات مبتنی بر هوش مصنوعی و مدل‌های زبانی بزرگ (llm) نوشته شده است، به بررسی چالش‌های درآمدزایی پلتفرم‌های هوش مصنوعی از طریق تبلیغات بومی می‌پردازد. نویسندگان پدیده‌ای نوین به نام تبلیغات بومی در بستر llm را بررسی کرده و راهکاری ساختاریافته برای مدیریت نمایش تبلیغات ارائه داده‌اند. نویسندگان استدلال می‌کنند که برای تجاری‌سازی پایدار مدل‌های زبانی بزرگ بدون تخریب تجربه کاربری، به ابزارهای ساختاریافته‌ای مانند adknob نیاز است تا بتوان میزان برجستگی تبلیغ و شفاف‌سازی آن را به طور برنامه‌پذیر کنترل کرد. بررسی پتانسیل تبلیغات مبتنی بر llm برای استراتژی‌های آتی ads و engagement تست روش‌های کنترل شدت نمایش محتوای تجاری در تعاملات چت با کاربران ارزیابی میزان شفافیت و برچسب‌گذاری در پیشنهادهای شخصی‌سازی‌شده هوش مصنوعی llm adtech ai monetization ads engagement data arxiv · advertising" style="--c:#6A4BC4">
+  
+  <div class="meta">
+    <span class="src">arXiv · Advertising</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.8/10</span>
+  </div>
+  <h3>معرفی فریم‌ورک AdKnob برای کنترل شدت و برچسب‌گذاری تبلیغات در مدل‌های زبانی بزرگ</h3>
+  <p class="orig ltr">AdKnob: Ad Intensity Control and Labeling for LLM-Native Advertising</p>
+  
+  <p class="tldr">چارچوب AdKnob با استفاده از توکن‌های کنترل اختصاصی و بهینه‌سازی ترجیحات مستقیم، امکان تنظیم دقیق شدت و برچسب‌گذاری تبلیغات بومی در مدل‌های زبانی بزرگ را فراهم می‌کند.</p>
+  <p class="new">این مقاله پژوهشی که در حوزه تبلیغات مبتنی بر هوش مصنوعی و مدل‌های زبانی بزرگ (LLM) نوشته شده است، به بررسی چالش‌های درآمدزایی پلتفرم‌های هوش مصنوعی از طریق تبلیغات بومی می‌پردازد. نویسندگان پدیده‌ای نوین به نام تبلیغات بومی در بستر LLM را بررسی کرده و راهکاری ساختاریافته برای مدیریت نمایش تبلیغات ارائه داده‌اند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی پتانسیل تبلیغات مبتنی بر LLM برای استراتژی‌های آتی Ads و Engagement</li><li>تست روش‌های کنترل شدت نمایش محتوای تجاری در تعاملات چت با کاربران</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Engagement</span><span class="ltr">Data</span></div>
+    <span class="btns"><a class="go" href="../a/fc57180ce5831915.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2611.00822v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2611.00822v1" target="_blank" rel="noopener">https://arxiv.org/abs/2611.00822v1</a>
+</article>
+    </div>
+    
+    <div class="group" data-group="commerce" style="--c:#C2185B">
+      <h2>ای‌کامرس و محصول <small class="ltr">E-commerce &amp; Product</small></h2>
+      <article data-cat="commerce" data-text="سهم 22 درصدی سفارش‌ها از چت‌جی‌پتی در گل‌فروشی آنلاین florist gets 1 in 5 orders from chatgpt بررسی داده‌های شاپیفای نشان می‌دهد 20 درصد سفارش‌های آنلاین یک گل‌فروشی محلی از طریق چت‌جی‌پتی هدایت شده‌اند. این مقاله تجربی توسط مدیریت گل‌فروشی خانوادگی پرسافلورس در اسپانیا نوشته شده و عملکرد کانال ارجاعی چت‌جی‌پتی را روی پلتفرم شاپیفای در بازه ژوئیه تا اکتبر 2026 تحلیل می‌کند. نویسندگان نتیجه می‌گیرند که مدل‌های زبانی بزرگ به کانال فروش جدی و مستقیمی تبدیل شده‌اند که مشتریان کاملاً جدید را جذب می‌کنند و برای جذب آن‌ها، بهینه‌سازی ساختار سایت برای خزنده‌های هوش مصنوعی حیاتی است. بررسی سهم ترافیک و ارجاع‌های هدایت‌شده از موتورهای جستجوی مبتنی بر ai و llmها در داده‌های پرفورمنس اطمینان از دسترسی خزنده‌های هوش مصنوعی به صفحات قوانین ارسال و مرجوعی کالا بهینه‌سازی دیتای ساختاریافته روی تمامی صفحات برای آدرس، شماره تماس و مناطق ارسال chatgpt shopify seo llm ads data product persaflores.com" style="--c:#C2185B">
+  
+  <div class="meta">
+    <span class="src">persaflores.com</span>
+    <span class="badge">تحلیل</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>کاربردی</span>
+    <span>3 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.5/10</span>
+  </div>
+  <h3>سهم 22 درصدی سفارش‌ها از چت‌جی‌پتی در گل‌فروشی آنلاین</h3>
+  <p class="orig ltr">Florist Gets 1 in 5 Orders from ChatGPT</p>
+  <p class="via">پوشش از طریق <a href="https://www.practicalecommerce.com/chatgpt-sends-1-in-5-orders-to-florist" target="_blank" rel="noopener">Practical Ecommerce</a>؛ این بریف از منبع اصلی تهیه شده است.</p>
+  <p class="tldr">بررسی داده‌های شاپیفای نشان می‌دهد 20 درصد سفارش‌های آنلاین یک گل‌فروشی محلی از طریق چت‌جی‌پتی هدایت شده‌اند.</p>
+  <p class="new">این مقاله تجربی توسط مدیریت گل‌فروشی خانوادگی پرسافلورس در اسپانیا نوشته شده و عملکرد کانال ارجاعی چت‌جی‌پتی را روی پلتفرم شاپیفای در بازه ژوئیه تا اکتبر 2026 تحلیل می‌کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>بررسی سهم ترافیک و ارجاع‌های هدایت‌شده از موتورهای جستجوی مبتنی بر AI و LLMها در داده‌های پرفورمنس</li><li>اطمینان از دسترسی خزنده‌های هوش مصنوعی به صفحات قوانین ارسال و مرجوعی کالا</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/f2de0afadc3e6753.html">خواندن بریف کامل</a><a class="go ghost" href="https://persaflores.com/en/pages/chatgpt" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://persaflores.com/en/pages/chatgpt" target="_blank" rel="noopener">https://persaflores.com/en/pages/chatgpt</a>
+</article><article data-cat="commerce" data-text="بررسی پدیده سوی گیری رقم چپ و شواهد تجربی آن در قیمت گذاری left-digit bias: theory and empirical evidence from a tax salience experiment این پژوهش مدل اقتصادی جدیدی برای توضیح افت ناگهانی تقاضا در قیمت های رند ارائه می دهد و تأثیر سوی گیری رقم چپ را در آزمایش مالیاتی بررسی می کند. این مقاله پژوهشی به بررسی پدیده اقتصادی سوی گیری رقم چپ (left-digit bias) در قیمت گذاری کالاها می پردازد. نویسندگان با ارائه یک مدل جدید انتخاب تصادفی و تحلیل داده های یک آزمایش مالیاتی، رفتار مصرف کنندگان را در مواجهه با آستانه های قیمتی تحلیل می کنند. این اثر یک مقاله علمی است که تئوری اقتصادی را با شواهد تجربی ترکیب می کند. نویسندگان نتیجه می گیرند که سوی گیری رقم چپ یک عامل ساختاری مهم در شکل دهی به تقاضا است و مدل های سنتی عقلایی نمی توانند واکنش مصرف کنندگان به تغییرات قیمت یا مالیات را در حضور آستانه های ذهنی به درستی پیش بینی کنند. این پدیده نشان می دهد که توجه مصرف کننده محدود بوده و در اطراف ارقام رند دچار پرش می شود. آزمایش قیمت گذاری محصولات در لبه آستانه های ذهنی برای سنجش تغییر نرخ تبدیل لحاظ کردن تاثیر سوی گیری رقم چپ در کمپین های تخفیف و پروموشن ها بررسی رفتار کاربران در مواجهه با ساختارهای مختلف قیمت گذاری در پلتفرم pricing behavioral-economics demand experiment ads engagement data product arxiv · platforms &amp; econ" style="--c:#C2185B">
+  
+  <div class="meta">
+    <span class="src">arXiv · Platforms &amp; Econ</span>
+    <span class="badge">مقالهٔ علمی</span>
+    <span class="badge hot">منبع اصلی</span>
+    <span>پیشرفته</span>
+    <span>5 دقیقه</span>
+    <span class="badge hot">ورود به لیدربورد</span>
+    
+    <span class="score" title="امتیاز نهایی بازبینی از 10">8.5/10</span>
+  </div>
+  <h3>بررسی پدیده سوی گیری رقم چپ و شواهد تجربی آن در قیمت گذاری</h3>
+  <p class="orig ltr">Left-Digit Bias: Theory and Empirical Evidence from a Tax Salience Experiment</p>
+  
+  <p class="tldr">این پژوهش مدل اقتصادی جدیدی برای توضیح افت ناگهانی تقاضا در قیمت های رند ارائه می دهد و تأثیر سوی گیری رقم چپ را در آزمایش مالیاتی بررسی می کند.</p>
+  <p class="new">این مقاله پژوهشی به بررسی پدیده اقتصادی سوی گیری رقم چپ (Left-Digit Bias) در قیمت گذاری کالاها می پردازد. نویسندگان با ارائه یک مدل جدید انتخاب تصادفی و تحلیل داده های یک آزمایش مالیاتی، رفتار مصرف کنندگان را در مواجهه با آستانه های قیمتی تحلیل می کنند. این اثر یک مقاله علمی است که تئوری اقتصادی را با شواهد تجربی ترکیب می کند.</p>
+  <div class="act"><h4>کاربرد برای تیم</h4><ul><li>آزمایش قیمت گذاری محصولات در لبه آستانه های ذهنی برای سنجش تغییر نرخ تبدیل</li><li>لحاظ کردن تاثیر سوی گیری رقم چپ در کمپین های تخفیف و پروموشن ها</li></ul></div>
+  <div class="foot">
+    <div class="teams"><span class="ltr">Ads</span><span class="ltr">Engagement</span><span class="ltr">Data</span><span class="ltr">Product</span></div>
+    <span class="btns"><a class="go" href="../a/81c22e2dd424c420.html">خواندن بریف کامل</a><a class="go ghost" href="https://arxiv.org/abs/2611.05342v1" target="_blank" rel="noopener">منبع اصلی</a></span>
+  </div>
+  <a class="url ltr" href="https://arxiv.org/abs/2611.05342v1" target="_blank" rel="noopener">https://arxiv.org/abs/2611.05342v1</a>
+</article>
+    </div>
+    
+    
+    <p class="empty">مطلبی با این فیلتر پیدا نشد.</p>
+  </section>
+
+  
+</main>
+
+<footer><div class="wrap">به‌روزرسانی: 12:12 به وقت تهران. خلاصه‌ها با AI تولید شده‌اند؛ برای تصمیم‌گیری، منبع اصلی مرجع است.</div></footer>
+
+<script>
+(function(){
+  var CATS={"ai": {"color": "#6A4BC4", "en": "AI \u0026 Agents", "fa": "\u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc"}, "campaign": {"color": "#F57C00", "en": "Campaigns \u0026 Promotions", "fa": "\u06a9\u0645\u067e\u06cc\u0646 \u0648 \u067e\u0631\u0648\u0645\u0648\u0634\u0646"}, "commerce": {"color": "#C2185B", "en": "E-commerce \u0026 Product", "fa": "\u0627\u06cc\u200c\u06a9\u0627\u0645\u0631\u0633 \u0648 \u0645\u062d\u0635\u0648\u0644"}, "data": {"color": "#1E88E5", "en": "Data \u0026 Experimentation", "fa": "\u062f\u0627\u062f\u0647 \u0648 \u0622\u0632\u0645\u0627\u06cc\u0634"}, "ecrm": {"color": "#8E44AD", "en": "eCRM \u0026 Retention", "fa": "eCRM \u0648 \u0648\u0641\u0627\u062f\u0627\u0631\u06cc"}, "growth": {"color": "#2E9E4F", "en": "Growth", "fa": "\u0631\u0634\u062f"}, "management": {"color": "#3F51B5", "en": "Management \u0026 Strategy", "fa": "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0648 \u0627\u0633\u062a\u0631\u0627\u062a\u0698\u06cc"}, "marketing": {"color": "#E6123D", "en": "Marketing \u0026 Brand", "fa": "\u0645\u0627\u0631\u06a9\u062a\u06cc\u0646\u06af \u0648 \u0628\u0631\u0646\u062f"}, "performance": {"color": "#0097A7", "en": "Performance \u0026 Ads", "fa": "\u067e\u0631\u0641\u0648\u0631\u0645\u0646\u0633 \u0648 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a"}};
+  var tabs=[].slice.call(document.querySelectorAll('[data-tab]')), panels=[].slice.call(document.querySelectorAll('[data-panel]'));
+  var chipsEl=document.querySelector('.chips'), q=document.querySelector('.search'), sel=document.querySelector('.arch');
+  var state={tab:'latest',cat:'all'};
+  function panel(){return document.querySelector('[data-panel="'+state.tab+'"]');}
+  function buildChips(){
+    var p=panel(), arts=[].slice.call(p.querySelectorAll('article')), counts={};
+    arts.forEach(function(a){counts[a.dataset.cat]=(counts[a.dataset.cat]||0)+1;});
+    var h='<button class="chip" data-cat="all" aria-pressed="'+(state.cat==='all')+'">همه<span>'+arts.length+'</span></button>';
+    Object.keys(CATS).forEach(function(k){ if(counts[k]) h+='<button class="chip" data-cat="'+k+'" aria-pressed="'+(state.cat===k)+'" style="--c:'+CATS[k].color+'">'+CATS[k].fa+'<span>'+counts[k]+'</span></button>'; });
+    chipsEl.innerHTML=h; var plain=(state.tab==='sources'||state.tab==='guide'); chipsEl.style.display=plain?'none':'flex'; q.style.display=plain?'none':'';
+    sel.style.display=(state.tab==='latest')?'':'none';
+  }
+  function apply(){
+    var p=panel(), term=(q.value||'').trim().toLowerCase(), shown=0, arts=[].slice.call(p.querySelectorAll('article'));
+    arts.forEach(function(a){var ok=(state.cat==='all'||a.dataset.cat===state.cat)&&(!term||a.dataset.text.indexOf(term)>-1);a.hidden=!ok;if(ok)shown++;});
+    [].forEach.call(p.querySelectorAll('.group'),function(g){g.hidden=!g.querySelector('article:not([hidden])');});
+    var e=p.querySelector('.empty'); if(e)e.style.display=(arts.length&&!shown)?'block':'none';
+  }
+  function show(name,push){
+    if(!document.querySelector('[data-panel="'+name+'"]'))name='latest';
+    state.tab=name; state.cat='all';
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===name?'true':'false');});
+    panels.forEach(function(p){p.hidden=p.dataset.panel!==name;});
+    buildChips(); apply();
+    if(push)history.replaceState(null,'',name==='latest'?location.pathname:'#'+name);
+  }
+  [].forEach.call(document.querySelectorAll('[data-open]'),function(a){a.addEventListener('click',function(e){
+    e.preventDefault(); show(a.dataset.open,true); window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+  chipsEl.addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;state.cat=c.dataset.cat;
+    [].forEach.call(chipsEl.children,function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});apply();});
+  q.addEventListener('input',apply);
+  var prefix="../", cur="2026-11-04";
+  fetch(prefix+'archive.json').then(function(r){return r.json();}).then(function(list){
+    sel.innerHTML='';
+    list.forEach(function(a,i){var o=document.createElement('option');o.value=prefix+'archive/'+a.date+'.html';
+      o.textContent=a.short+(i===0?' (آخرین)':'');if(a.date===cur)o.selected=true;sel.appendChild(o);});
+  }).catch(function(){});
+  show((location.hash||'').replace('#','')||'latest',false);
+})();
+</script>
+</body>
+</html>
