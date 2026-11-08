@@ -75,5 +75,33 @@
   "origin": "scout",
   "added": "2026-11-01",
   "why": "پیشنهاد هفتگی منابع (2026-11-01)"
+ },
+ {
+  "name": "Simo Ahava's Blog",
+  "url": "https://www.simoahava.com/index.xml",
+  "hint": "performance",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-11-08",
+  "why": "پیشنهاد هفتگی منابع (2026-11-08)",
+  "type": "tutorial"
+ },
+ {
+  "name": "AppsFlyer Research & Benchmarks",
+  "url": "https://www.appsflyer.com/feed",
+  "hint": "performance",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-11-08",
+  "why": "پیشنهاد هفتگی منابع (2026-11-08)"
+ },
+ {
+  "name": "Dropbox Tech Blog",
+  "url": "https://dropbox.tech/feed",
+  "hint": "growth",
+  "tier": 1,
+  "origin": "scout",
+  "added": "2026-11-08",
+  "why": "پیشنهاد هفتگی منابع (2026-11-08)"
  }
 ]
