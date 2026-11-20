@@ -282,6 +282,10 @@
    [
     "2026-11-18",
     "منبع Stratechery بعد از توقف کیفی دوباره فعال شد"
+   ],
+   [
+    "2026-11-20",
+    "منبع Andrew Chen بعد از 3 خطای پیاپی غیرفعال شد"
    ]
   ],
   "primary_cites": {
@@ -608,7 +612,7 @@
   "kind": "article",
   "last_try": "2026-11-20",
   "last_ok": "2026-11-20",
-  "last_item": "2026-11-19",
+  "last_item": "2026-11-20",
   "tier": 2,
   "rev": 0,
   "acc": 0,
@@ -787,7 +791,7 @@
   "kind": "article",
   "last_try": "2026-11-20",
   "last_ok": "2026-11-20",
-  "last_item": "2026-11-19",
+  "last_item": "2026-11-20",
   "last_pick": "2026-10-04",
   "tier": 2,
   "until": "2026-11-04",
@@ -863,8 +867,8 @@
   "last_pick": "2026-11-02"
  },
  "https://andrewchen.substack.com/feed": {
-  "status": "active",
-  "fails": 2,
+  "status": "disabled",
+  "fails": 3,
   "scores": [],
   "picks": 0,
   "name": "Andrew Chen",
@@ -874,7 +878,8 @@
   "last_try": "2026-11-20",
   "tier": 2,
   "last_ok": "2026-11-18",
-  "last_item": "2026-10-27"
+  "last_item": "2026-10-27",
+  "prev_status": "active"
  },
  "https://www.elenaverna.com/feed": {
   "status": "active",
@@ -1373,7 +1378,7 @@
   "kind": "article",
   "last_try": "2026-11-20",
   "last_ok": "2026-11-20",
-  "last_item": "2026-11-19",
+  "last_item": "2026-11-20",
   "last_pick": "2026-10-03",
   "tier": 3,
   "until": "2026-11-04",
@@ -1515,7 +1520,7 @@
   "kind": "article",
   "last_try": "2026-11-20",
   "last_ok": "2026-11-20",
-  "last_item": "2026-11-19",
+  "last_item": "2026-11-20",
   "tier": 2,
   "resolved_url": "https://feeds.feedburner.com/MachineLearningMastery"
  },
@@ -1852,7 +1857,7 @@
   "kind": "article",
   "last_try": "2026-11-20",
   "last_ok": "2026-11-20",
-  "last_item": "2026-11-19",
+  "last_item": "2026-11-20",
   "last_pick": "2026-10-06",
   "tier": 3,
   "rev": 0,
@@ -2019,7 +2024,7 @@
   "kind": "article",
   "last_try": "2026-11-20",
   "last_ok": "2026-11-20",
-  "last_item": "2026-11-19",
+  "last_item": "2026-11-20",
   "tier": 3,
   "rev": 0,
   "acc": 0,
